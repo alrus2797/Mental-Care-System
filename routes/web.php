@@ -12,11 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('prueba');
 });
 
 
 
 Route::get('prueba', function(){
-	return View::make('Prescriptions.prueba');
+	return view('prueba');
 });
+Route::get('side',function(){
+	return view('Prescriptions.sidebar');
+});
+
+Route::resource('prescripcion','prescriptionController');

@@ -1,7 +1,7 @@
 
 
 @extends('layouts.prescriptionsTemplate')
-@section('title', 'Page Title')
+@section('title', 'Inicio')
 
 
    
