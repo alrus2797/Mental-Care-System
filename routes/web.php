@@ -15,18 +15,6 @@ Route::get('/', function () {
     return view('prueba');
 });
 
-Route::group(['prefix'=>'prescriptions/medicamentos'],function(){
-
-	Route::get('/',function(){ return view('Prescriptions.Medicamentos.crear');  });
-
-	Route::get('/crear', function () {
-    return view('Prescriptions.Medicamentos.crear'); });
-
-	Route::get('/presentacion', function () {
-    return view('Prescriptions.Medicamentos.presentacion');  });
-});
-
-
 Route::get('prueba', function(){
 	return view('prueba');
 });
