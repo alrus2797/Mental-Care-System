@@ -52,9 +52,8 @@ class medicamentosController extends Controller
 
     public function todos(){
     	$medicamentos = medicamento::all();
-    	return view('Prescriptions.Medicamentos.todos');
+    	return view('Prescriptions.Medicamentos.todos' , ["medicamentos"=>$medicamentos] );
     }
-
 
     public function borrarGet($id){
     	$medicamento = medicamento::find($id);
@@ -69,10 +68,4 @@ class medicamentosController extends Controller
     	$medicamento->delete();    	
     	return redirect('medicamentos');
     }
-
-
-
-
-
-
 }	

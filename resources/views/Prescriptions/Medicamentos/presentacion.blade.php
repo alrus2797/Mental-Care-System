@@ -6,11 +6,11 @@
 
 <div class="row">
 
-<form method="post" id="form" action="{{asset('medicamentos/'.$medicamento->id.'/crearPresentacion')}}">
+<form method="post" id="form" action="{{asset('medicamentos/'.$medicamento->id.'/crearPresentacion')}}" >
 	{{ csrf_field()}}
 
 		<div class="col-md-10">
-				<br>
+
 				<h2><p class="text-center">  Agregar presentación </p></h2>
 				<br>
 
@@ -38,7 +38,7 @@
 				   			<select name="modelo" type="text" class="form-control" id="id_modelo">
 			                	<option value="" >Seleccionar modelo de presentación:</option>
 			                		@foreach ($modelos as $modelo)
-			          				<option value="{{$modelo->id}}" >{{$modelo->nombre}}</option>
+			          					<option value="{{$modelo->id}}" >{{$modelo->nombre}}</option>
 			        				@endforeach
 			        		</select>
 		        	</div>
@@ -68,13 +68,19 @@
 			    <thead>
 			      <tr>
 			        <th>Presentaciones</th>
+			        <th>Tipo</th>
+			        <th>Descripción</th>
 			      </tr>
 			    </thead>
 
 			    <tbody>
-			    	<tr>	
-						<td>{{$medicamento->presentaciones}}</td>
+			    	@foreach($medicamento->presentaciones as $presentacion)
+			    	<tr>
+						<td>{{$presentacion -> nombre}}</td>
+						<td>{{$presentacion -> modeloPresentacion-> nombre }}</td>
+						<td>{{$presentacion -> descripcion}}</td>
 				    </tr>
+				   	@endforeach
 			    </tbody>
 			  </table>
 		</div>
