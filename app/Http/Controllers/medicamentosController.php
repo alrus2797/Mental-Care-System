@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\medicamento;
 use App\modeloPresentacion;
+use App\presentacion;
 	
 use Illuminate\Http\Request;
 
@@ -31,17 +32,18 @@ class medicamentosController extends Controller
 
     public function crearPresentacionGet($id){
     	$medicamento = medicamento::find($id);
-    	$modelos = modeloPresentacion::all();
+    	$modelos = modeloPresentacion::all();    	
     	$presentaciones = $medicamento->presentaciones;
     	return view('Prescriptions.Medicamentos.presentacion', ["medicamento"=>$medicamento,"presentaciones"=>$presentaciones, "modelos"=>$modelos]);
     }
 
-    public function crearPresentacion($id, $datos){
+    public function crearPresentacion($id, Request $datos){
+
     	$presentacion = new presentacion;
-    	$presentacion -> nombre = $datos['id'];
-    	$presentacion -> descripcion = $datos['id'];
-    	$presentacion -> id_medicamento = $datos[$id];
-    	$presentacion -> id_modelo_presentacion = $datos['id'];
+    	$presentacion -> nombre = $datos['nomPres'];
+    	$presentacion -> descripcion = $datos['Descripcion'];
+    	$presentacion -> id_medicamento = $id;
+    	$presentacion -> id_modelo_presentacion = $datos['modelo'];
     	$presentacion -> save();
 
     	return redirect('medicamentos/'.$id.'/crearPresentacion');
@@ -67,9 +69,6 @@ class medicamentosController extends Controller
     	$medicamento->delete();    	
     	return redirect('medicamentos');
     }
-
-
-
 
 
 
