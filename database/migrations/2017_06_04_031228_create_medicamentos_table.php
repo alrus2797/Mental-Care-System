@@ -19,6 +19,7 @@ class CreateMedicamentosTable extends Migration
             $table->string('nombre', 100);
             $table->string('efectos_secundarios');
             $table->string('riesgos');
+            $table->string('descripcion');
 
         });
     }
