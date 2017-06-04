@@ -59,7 +59,7 @@ class medicamentosController extends Controller
     }
 
     public function borrar($id){
-    	$medicamento = medicamento::ffind($id);
+    	$medicamento = medicamento::find($id);
     	//@for
     }
 
