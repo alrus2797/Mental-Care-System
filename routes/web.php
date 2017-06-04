@@ -40,6 +40,10 @@ Route::group(['prefix'=>'medicamentos'],function(){
 	Route::post('crear','medicamentosController@crear');
 	Route::get('{id}/crearPresentacion', 'medicamentosController@crearPresentacionGet');
 	Route::post('{id}/crearPresentacion', 'medicamentosController@crearPresentacion');
+	Route::get('{id}/borrar','medicamentosController@borrarGet');
+	Route::post('{id}/borrar','medicamentosController@borrar');
+	Route::get('/','medicamentosController@todos');
+
 
 	Route::get('lala',function(){
 		return view('Prescriptions.Medicamentos.presentacion');
