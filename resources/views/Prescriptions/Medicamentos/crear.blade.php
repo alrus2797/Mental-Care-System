@@ -6,7 +6,7 @@
 @section('content')
 
 
-<form method="post" id="form" action="{{asset('presentacion/crear')}}">
+<form method="post" id="form" action="{{asset('medicamentos/crear')}}">
 	{{ csrf_field()}}
 
 	<div class="row">
@@ -25,6 +25,19 @@
 			  		<input class="form-control" type="text" name ="nomMed" id="nomMed" placeholder="Ingrese nombre del medicamento" required="">
 				</div>
 			    <div id="EnomMed" ></div>
+			</div>
+	  </div><br>
+
+	  <div class="row">
+			<div class="col-sm-12">
+				<label for="nomDescrip" >Descripción: </label>
+				<div class="input-group">
+						<span class="input-group-addon" id="basic-addon1">
+							<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+						</span>
+	        		<textarea class="form-control" placeholder="Ingrese la descripcion del medicamento"  name="nomDescrip" id="nomDescrip" rows="5" required="true"></textarea>
+				</div>
+			    <div id="EnomDescrip" ></div>
 			</div>
 	  </div><br>
 
@@ -56,7 +69,7 @@
 
 	      <div class="text-center">
 	      	<button class="btn btn-lg btn-primary btn-primary" type="submit" value="Submit"> Agregar medicamento</button>
-	      </div>
+	      </div> <br>
 
 		</div>
 	</div>
