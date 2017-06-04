@@ -9,7 +9,7 @@ class medicamentosController extends Controller
     public function crearGet(){
 
         
-        return view('Medicamentos.crear');
+        return view('Prescriptions.Medicamentos.crear');
     }
 
     public function crear(Request $datos){

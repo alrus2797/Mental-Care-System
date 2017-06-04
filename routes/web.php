@@ -36,7 +36,7 @@ Route::get('side',function(){
 
 
 Route::group(['prefix'=>'medicamentos'],function(){
-	Route::get('crear',function(){return view('Medicamentos.crearGet');});
+	Route::get('crear','medicamentosController@crearGet');
 	Route::post('crear','medicamentosController@crear');
 	Route::get('{id}/crearPresentacion', 'medicamentosController@crearPresentacionGet');
 });	
