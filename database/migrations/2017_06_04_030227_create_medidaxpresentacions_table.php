@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedidaxpresentacionTable extends Migration
+class CreateMedidaxpresentacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateMedidaxpresentacionTable extends Migration
      */
     public function up()
     {
-        Schema::create('medidaxpresentacion', function (Blueprint $table) {
+        Schema::create('medidaxpresentacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('id_medida')->unsigned();
-            $table->integer('id_presentacion')->unsigned();
+            $table->integer('id_modelo_presentacion')->unsigned();
 
             $table->foreign('id_medida')->references('id')->on('medidas');
-            $table->foreign('id_presentacion')->references('id')->on('presentaciones');
+            $table->foreign('id_modelo_presentacion')->references('id')->on('modelo_presentacions');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateMedidaxpresentacionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medidaxpresentacion');
+        Schema::dropIfExists('medidaxpresentacions');
     }
 }

@@ -34,4 +34,37 @@ Route::get('side',function(){
 	return view('Prescriptions.sidebar');
 });
 
-Route::resource('prescripcion','prescriptionController');
+
+Route::group(['prefix'=>'medicamentos'],function(){
+	Route::get('crear',function(){return view('Medicamentos.crearGet');});
+	Route::post('crear','medicamentosController@crear');
+	Route::get('{id}/crearPresentacion', 'medicamentosController@crearPresentacionGet');
+});	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

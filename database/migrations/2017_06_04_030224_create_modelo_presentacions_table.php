@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrescripcionesTable extends Migration
+class CreateModeloPresentacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreatePrescripcionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prescripciones', function (Blueprint $table) {
+        Schema::create('modelo_presentacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('nombre', 50);
+            $table->string('descripcion');
         });
     }
 
@@ -26,6 +28,6 @@ class CreatePrescripcionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescripciones');
+        Schema::dropIfExists('modelo_presentacions');
     }
 }
