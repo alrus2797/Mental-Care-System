@@ -25,3 +25,21 @@ Route::get('side',function(){
 });
 
 Route::resource('prescripcion','prescriptionController');
+
+
+Route::group(['prefix'=>'pacientes'],function(){
+
+  Route::get('/','pacientesController@todos' );
+
+  Route::get('crear','pacientesController@crearObt' );
+  Route::post('crear','pacientesController@crear');
+
+  Route::get('{id}','pacientesController@mostrar' );
+
+  Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
+  Route::post('eliminar','pacientesController@eliminar');
+
+  Route::get('{id}/editar','pacientesController@editar');
+  Route::post('{id}','pacientesController@guardar');
+
+});
