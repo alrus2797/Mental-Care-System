@@ -1,5 +1,5 @@
-@extends('layout')
-
+@extends('layouts.prescriptionsTemplate')
+@section('title', 'Eliminar Paciente')
 @section('content')
 
 <form method="POST" action="{{asset('pacientes/eliminar')}}">

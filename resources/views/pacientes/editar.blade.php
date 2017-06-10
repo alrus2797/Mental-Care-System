@@ -1,4 +1,5 @@
-@extends('layout')
+@extends('layouts.prescriptionsTemplate')
+@section('title', 'Editar Paciente')
 
 @section('content')
 
