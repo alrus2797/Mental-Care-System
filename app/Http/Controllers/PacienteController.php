@@ -44,17 +44,16 @@ class PacienteController extends Controller
         return \Redirect::route('nuevo_paciente')
             ->with('message', $paciente);
     }
-    public function updatePaciente(PacienteFormRequest $request,$id)
+    public function updatePaciente(Request $request,Paciente $paciente)
     {
 
-//        $paciente = $this->pacienteRepository->update($request,$id);
-//        if ($paciente instanceof Paciente) {
-            return \Redirect::route('mostrar', array(
-                'id' => $id
-            ))
-                ->with('message', 'Paciente editado Con exito!');
-//        }
-//        return $id;
+////        if ($paciente instanceof Paciente) {
+//            return \Redirect::route('mostrar', array(
+//                'id' => $id
+//            ))
+//                ->with('message', 'Paciente editado Con exito!');
+////        }
+        return $paciente->id;
     }
     public function mostrarPaciente($id){
 
@@ -64,10 +63,12 @@ class PacienteController extends Controller
 
     }
     public function editarPaciente(Request $request,$id){
-
-        return view('Paciente/editar',array(
-            'paciente' => $this->pacienteRepository->get($id)
-        ));
+        return \View::make('Paciente/editar')->with([
+            'paciente' => $this->pacienteRepository->get($id),
+        ]);
+//        return view('Paciente/editar',array(
+//            'paciente' => $this->pacienteRepository->get($id)
+//        ));
 
     }
     public function buscarPaciente(Request $request){
