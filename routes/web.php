@@ -11,16 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('prueba');
-});
-
-Route::get('prueba', function(){
-	return view('prueba');
-});
-Route::get('side',function(){
-	return view('Prescriptions.sidebar');
-});
 
 
 

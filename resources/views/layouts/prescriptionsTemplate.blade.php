@@ -53,6 +53,7 @@
         <span class="icon-bar"></span>
       </button>      
     </div>
+      
       @include('layouts.sidebar')
   </div>
 </nav>
