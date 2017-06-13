@@ -15,12 +15,12 @@ class CreateMedicamentosTable extends Migration
     {
         Schema::create('medicamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->string('nombre', 100);
-            $table->string('efectos_secundarios');
-            $table->string('riesgos');
-            $table->string('descripcion');
+            $table->string('nombre',60);
+            $table->string('descripcion',255);
+            $table->string('efecSecundarios',255);
+            $table->string('adversos',255);
 
+            $table->timestamps();
         });
     }
 
@@ -29,7 +29,8 @@ class CreateMedicamentosTable extends Migration
      *
      * @return void
      */
-    
-
-    
+    public function down()
+    {
+        Schema::dropIfExists('medicamentos');
+    }
 }

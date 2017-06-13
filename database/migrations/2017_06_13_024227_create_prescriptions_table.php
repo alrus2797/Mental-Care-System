@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModeloPresentacionsTable extends Migration
+class CreatePrescriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateModeloPresentacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('modelo_presentacions', function (Blueprint $table) {
+        Schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nombre', 50);
-            $table->string('descripcion');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateModeloPresentacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modelo_presentacions');
+        Schema::dropIfExists('prescriptions');
     }
 }

@@ -15,15 +15,10 @@ class CreatePresentacionsTable extends Migration
     {
         Schema::create('presentacions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('unidad',5);
+            $table->string('descripcion',15);
+
             $table->timestamps();
-            $table->string('nombre', 30);
-            $table->string('descripcion');
-            $table->integer('id_medicamento')->unsigned();
-            $table->integer('id_modelo_presentacion')->unsigned();
-
-            $table->foreign('id_medicamento')->references('id')->on('medicamentos');
-            $table->foreign('id_modelo_presentacion')->references('id')->on('modelo_presentacions');
-
         });
     }
 
