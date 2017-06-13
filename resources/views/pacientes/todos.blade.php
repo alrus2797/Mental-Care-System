@@ -4,6 +4,7 @@
 @section('content')
 
 {{$tabla}}
+Testing
 
 
 @endsection
