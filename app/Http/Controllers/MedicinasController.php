@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Medicamento;
+use App\Medicina;
 use Illuminate\Http\Request;
 
-class MedicamentoController extends Controller
+class MedicinasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MedicamentoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Medicamento  $medicamento
+     * @param  \App\Medicina  $medicina
      * @return \Illuminate\Http\Response
      */
-    public function show(Medicamento $medicamento)
+    public function show(Medicina $medicina)
     {
         //
     }
@@ -52,10 +52,10 @@ class MedicamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Medicamento  $medicamento
+     * @param  \App\Medicina  $medicina
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medicamento $medicamento)
+    public function edit(Medicina $medicina)
     {
         //
     }
@@ -64,10 +64,10 @@ class MedicamentoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Medicamento  $medicamento
+     * @param  \App\Medicina  $medicina
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medicamento $medicamento)
+    public function update(Request $request, Medicina $medicina)
     {
         //
     }
@@ -75,10 +75,10 @@ class MedicamentoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Medicamento  $medicamento
+     * @param  \App\Medicina  $medicina
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Medicamento $medicamento)
+    public function destroy(Medicina $medicina)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Presentacion;
+use App\Componente;
 use Illuminate\Http\Request;
 
-class PresentacionController extends Controller
+class ComponentesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PresentacionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Presentacion  $presentacion
+     * @param  \App\Componente  $componente
      * @return \Illuminate\Http\Response
      */
-    public function show(Presentacion $presentacion)
+    public function show(Componente $componente)
     {
         //
     }
@@ -52,10 +52,10 @@ class PresentacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Presentacion  $presentacion
+     * @param  \App\Componente  $componente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presentacion $presentacion)
+    public function edit(Componente $componente)
     {
         //
     }
@@ -64,10 +64,10 @@ class PresentacionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Presentacion  $presentacion
+     * @param  \App\Componente  $componente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Presentacion $presentacion)
+    public function update(Request $request, Componente $componente)
     {
         //
     }
@@ -75,10 +75,10 @@ class PresentacionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Presentacion  $presentacion
+     * @param  \App\Componente  $componente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presentacion $presentacion)
+    public function destroy(Componente $componente)
     {
         //
     }

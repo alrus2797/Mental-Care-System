@@ -12,6 +12,21 @@
 */
 
 
+Route::get('side',function(){
+	return view('Prescriptions.sidebar');
+});
+//*******************************************
+
+Route::resource('medicamentos','MedicamentosController');
+
+//Route::resource('medicinas','MedicinasController');
+
+Route::resource('presentaciones','PresentacionesController');
+
+Route::get('med',function(){
+	return view('Prescriptions.medicamentos.crear');
+});
+
 
 
 

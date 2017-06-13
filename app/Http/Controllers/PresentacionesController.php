@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Componente;
+use App\Presentacion;
 use Illuminate\Http\Request;
 
-class ComponenteController extends Controller
+class PresentacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ComponenteController extends Controller
      */
     public function index()
     {
-        //
+        return view('Prescriptions.presentaciones.index');
     }
 
     /**
@@ -41,10 +41,10 @@ class ComponenteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Componente  $componente
+     * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
-    public function show(Componente $componente)
+    public function show(Presentacion $presentacion)
     {
         //
     }
@@ -52,10 +52,10 @@ class ComponenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Componente  $componente
+     * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Componente $componente)
+    public function edit(Presentacion $presentacion)
     {
         //
     }
@@ -64,10 +64,10 @@ class ComponenteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Componente  $componente
+     * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Componente $componente)
+    public function update(Request $request, Presentacion $presentacion)
     {
         //
     }
@@ -75,10 +75,10 @@ class ComponenteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Componente  $componente
+     * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Componente $componente)
+    public function destroy(Presentacion $presentacion)
     {
         //
     }

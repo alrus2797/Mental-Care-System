@@ -20,6 +20,10 @@ class CreateMedicinasTable extends Migration
             $table->integer('presentacion_id');
             $table->integer('medicamento_id');
 
+            $table->foreign('presentacion_id')->references('id')->on('presentacions');
+            $table->('medicamento_id')->references('id')->on('medicamentos');
+
+
 
             $table->timestamps();
         });
