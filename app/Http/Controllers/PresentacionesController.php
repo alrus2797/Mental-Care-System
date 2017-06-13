@@ -14,7 +14,8 @@ class PresentacionesController extends Controller
      */
     public function index()
     {
-        return view('Prescriptions.presentaciones.index');
+        $ps = Presentacion::all();
+        return view('Prescriptions.presentaciones.index', ["presentaciones"=>$ps]);
     }
 
     /**
@@ -35,7 +36,12 @@ class PresentacionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $p = new Presentacion;
+        $p->descripcion = $request->descripcion;
+        $p->unidad = $request->unidad;
+        $p->save();
+        
+        return redirect("presentaciones");
     }
 
     /**

@@ -39,35 +39,14 @@
 </nav>
   
 
-
-
-
-
-<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
-    </div>
-      
-      @include('layouts.sidebar')
-  </div>
-</nav>
-
-
-
-<div class="container-fluid text-center">    
+<div class="container">    
   
   
   @yield('content')
 
 </div>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center navbar-fixed-bottom">
   <p>CSUNSA - 2017</p>
 </footer>
 
