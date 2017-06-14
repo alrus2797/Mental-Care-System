@@ -20,13 +20,21 @@
   		<input type="text" class="form-control" placeholder="unidad" aria-describedby="basic-addon1" name="unidad">
 	</div>
   </div>
+
+  <div class="col-md-3">
+	<button type="submit" class="btn btn-info">Crear</button>
+  	
+  </div>
+
 </div>
 
-<button type="submit" class="btn btn-info">Crear</button>
+
+	
+</div>
 
 </form>
 
-
+<div class="container">
 <h1>All Presentaciones</h1>
 
  <table class="table table-condensed">
@@ -53,6 +61,8 @@
     @endforeach
     </tbody>
   </table>
+	
+</div>
 
 
 @endsection

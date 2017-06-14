@@ -46,7 +46,7 @@
 
 </div>
 
-<footer class="container-fluid text-center navbar-fixed-bottom">
+<footer class="container-fluid text-center ">
   <p>CSUNSA - 2017</p>
 </footer>
 

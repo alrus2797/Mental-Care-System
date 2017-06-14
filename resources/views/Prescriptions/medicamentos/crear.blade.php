@@ -26,7 +26,7 @@
 	</div>
 	
 	<div class="form-group col-md-2">
-		<button type="button" class="btn btn-info btn-lg">Nueva Presentación</button>		
+		<button type="button" class="btn btn-info">Nueva Presentación</button>		
 	</div>
 </div>
 <div class="row">
@@ -45,7 +45,13 @@
 	</div>
 </div>
 
-	<button type="submit" class="btn btn-default">Crear Medicamento</button>
+	<div class="row">
+	<div class="col-md-3 col-md-offset-3">
+
+	<button type="submit" class="btn btn-primary btn-lg">Crear Medicamento</button>
+	</div>
+		
+	</div>
 </form>
 
 
