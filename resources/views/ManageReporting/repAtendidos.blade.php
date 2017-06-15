@@ -6,10 +6,10 @@
 
    
    @section('content')      
-      <p>This is my body content.</p>
-      <p>This is my body content.</p>
-      <p>This is my body content.</p>
-      <p>This is my body content.</p>
-      <p>This is my body content.</p>
-      <p>This is my body content.</p>
+ <div class="page-header">
+      <h2>Reporte de pacientes atendidos</h2>      
+    <p>Reportes mensuales de pacientes atendidos por clínica.</p>
+  </div>
+
+
    @endsection

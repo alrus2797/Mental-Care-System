@@ -25,7 +25,7 @@
     </a>
     <a href="/reportes/repAtencion" class="list-group-item">
       <h4 class="list-group-item-heading">Reporte de atención</h4>
-      <p class="list-group-item-text">Reportes <strong>semanales</strong> de pacientes atendidos al día por cada condición mental.</p>
+        <p class="list-group-item-text">Reportes <strong>semanales</strong> de pacientes atendidos <strong>al día</strong> por cada condición mental.</p>
     </a>
     <a href="/reportes/repFarmacos" class="list-group-item">
       <h4 class="list-group-item-heading">Reporte de farmacos preescritos</h4>
