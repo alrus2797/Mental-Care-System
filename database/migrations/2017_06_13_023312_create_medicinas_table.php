@@ -17,11 +17,11 @@ class CreateMedicinasTable extends Migration
             $table->increments('id');
             $table->integer('cantidad');
 
-            $table->integer('presentacion_id');
-            $table->integer('medicamento_id');
+            $table->integer('presentacion_id')->unsigned();
+            $table->integer('medicamento_id')->unsigned();
 
             $table->foreign('presentacion_id')->references('id')->on('presentacions');
-            $table->foreing('medicamento_id')->references('id')->on('medicamentos');
+            $table->foreign('medicamento_id')->references('id')->on('medicamentos');
 
 
 
