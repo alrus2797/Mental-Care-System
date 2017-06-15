@@ -89,8 +89,21 @@ class PresentacionesController extends Controller
      * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
+    public function destroy2($id)
+    {
+        $presentacion = Presentacion::find($id);
+        $presentacion->delete();
+        return response()->json([
+            'res' => true
+        ]);
+    }
+
+
     public function destroy(Presentacion $presentacion)
     {
-        //
+        $presentacion->delete();
+        return response()->json([
+            'res' => true
+        ]);
     }
 }

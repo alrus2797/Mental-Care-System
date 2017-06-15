@@ -3,6 +3,11 @@
 
 @section('content')
 
+
+<link rel="stylesheet" type="text/css" href="{{ asset('css/alertify.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/default-alertify.min.css')}}">
+<script  src="{{ asset('js/alertify.min.js')}}" ></script>
+
 <form id="form" action="{{asset('presentaciones')}}" method="post">
 	<h3>Presentaciones</h3>
 	{{ csrf_field()}} 
@@ -53,6 +58,39 @@ $('#form').submit(function () {
   $("#form") .ajaxForm({url: "{{ asset('presentaciones')}}", type: 'post'})
   return false;
 });
+
+
+function eliminar(id) {
+  console.log(id);
+
+  alertify.confirm('Confirmar', 'Desea eliminar este usuario?',
+    function(){
+
+
+    $.ajax(
+        {
+          url: "{{asset('presentaciones/eliminar/')}}"+"/"+id,
+          type: "post",
+          dataType: "json",
+          data: { _token : "{{csrf_token()}}" },
+
+          succes: function(resultado){
+            console.log("hola");
+            console.log(resultado);
+            $("#todos" ).load("{{ asset('presentaciones/todos') }}" );
+          }
+        }
+      );
+
+    },
+    function(){ alertify.error('Cancel')}
+
+  );
+}
+
+
+
+
 </script>
 
 @endsection

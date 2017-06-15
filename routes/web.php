@@ -29,6 +29,8 @@ Route::resource('medicamentos','MedicamentosController');
 /*
 	Presentaciones
 */
+Route::post('presentaciones/eliminar/{id}','PresentacionesController@destroy2');
+
 Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController');
 
