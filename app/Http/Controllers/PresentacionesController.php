@@ -14,8 +14,13 @@ class PresentacionesController extends Controller
      */
     public function index()
     {
+        return view('Prescriptions.presentaciones.index');
+    }
+
+    public function todos()
+    {
         $ps = Presentacion::all();
-        return view('Prescriptions.presentaciones.index', ["presentaciones"=>$ps]);
+        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]);
     }
 
     /**

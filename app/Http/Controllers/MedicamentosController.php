@@ -13,8 +13,7 @@ class MedicamentosController extends Controller
     
     public function index()
     {
-        $ms = Medicina::all();
-        return view('Prescriptions.medicamentos.index',["medicinas"=>$ms]);
+        return view('Prescriptions.medicamentos.index');
     }
 
     /**

@@ -21,6 +21,10 @@ Route::resource('medicamentos','MedicamentosController');
 
 //Route::resource('medicinas','MedicinasController');
 
+/*
+	Presentaciones
+*/
+Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController');
 
 Route::get('med',function(){

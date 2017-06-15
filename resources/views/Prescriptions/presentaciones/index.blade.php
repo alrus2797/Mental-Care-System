@@ -3,7 +3,7 @@
 
 @section('content')
 
-<form action="{{asset('presentaciones')}}" method="post">
+<form id="form" action="{{asset('presentaciones')}}" method="post">
 	<h3>Presentaciones</h3>
 	{{ csrf_field()}} 
 <div class="row">
@@ -35,34 +35,24 @@
 </form>
 
 <div class="container">
-<h1>All Presentaciones</h1>
-
- <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>id</th>
-        
-        <th>Presentacion</th>
-        
-        <th>Unidad</th>
-        <th>Ver</th>
-        <th>Edi</th>
-        <th>Elimi</th>
-      </tr>
-    </thead>
-    <tbody>
-    @foreach($presentaciones as $p)
-      <tr>
-        <td>{{$p->id}}</td>
-        <td>{{$p->descripcion}}</td>
-         
-        <td>{{$p->unidad}}</td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
-	
+  <div id="todos"></div>	
 </div>
 
+<style type="text/css">
+  #todos{
+    padding-top: 25px;
+  }
+
+</style>
+
+<script type="text/javascript">
+$("#todos" ).load("{{ asset('presentaciones/todos') }}" );
+
+$('#form').submit(function () {
+  $("#todos").load("{{ asset('presentaciones/todos') }}" );
+  $("#form") .ajaxForm({url: "{{ asset('presentaciones')}}", type: 'post'})
+  return false;
+});
+</script>
 
 @endsection
