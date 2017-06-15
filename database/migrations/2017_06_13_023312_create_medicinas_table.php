@@ -21,7 +21,7 @@ class CreateMedicinasTable extends Migration
             $table->integer('medicamento_id');
 
             $table->foreign('presentacion_id')->references('id')->on('presentacions');
-            $table->('medicamento_id')->references('id')->on('medicamentos');
+            $table->foreing('medicamento_id')->references('id')->on('medicamentos');
 
 
 

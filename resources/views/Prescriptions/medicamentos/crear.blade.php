@@ -1,10 +1,7 @@
-@extends('layouts.prescriptionsTemplate')
-@section('title','medicamentos')
-
-@section('content')
-
-	<h2>Nuevo Medicamento</h2>
-<form action="{{ asset('medicamentos')  }}" method="post">
+	<div class="container">
+		
+	<h3>Nuevo Medicamento</h3>
+<form id="crear" action="{{ asset('medicamentos')  }}" method="post">
 {{ csrf_field()}} 
 <div class="row">
 	<div class="form-group col-md-4">
@@ -26,7 +23,18 @@
 	</div>
 	
 	<div class="form-group col-md-2">
-		<button type="button" class="btn btn-info">Nueva Presentación</button>		
+	<br>	
+		<style type="text/css">
+			.btn-circle.btn-lg {
+			  width: 40px;
+			  height: 40px;
+			  padding: 0.1px 5.5px;
+			  font-size: 30px;
+			  line-height: 0.8;
+			  border-radius: 50px;
+			}
+		</style>
+		<button type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
 	</div>
 </div>
 <div class="row">
@@ -54,5 +62,35 @@
 	</div>
 </form>
 
+	</div>
 
-@endsection
+<script type="text/javascript">
+	alertify.genericDialog || alertify.dialog('genericDialog',function(){
+    return {
+        main:function(content){
+            this.setContent(content);
+        },
+        setup:function(){
+            return {
+                focus:{
+                    element:function(){
+                        return this.elements.body.querySelector(this.get('selector'));
+                    },
+                    select:true
+                },
+                options:{
+                    basic:true,
+                    //maximizable:true,
+                    resizable:false,
+                    padding:false
+                }
+            };
+        },
+        settings:{
+            selector:undefined
+        }
+    };
+});
+//force focusing password box
+alertify.genericDialog ($('#crear')[0]).set({'startMaximized':true}, 'selector', 'input[type="password"]');
+</script>
