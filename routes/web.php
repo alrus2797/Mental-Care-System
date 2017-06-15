@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('prueba');
+Route::get('diego', function () {
+    return view('pacientes.buscar');
 });
 
 
@@ -30,16 +30,21 @@ Route::resource('prescripcion','prescriptionController');
 Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('/','pacientesController@todos' );
+  Route::get('todos','pacientesController@todos');
 
   Route::get('crear','pacientesController@crearObt' );
   Route::post('crear','pacientesController@crear');
-
-  Route::get('{id}','pacientesController@mostrar' );
 
   Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
   Route::post('eliminar','pacientesController@eliminar');
 
   Route::get('{id}/editar','pacientesController@editar');
   Route::post('{id}','pacientesController@guardar');
+
+  Route::get('buscar', 'pacientesController@buscar');
+
+  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+  Route::get('{id}','pacientesController@mostrar' );
 
 });

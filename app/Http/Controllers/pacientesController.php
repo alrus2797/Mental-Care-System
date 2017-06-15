@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Log;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
 use App\paciente;
@@ -94,5 +97,25 @@ class pacientesController extends Controller
       $post = paciente::find(request('id'));
       $post->delete();
       return redirect('pacientes');
+    }
+
+    public function buscar()
+    {
+      return view('pacientes.buscar');
+    }
+
+    public function retrievePacientes(Request $datos)
+    {
+      $respuesta = DB::table('pacientes')
+                  -> select('id', 'nombres', 'apellidopaterno', 'apellidomaterno', 'dni', 'direccion', 'historiaclinica')->where([
+                    ['nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['direccion', 'like', '%'.$datos->input('direccion').'%'],
+                    ['historiaclinica', 'like', '%'.$datos->input('historia').'%'],
+                    ])
+                  ->get();
+      return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
     }
 }

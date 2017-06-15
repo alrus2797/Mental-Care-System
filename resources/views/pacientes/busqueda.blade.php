@@ -1,8 +1,3 @@
-@extends('layouts.prescriptionsTemplate')
-@section('title', 'Pacientes')
-
-@section('content')
-
 <div class="table-responsive">
 	<div class="tablaPacientes col-sm-12">
 			<table class="table-striped col-sm-12">
@@ -17,7 +12,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($tabla as $paciente)
+					@foreach($respuesta as $paciente)
 						<tr>
 							<td>{{$paciente->nombres}}</td>
 							<td>{{$paciente->apellidopaterno}}</td>
@@ -31,5 +26,3 @@
 			</table>
 	</div>
 </div>
-
-@endsection

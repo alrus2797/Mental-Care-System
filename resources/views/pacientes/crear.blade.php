@@ -4,7 +4,7 @@
 
 @section('content')
 
- <h2>Registro de Paciente</h2>
+<h2>Registro de Paciente</h2>
 
 <div >
   <form method="POST" action="{{asset('pacientes/crear')}}">
