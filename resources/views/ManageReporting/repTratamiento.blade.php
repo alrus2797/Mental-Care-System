@@ -11,4 +11,6 @@
     <p>Reportes que contengan información del tratamiento prescrito del paciente.</p>
   </div>
 
+
+
    @endsection
