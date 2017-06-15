@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{{asset('js/alertify.min.js')}} " >  </script>
+  <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 
@@ -41,14 +44,19 @@
 
 <div class="container">    
   
-  
+  <br>
+  <br>
   @yield('content')
-
+<br>
+<br>
 </div>
-
+<div class="container">
+  
 <footer class="container-fluid text-center ">
   <p>CSUNSA - 2017</p>
 </footer>
-
+</div>
+<!--
+-->
 </body>
 </html>

@@ -16,6 +16,11 @@ Route::get('side',function(){
 	return view('Prescriptions.sidebar');
 });
 //*******************************************
+Route::get('medicamentos/asdf',function(){ 
+	return view('Prescriptions.medicamentos.buscador');
+});
+
+Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
 Route::resource('medicamentos','MedicamentosController');
 
