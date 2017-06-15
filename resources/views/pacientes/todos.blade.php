@@ -3,6 +3,8 @@
 
 @section('content')
 
+<h2>Pacientes</h2><br><br>
+
 <div class="table-responsive">
 	<div class="tablaPacientes col-sm-12">
 			<table class="table-striped col-sm-12">

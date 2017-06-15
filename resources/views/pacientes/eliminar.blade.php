@@ -33,8 +33,7 @@
      </div>
 
 
-    </div>
-        <div class="form-group">
+    <div class="form-group">
       <label class="col-sm-2 col-form-label" for="email">Nombres:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres"  value="{{$get->nombres}}" readonly>
