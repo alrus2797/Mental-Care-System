@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Admisiones extends Migration
+class CreateEgresosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class Admisiones extends Migration
      */
     public function up()
     {
-        Schema::create('admisiones', function (Blueprint $table) {
+        Schema::create('egresos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->tinyInteger('facturado');
-            $table->integer('empresa_paciente')->unsigned()->nullable()->default(NULL);
             $table->integer('comprobante_id')->unsigned()->nullable()->default(NULL);
-            $table->tinyInteger('tipopago');
+            $table->foreign('comprobante_id')->references('id')->on('comprobantes');
+            $table->integer('paciente_id')->unsigned()->nullable()->default(NULL);
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class Admisiones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admisiones');
+        Schema::dropIfExists('egresos');
     }
 }
