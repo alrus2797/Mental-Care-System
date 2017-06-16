@@ -48,8 +48,11 @@
     </table> 
 </div>
     
-    </div> 
-<input type="button" onclick="printDiv('printableArea')" value="print a div!" />
+    </div > 
+
+<div class="col-sm-offset-0">
+	<input type="button" class="btn btn-default"  onclick="printDiv('printableArea')" value="Imprimir o exportar a PDF" />
+</div>
 
 
 
