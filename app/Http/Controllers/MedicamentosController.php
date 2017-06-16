@@ -13,7 +13,8 @@ class MedicamentosController extends Controller
     
     public function index()
     {
-        return view('Prescriptions.medicamentos.index');
+        $todos = Medicina::all();
+        return view('Prescriptions.medicamentos.index',["medicinas"=> $todos]);
     }
 
     public function create()
@@ -41,9 +42,12 @@ class MedicamentosController extends Controller
     }
 
 
-    public function show(Medicamento $medicamento)
+    public function show(Request $dato)
     {
-        //
+//        dd($dato);
+        $medicina = Medicina::find($dato);
+//        dd($medicina);
+        return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
     }
 
     public function edit(Medicamento $medicamento)

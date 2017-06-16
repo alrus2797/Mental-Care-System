@@ -1,7 +1,8 @@
-	<div class="container">
+	
 		
-	<h3>Nuevo Medicamento</h3>
 <form id="crear" action="{{ asset('medicamentos')  }}" method="post">
+<div class="container">
+	<h3>Nuevo Medicamento</h3>
 {{ csrf_field()}} 
 <div class="row">
 	<div class="form-group col-md-4">
@@ -24,17 +25,10 @@
 	
 	<div class="form-group col-md-2">
 	<br>	
-		<style type="text/css">
-			.btn-circle.btn-lg {
-			  width: 40px;
-			  height: 40px;
-			  padding: 0.1px 5.5px;
-			  font-size: 30px;
-			  line-height: 0.8;
-			  border-radius: 50px;
-			}
-		</style>
-		<button type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
+
+<button id="" type="button" class="btn btn-default btn-large"> <a href="{{asset('presentaciones')}} "><i class="glyphicon glyphicon-plus"></i> Añadir presentación </a></button>
+
+
 	</div>
 </div>
 <div class="row">
@@ -56,16 +50,16 @@
 	<div class="row">
 	<div class="col-md-3 col-md-offset-3">
 
-	<button type="submit" class="btn btn-primary btn-lg">Crear Medicamento</button>
+	<button id="nuevo" type="button" class="btn btn-default btn-large">Crear Medicamento </button>
 	</div>
 		
 	</div>
+	</div>
 </form>
 
-	</div>
 
 <script type="text/javascript">
-	alertify.genericDialog || alertify.dialog('genericDialog',function(){
+alertify.genericDialog || alertify.dialog('genericDialog',function(){
     return {
         main:function(content){
             this.setContent(content);
@@ -76,13 +70,13 @@
                     element:function(){
                         return this.elements.body.querySelector(this.get('selector'));
                     },
-                    select:true
+                    select:false
                 },
                 options:{
                     basic:true,
-                    //maximizable:true,
-                    resizable:false,
-                    padding:false
+                    maximizable:true,
+                    resizable:true,
+                    padding:true
                 }
             };
         },
@@ -92,5 +86,5 @@
     };
 });
 //force focusing password box
-alertify.genericDialog ($('#crear')[0]).set({'startMaximized':true}, 'selector', 'input[type="password"]');
+alertify.genericDialog ($('#crear')[0]).set('selector', 'input[type="password"]');
 </script>

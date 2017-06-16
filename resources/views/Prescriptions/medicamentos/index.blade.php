@@ -26,11 +26,11 @@
     @foreach($medicinas as $m)
       <tr>
         
-        
+        <td>{{$m->medicamento->nombre}}</td>
         <td>{{$m->presentacion->descripcion}}</td>
         <td>{{$m->cantidad}}</td>
         <td>{{$m->presentacion->unidad}}</td>
-        <td><a href="{{asset('medicamentos')}} "> <span class="glyphicon glyphicon-eye-open">  </span> </a> 
+        <td><a onclick="ver({{$m->id}})" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a> 
 
         </td>
         <td><a href="{{asset('medicamentos')}} "> <span class="glyphicon glyphicon-pencil"></span></a> </td>
@@ -43,14 +43,29 @@
     </tbody>
   </table>
 
+<div id="ver" ></div>
+
   <script type="text/javascript">
    $("#buscador").load("{{asset('medicamentos/asdf')}}");
   </script>
 
+<script type="text/javascript">
+  function ver(id) {
+    $.ajax({ 
+//        data:{medicina:id},
+        url: "{{asset('medicinas')}}"+"/"+id,
+        type: 'get',
+       success: function(resultado){
+          console.log(resultado);
+            $("#ver").html(resultado);
+        }});
+  }
+</script>
+
   <script type="text/javascript">
     function eliminar(id) {
       $.ajax({data:{ _token: '{{csrf_token()}}'} ,
-        url: "{{asset('medicamentos/eliminar/'.$m->id.'')}} ",
+        url: "{{asset('medicamentos/eliminar/')}}"+"/"+id,
         type: 'post',
        success: function(resultado){
           console.log(resultado);

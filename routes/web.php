@@ -24,7 +24,7 @@ Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
 Route::resource('medicamentos','MedicamentosController');
 
-//Route::resource('medicinas','MedicinasController');
+Route::resource('medicinas','MedicinasController');
 
 /*
 	Presentaciones
