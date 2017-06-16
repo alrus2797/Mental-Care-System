@@ -8,6 +8,24 @@
   <script src="{{ asset('js/jquery.min.js')}}"></script>
   <script src="{{ asset( 'js/bootstrap.min.js ')}}"></script>
   <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+   <script type="text/javascript">
+function printDiv(divName) 
+{
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+    </script>
+
+
+
 </head>
 <body>
 

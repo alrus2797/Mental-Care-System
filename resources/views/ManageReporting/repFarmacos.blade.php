@@ -3,16 +3,17 @@
 @extends('layouts.template')
 @section('title', 'Inicio')
 
+   @section('content')    
+<div id="printableArea">
 
-   
-   @section('content')      
+
  <div class="page-header">
       <h2>Reporte de farmacos preescritos</h2>      
     <p>Reportes semanales de número total de fármacos prescritos.</p>
   </div>
 
 <div class="col-md-10 col-md-offset-0 table-responsive">
-   <table class="table table-hover">
+   <table class="table table-hover table-bordered">
     <tr>
         <th>Paciente</th>
         <th>Medicamento</th>
@@ -33,10 +34,10 @@
             foreach ($result as $row)
             {
                 echo "<tr>";
-                echo "<td>".$row->paciente."</td>";
-                echo "<td>".$row->medicina."</td>";
-                echo "<td>".$row->clinica."</td>";
-                echo "<td>".$row->descripcion."</td>";
+                echo "<td>"." - "."</td>";
+                echo "<td>"." - "."</td>";
+                echo "<td>"." - "."</td>";
+                echo "<td>"." - "."</td>";
 
                 echo "</tr>";
             }
@@ -44,7 +45,9 @@
     </table> 
 </div>
      
-  
+      
+</div>
+     <input type="button" onclick="printDiv('printableArea')" value="print a div!" />
 
 
    @endsection

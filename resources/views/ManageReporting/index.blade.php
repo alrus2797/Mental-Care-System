@@ -24,7 +24,7 @@
       <p class="list-group-item-text">Reportes que contengan información del tratamiento prescrito del paciente.</p>
     </a>
     <a href="/reportes/repAtencion" class="list-group-item">
-      <h4 class="list-group-item-heading">Reporte de atención</h4>
+      <h4 class="list-group-item-heading">Reporte de atención </h4>
         <p class="list-group-item-text">Reportes <strong>semanales</strong> de pacientes atendidos <strong>al día</strong> por cada condición mental.</p>
     </a>
     <a href="/reportes/repFarmacos" class="list-group-item">
@@ -32,11 +32,11 @@
       <p class="list-group-item-text">Reportes <strong>semanales</strong> de número total de fármacos prescritos. </p>
     </a>
     <a href="/reportes/repAtendidos" class="list-group-item">
-      <h4 class="list-group-item-heading">Reporte de pacientes atendidos</h4>
+      <h4 class="list-group-item-heading">Reporte de pacientes atendidos (*)</h4>
         <p class="list-group-item-text">Reportes <strong>mensual</strong>es de pacientes atendidos por clínica. </p>
     </a>
     <a href="/reportes/repMedRecetados" class="list-group-item">
-      <h4 class="list-group-item-heading">Reporte de medicamentos recetados</h4>
+      <h4 class="list-group-item-heading">Reporte de medicamentos recetados (*)</h4>
       <p class="list-group-item-text">Reportes de medicamentos recetados durante el mes. </p>
     </a>
   </div>
