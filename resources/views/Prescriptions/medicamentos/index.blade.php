@@ -64,8 +64,9 @@
 
   <script type="text/javascript">
     function eliminar(id) {
-      $.ajax({data:{ _token: '{{csrf_token()}}'} ,
-        url: "{{asset('medicamentos/eliminar/')}}"+"/"+id,
+      $.ajax({
+        data:{ _token: '{{csrf_token()}}', _method: 'delete' } ,
+        url: "{{asset('medicamentos/eliminar/')}} " +"/"+id,
         type: 'post',
        success: function(resultado){
           console.log(resultado);

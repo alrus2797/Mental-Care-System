@@ -17,12 +17,6 @@ class PresentacionesController extends Controller
         return view('Prescriptions.presentaciones.index');
     }
 
-    public function todos()
-    {
-        $ps = Presentacion::all();
-        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -57,7 +51,7 @@ class PresentacionesController extends Controller
      */
     public function show(Presentacion $presentacion)
     {
-        //
+        dd($presentacion);
     }
 
     /**
@@ -89,19 +83,12 @@ class PresentacionesController extends Controller
      * @param  \App\Presentacion  $presentacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy2($id)
-    {
-        $presentacion = Presentacion::find($id);
-        $presentacion->delete();
-        return response()->json([
-            'res' => true
-        ]);
-    }
-
 
     public function destroy(Presentacion $presentacion)
     {
-        $presentacion->delete();
+        //$presentacion->delete();
+
+        dd($presentacion);
         return response()->json([
             'res' => true
         ]);

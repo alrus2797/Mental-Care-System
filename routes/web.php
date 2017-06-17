@@ -29,7 +29,6 @@ Route::resource('medicinas','MedicinasController');
 /*
 	Presentaciones
 */
-Route::post('presentaciones/eliminar/{id}','PresentacionesController@destroy2');
 
 Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController');
@@ -37,6 +36,8 @@ Route::resource('presentaciones','PresentacionesController');
 Route::get('med',function(){
 	return view('Prescriptions.medicamentos.crear');
 });
+
+Route::resource('tests','TestsController');
 
 
 

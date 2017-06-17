@@ -65,14 +65,14 @@ function eliminar(id) {
 
   alertify.confirm('Confirmar', 'Desea eliminar este usuario?',
     function(){
-
-
+      var urls = "{{asset('presentaciones')}}"+"/"+id;
+console.log(urls);
     $.ajax(
         {
-          url: "{{asset('presentaciones/eliminar/')}}"+"/"+id,
+          url: urls ,
           type: "post",
           dataType: "json",
-          data: { _token : "{{csrf_token()}}" },
+          data: { _token : "{{csrf_token()}}" , _method: 'delete' },
 
           succes: function(resultado){
             console.log("hola");

@@ -46,8 +46,8 @@ class MedicinasController extends Controller
      */
     public function show(Medicina $medicina)
     {
-        //dd($medicina);
-        return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
+        dd($medicina);
+        //return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
     }
 
     /**
