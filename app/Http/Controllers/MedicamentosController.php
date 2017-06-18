@@ -42,12 +42,11 @@ class MedicamentosController extends Controller
     }
 
 
-    public function show(Medicamento $dato)
+    public function show(Medicamento $medicamento)
     {
         
-         dd($dato);
+        dd($medicamento);
         $medicina = Medicina::find($dato);
-//        dd($medicina);
         return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
     }
 

@@ -22,22 +22,27 @@ Route::get('medicamentos/asdf',function(){
 
 Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
-Route::resource('medicamentos','MedicamentosController');
+Route::resource('medicamentos','MedicamentosController', ['parameters' => [
+    'medicamentos' => 'medicamento'
+]]);
 
 Route::resource('medicinas','MedicinasController');
 
 /*
 	Presentaciones
 */
-
 Route::get('presentaciones/todos','PresentacionesController@todos');
-Route::resource('presentaciones','PresentacionesController');
+Route::resource('presentaciones','PresentacionesController', ['parameters' => [
+    'presentaciones' => 'presentacion'
+]]);
 
+/*
+	No se que es ...
+*/
 Route::get('med',function(){
 	return view('Prescriptions.medicamentos.crear');
 });
 
-Route::resource('tests','TestsController');
 
 
 

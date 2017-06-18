@@ -11,8 +11,4 @@ class Presentacion extends Model
         return $this->hasMany('App\Medicina');
     }
 
-    public function getRouteKeyName()
-	{
-    	return 'id';
-	}
 }
