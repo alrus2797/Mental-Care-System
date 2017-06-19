@@ -36,6 +36,8 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
     'presentaciones' => 'presentacion'
 ]]);
 
+
+
 /*
 	No se que es ...
 */

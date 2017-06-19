@@ -4,7 +4,6 @@
         <th>id</th>
         <th>Presentacion</th>
         <th>Unidad</th>
-        <th>Ver</th>
         <th>Editar</th>
         <th>Eliminar</th>
       </tr>
@@ -16,8 +15,7 @@
         <td>{{$p->id}}</td>
         <td>{{$p->descripcion}}</td>
         <td>{{$p->unidad}}</td>
-        <td><a href=""><span class="glyphicon glyphicon-eye-open"></span></a> </td>
-        <td><a href=""><span class="glyphicon glyphicon-pencil"></span></a>   </td>
+        <td><a onclick="editar({{$p->id}})"><span class="glyphicon glyphicon-pencil"></span></a>   </td>
         <td><a  onclick="eliminar({{$p->id}})"><span class="glyphicon glyphicon-trash"></span></span>    </td>
       </tr>
     @endforeach

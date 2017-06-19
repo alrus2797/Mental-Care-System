@@ -18,6 +18,15 @@ class PresentacionesController extends Controller
     }
 
     /**
+     *    
+     */
+    public function todos() 
+    { 
+        $ps = Presentacion::all(); 
+        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]); 
+    } 
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -62,7 +71,7 @@ class PresentacionesController extends Controller
      */
     public function edit(Presentacion $presentacion)
     {
-        //
+        return view("Prescriptions.presentaciones.edit", ["presentacion"=>$presentacion]);
     }
 
     /**
@@ -86,11 +95,7 @@ class PresentacionesController extends Controller
 
     public function destroy(Presentacion $presentacion)
     {
-        //$presentacion->delete();
-
-        dd($presentacion);
-        return response()->json([
-            'res' => true
-        ]);
+        $presentacion->delete();
+        return response()->json(true);
     }
 }
