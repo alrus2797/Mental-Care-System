@@ -33,7 +33,7 @@
         <td><a onclick="ver({{$m->id}})" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a> 
 
         </td>
-        <td><a href="{{asset('medicamentos')}} "> <span class="glyphicon glyphicon-pencil"></span></a> </td>
+        <td><a onclick="editar({{$m->id}} )" href="#"> <span class="glyphicon glyphicon-pencil"></span></a> </td>
         <!--Nueva versión-->
         <td><a href="{{asset('medicamentos')}} "><span class="glyphicon glyphicon-plus"></span></a> </td>
         <td><a  onclick="eliminar({{$m->id}})" href="# "><span class="glyphicon glyphicon-trash"></span></a> </td>
@@ -57,6 +57,18 @@
         type: 'get',
        success: function(resultado){
           console.log(resultado);
+            $("#ver").html(resultado);
+        }});
+  }
+</script>
+<script type="text/javascript">
+  function editar(id) {
+    $.ajax({ 
+//        data:{_method: 'PUT'},
+        url: "{{asset('medicinas')}}"+"/"+id+"/edit",
+        type: 'get',
+       success: function(resultado){
+          //console.log(resultado);
             $("#ver").html(resultado);
         }});
   }

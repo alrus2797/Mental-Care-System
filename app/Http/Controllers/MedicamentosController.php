@@ -25,6 +25,7 @@ class MedicamentosController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request);
         $m = new Medicamento;
         $m->nombre = $request->nombre;
         $m->descripcion = $request->descripcion;

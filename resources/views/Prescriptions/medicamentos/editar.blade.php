@@ -1,25 +1,26 @@
-	
-		
-<form id="crear" action="{{ asset('medicamentos')  }}" method="post">
+<form id="edit" action="{{ asset('medicinas') }}/{{$medicina->id}} " method="post">
 <div class="container">
-	<h3>Nuevo Medicamento</h3>
+	<h3>Editar medicamento</h3>
 {{ csrf_field()}} 
+{{ method_field('PUT') }}
 <div class="row">
 	<div class="form-group col-md-4">
 		<label for="nombre">Nombre</label>
-		<input type="text" class="form-control" id="nombre" name="nombre">
+		<input type="text" class="form-control" id="nombre" name="nombre" value="{{$medicina->medicamento->nombre}} ">
 	</div>
 	<div class="form-group col-md-3">
 		<label for="cantidad">Cantidad</label>
-		<input type="number" class="form-control" id="cantidad" name="cantidad">
+		<input type="text" class="form-control" id="cantidad" name="cantidad" value="{{$medicina->cantidad}} ">
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="presentacion">Presentación</label>
-		<select class="form-control" name="presentacion" id="presentacion">
-			@foreach ($presentaciones as $p)
-			<option value="{{ $p->id }}">{{ $p->unidad}} {{ $p->descripcion}}</option>
-			@endforeach
+		<select class="form-control" name="presentacion" id="presentacion" >
+		<option value="{{$medicina->presentacion_id}} " > {{$medicina->presentacion->unidad}} {{$medicina->presentacion->descripcion}} </option>
+		@foreach ($presentaciones as $p)
+			<option value="{{$p->unidad}} " >{{$p->unidad}} {{$p->descripcion}} </option>
+			
+		@endforeach
 		</select>
 	</div>
 	
@@ -34,29 +35,28 @@
 <div class="row">
 	<div class="form-group col-md-4">
 		<label for="descripcion">Descripción</label>
-		<textarea id="descripcion" class="form-control" rows="5" name="descripcion"></textarea>
+		<textarea id="descripcion" class="form-control" rows="5"  name="descripcion"  >{{$medicina->medicamento->descripcion}}</textarea>
 	</div>
 
 	<div class="form-group col-md-4">
 		<label for="efectos">Efectos Secundarios</label>
-		<textarea id="efectos" class="form-control" rows="5" name="efectos"></textarea>
+		<textarea id="efectos" class="form-control" rows="5" name="efectos" >{{$medicina->medicamento->efecSecundarios}} </textarea>
 	</div>
 	<div class="form-group col-md-4">
 		<label for="adversos">Efectos Adversos</label>
-		<textarea id="adversos" class="form-control" rows="5" name="adversos"></textarea>
+		<textarea id="adversos" class="form-control" rows="5" name="adversos">{{$medicina->medicamento->adversos}} </textarea>
 	</div>
 </div>
 
 	<div class="row">
 	<div class="col-md-3 col-md-offset-3">
 
-	<button type="submit" class="btn btn-default btn-large">Crear Medicamento </button>
+	<button type="submit" class="btn btn-default btn-large">Guardar Cambios</button>
 	</div>
 		
 	</div>
 	</div>
 </form>
-
 
 <script type="text/javascript">
 alertify.genericDialog || alertify.dialog('genericDialog',function(){
@@ -86,5 +86,5 @@ alertify.genericDialog || alertify.dialog('genericDialog',function(){
     };
 });
 //force focusing password box
-alertify.genericDialog ($('#crear')[0]).set('selector', 'input[type="password"]');
+alertify.genericDialog ($('#edit')[0]).set('selector', 'input[type="password"]');
 </script>

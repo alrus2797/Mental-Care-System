@@ -3,82 +3,55 @@
 namespace App\Http\Controllers;
 
 use App\Medicina;
+use App\Presentacion;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MedicinasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Medicina  $medicina
-     * @return \Illuminate\Http\Response
-     */
     public function show(Medicina $medicina)
     {
-        dd($medicina);
-        //return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
+   //     dd($medicina);
+        return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Medicina  $medicina
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Medicina $medicina)
     {
-        //
+        $presentaciones = Presentacion::all();
+       return view('Prescriptions.medicamentos.editar',["medicina"=> $medicina, "presentaciones"=>$presentaciones]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Medicina  $medicina
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Medicina $medicina)
     {
-        //
-    }
+        //dd($medicina);
+        //dd($request);
+//        $medicina = Medicina::find($medicina->id);
+  //      $medicina->cantidad = $medicina
+        DB::table('medicinas')
+            ->where('id', $medicina->id)
+            ->update(['cantidad' => $request['cantidad']]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Medicina  $medicina
-     * @return \Illuminate\Http\Response
-     */
+        DB::table('medicamentos')
+            ->where('id',$medicina->medicamento_id)
+            ->update([ 'nombre' => $request['nombre'], 'descripcion'=>$request['descripcion'],'adversos'=>$request['adversos'], 'efecSecundarios'=>$request['efectos']]);
+            return redirect("medicamentos");
+    }
+    /*,
+                'efecSecundarios' => $request['efectos'],
+                'descripcion'=> $request['descripcion'],
+                'adversos'= $request['adversos']
+ */
     public function destroy(Medicina $medicina)
     {
         //
