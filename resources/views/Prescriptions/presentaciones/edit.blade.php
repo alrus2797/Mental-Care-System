@@ -1,5 +1,5 @@
 
-<form id="formEdit">
+<form id="formEdit" action="{{asset('presentaciones')}}/{{ $presentacion->id}}" method="post">
 	<h3>Presentaciones</h3>
 	{{ method_field('PUT') }}
 	{{ csrf_field()}} 

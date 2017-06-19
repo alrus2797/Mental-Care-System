@@ -88,26 +88,12 @@ function eliminar(id) {
   );
 }
 
-var id_g;
 function editar(id){
-  id_g = id;
   var url = "{{ asset('presentaciones/') }}";
   $.get( url + "/" + id + "/edit" , function( data ) {
     alertify.alert('Editar Presentación', data );
   });
 }
-
-  
-  $('#formEdit').submit(function () {
-    console.log("jajaja");
-    $.post("{{ asset('presentaciones')}}"+id_g, $('#formEdit').serialize()).done(function(){
-     $("#todos").load("{{ asset('presentaciones/todos') }}" );
-      alertify.closeAll() 
-     alertify.success('Creado con Exito');
-  });
- 
-  return false;
-  });
 
 
 </script>

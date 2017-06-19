@@ -83,7 +83,10 @@ class PresentacionesController extends Controller
      */
     public function update(Request $request, Presentacion $presentacion)
     {
-        //
+        $presentacion->descripcion = $request->descripcion;
+        $presentacion->unidad = $request->unidad;
+        $presentacion->save();
+        return redirect('presentaciones');
     }
 
     /**
