@@ -53,15 +53,13 @@
         <span class="icon-bar"></span>
       </button>      
     </div>
-    @yield('sidebar')
+    @include('layouts.sidebar')
   </div>
 </nav>
 
 
 
 <div class="container-fluid text-center">    
-  
-  
   @yield('content')
 
 </div>
