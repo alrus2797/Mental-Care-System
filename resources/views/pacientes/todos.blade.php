@@ -1,4 +1,4 @@
-@extends('layouts.prescriptionsTemplate')
+@extends('layouts.template')
 @section('title', 'Pacientes')
 
 @section('content')

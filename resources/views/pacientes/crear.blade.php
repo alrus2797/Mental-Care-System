@@ -1,4 +1,4 @@
-@extends('layouts.prescriptionsTemplate')
+@extends('layouts.template')
 @section('title', 'Registrar Paciente')
 
 
@@ -32,7 +32,7 @@
       <div class="col-sm-3">
             <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" >
       </div>
-      
+
     </div>
         <div class="form-group">
       <label class="col-sm-2 col-form-label" for="email">Nombres:</label>

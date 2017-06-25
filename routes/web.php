@@ -15,7 +15,12 @@ Route::get('diego', function () {
     return view('pacientes.buscar');
 });
 //*******************************************
-Route::get('medicamentos/asdf',function(){ 
+
+Route::get('/',function(){
+  return view('welcome');
+});
+
+Route::get('medicamentos/asdf',function(){
 	return view('Prescriptions.medicamentos.buscador');
 });
 
