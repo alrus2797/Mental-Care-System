@@ -30,7 +30,7 @@
         <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
         <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
-        <li ><a href="#">Estadística</a></li>
+        <li ><a href="{{url('estadistica')}}">Estadística</a></li>
         <!--<li ><a href="#">Admisión</a></li> -->
         <li ><a href="#">Citas</a></li>
         <li ><a href="#">Historial</a></li>

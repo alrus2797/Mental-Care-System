@@ -16,6 +16,11 @@ Route::get('diego', function () {
 });
 //*******************************************
 
+Route::get('/estadistica',function(){
+  return view('estadistica.hola');
+});
+
+
 Route::get('/',function(){
   return view('welcome');
 });
