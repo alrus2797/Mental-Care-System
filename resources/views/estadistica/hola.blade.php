@@ -169,6 +169,10 @@ for ($i=1;$i<7;$i++)
 
 echo "<BR><BR><BR>";
 
+echo "Nos las pagarás todas juntas!!!";
+
+echo "<BR><BR><BR>";
+
 echo "[ ";
 for ($i=0;$i<$Num_Estados;$i++)
  	{ echo $frecuencias[$i].', '; }
