@@ -170,6 +170,7 @@ for ($i=1;$i<7;$i++)
 echo "<BR><BR><BR>";
 
 echo "Nos las pagarás todas juntas!!!";
+echo " Esta también!!";
 
 echo "<BR><BR><BR>";
 
