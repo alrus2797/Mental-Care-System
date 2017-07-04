@@ -16,7 +16,7 @@ Route::get('side',function(){
 	return view('Prescriptions.sidebar');
 });
 //*******************************************
-Route::get('medicamentos/asdf',function(){ 
+Route::get('medicamentos/asdf',function(){
 	return view('Prescriptions.medicamentos.buscador');
 });
 
@@ -27,6 +27,10 @@ Route::resource('medicamentos','MedicamentosController', ['parameters' => [
 ]]);
 
 Route::resource('medicinas','MedicinasController');
+
+//Componentes
+Route::resource('componentes','ComponentesController');
+
 
 /*
 	Presentaciones
@@ -44,34 +48,3 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
 Route::get('med',function(){
 	return view('Prescriptions.medicamentos.crear');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

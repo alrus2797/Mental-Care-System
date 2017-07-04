@@ -14,7 +14,7 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        //
+        return "hola";
     }
 
     /**
@@ -24,7 +24,7 @@ class ComponentesController extends Controller
      */
     public function create()
     {
-        //
+        return view('Prescriptions.componentes.crear');
     }
 
     /**

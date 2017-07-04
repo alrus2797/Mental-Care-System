@@ -13,11 +13,8 @@ class CreateComponentesMedicamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('componentes-medicamentos', function (Blueprint $table) {
+        Schema::create('componentes_medicamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->string('nombre');
-
             $table->integer('componente_id')->unsigned();
             $table->integer('medicamento_id')->unsigned();
 
@@ -33,6 +30,6 @@ class CreateComponentesMedicamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('componentes-medicamentos');
+        Schema::dropIfExists('componentes_medicamentos');
     }
 }
