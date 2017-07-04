@@ -42,16 +42,16 @@
 			</div>
 			<div class="form-group col-md-2">
 				<br>
-				<button id="nuevo_com" type="button" class="btn btn-default btn-large"> Añadir Componentes </button>
+				<button id="nuevo_com" type="button" class="btn btn-default btn-large"> <a href="{{asset('componentes')}} "><i class="glyphicon glyphicon-plus"></i> Añadir componentes </a></button>
 			</div>
 			<div id="crear_componente"> </div>
 		</div>
 		<script type="text/javascript">
-			$("#nuevo_com").click(function(){
+		/*	$("#nuevo_com").click(function(){
 						$.ajax({url: "{{asset('componentes/create')}} ", success: function(resultado){
 								$("#crear_componente").html(resultado);
 						}});
-				});
+				});*/
 		</script>
 
 		<div class="row">
@@ -101,6 +101,12 @@ alertify.genericDialog || alertify.dialog('genericDialog',function factory(){
                 }
             };
         },
+				hooks: {
+					onshow: function() {
+						this.elements.dialog.style.height = '540px';
+						this.elements.dialog.style.width = '1320px';
+					}
+				},
         settings:{
             selector:undefined
         }

@@ -14,14 +14,22 @@ class ComponentesController extends Controller
      */
     public function index()
     {
-        return "hola";
+        return view('Prescriptions.componentes.index');
     }
 
+    public function todos()
+    {
+        $ac = Componente::all();
+        return view('Prescriptions.componentes.todos', ["componentes"=>$ac]);
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function create()
     {
         return view('Prescriptions.componentes.crear');
@@ -35,7 +43,10 @@ class ComponentesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $c=new Componente;
+        $c->nombre=$request->nombre;
+        $c->save();
+        return redirect('componentes');
     }
 
     /**
@@ -57,7 +68,8 @@ class ComponentesController extends Controller
      */
     public function edit(Componente $componente)
     {
-        //
+        //return $componente;
+        return view('Prescriptions.componentes.edit',['componente'=>$componente]);
     }
 
     /**

@@ -29,7 +29,10 @@ Route::resource('medicamentos','MedicamentosController', ['parameters' => [
 Route::resource('medicinas','MedicinasController');
 
 //Componentes
-Route::resource('componentes','ComponentesController');
+Route::get('componentes/todos','ComponentesController@todos');
+Route::resource('componentes','ComponentesController', ['parameters' => [
+    'componentes' => 'componente'
+]]);
 
 
 /*

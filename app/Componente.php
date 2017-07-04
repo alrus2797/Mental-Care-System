@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Componente extends Model
 {
     //
-    pulic function medicamentos()
+    public function medicamentos()
     {
       $this->belongsToMany('App\Medicamento');
     }
