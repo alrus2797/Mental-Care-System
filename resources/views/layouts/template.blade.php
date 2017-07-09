@@ -11,15 +11,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
    <script type="text/javascript">
-function printDiv(divName) 
+function printDiv(divName)
 {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
-
      document.body.innerHTML = printContents;
-
      window.print();
-
      document.body.innerHTML = originalContents;
 }
     </script>
@@ -35,7 +32,7 @@ function printDiv(divName)
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Mental Care</a>
     </div>
@@ -55,7 +52,7 @@ function printDiv(divName)
     </div>
   </div>
 </nav>
-  
+
 
 
 
@@ -69,7 +66,7 @@ function printDiv(divName)
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>      
+      </button>
     </div>
     @yield('sidebar')
   </div>
@@ -77,16 +74,22 @@ function printDiv(divName)
 
 
 
-<div class="container-fluid text-center">    
-  
-  
-  @yield('content')
+<div class="container-fluid text-center">
 
+
+  @yield('content')
 </div>
 
+<!--
 <footer class="container-fluid text-center">
   <p>CSUNSA - 2017</p>
 </footer>
+-->
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
 
 </body>
 </html>

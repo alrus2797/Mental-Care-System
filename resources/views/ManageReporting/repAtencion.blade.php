@@ -4,12 +4,12 @@
 @section('title', 'Inicio')
 
 
-   
-   @section('content')      
-      
+
+   @section('content')
+
 <div id="printableArea">
      <div class="page-header">
-          <h2>Reporte semanal de atención </h2>      
+          <h2>Reporte semanal de atención </h2>
         <p>Reportes semanales de pacientes atendidos al día por cada condición mental.</p>
       </div>
       <div class="col-md-10 col-md-offset-0 table-responsive">
@@ -19,36 +19,39 @@
         <th>Medicamento</th>
         <th>Clinica</th>
         <th>Descripción</th>
+        <th>autolesion</th>
     </tr>
-        <?php
-            $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                    from atencionmedica 
-                        join paciente
-                            on atencionmedica.paciente = paciente.id
-                        join medicina
-                            on atencionmedica.medicamento = medicina.id
-                        join clinica
-                            on atencionmedica.clinica = clinica.id";
 
-            $result = DB::select(DB::raw($sqlQuery));                   
-            foreach ($result as $row)
-            {
-                echo "<tr>";
-                echo "<td>"."-"."</td>";
-                echo "<td>"."-"."</td>";
-                echo "<td>"."-"."</td>";
-                echo "<td>"."-"."</td>";
-                
-                
-                
+      @foreach ($results as $row)
+      <tr>
+         <td>{{$row->paciente}}</td>
+         <td>{{$row->medicina}}</td>
+         <td>{{$row->clinica}}</td>
+         <td>{{$row->descripcion}}</td>
+         @if($row->autolesion=='no')
+          <td><button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal{{$row->idp}}">{{$row->autolesion}} </button></td>
+        @else
+          <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$row->idp}}"> {{$row->autolesion}}</button></td>
+        @endif
+        <div class="modal fade" id="myModal{{$row->idp}}" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Descripsión de autolesiódel Paciente : {{$row->paciente}}</h4>
+                </div>
+                <div class="modal-body">
+                  <p>{{$row->comentarios}}</p>
+                </div>
+              </div>
 
-                echo "</tr>";
-            }
-        ?>
-    </table> 
-</div>
-    
-    </div > 
+            </div>
+          </div>
+          </div>
+      <tr>
+      @endforeach
+    </table>
+
+</div >
 
 <div class="col-sm-offset-0">
 	<input type="button" class="btn btn-default"  onclick="printDiv('printableArea')" value="Imprimir o exportar a PDF" />

@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('index');
 });
@@ -39,3 +41,5 @@ Route::get('/reportes/repMedRecetados', function(){
 	return view('ManageReporting.repMedRecetados');
 });
 
+
+Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');

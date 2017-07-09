@@ -4,13 +4,13 @@
 @section('title', 'Inicio')
 
 
-   
-   @section('content')      
+
+   @section('content')
 
    <div id="printableArea">
 
  <div class="page-header">
-      <h2>Reporte de medicamentos recetados</h2>      
+      <h2>Reporte de medicamentos recetados</h2>
     <p>Reportes de medicamentos recetados durante el mes.</p>
   </div>
 <div class="col-md-10 col-md-offset-0 table-responsive">
@@ -23,7 +23,7 @@
     </tr>
         <?php
             $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                                from atencionmedica 
+                                from atencionmedica
                                     join paciente
                                         on atencionmedica.paciente = paciente.id
                                     join medicina
@@ -43,7 +43,7 @@
                 echo "</tr>";
             }
         ?>
-    </table> 
+    </table>
 </div>
      </div>
  <div class="col-sm-offset-0 ">

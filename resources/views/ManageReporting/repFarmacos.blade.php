@@ -3,12 +3,12 @@
 @extends('layouts.template')
 @section('title', 'Inicio')
 
-   @section('content')    
+   @section('content')
 <div id="printableArea">
 
 
  <div class="page-header">
-      <h2>Reporte de farmacos preescritos</h2>      
+      <h2>Reporte de farmacos preescritos</h2>
     <p>Reportes semanales de número total de fármacos prescritos.</p>
   </div>
 
@@ -22,7 +22,7 @@
     </tr>
         <?php
             $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                    from atencionmedica 
+                    from atencionmedica
                         join paciente
                             on atencionmedica.paciente = paciente.id
                         join medicina
@@ -30,7 +30,7 @@
                         join clinica
                             on atencionmedica.clinica = clinica.id";
 
-            $result = DB::select(DB::raw($sqlQuery));                   
+            $result = DB::select(DB::raw($sqlQuery));
             foreach ($result as $row)
             {
                 echo "<tr>";
@@ -42,10 +42,10 @@
                 echo "</tr>";
             }
         ?>
-    </table> 
+    </table>
 </div>
-     
-      
+
+
 </div>
  <div class="col-sm-offset-0 ">
     <input type="button" class="btn btn-default"  onclick="printDiv('printableArea')" value="Imprimir o exportar a PDF" />
