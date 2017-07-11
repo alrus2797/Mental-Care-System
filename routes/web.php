@@ -11,6 +11,14 @@
 |
 */
 
+//********testing
+
+Route::get('test',function(){
+  $faker=Faker\Factory::create("es_PE");
+  return $faker->realtext;
+});
+
+
 Route::get('diego', function () {
     return view('pacientes.buscar');
 });
@@ -39,7 +47,6 @@ Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController', ['parameters' => [
     'presentaciones' => 'presentacion'
 ]]);
-
 
 
 /*

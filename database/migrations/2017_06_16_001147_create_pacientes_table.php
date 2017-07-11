@@ -15,12 +15,17 @@ class CreatePacientesTable extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('historiaclinica',100);
-            $table->string('apellidopaterno',100);
-            $table->string('apellidomaterno',100);
-            $table->string('nombres',100);
-            $table->string('dni',9);
-            $table->string('direccion',200);
+            $table->integer('persona_id')->unsigned();
+            $table->foreign('persona_id')->references('id')->on('personas');
+
+            $table->integer('historials_id')->unsigned();
+            $table->foreign('historials_id')->references('id')->on('historials');
+
+            //Los estados pueden ser si se encuentra internado, recien ingresado, o ya dado de alta
+            $table->integer('estado_id')->unsigned();
+            $table->foreign('estado_id')->references('id')->on('pacientes_estados');
+
+
             $table->timestamps();
         });
     }
