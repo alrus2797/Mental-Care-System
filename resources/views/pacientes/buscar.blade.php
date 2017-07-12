@@ -1,4 +1,4 @@
-@extends('layouts.prescriptionsTemplate')
+@extends('layouts.template')
 @section('title', 'Buscar Pacientes')
 
 @section('content')
@@ -22,7 +22,7 @@
             <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" onkeyup="showPacientes($('#historiaclinica').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val())">
       </div>
     </div>
-	
+
     <div class="form-group">
       <label class="col-sm-1 col-form-label" for="apellidomaterno">Apellido Materno:</label>
       <div class="col-sm-3">
@@ -39,7 +39,7 @@
             <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" onkeyup="showPacientes($('#historiaclinica').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val())">
       </div>
     </div>
-	
+
     <div class="form-group">
       <label class="col-sm-1 col-form-label" for="dni">DNI:</label>
       <div class="col-sm-3">

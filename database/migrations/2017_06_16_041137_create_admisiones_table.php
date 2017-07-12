@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Admisiones extends Migration
+class CreateAdmisionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -23,7 +23,7 @@ class Admisiones extends Migration
             $table->foreign('comprobante_id')->references('id')->on('comprobantes');
             $table->tinyInteger('tipopago');
             $table->timestamps();
-            
+
         });
     }
 
