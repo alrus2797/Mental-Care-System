@@ -62,9 +62,25 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
 Route::get('med',function(){
 	return view('Prescriptions.medicamentos.crear');
 });
+//******************************************************************************************
+//Route::resource('prescripcion','prescriptionController');
+Route::get('pres',function(){
+  return view('Prescriptions.index');
+});
 
-Route::resource('prescripcion','prescriptionController');
+Route::get('pres/buscador',function(){
+  return view('Prescriptions.buscador');
+});
 
+Route::get('pacientes/historia',function(){
+  return view('pacientes.historial');
+});
+
+Route::get('pres/crear',function(){
+  return view('Prescriptions.crear');
+});
+
+//******************************************************************************************
 
 Route::group(['prefix'=>'pacientes'],function(){
 
