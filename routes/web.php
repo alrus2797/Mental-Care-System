@@ -87,3 +87,30 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::get('{id}','pacientesController@mostrar' );
 
 });
+
+Route::get('/reportes', function(){
+	return view('ManageReporting.index');
+});
+
+Route::get('/reportes/repTratamiento', function(){
+	return view('ManageReporting.repTratamiento');
+});
+
+Route::get('/reportes/repAtencion', function(){
+	return view('ManageReporting.repAtencion');
+});
+
+Route::get('/reportes/repFarmacos', function(){
+	return view('ManageReporting.repFarmacos');
+});
+
+Route::get('/reportes/repAtendidos', function(){
+	return view('ManageReporting.repAtendidos');
+});
+
+Route::get('/reportes/repMedRecetados', function(){
+	return view('ManageReporting.repMedRecetados');
+});
+
+
+Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');

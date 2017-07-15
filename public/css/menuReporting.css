@@ -1,0 +1,157 @@
+@import
+url('http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+body {
+  background: #eee;
+  font-family: 'helvetica Neue';
+}
+
+
+.buttonpdf {
+  width: 200px;
+  height: 150px;
+  background-color: #e58703;
+  position:absolute;
+  left: 60%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  float: left;
+}
+.buttonpdf:after, .buttonpdf:before {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: all 0.3s;
+  transform: translate(-50%, -50%);
+  font-family: 'Ionicons';
+  content: '\f12e';
+  font-size: 120px;
+}
+.buttonpdf:hover:after {
+  top: -50%;
+}
+.buttonpdf:before {
+  content: 'Documentos .pdf';
+  font-size: 20px;
+  top: 190%;
+}
+.buttonpdf:hover:before {
+  top: 50%;
+}
+
+.buttonpacientes {
+  width: 200px;
+  height: 150px;
+  background-color: #eb4405;
+  position:absolute;
+  left: 40%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  float: left;
+}
+.buttonpacientes:after, .buttonpacientes:before {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: all 0.3s;
+  transform: translate(-50%, -50%);
+  font-family: 'Ionicons';
+  content: '\f39e';
+  font-size: 120px;
+}
+.buttonpacientes:hover:after {
+  top: -50%;
+}
+.buttonpacientes:before {
+  content: 'Reporte de Pacientes Atendidos';
+  font-size: 20px;
+  top: 190%;
+}
+.buttonpacientes:hover:before {
+  top: 50%;
+}
+
+
+.buttonmedicamentos {
+  width: 200px;
+  height: 150px;
+  background-color: #e58703;
+  position:absolute;
+  left: 60%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  float: left;
+}
+.buttonmedicamentos:after, .buttonmedicamentos:before {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: all 0.3s;
+  transform: translate(-50%, -50%);
+  font-family: 'Ionicons';
+  content: '\f45d';
+  font-size: 120px;
+}
+.buttonmedicamentos:hover:after {
+  top: -50%;
+}
+.buttonmedicamentos:before {
+  content: 'Reporte de Medicamentos Prescritos';
+  font-size: 20px;
+  top: 190%;
+}
+.buttonmedicamentos:hover:before {
+  top: 50%;
+}
+
+
+.buttonie {
+  width: 200px;
+  height: 150px;
+  background-color: #eb4405;
+  position:absolute;
+  left: 40%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  color: #fff;
+  float: left;
+}
+.buttonie:after, .buttonie:before {
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transition: all 0.3s;
+  transform: translate(-50%, -50%);
+  font-family: 'Ionicons';
+  content: '\f45a';
+  font-size: 120px;
+}
+.buttonie:hover:after {
+  top: -50%;
+}
+.buttonie:before {
+  content: 'Reporte de Ingresos y Egresos';
+  font-size: 20px;
+  top: 190%;
+}
+.buttonie:hover:before {
+  top: 50%;
+}
