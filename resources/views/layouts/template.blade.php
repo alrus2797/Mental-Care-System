@@ -4,6 +4,7 @@
   <title>MC - @yield('title')</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -11,6 +12,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="{{asset('js/alertify.min.js')}} " >  </script>
   <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
+=======
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+  <script src="{{asset('js/jquery.min.js')}}"></script>
+  <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
+  <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+   <script type="text/javascript">
+function printDiv(divName)
+{
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+     document.body.innerHTML = printContents;
+     window.print();
+     document.body.innerHTML = originalContents;
+}
+    </script>
+
+
+
+>>>>>>> Appointments
 </head>
 <body>
 
@@ -26,6 +48,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+<<<<<<< HEAD
         <li class="active"><a href="{{url('/')}}">Home</a></li>
         <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
@@ -35,6 +58,15 @@
         <li ><a href="#">Citas</a></li>
         <li ><a href="#">Historial</a></li>
         <li ><a href="#">Manejo de Reportes</a></li>
+=======
+        <li ><a href="{{url('/')}}">Home</a></li>
+        <li ><a href="#">Prescripción</a></li>
+        <li ><a href="#">Estadística</a></li>
+        <li ><a href="#">Admisión</a></li>
+        <li class="active"><a href="/citas">Citas</a></li>
+        <li ><a href="#">Historial</a></li>
+        <li ><a href="">Manejo de Reportes</a></li>
+>>>>>>> Appointments
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -43,6 +75,7 @@
   </div>
 </nav>
 
+<<<<<<< HEAD
 <div class="container">
 
   <br>
@@ -59,5 +92,48 @@
 </div>
 <!--
 -->
+=======
+<div class="row">
+    <div class="col-lg-3">
+<!--
+<nav class="navbar navbar-default sidebar" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+    @yield('sidebar')
+  'OR'1'='1'
+  </div>
+</nav>-->
+
+    </div>
+
+    <div class="col-xs-12">
+      <div class="container margintop-70">
+
+          @yield('content')
+
+      </div>
+    </div>
+</div>
+
+<!--
+<footer class="container-fluid text-center">
+  <p>CSUNSA - 2017</p>
+</footer>
+-->
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+
+>>>>>>> Appointments
 </body>
 </html>

@@ -114,3 +114,6 @@ Route::get('/reportes/repMedRecetados', function(){
 
 
 Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
+
+Route::resource('citas/citas','CitasController');
+Route::resource('citas/paciente','PacienteController');
