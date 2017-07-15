@@ -5,81 +5,89 @@ namespace App\Http\Controllers;
 use App\pacientesEstados;
 use Illuminate\Http\Request;
 
+
 class PacientesEstadosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function todos()
+  {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    //X-Total-Count
+    $tabla = pacientesEstados::all();
+    //$tabla = paciente::all()->paginate(X-Total-Count);
+    //return $tabla;
+    return view('pacientesEstado.todos',compact('tabla'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\pacientesEstados  $pacientesEstados
-     * @return \Illuminate\Http\Response
-     */
-    public function show(pacientesEstados $pacientesEstados)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\pacientesEstados  $pacientesEstados
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(pacientesEstados $pacientesEstados)
-    {
-        //
-    }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pacientesEstados  $pacientesEstados
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, pacientesEstados $pacientesEstados)
-    {
-        //
-    }
+  public function mostrar($id)
+  {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\pacientesEstados  $pacientesEstados
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(pacientesEstados $pacientesEstados)
-    {
-        //
-    }
+    $tabla = pacientesEstados::find($id);
+    //return $tabla;
+    return view('pacientesEstado.mostrar',compact('tabla'));
+
+  }
+
+  public function crearObt()
+  {
+
+    return view('pacientesEstado.crear');
+
+  }
+
+
+  public function crear()
+  {
+
+    $post = new pacientesEstados;
+
+    $post->nombre = request('nombre');
+
+    $post->save();
+    //paciente::create(request(['historiaclinica','apellidopaterno','apellidomaterno',
+      //'nombres','dni','direccion']));
+    return redirect('pacientes/estados/');
+
+  }
+
+
+  public function editar($id)
+  {
+    $get = pacientesEstados::find($id);
+
+    return view('pacientesEstados.editar',compact('get'));
+  }
+
+
+  public function guardar()
+  {
+    $post = pacientesEstados::find(request('id'));
+
+    $post->nombre = request('nombre');
+
+    $post->save();
+
+    return redirect('pacientes/estados/'.request('id'));
+  }
+
+
+  public function eliminarConfirm($id){
+    $get = pacientesEstados::find($id);
+    return view('pacientesEstado.eliminar',compact('get'));
+  }
+
+  public function eliminar(){
+    $post = pacientesEstados::find(request('id'));
+    $post->delete();
+    return redirect('pacientes/estados');
+  }
+
+  public function buscar()
+  {
+    return view('pacientesEstado.buscar');
+  }
+
+
 }

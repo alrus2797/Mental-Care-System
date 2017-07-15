@@ -41,13 +41,15 @@ class pacientesController extends Controller
     }
 
 
-    public function agregar()
+    public function agregar($Request)
     {
 
       $post = new paciente;
 
+      $post = persona::find();
+
       $post->persona_id = request('id');
-      $post->estado_id = '2';
+      $post->estado_id = '1';
       $post->historials_id = '12';
 
 

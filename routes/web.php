@@ -65,8 +65,12 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::get('todos','pacientesController@todos');
 
   Route::get('crear','pacientesController@crearObt' );
-  Route::post('crear','pacientesController@crear');
 
+  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+  Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
+
+  Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
   Route::get('agregar', 'pacientesController@agregar');
 
   Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
@@ -76,13 +80,6 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::post('{id}','pacientesController@guardar');
 
   Route::get('buscar', 'pacientesController@buscar');
-
-  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
-
-  Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
-
-  Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
-
 
 
   Route::get('{id}','pacientesController@mostrar' );
@@ -110,5 +107,30 @@ Route::group(['prefix'=>'personas'],function(){
 
 
   Route::get('{id}','personasController@mostrar' );
+
+});
+
+
+Route::group(['prefix'=>'pacientes/estados'],function(){
+
+  Route::get('/','pacientesEstadosController@todos' );
+  Route::get('todos','pacientesEstadosController@todos');
+
+  Route::get('crear','pacientesEstadosController@crearObt' );
+  Route::post('crear','pacientesEstadosController@crear');
+
+  Route::get('{id}/eliminar','pacientesEstadosController@eliminarConfirm');
+  Route::post('eliminar','pacientesEstadosController@eliminar');
+
+  Route::get('{id}/editar','pacientesEstadosController@editar');
+  Route::post('{id}','pacientesEstadosController@guardar');
+
+  Route::get('buscar', 'pacientesEstadosController@buscar');
+
+
+  Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
+
+
+  Route::get('{id}','pacientesEstadosController@mostrar' );
 
 });

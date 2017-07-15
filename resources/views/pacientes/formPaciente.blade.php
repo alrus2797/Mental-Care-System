@@ -6,6 +6,9 @@
 
   {{csrf_field()}}
 
+
+  <input type="hidden" class="form-control" id="id" placeholder="Ingrese apellido paterno" name="id" value="{{$respuesta->id}}">
+
     <div class="form-group">
       <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
       <div class="col-sm-3">
