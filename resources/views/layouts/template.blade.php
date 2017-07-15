@@ -4,7 +4,6 @@
   <title>MC - @yield('title')</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -12,7 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="{{asset('js/alertify.min.js')}} " >  </script>
   <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
-=======
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
   <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
@@ -32,7 +30,7 @@ function printDiv(divName)
 
 
 
->>>>>>> Appointments
+
 </head>
 <body>
 
@@ -48,7 +46,7 @@ function printDiv(divName)
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-<<<<<<< HEAD
+
         <li class="active"><a href="{{url('/')}}">Home</a></li>
         <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
@@ -58,15 +56,7 @@ function printDiv(divName)
         <li ><a href="#">Citas</a></li>
         <li ><a href="#">Historial</a></li>
         <li ><a href="#">Manejo de Reportes</a></li>
-=======
-        <li ><a href="{{url('/')}}">Home</a></li>
-        <li ><a href="#">Prescripción</a></li>
-        <li ><a href="#">Estadística</a></li>
-        <li ><a href="#">Admisión</a></li>
-        <li class="active"><a href="/citas">Citas</a></li>
-        <li ><a href="#">Historial</a></li>
-        <li ><a href="">Manejo de Reportes</a></li>
->>>>>>> Appointments
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -75,24 +65,9 @@ function printDiv(divName)
   </div>
 </nav>
 
-<<<<<<< HEAD
-<div class="container">
 
-  <br>
-  <br>
-  @yield('content')
-<br>
-<br>
-</div>
-<div class="container">
 
-<footer class="container-fluid text-center ">
-  <p>CSUNSA - 2017</p>
-</footer>
-</div>
-<!--
--->
-=======
+
 <div class="row">
     <div class="col-lg-3">
 <!--
@@ -106,7 +81,7 @@ function printDiv(divName)
         <span class="icon-bar"></span>
       </button>
     </div>
-    
+
     @yield('sidebar')
   'OR'1'='1'
   </div>
@@ -134,6 +109,5 @@ $(document).ready(function(){
 });
 </script>
 
->>>>>>> Appointments
 </body>
 </html>

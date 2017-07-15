@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CratePagoTable extends Migration
+class CreatePagoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class CratePagoTable extends Migration
     public function up()
     {
         Schema::create('pago', function (Blueprint $table) {
-            $table->string('codigo_pago',10);
+            $table->engine= 'InnoDB';
+            $table->string('codigo_pago',10)->primary();
             $table->string('tipo_de_pago',50);
             $table->string('descripcion',50);
             $table->integer('monto');
