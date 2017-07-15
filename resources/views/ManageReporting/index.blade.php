@@ -3,7 +3,7 @@
 @extends('layouts.template')
 @section('title', 'Inicio')
 
-
+<link rel="stylesheet" href="{{ asset('css/menuReporting.css')}}">
 
    @section('content')
 
@@ -16,11 +16,23 @@
 
 
 
+
+<!--
+<div>
+  <a href=""><div class="buttonpdf"></div></a>
+  <a href=""><div class="buttonpacientes"></div></a>
+  <a href=""><div class="buttonmedicamentos"></div></a>
+  <a href=""><div class="buttonie"></div></a>
+</div>
+
+-->
+
+
+
+
 <center>
 
-
     <div class="col-md-7 col-md-offset-2">
-
       <h4 class="text-info">Reporte Generales</h4>
       <hr>
       <a href="/reportes/repTratamiento" class="list-group-item ">
@@ -50,7 +62,8 @@
       <h4 class="list-group-item-heading">Reporte de medicamentos recetados (*)</h4>
       <p class="list-group-item-text">Reportes de medicamentos recetados durante el mes. </p>
     </a>
-  </div>
+</div>
+
 </center>
 
 </div>
