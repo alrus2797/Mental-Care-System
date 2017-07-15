@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title','Presentaciones')
+@section('title','Componentes')
 
 @section('content')
 
@@ -9,20 +9,13 @@
 <script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
 <form id="form">
-	<h3>Presentaciones</h3>
+	<h3>Componentes</h3>
 	{{ csrf_field()}}
 <div class="row">
   <div class="col-md-3">
   	<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">@</span>
-		  <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" name="descripcion" required maxlength=="5">
-	</div>
-  </div>
-
-  <div class="col-md-3">
-	<div class="input-group">
-	<span class="input-group-addon" id="basic-addon1">U</span>
-  		<input type="text" class="form-control" placeholder="Unidad (mg,ml)" aria-describedby="basic-addon1" name="unidad" required maxlength=="15">
+		  <span class="input-group-addon" id="basic-addon1">Nombre</span>
+		  <input type="text" class="form-control" placeholder="Componente" aria-describedby="basic-addon1" name="nombre" required maxlength=="20">
 	</div>
   </div>
 
@@ -51,11 +44,11 @@
 </style>
 
 <script type="text/javascript">
-$("#todos" ).load("{{ asset('presentaciones/todos') }}" );
+$("#todos" ).load("{{ asset('componentes/todos') }}" );
 
 $('#form').submit(function () {
-  $.post("{{ asset('presentaciones')}}", $('#form').serialize()).done(function(){
-     $("#todos").load("{{ asset('presentaciones/todos') }}" );
+  $.post("{{ asset('componentes')}}", $('#form').serialize()).done(function(){
+     $("#todos").load("{{ asset('componentes/todos') }}" );
      $("form")[0].reset();
      alertify.success('Creado con Exito');
   });
@@ -66,7 +59,7 @@ $('#form').submit(function () {
 
 function eliminar(id) {
 
-  alertify.confirm('Confirmar', 'Desea eliminar este usuario?',
+  alertify.confirm('Confirmar', 'Desea eliminar este componentes?',
     function(){
 
       var urls = "{{asset('presentaciones')}}"+"/"+id;
@@ -89,7 +82,7 @@ function eliminar(id) {
 }
 
 function editar(id){
-  var url = "{{ asset('presentaciones/') }}";
+  var url = "{{ asset('componentes/') }}";  
   $.get( url + "/" + id + "/edit" , function( data ) {
     alertify.alert('Editar Presentación', data );
   });

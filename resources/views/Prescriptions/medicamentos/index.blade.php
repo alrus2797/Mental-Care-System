@@ -2,7 +2,7 @@
 @section('title','medicamentos')
 
 @section('content')
-  
+
 <h2 >Medicamentos</h2>
 
 <div id="buscador"> </div>
@@ -11,7 +11,7 @@
  <table class="table table-condensed">
     <thead>
       <tr>
-        
+
         <th>Nombre</th>
         <th>Presentación</th>
         <th>Cantidad</th>
@@ -25,12 +25,12 @@
     <tbody>
     @foreach($medicinas as $m)
       <tr>
-        
+
         <td>{{$m->medicamento->nombre}}</td>
         <td>{{$m->presentacion->descripcion}}</td>
         <td>{{$m->cantidad}}</td>
         <td>{{$m->presentacion->unidad}}</td>
-        <td><a onclick="ver({{$m->id}})" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a> 
+        <td><a onclick="ver({{$m->id}})" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a>
 
         </td>
         <td><a onclick="editar({{$m->id}} )" href="#"> <span class="glyphicon glyphicon-pencil"></span></a> </td>
@@ -51,7 +51,7 @@
 
 <script type="text/javascript">
   function ver(id) {
-    $.ajax({ 
+    $.ajax({
 //        data:{medicina:id},
         url: "{{asset('medicinas')}}"+"/"+id,
         type: 'get',
@@ -63,7 +63,7 @@
 </script>
 <script type="text/javascript">
   function editar(id) {
-    $.ajax({ 
+    $.ajax({
 //        data:{_method: 'PUT'},
         url: "{{asset('medicinas')}}"+"/"+id+"/edit",
         type: 'get',
@@ -88,4 +88,3 @@
   </script>
 
 @endsection
-

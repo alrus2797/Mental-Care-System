@@ -10,4 +10,8 @@ class Medicamento extends Model
     {
         return $this->hasMany('App\Medicina');
     }
+    public function componentes()
+    {
+      return $this->belongsToMany('App\Componente');
+    }
 }

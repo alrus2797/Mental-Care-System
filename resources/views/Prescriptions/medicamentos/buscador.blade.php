@@ -19,7 +19,7 @@
 	</div>
 	<div class="col-md-4">
 	<button id="nuevo" type="button" class="btn btn-default btn-large">Nuevo Medicamento </button>
-		
+
 	</div>
 
 </div>

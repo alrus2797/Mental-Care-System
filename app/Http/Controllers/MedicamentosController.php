@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Medicamento;
 use App\Medicina;
 use App\Presentacion;
+use App\Componente;
 
 use Illuminate\Http\Request;
 
 class MedicamentosController extends Controller
 {
-    
+
     public function index()
     {
         $todos = Medicina::all();
@@ -20,7 +21,8 @@ class MedicamentosController extends Controller
     public function create()
     {
         $ps = Presentacion::all();
-        return view('Prescriptions.medicamentos.crear', ["presentaciones" => $ps]);
+        $ac = Componente::all();
+        return view('Prescriptions.medicamentos.crear', ["presentaciones" => $ps,"componentes"=>$ac]);
     }
 
     public function store(Request $request)
@@ -45,7 +47,7 @@ class MedicamentosController extends Controller
 
     public function show(Medicamento $medicamento)
     {
-        
+
         dd($medicamento);
         $medicina = Medicina::find($dato);
         return view('Prescriptions.medicamentos.ver',["medicina"=> $medicina]);
@@ -56,7 +58,7 @@ class MedicamentosController extends Controller
         //
     }
 
-   
+
     public function update(Request $request, Medicamento $medicamento)
     {
         //

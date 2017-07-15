@@ -40,6 +40,13 @@ Route::resource('medicamentos','MedicamentosController', ['parameters' => [
 
 Route::resource('medicinas','MedicinasController');
 
+//Componentes
+Route::get('componentes/todos','ComponentesController@todos');
+Route::resource('componentes','ComponentesController', ['parameters' => [
+    'componentes' => 'componente'
+]]);
+
+
 /*
 	Presentaciones
 */

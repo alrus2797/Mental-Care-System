@@ -29,16 +29,33 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\User' => $baseDir . '/app/User.php',
+<<<<<<< HEAD
+=======
+    'App\\componentes-medicamento' => $baseDir . '/app/componentes-medicamento.php',
+    'App\\medico' => $baseDir . '/app/medico.php',
+>>>>>>> Prescription
     'App\\paciente' => $baseDir . '/app/paciente.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+<<<<<<< HEAD
     'CreateComprobantesTable' => $baseDir . '/database/migrations/2017_06_16_001304_create_comprobantes_table.php',
     'CreateEgresosTable' => $baseDir . '/database/migrations/2017_06_16_001258_create_egresos_table.php',
     'CreateIngresosTable' => $baseDir . '/database/migrations/2017_06_16_001237_create_ingresos_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePrescriptionsTable' => $baseDir . '/database/migrations/2017_05_21_033923_create_prescriptions_table.php',
     'CreateTiposcomprobantesTable' => $baseDir . '/database/migrations/2017_06_16_001326_create_tiposcomprobantes_table.php',
+=======
+    'CreateComponentesMedicamentosTable' => $baseDir . '/database/migrations/2017_07_02_145036_create_componentes-medicamentos_table.php',
+    'CreateComponentesTable' => $baseDir . '/database/migrations/2017_06_13_023338_create_componentes_table.php',
+    'CreateMedicamentosTable' => $baseDir . '/database/migrations/2017_06_13_023303_create_medicamentos_table.php',
+    'CreateMedicinasTable' => $baseDir . '/database/migrations/2017_06_13_023312_create_medicinas_table.php',
+    'CreateMedicosTable' => $baseDir . '/database/migrations/2017_06_04_030137_create_medicos_table.php',
+    'CreatePacientesTable' => $baseDir . '/database/migrations/2017_06_04_030200_create_pacientes_table.php',
+    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePrescriptionsTable' => $baseDir . '/database/migrations/2017_06_13_024227_create_prescriptions_table.php',
+    'CreatePresentacionsTable' => $baseDir . '/database/migrations/2017_06_13_023310_create_presentacions_table.php',
+>>>>>>> Prescription
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
