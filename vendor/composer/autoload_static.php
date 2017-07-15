@@ -4,12 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit782bef55560f4b8060af33a1717aec29
+class ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
@@ -332,9 +332,8 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
-        'CratePagoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104807_create_pago_table.php',
         'CreateAdmisionesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
-        'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_101623_create_citas_table.php',
+        'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104808_create_citas_table.php',
         'CreateComponenteMedicamentoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_02_145036_create_componente_medicamento_table.php',
         'CreateComponentesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_13_023338_create_componentes_table.php',
         'CreateComprobantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_001304_create_comprobantes_table.php',
@@ -351,6 +350,7 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'CreatePacienteTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104639_create_paciente_table.php',
         'CreatePacientesEstadosTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_001145_create_pacientes_estados_table.php',
         'CreatePacientesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_001147_create_pacientes_table.php',
+        'CreatePagoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104807_create_pago_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreatePersonasTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_20_001140_create_personas_table.php',
         'CreatePrescriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_024227_create_prescriptions_table.php',
@@ -3317,6 +3317,7 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\StaticMethod' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/StaticMethod.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Factory\\Strategy' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Factory/Strategy.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter.php',
+        'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\AlignFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/AlignFormatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Formatter\\PassthroughFormatter' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Formatter/PassthroughFormatter.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Generic' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Generic.php',
         'phpDocumentor\\Reflection\\DocBlock\\Tags\\Link' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock/Tags/Link.php',
@@ -3351,10 +3352,13 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'phpDocumentor\\Reflection\\Types\\ContextFactory' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/ContextFactory.php',
         'phpDocumentor\\Reflection\\Types\\Float_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Float_.php',
         'phpDocumentor\\Reflection\\Types\\Integer' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Integer.php',
-        'phpDocumentor\\Reflection\\Types\\Mixed' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Mixed.php',
+        'phpDocumentor\\Reflection\\Types\\Iterable_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Iterable_.php',
+        'phpDocumentor\\Reflection\\Types\\Mixed_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Mixed_.php',
         'phpDocumentor\\Reflection\\Types\\Null_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Null_.php',
+        'phpDocumentor\\Reflection\\Types\\Nullable' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Nullable.php',
         'phpDocumentor\\Reflection\\Types\\Object_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Object_.php',
-        'phpDocumentor\\Reflection\\Types\\Resource' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Resource.php',
+        'phpDocumentor\\Reflection\\Types\\Parent_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Parent_.php',
+        'phpDocumentor\\Reflection\\Types\\Resource_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Resource_.php',
         'phpDocumentor\\Reflection\\Types\\Scalar' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Scalar.php',
         'phpDocumentor\\Reflection\\Types\\Self_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Self_.php',
         'phpDocumentor\\Reflection\\Types\\Static_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Static_.php',
@@ -3366,10 +3370,10 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit782bef55560f4b8060af33a1717aec29::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit782bef55560f4b8060af33a1717aec29::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit782bef55560f4b8060af33a1717aec29::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit782bef55560f4b8060af33a1717aec29::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc::$classMap;
 
         }, null, ClassLoader::class);
     }
