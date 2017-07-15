@@ -1,5 +1,5 @@
 <div class="table-responsive">
-	<div class="tablaPacientes col-sm-12">
+	<div class="tablaPersonas col-sm-12">
 			<table class="table-striped col-sm-12">
 				<thead>
 					<tr>
@@ -8,18 +8,20 @@
 						<th>Apellido Materno</th>
 						<th>DNI</th>
 						<th>Dirección</th>
-						<th>Historia Clínica</th>
+						<th>Teléfono</th>
+						<th>Email</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($respuesta as $paciente)
+					@foreach($respuesta as $persona)
 						<tr>
-							<td>{{$paciente->nombres}}</td>
-							<td>{{$paciente->apellidopaterno}}</td>
-							<td>{{$paciente->apellidomaterno}}</td>
-							<td>{{$paciente->dni}}</td>
-							<td>{{$paciente->direccion}}</td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}">{{$paciente->historiaclinica}}</a></td>
+							<td>{{$persona->nombres}}</td>
+							<td>{{$persona->apellidopaterno}}</td>
+							<td>{{$persona->apellidomaterno}}</td>
+							<td>{{$persona->dni}}</td>
+							<td>{{$persona->direccion}}</td>
+							<td>{{$persona->telefono}}</td>
+							<td>{{$persona->email}}</td>
 						</tr>
 					@endforeach
 				</tbody>

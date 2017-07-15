@@ -96,17 +96,28 @@ class personasController extends Controller
     public function eliminar(){
       $post = persona::find(request('id'));
       $post->delete();
-      return redirect('pacientes');
+      return redirect('personas');
     }
 
     public function buscar()
     {
-
+      return view('personas.buscar');
     }
 
     public function retrievePersonas(Request $datos)
     {
-
+      $respuesta = DB::table('personas')
+                  -> select('id', 'nombres', 'apellidopaterno', 'apellidomaterno', 'dni', 'direccion','telefono','email')->where([
+                    ['nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['direccion', 'like', '%'.$datos->input('direccion').'%'],
+                    ['telefono', 'like', '%'.$datos->input('telefono').'%'],
+                    ['email', 'like', '%'.$datos->input('email').'%'],
+                    ])
+                  ->get();
+      return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
 
 }

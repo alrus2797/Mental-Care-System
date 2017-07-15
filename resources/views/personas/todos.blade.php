@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Persona')
+@section('title', 'Personas')
 
 @section('content')
 
@@ -17,7 +17,7 @@
 						<th>Dirección</th>
 						<th>Teléfono</th>
 						<th>Email</th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
