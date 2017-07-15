@@ -15,6 +15,14 @@ class CreatePrescriptionsTable extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('observacion',150);
+            $table->integer('medico_id')->unsigned();
+            $table->integer('paciente_id')->unsigned();
+
+            //claves foraneas
+            $table->foreign('medico_id')->references('id')->on('medicos');
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+
             $table->timestamps();
         });
     }

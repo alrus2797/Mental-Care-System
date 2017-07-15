@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComponentesMedicamentosTable extends Migration
+class CreateComponenteMedicamentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateComponentesMedicamentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('componentes_medicamentos', function (Blueprint $table) {
+        Schema::create('componente_medicamento', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('componente_id')->unsigned();
             $table->integer('medicamento_id')->unsigned();
@@ -30,6 +30,6 @@ class CreateComponentesMedicamentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('componentes_medicamentos');
+        Schema::dropIfExists('componente_medicamento');
     }
 }

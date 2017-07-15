@@ -9,6 +9,6 @@ class Componente extends Model
     //
     public function medicamentos()
     {
-      $this->belongsToMany('App\Medicamento');
+      return $this->belongsToMany('App\Medicamento');
     }
 }
