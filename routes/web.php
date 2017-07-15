@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('citas/citas','CitasController');
+Route::resource('citas/paciente','PacienteController');
