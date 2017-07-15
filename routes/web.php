@@ -67,6 +67,8 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::get('crear','pacientesController@crearObt' );
   Route::post('crear','pacientesController@crear');
 
+  Route::get('agregar', 'pacientesController@agregar');
+
   Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
   Route::post('eliminar','pacientesController@eliminar');
 
@@ -76,6 +78,12 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::get('buscar', 'pacientesController@buscar');
 
   Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+  Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
+
+  Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
+
+
 
   Route::get('{id}','pacientesController@mostrar' );
 
@@ -97,7 +105,9 @@ Route::group(['prefix'=>'personas'],function(){
 
   Route::get('buscar', 'personasController@buscar');
 
+
   Route::get('retrievePersonas', 'personasController@retrievePersonas');
+
 
   Route::get('{id}','personasController@mostrar' );
 

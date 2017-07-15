@@ -4,65 +4,55 @@
 
 @section('content')
 
-<h2>Registro de Paciente</h2>
+<h2>Crear Paciente</h2><br><br>
 
-<div >
-  <form method="POST" action="{{asset('pacientes/crear')}}">
-
+<div class="container-fluid col-sm-10">
+  <form>
 {{csrf_field()}}
 
-    <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Historia Clinica:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" >
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" >
-      </div>
-    </div>
+<div class="row">
 
 
 
     <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Apellido Materno:</label>
+      <label class="col-sm-1 col-form-label" for="dni">DNI:</label>
       <div class="col-sm-3">
-            <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" >
-      </div>
-
-    </div>
-        <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Nombres:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" >
+            <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" onkeyup="showPersonas($('#dni').val())">
       </div>
     </div>
 
-
-
-    <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">DNI:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" >
-      </div>
-    </div>
-
-     <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Dirección:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" >
-      </div>
-    </div>
-
-  <button type="submit" class="btn btn-primary">Guardar</button>
-
-
-</form>
 
 </div>
+</form>
+<br><br>
 
+<div class="row">
+
+	<div class="tablaPersonasDNI col-sm-12 "><b>No hay resultados</b></div>
+
+</div>
+</div>
+
+
+<script>
+	function showPersonas(DNI) {
+    var parametros = {
+
+
+    	"DNI" : DNI,
+    };
+    $.ajax({
+    	data: parametros,
+    	url: 'retrievePersonasDNI',
+    	type: 'get',
+    	dataType : 'json',
+    	success: function(data){
+
+    		$(".tablaPersonasDNI").html(data);
+    	}
+    });
+    }
+</script>
 
 @endsection

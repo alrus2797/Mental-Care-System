@@ -9,12 +9,6 @@
   <form>
 {{csrf_field()}}
 <div class="row">
-    <div class="form-group">
-      <label class="col-sm-1 col-form-label" for="historiaclinica">Historia Clinica:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" onkeyup="showPacientes($('#historiaclinica').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val())">
-      </div>
-    </div>
 
     <div class="form-group">
       <label class="col-sm-1 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
@@ -63,9 +57,9 @@
 </div>
 </div>
 <script>
-	function showPacientes(historia, apellidoP, apellidoM, nombres, DNI, direccion) {
+	function showPacientes( apellidoP, apellidoM, nombres, DNI, direccion) {
     var parametros = {
-    	"historia" : historia,
+
     	"apellidoP" : apellidoP,
     	"apellidoM" : apellidoM,
     	"nombres" : nombres,

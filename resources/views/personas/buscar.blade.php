@@ -10,6 +10,12 @@
 {{csrf_field()}}
 <div class="row">
 
+      <div class="form-group">
+       <label class="col-sm-1 col-form-label" for="nombres">Nombres:</label>
+       <div class="col-sm-3">
+             <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" onkeyup="showPersonas( $('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
+       </div>
+     </div>
 
     <div class="form-group">
       <label class="col-sm-1 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
@@ -25,12 +31,6 @@
       </div>
     </div>
 
-    <div class="form-group">
-     <label class="col-sm-1 col-form-label" for="nombres">Nombres:</label>
-     <div class="col-sm-3">
-           <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" onkeyup="showPersonas( $('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
-     </div>
-   </div>
 
 </div>
 

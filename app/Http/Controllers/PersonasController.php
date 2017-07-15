@@ -103,7 +103,7 @@ class personasController extends Controller
     {
       return view('personas.buscar');
     }
-
+    /*
     public function retrievePersonas(Request $datos)
     {
       $respuesta = DB::table('personas')
@@ -119,5 +119,16 @@ class personasController extends Controller
                   ->get();
       return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
+    */
+    public function retrievePersonas(Request $datos)
+    {
+      $respuesta = DB::table('personas')
+                  -> select('id', 'nombres', 'apellidopaterno', 'apellidomaterno', 'dni', 'direccion','telefono','email')
+                  -> where( 'dni', 'like', '%'.$datos->input('DNI').'%')
+                  ->get();
+      return response()->json(view('personas.busqueda', compact('respuesta'))->render());
+    }
+
+
 
 }
