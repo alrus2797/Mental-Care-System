@@ -27,6 +27,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{url('/')}}">Home</a></li>
+        <li ><a href="{{url('personas/')}}">Personas</a></li>
         <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
         <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>

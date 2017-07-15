@@ -17,7 +17,7 @@ class CreateMedicosTable extends Migration
             $table->increments('id');
             $table->integer('persona_id')->unsigned();
             $table->foreign('persona_id')->references('id')->on('personas');
-            $table->integer('')
+            //$table->integer('');
             $table->timestamps();
         });
     }

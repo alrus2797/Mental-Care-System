@@ -80,3 +80,25 @@ Route::group(['prefix'=>'pacientes'],function(){
   Route::get('{id}','pacientesController@mostrar' );
 
 });
+
+Route::group(['prefix'=>'personas'],function(){
+
+  Route::get('/','personasController@todos' );
+  Route::get('todos','personasController@todos');
+
+  Route::get('crear','personasController@crearObt' );
+  Route::post('crear','personasController@crear');
+
+  Route::get('{id}/eliminar','personasController@eliminarConfirm');
+  Route::post('eliminar','personasController@eliminar');
+
+  Route::get('{id}/editar','personasController@editar');
+  Route::post('{id}','personasController@guardar');
+
+  Route::get('buscar', 'personasController@buscar');
+
+  Route::get('retrievePersonas', 'personasController@retrievePersonas');
+
+  Route::get('{id}','personasController@mostrar' );
+
+});

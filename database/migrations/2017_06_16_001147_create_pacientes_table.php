@@ -19,6 +19,7 @@ class CreatePacientesTable extends Migration
             $table->foreign('persona_id')->references('id')->on('personas');
 
             $table->integer('historials_id')->unsigned();
+            //$table->increments('historials_id');
             $table->foreign('historials_id')->references('id')->on('historials');
 
             //Los estados pueden ser si se encuentra internado, recien ingresado, o ya dado de alta
