@@ -52,8 +52,21 @@
           <div class="col-sm-3">
               <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$get->email}}" >
           </div>
+          <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-3">
+               <label class="form-control" id="registro" name="registro">{{$get->created_at}}</label>
+          </div>
         </div>
-
+        <div class="form-group col-sm-12">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3"></div>
+          <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="registro">Última Fecha de Actualización:</label>
+          <div class="col-sm-3">
+               <label class="form-control" id="actualizacion" name="actualizacion">{{$get->updated_at}}</label>
+          </div>
+        </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
 
