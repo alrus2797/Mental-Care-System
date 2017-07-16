@@ -54,6 +54,7 @@ Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController', ['parameters' => [
     'presentaciones' => 'presentacion'
 ]]);
+Route::get('obtenerPresentaciones', 'PresentacionesController@obtenerPresentaciones'); 
 
 
 /*

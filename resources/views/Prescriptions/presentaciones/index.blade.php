@@ -8,8 +8,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/default-alertify.min.css')}}">
 <script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
-<form id="form">
-	<h3>Presentaciones</h3>
+<form id="form" method="post" action="{{ asset('presentaciones')}}">
+	
+  <div class="text-center">
+  <h2>Presentaciones</h2><br><br>
+  </div>
 	{{ csrf_field()}}
 <div class="row">
   <div class="col-md-3">
@@ -31,12 +34,20 @@
 
   </div>
 
-</div>
 
 
 
-</div>
 
+  <div class="col-md-3">
+    <div class="input-group">
+    <div class="input-group-addon">
+      <span class="glyphicon glyphicon-search"></span>
+    </div>
+    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" onkeyup="showPresentaciones($('#descripcion').val(), $('#unidad').val())">
+    </div>
+  </div><br><br>
+
+</div><br>
 </form>
 
 <div class="container">
@@ -95,6 +106,21 @@ function editar(id){
   });
 }
 
+function showPresentaciones(descrip, uni) {
+    var datos = {
+      "descrip" : descrip,
+      "uni" : uni,
+    };
+    $.ajax({
+      data: datos,
+      url: 'obtenerPresentaciones',
+      type: 'get',
+      dataType : 'json',
+      success: function(data){
+        $("#todos").html(data);
+      }
+    });
+}
 
 </script>
 
