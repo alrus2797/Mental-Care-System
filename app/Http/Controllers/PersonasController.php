@@ -12,7 +12,7 @@ use App\persona;
 class personasController extends Controller
 {
 
-    public function todos()
+    public function todos(Request $request)
     {
 
       //X-Total-Count
@@ -20,6 +20,15 @@ class personasController extends Controller
       $tabla = DB::table('personas')->orderBy('apellidopaterno', 'asc')->paginate(20);
       //$tabla = paciente::all()->paginate(X-Total-Count);
       //return $tabla;
+
+      if($request->ajax()){
+        //dd($personal);
+
+        return response()->json(view('personas.todosPartial',['tabla'=>$tabla])->render());
+      }
+
+
+
       return view('personas.todos',compact('tabla'));
 
 

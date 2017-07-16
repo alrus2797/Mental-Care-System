@@ -130,10 +130,10 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
   Route::get('{id}/editar','pacientesEstadosController@editar');
   Route::post('{id}','pacientesEstadosController@guardar');
 
-  Route::get('buscar', 'pacientesEstadosController@buscar');
+  //Route::get('buscar', 'pacientesEstadosController@buscar');
 
 
-  Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
+  //Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
 
 
   Route::get('{id}','pacientesEstadosController@mostrar' );

@@ -15,7 +15,7 @@ use App\Historial;
 class pacientesController extends Controller
 {
 
-    public function todos()
+    public function todos(Request $request)
     {
 
       //$tabla = paciente::all()->paginate(2);
@@ -27,7 +27,15 @@ class pacientesController extends Controller
               ->join('personas','pacientes.persona_id','=','personas.id')
               -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
               -> select('pacientes.*', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
-              -> get();
+              ->paginate(3);
+
+
+      if($request->ajax()){
+        
+
+        return response()->json(view('pacientes.todosPartial',['tabla'=>$tabla])->render());
+      }
+
 
       return view('pacientes.todos',compact('tabla'));
 
@@ -133,8 +141,8 @@ class pacientesController extends Controller
 
       $get = paciente::find($id);
       $getPersona = persona::find($get->persona_id);
-
-      return view('pacientes.editar',compact('get','getPersona'));
+      $estados = pacientesEstados::all();
+      return view('pacientes.editar',compact('get','getPersona','estados'));
 
     }
 
