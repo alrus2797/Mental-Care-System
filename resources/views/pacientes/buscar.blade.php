@@ -5,7 +5,7 @@
 
 <h2>Buscar Pacientes</h2><br><br>
 
-<div style="background-color: rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; margin: 30px">
+<div >
         {{csrf_field()}}
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
