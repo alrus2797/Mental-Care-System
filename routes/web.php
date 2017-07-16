@@ -62,7 +62,7 @@ Route::resource('prescripcion','prescriptionController');
 Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('/','pacientesController@todos' );
-  Route::get('todos','pacientesController@todos');
+  //Route::get('todos','pacientesController@todos');
 
   Route::get('crear','pacientesController@crearObt' );
 
@@ -92,7 +92,7 @@ Route::group(['prefix'=>'pacientes'],function(){
 Route::group(['prefix'=>'personas'],function(){
 
   Route::get('/','personasController@todos' );
-  Route::get('todos','personasController@todos');
+  //Route::get('todos','personasController@todos');
 
   Route::get('crear','personasController@crearObt' );
   Route::post('crear','personasController@crear');

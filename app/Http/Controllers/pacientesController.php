@@ -26,12 +26,12 @@ class pacientesController extends Controller
       $tabla = DB::table('pacientes')
               ->join('personas','pacientes.persona_id','=','personas.id')
               -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
-              -> select('pacientes.*', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+              -> select('pacientes.*', 'personas.*','pacientes.id as pac_id' ,'pacientes_estados.nombre as nombre_estado')
               ->paginate(3);
 
 
       if($request->ajax()){
-        
+
 
         return response()->json(view('pacientes.todosPartial',['tabla'=>$tabla])->render());
       }
@@ -45,9 +45,9 @@ class pacientesController extends Controller
     {
       $paciente = paciente::find($id);
       $persona = persona::find($paciente -> persona_id);
-
+      $estado = pacientesEstados::find($paciente->estado_id);
       //return $tabla;
-      return view('pacientes.mostrar',compact('paciente', 'persona'));
+      return view('pacientes.mostrar',compact('paciente', 'persona','estado'));
 
     }
 
@@ -170,7 +170,8 @@ class pacientesController extends Controller
     public function eliminarConfirm($id){
       $get = paciente::find($id);
       $getPersona = persona::find($get->persona_id);
-      return view('pacientes.eliminar',compact('get','getPersona'));
+      $estado = pacientesEstados::find($get->estado_id);
+      return view('pacientes.eliminar',compact('get','getPersona','estado'));
     }
 
     public function eliminar(){
@@ -186,7 +187,7 @@ class pacientesController extends Controller
 
     public function retrievePacientes(Request $datos)
     {
-      /*$respuesta = DB::table('personas') 
+      /*$respuesta = DB::table('personas')
                   -> join('pacientes', 'personas.id', '=', 'pacientes.persona_id')
                   -> select('pacientes.id', 'personas.nombres', 'personas.apellidopaterno', 'personas.apellidomaterno', 'personas.dni', 'personas.direccion', 'personas.telefono','pacientes.historials_id', 'pacientes.estado_id')
                   -> where([
@@ -197,10 +198,10 @@ class pacientesController extends Controller
                     ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
                     ])
                   ->get();*/
-      $respuesta = DB::table('personas') 
-                  -> join('pacientes', 'personas.id', '=', 'pacientes.persona_id')
+      $respuesta = DB::table('pacientes')
+                  -> join('personas', 'personas.id', '=', 'pacientes.persona_id')
                   -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
-                  -> select('pacientes.*', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+                  -> select('pacientes.*', 'personas.*','pacientes.id as pac_id', 'pacientes_estados.nombre as nombre_estado')
                   -> where([
                     ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
                     ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],

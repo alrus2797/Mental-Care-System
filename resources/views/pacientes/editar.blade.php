@@ -78,6 +78,7 @@
        <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
        <div class="col-sm-3">
               <select class="form-control" id="estado" name="estado">
+
                 @foreach ($estados as $estado)
                 <option value="{{$estado->id}}">{{$estado->nombre}}</option>
                 @endforeach
@@ -87,7 +88,7 @@
 
 
  <button type="submit" class="btn btn-primary">Guardar</button>
-
+<a href="{{asset('pacientes')}}">Cancelar</a>
 
 </form>
 </div>

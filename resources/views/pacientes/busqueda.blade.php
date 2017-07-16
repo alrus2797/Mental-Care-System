@@ -1,5 +1,7 @@
 <div class="table-responsive">
 	<div class="tablaPacientes col-sm-12">
+
+		{{$respuesta}}
 			<table class="table col-sm-12">
 				<thead>
 					<tr>
@@ -11,7 +13,7 @@
 						<th>Teléfono</th>
 						<th>Email</th>
 						<th>Estado</th>
-            			<th>Historia</th>
+            <th>Historia</th>
 						<th> Ver</th>
 						<th> Editar </th>
 						<th> Eliminar </th>
@@ -28,16 +30,16 @@
 							<td>{{$paciente->telefono}}</td>
 							<td>{{$paciente->email}}</td>
 							<td>{{$paciente->nombre_estado}}</td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}">
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}">
 									<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/'}}"  id="user">
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/'}}"  id="user">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							</td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/editar'}}"  id="edit">
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/editar'}}"  id="edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							 </td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/eliminar'}}"  id="elimin">
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/eliminar'}}"  id="elimin">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								</td>
 						</tr>

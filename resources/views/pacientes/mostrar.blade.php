@@ -67,6 +67,12 @@
           <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email"  value="{{$persona->email}}" readonly>
     </div>
 
+    <div class="form-group">
+     <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
+     <div class="col-sm-3">
+       <input type="text" class="form-control" id="estado" placeholder="Ingrese estado" name="estado"  value="{{$estado->nombre}}" readonly>
+     </div>
+    </div>
 
 </div>
 

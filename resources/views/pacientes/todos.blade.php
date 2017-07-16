@@ -18,8 +18,8 @@
 						<th>Dirección</th>
 						<th>Teléfono</th>
 						<th>Email</th>
-            			<th>Estado</th>
-            			<th>Historia</th>
+						<th>Estado</th>
+            <th>Historia</th>
 						<th> Ver</th>
 						<th> Editar </th>
 						<th> Eliminar </th>
@@ -37,17 +37,17 @@
 							<td>{{$paciente->telefono}}</td>
 							<td>{{$paciente->email}}</td>
 							<td>{{$paciente->nombre_estado}}</td>
-              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}">
+              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}" id="historia">
               						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
               				</td>
 							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/'}}"  id="user"> <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> </a>
+									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/'}}"  id="user"> <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> </a>
 							</td>
 							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/editar'}}"  id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/editar'}}"  id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 							 </td>
 							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/eliminar'}}"  id="elimin"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a>
+									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/eliminar'}}"  id="elimin"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a>
 								</td>
 
 						</tr>
