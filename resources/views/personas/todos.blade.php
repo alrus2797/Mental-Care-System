@@ -7,7 +7,7 @@
 
 <div class="table-responsive">
 	<div class="tablapersonas col-sm-12">
-			<table class="table-striped col-sm-12">
+			<table class="table col-sm-12">
 				<thead>
 					<tr>
 						<th>Nombres</th>
@@ -17,6 +17,9 @@
 						<th>Dirección</th>
 						<th>Teléfono</th>
 						<th>Email</th>
+						<th> Ver</th>
+						<th> Editar </th>
+						<th> Eliminar </th>
 
 					</tr>
 				</thead>
@@ -30,6 +33,15 @@
 							<td>{{$persona->direccion}}</td>
 							<td>{{$persona->telefono}}</td>
 							<td>{{$persona->email}}</td>
+							<td>
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							</td>
+							<td>
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							 </td>
+							<td>
+									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								</td>
 
 						</tr>
 					@endforeach
@@ -37,5 +49,8 @@
 			</table>
 	</div>
 </div>
+
+
+{!! $tabla->render() !!}
 
 @endsection

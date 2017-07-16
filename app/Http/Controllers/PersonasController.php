@@ -16,7 +16,8 @@ class personasController extends Controller
     {
 
       //X-Total-Count
-      $tabla = persona::all();
+      //$tabla = persona::all()->paginate(15);
+      $tabla = DB::table('personas')->orderBy('apellidopaterno', 'asc')->paginate(20);
       //$tabla = paciente::all()->paginate(X-Total-Count);
       //return $tabla;
       return view('personas.todos',compact('tabla'));
@@ -103,7 +104,7 @@ class personasController extends Controller
     {
       return view('personas.buscar');
     }
-    /*
+
     public function retrievePersonas(Request $datos)
     {
       $respuesta = DB::table('personas')
@@ -119,7 +120,7 @@ class personasController extends Controller
                   ->get();
       return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
-    */
+    /*
     public function retrievePersonas(Request $datos)
     {
       $respuesta = DB::table('personas')
@@ -128,7 +129,7 @@ class personasController extends Controller
                   ->get();
       return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
-
+    */
 
 
 }

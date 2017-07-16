@@ -32,6 +32,15 @@
 	<div class="tablaPersonasDNI col-sm-12 "><b>No hay resultados</b></div>
 
 </div>
+
+<div class="row">
+
+  <div> <b> ¿No existe? Créalo </b> </div>
+  <button type="button" id="botonCrear" class="btn btn-default" aria-label="Center Align" onclick="crearNuevoPersona()"> </button>
+  <div class="personaNueva col-sm-12"> <div>
+
+</div>
+
 </div>
 
 
@@ -53,6 +62,28 @@
     	}
     });
     }
+</script>
+
+
+<script>
+
+  function crearNuevoPersona(){
+
+    $.ajax(
+
+      {
+        url:'crearNuevaPersona',
+        type: 'post',
+        dataType: 'json',
+        success: function(data){
+            $(".personaNueva").html(data);
+        }
+      }
+
+    );
+
+  }
+
 </script>
 
 @endsection

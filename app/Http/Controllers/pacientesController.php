@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\paciente;
 use App\persona;
 use App\pacientesEstados;
+use App\Historial;
 
 class pacientesController extends Controller
 {
@@ -17,7 +18,10 @@ class pacientesController extends Controller
     public function todos()
     {
       //X-Total-Count
-      $tabla = paciente::all();
+      //$tabla = paciente::all()->paginate(2);
+      //$tabla = paciente::with('persona')->get();
+      $tabla = DB::table('pacientes')->paginate(20);
+
       //$tabla = paciente::all()->paginate(X-Total-Count);
       //return $tabla;
       return view('pacientes.todos',compact('tabla'));
@@ -26,16 +30,17 @@ class pacientesController extends Controller
 
     public function mostrar($id)
     {
+      $paciente = paciente::find($id);
+      $persona = persona::find($paciente -> persona_id);
 
-
-      $tabla = paciente::find($id);
       //return $tabla;
-      return view('pacientes.mostrar',compact('tabla'));
+      return view('pacientes.mostrar',compact('paciente', 'persona'));
 
     }
 
     public function crearObt()
     {
+
 
       return view('pacientes.crear');
 
@@ -46,10 +51,15 @@ class pacientesController extends Controller
     {
 
       $post = new paciente;
-      
+
       $post->persona_id = request('id');
       $post->estado_id = request('estado');
-      //$post->historials_id = '12';
+
+      $historial = new historial;
+
+      $historial -> save();
+
+      $post->historials_id = $historial -> id;
 
       $post->save();
 
@@ -69,13 +79,21 @@ class pacientesController extends Controller
 
     }
 
+    public function crearNuevoPersona()
+    {
+
+      response()->json(view('pacientes.crearPersonaPaciente')->render());
+
+    }
+
 
     public function editar($id)
     {
 
       $get = paciente::find($id);
+      $getPersona = persona::find($get->persona_id);
 
-      return view('pacientes.editar',compact('get'));
+      return view('pacientes.editar',compact('get','getPersona'));
 
     }
 
@@ -83,7 +101,9 @@ class pacientesController extends Controller
     public function guardar()
     {
 
-      $post = paciente::find(request('id'));
+      $post = persona::find(request('id'));
+
+
 
       $post->apellidopaterno = request('apellidopaterno');
       $post->apellidomaterno = request('apellidomaterno');
@@ -92,14 +112,16 @@ class pacientesController extends Controller
       $post->direccion = request('direccion');
 
       $post->save();
-      return redirect('pacientes/'.request('id'));
+
+      return redirect('pacientes/'.request('paciente_id'));
 
     }
 
 
     public function eliminarConfirm($id){
       $get = paciente::find($id);
-      return view('pacientes.eliminar',compact('get'));
+      $getPersona = persona::find($get->persona_id);
+      return view('pacientes.eliminar',compact('get','getPersona'));
     }
 
     public function eliminar(){
