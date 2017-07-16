@@ -27,8 +27,30 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{url('/')}}">Home</a></li>
-        <li ><a href="{{url('personas/')}}">Personas</a></li>
-        <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
+
+        <li class="dropdown">
+         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personas <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+            <li><a href="{{ url('personas/crear')}}">Nueva Persona</a></li>
+            <li><a href="{{ url('personas/buscar')}}">Buscar Persona</a></li>
+            <li><a href="{{ url('personas/')}}">Todas las Personas</a></li>
+         </ul>
+       </li>
+
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+
+           <li><a href="{{ url('pacientes/crear')}}">Nuevo Paciente</a></li>
+           <li><a href="{{ url('pacientes/buscar')}}">Buscar Paciente</a></li>
+           <li><a href="{{ url('pacientes/')}}">Todos los Pacientes</a></li>
+           <li class="divider"></li>
+           <li><a href="{{ url('pacientes/estados/crear')}}">Nuevo Estado de Paciente</a></li>
+           <li><a href="{{ url('pacientes/estados/todos')}}">Todos los Estados de Pacientes</a></li>
+
+        </ul>
+      </li>
+
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
         <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
         <li ><a href="#">Estadística</a></li>

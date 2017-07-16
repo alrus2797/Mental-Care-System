@@ -27,7 +27,8 @@ class pacientesController extends Controller
               ->join('personas','pacientes.persona_id','=','personas.id')
               -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
               -> select('pacientes.*', 'personas.*','pacientes.id as pac_id' ,'pacientes_estados.nombre as nombre_estado')
-              ->paginate(3);
+              ->orderBy('personas.apellidopaterno', 'asc')
+              ->paginate(20);
 
 
       if($request->ajax()){
