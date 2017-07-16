@@ -37,20 +37,20 @@
       <div class="col-md-10 col-md-offset-0 table-responsive">
 
 
-   <table class="table table-hover table-bordered">
+   <table class="table table-hover table-bordered" id="tableToSort">
     <tr>
-        <th>Nombre </th>
-        <th>Tipo de Reporte</th>
-        <th>Fecha que se generó</th>
+        <th onclick="sortTable(0)">Nombre </th>
+        <th onclick="sortTable(1)">Tipo de Reporte</th>
+        <th >Fecha que se generó</th>
         <th>Descripcion</th>
         <th>Descarga</th>
 
     </tr>
     @foreach ($results as $row)
         <tr>
-          <td>{{$row->nombre}}</td>
-          <td>{{$row->tipo}}</td>
-          <td>{{$row->fecha}}</td>
+          <td >{{$row->nombre}}</td>
+          <td >{{$row->tipo}}</td>
+          <td >{{$row->fecha}}</td>
           <td style="width: 40%;" >
               {{$row->detalles}}
           </td>
@@ -66,7 +66,6 @@
     </ul>
 
 </div >
-
 
 
 

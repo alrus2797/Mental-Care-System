@@ -25,6 +25,8 @@ function printDiv(divName)
 
 
 </head>
+
+
 <body>
 
 <nav class="navbar navbar-inverse">
@@ -92,5 +94,8 @@ $(document).ready(function(){
 });
 </script>
 
+
+
 </body>
+
 </html>

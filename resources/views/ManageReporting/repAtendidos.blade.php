@@ -23,22 +23,12 @@
         <th>Clinica</th>
         <th>Comentarios</th>
 	</tr>
-        <?php
-            $sqlQuery = "select paciente.nombre as paciente, medico.nombre as medico , medicina.nombre as medicina, atencionmedica.fecha, atencionmedica.autolesion , clinica.nombre as clinica, atencionmedica.comentarios from atencionmedica inner JOIN paciente on atencionmedica.paciente = paciente.id inner JOIN medico on atencionmedica.medico = medico.id inner JOIN medicina on atencionmedica.medicamento =medicina.id inner JOIN clinica on atencionmedica.clinica = clinica.id";
-            $result = DB::select(DB::raw($sqlQuery));
-            foreach ($result as $row)
-            {
-                echo "<tr>";
-                echo "<td>".$row->paciente."</td>";
-                echo "<td>".$row->medico."</td>";
-                echo "<td>".$row->medicina."</td>";
-                echo "<td>".$row->fecha."</td>";
-                echo "<td>".$row->autolesion."</td>";
-                echo "<td>".$row->clinica."</td>";
-                echo "<td>".$row->comentarios."</td>";
-                echo "</tr>";
-            }
-        ?>
+
+  <ul class="pagination">
+    <li class="active"><a href="#">1</a></li>
+  </ul>
+
+
     </table>
 </div>
 

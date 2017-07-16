@@ -34,7 +34,7 @@ class consultasSqlController extends Controller
     }
     public function queryAtendidos()
     {
-      $abc='asasdasdd';
+      $abc=' ';
       return view('ManageReporting/repAtendidos',['consulta'=>$abc]);
     }
     public function queryFarmacos()
