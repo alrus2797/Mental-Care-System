@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-plus-circle"></i> Nuevo Paciente</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('paciente.store') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('paciente.store') }}" name="formulario_paciente">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -51,7 +51,23 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group{{ $errors->has('alergias') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Receta medica</label>
+                            <div class="col-md-6" id="alergias" >
+                                <input type="text" id="alergia1" name="alergia[]" class="form-control" placeholder="Ingresa una alergia" required>
+                                @if ($errors->has('alergias'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('alergias') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <button id="remove-alergia" class="btn btn-danger pull-right">
+                                <i class="fa fa-minus-square"></i> Quitar Alergia
+                            </button>
+                            <button id="add-alergia" class="btn btn-info pull-right">
+                                <i class="fa fa-plus-square"></i> Añadir Alergia
+                            </button>
+                        </div>
                         <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
                             <label for="documento" class="col-md-4 control-label">DNI</label>
 
@@ -139,6 +155,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('autodanio') ? ' has-error' : '' }}">
+                            <label for="autodanio" class="col-md-4 control-label">AUTO DAÑO</label>
+
+                            <div class="col-md-6">
+                                <input id="autodanio" type="checkbox" class="form-control" name="autodanio" value="{{ old('autodanio') }}" required>
+
+                                @if ($errors->has('autodanio'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('autodanio') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
@@ -160,7 +189,7 @@
         </div>
     </div>
 </div>
-@endsection
+
 <script type="text/javascript">
     function isNumber(evt) {
         if(document.getElementById('documento').value.length < 8){
@@ -174,4 +203,49 @@
             return true;
         }
     }
+
+    $(function () {
+        var alergiasCount =document.formulario_paciente.elements['alergia[]'].length;
+
+        var addAlergia = function () {
+            var alergiaDiv = document.getElementById('alergias');
+            var newWidget = document.createElement("input");
+            newWidget.setAttribute('class','form-control');
+            newWidget.setAttribute('name','alergia[]');
+            newWidget.setAttribute('id','alergia'+toString(alergiasCount));
+            newWidget.setAttribute('placeholder',"Ingresa una alergia");
+            alergiasCount++;
+
+            $(newWidget).appendTo(alergiaDiv);
+        };
+
+        var removeAlergia = function () {
+            if (alergiasCount < 1) return;
+
+            var alergiasDiv = document.getElementById('alergias');
+            var ultimaAlergia = alergiasDiv.removeChild(alergiasDiv.lastElementChild);
+
+            ultimaAlergia.remove();
+
+            alergiasCount--;
+        };
+        if (alergiasCount === 0) addAlergia();
+        $('#add-alergia').click(function (e) {
+            e.preventDefault();
+            addAlergia();
+        });
+
+        $('#remove-alergia').click(function (e) {
+            e.preventDefault();
+            removeAlergia();
+        });
+
+    });
+
 </script>
+@endsection
+
+
+{!! Html::script('js/jquery.min.js') !!}
+
+{!! Html::script('js/bootstrap-select.min.js') !!}

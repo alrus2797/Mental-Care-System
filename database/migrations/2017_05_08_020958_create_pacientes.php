@@ -24,6 +24,8 @@ class CreatePacientes extends Migration
             $table->string('telefono')->nullable();
             $table->string('celular')->nullable();
             $table->integer('departamento_id')->unsigned();
+            $table->boolean('autodanio');
+            $table->string('alergias',255);
             $table->timestamps();
         });
 
