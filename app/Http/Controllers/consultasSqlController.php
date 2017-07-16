@@ -20,7 +20,7 @@ class consultasSqlController extends Controller
 
     public function queryAtencion()
     {
-      $sqlQuery = "";
+      $sqlQuery = " ";
       $results = $this->runQuery($sqlQuery);
 
       return view('ManageReporting/repAtencion',compact('results'));
