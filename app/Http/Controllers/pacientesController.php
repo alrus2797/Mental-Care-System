@@ -201,7 +201,7 @@ class pacientesController extends Controller
       $respuesta = DB::table('pacientes')
                   -> join('personas', 'personas.id', '=', 'pacientes.persona_id')
                   -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
-                  -> select('pacientes.*', 'personas.*','pacientes.id as pac_id', 'pacientes_estados.nombre as nombre_estado')
+                  -> select('pacientes.*', 'pacientes.id as paciente_id', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
                   -> where([
                     ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
                     ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],

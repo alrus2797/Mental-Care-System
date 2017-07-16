@@ -1,7 +1,5 @@
 <div class="table-responsive">
 	<div class="tablaPacientes col-sm-12">
-
-		{{$respuesta}}
 			<table class="table col-sm-12">
 				<thead>
 					<tr>
@@ -45,6 +43,7 @@
 						</tr>
 					@endforeach
 				</tbody>
-			</table>
+			</table>-->
+	{{$respuesta}}
 	</div>
 </div>
