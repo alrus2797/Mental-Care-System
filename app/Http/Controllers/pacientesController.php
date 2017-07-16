@@ -12,6 +12,21 @@ use App\paciente;
 class pacientesController extends Controller
 {
 
+
+    public function historial(Request $request)
+    {
+        $paciente= paciente::find($request->paciente_id);
+        //$id=$paciente->persona->id;
+        //$nombre=$paciente->persona->nombres;
+        //$apellidos=$paciente->persona->apellidopaterno." ".$paciente->persona->apellidomaterno;
+        //return view('pacientes.historial',["id"=>$paciente->id,"nombre"=>$nombre,"apellidos"=>$apellidos]);
+
+        if ($paciente)
+          return view('pacientes.historial',["paciente_id"=>$request->paciente_id]);
+        else
+          return "No se ha encontrado paciente";
+    }
+
     public function todos()
     {
       //X-Total-Count

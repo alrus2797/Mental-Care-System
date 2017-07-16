@@ -6,26 +6,29 @@
 
 			<div class="form-group ">
 				<label for="nombre">Pacientes</label>
-				<input type="text" class="form-control" id="nombre" name="paciente_id">
+				<input type="text" class="form-control" id="nombre" name="paciente"   readonly>
 			</div>
 			<div class="form-group ">
-				<label for="observaci"> Observaciones</label>
-				<input type="text" class="form-control" id="nombre" name="observacion">
+				<label for="observacion"> Observaciones</label>
+				<input type="text" class="form-control" id="obs" name="observacion">
 				<input type="hidden" name="medico_id">
 			</div>
 			<div class="form-group ">
 				<label > Instrucción</label>
-				<input type="text" class="form-control" id="nombre" name="instruccion">
+				<input type="text" class="form-control" id="inst" name="instruccion">
 			</div>
 		<button id="truuuuue" type="submit" class="btn btn-default btn-large">Añadir</button>
 	</div>
 
 
 
-		
+
 </form>
 
 <script type="text/javascript">
+
+$("#nombre").attr("placeholder",paciente);
+
 alertify.genericDialog || alertify.dialog('genericDialog',function factory(){
     return {
         main:function(content){

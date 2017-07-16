@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
+class Alergia extends Model
 {
+    //
     public function alergias()
     {
-      return $this->belongsToMany('App\Alergia');
+      return $this->belongsToMany('App\Paciente');
     }
 }

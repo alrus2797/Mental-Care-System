@@ -14,7 +14,7 @@ class CreateMedicinaPrescriptionTable extends Migration
     public function up()
     {
         Schema::create('medicina_prescription', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->increments('id');
             $table->integer('medicina_id')->unsigned();
             $table->integer('prescription_id')->unsigned();
 

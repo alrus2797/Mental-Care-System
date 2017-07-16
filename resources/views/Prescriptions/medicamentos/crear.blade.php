@@ -32,26 +32,27 @@
 
 		<!--componentes-->
 		<div class="row">
-			<div class="form-group col-md-3">
+			<!--<div class="form-group col-md-3">
 				<label for="componentes">Componentes</label>
-				<select class="form-control" name="presentacion" id="componentes">
-					@foreach ($presentaciones as $p)
-					<option value="{{ $p->id }}">{{ $p->unidad}} {{ $p->descripcion}}</option>
+				<select class="form-control" name="componentes" id="componentes">
+					@foreach ($componentes as $c)
+					<option value="{{ $c->id }}">{{ $c->nombre}}</option>
 					@endforeach
 				</select>
-			</div>
+			</div>-->
 			<div class="form-group col-md-2">
 				<br>
-				<button id="nuevo_com" type="button" class="btn btn-default btn-large"> <a href="{{asset('componentes')}} "><i class="glyphicon glyphicon-plus"></i> Añadir componentes </a></button>
+				<button id="nuevo_com" type="button" class="btn btn-default btn-large">  Añadir componentes </button>
 			</div>
 			<div id="crear_componente"> </div>
 		</div>
 		<script type="text/javascript">
-		/*	$("#nuevo_com").click(function(){
-						$.ajax({url: "{{asset('componentes/create')}} ", success: function(resultado){
+		var nombre="hola soy";
+			$("#nuevo_com").click(function(){
+						$.ajax({url: "{{asset('componentes/seleccionar')}} ", success: function(resultado){
 								$("#crear_componente").html(resultado);
-						}});
-				});*/
+						}});		
+				});
 		</script>
 
 		<div class="row">

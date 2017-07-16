@@ -278,11 +278,13 @@ class ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc
     );
 
     public static $classMap = array (
+        'App\\Alergia' => __DIR__ . '/../..' . '/app/Alergia.php',
         'App\\Citas' => __DIR__ . '/../..' . '/app/Citas.php',
         'App\\Componente' => __DIR__ . '/../..' . '/app/Componente.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Historial' => __DIR__ . '/../..' . '/app/Historial.php',
+        'App\\Http\\Controllers\\AlergiaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AlergiaController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -333,6 +335,7 @@ class ComposerStaticInitd1b451e47fa9bc2d2f050bf30de501bc
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CreateAdmisionesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
+        'CreateAlergiasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_171435_create_alergias_table.php',
         'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104808_create_citas_table.php',
         'CreateComponenteMedicamentoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_02_145036_create_componente_medicamento_table.php',
         'CreateComponentesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_13_023338_create_componentes_table.php',

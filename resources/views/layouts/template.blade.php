@@ -45,10 +45,19 @@ function printDiv(divName)
       <a class="navbar-brand" href="#">Mental Care</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
 
+      <ul class="nav navbar-nav">
         <li class="active"><a href="{{url('/')}}">Home</a></li>
-        <li ><a href="{{url('pacientes/')}}">Pacientes</a></li>
+
+        <li class ="dropdown">
+          <a href="{{url('pacientes/')}}">Pacientes</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Nuevo</a></li>
+            <li><a href="#">Nuevoasd</a></li>
+            <li><a href="#">Nuevoasd</a></li>
+          </ul>
+        </li>
+
         <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
         <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
         <li ><a href="#">Estadística</a></li>

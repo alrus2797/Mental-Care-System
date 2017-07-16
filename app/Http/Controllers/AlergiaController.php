@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Prescription;
-usea App\Medicamento;
+use App\Alergia;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class PrescriptionController extends Controller
+class AlergiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        return view("Prescriptions.index");
+        //
     }
 
     /**
@@ -24,17 +22,9 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function todos()
-    {
-      //$pres=Prescription::all();
-      //return view('Prescriptions.todos');
-    }
-
     public function create()
     {
-      $medicamentos=Medicamento::all();
-      return view('Prescriptions.crear',["medicamentos"=>$medicamentos]);
+        //
     }
 
     /**
@@ -46,21 +36,15 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
         //
-        $pres=new App\Prescription;
-        $pres->observacion=$request->observacion;
-        $pres->instruccion=$request->instruccion;
-        $pres->paciente_id=$request->paciente_id;
-        $pres->medico_id=$request->medico_id;
-        $pres->save();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Prescription  $prescription
+     * @param  \App\Alergia  $alergia
      * @return \Illuminate\Http\Response
      */
-    public function show(Prescription $prescription)
+    public function show(Alergia $alergia)
     {
         //
     }
@@ -68,22 +52,22 @@ class PrescriptionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Prescription  $prescription
+     * @param  \App\Alergia  $alergia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prescription $prescription)
+    public function edit(Alergia $alergia)
     {
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Prescription  $prescription
+     * @param  \App\Alergia  $alergia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prescription $prescription)
+    public function update(Request $request, Alergia $alergia)
     {
         //
     }
@@ -91,10 +75,10 @@ class PrescriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Prescription  $prescription
+     * @param  \App\Alergia  $alergia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prescription $prescription)
+    public function destroy(Alergia $alergia)
     {
         //
     }

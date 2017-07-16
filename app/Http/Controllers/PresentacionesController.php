@@ -18,13 +18,13 @@ class PresentacionesController extends Controller
     }
 
     /**
-     *    
+     *
      */
-    public function todos() 
-    { 
-        $ps = Presentacion::all(); 
-        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]); 
-    } 
+    public function todos()
+    {
+        $ps = Presentacion::all();
+        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +48,7 @@ class PresentacionesController extends Controller
         $p->descripcion = $request->descripcion;
         $p->unidad = $request->unidad;
         $p->save();
-        
+
         return redirect("presentaciones");
     }
 

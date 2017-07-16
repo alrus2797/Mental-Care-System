@@ -32,6 +32,10 @@ Route::get('medicamentos/asdf',function(){
 	return view('Prescriptions.medicamentos.buscador');
 });
 
+Route::get('componentes/seleccionar',function(){
+  return view('Prescriptions.componentes.seleccionar');
+});
+
 Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
 Route::resource('medicamentos','MedicamentosController', ['parameters' => [
@@ -46,6 +50,7 @@ Route::resource('componentes','ComponentesController', ['parameters' => [
     'componentes' => 'componente'
 ]]);
 
+///***********************************************************
 
 /*
 	Presentaciones
@@ -56,6 +61,9 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
 ]]);
 
 
+//Route::get('prescripcion/todos','PrescriptionController@todos');
+
+
 /*
 	No se que es ...
 */
@@ -64,17 +72,22 @@ Route::get('med',function(){
 });
 //******************************************************************************************
 //Route::resource('prescripcion','prescriptionController');
-Route::get('pres',function(){
+/*Route::get('pres',function(){
   return view('Prescriptions.index');
 });
-
+¨*/
 Route::get('pres/buscador',function(){
   return view('Prescriptions.buscador');
 });
 
-Route::get('pacientes/historia',function(){
-  return view('pacientes.historial');
-});
+Route::resource('prescripcion','prescriptionController',['parameters'=>[
+  'prescriptions'=>'prescription'
+  ]]);
+
+//Route::get('pacientes/historia',function(){
+  //return view('pacientes.historial');
+//});
+Route::post('pacientes/historial','pacientesController@historial');
 
 Route::get('pres/crear',function(){
   return view('Prescriptions.crear');
