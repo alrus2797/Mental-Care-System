@@ -50,7 +50,7 @@
         <tr>
           <td >{{$row->nombre}}</td>
           <td >{{$row->tipo}}</td>
-          <td >{{$row->fecha}}</td>
+          <td >{{$row->created_at}}</td>
           <td style="width: 40%;" >
               {{$row->detalles}}
           </td>

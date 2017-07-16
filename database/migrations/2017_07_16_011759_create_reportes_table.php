@@ -17,7 +17,6 @@ class CreateReportesTable extends Migration
           $table->increments('id');
           $table->string('nombre',100);
           $table->string('tipo',30);
-          $table->string('nombre',50);
           $table->string('detalles',400);
           $table->timestamps();
       });
