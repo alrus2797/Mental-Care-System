@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Presentacion;
 use Illuminate\Http\Request;
 
@@ -100,5 +101,16 @@ class PresentacionesController extends Controller
     {
         $presentacion->delete();
         return response()->json(true);
+    }
+    
+    public function obtenerPresentaciones(Request $request)
+    {
+        $presentaciones = DB::table('presentacions')
+                -> select('id','descripcion','unidad')->where([
+                    ['descripcion','like','%'.$request->input('descrip').'%'],
+                    ['unidad','like','%'.$request->input('uni').'%'],
+                    ])
+                ->get();
+        return response()->json(view('Prescriptions.presentaciones.todos',compact('presentaciones'))->render());
     }
 }

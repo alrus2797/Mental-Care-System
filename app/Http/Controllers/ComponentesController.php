@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Componente;
 use Illuminate\Http\Request;
 
@@ -93,5 +94,15 @@ class ComponentesController extends Controller
     public function destroy(Componente $componente)
     {
         //
+    }
+
+    public function obtenerComponentes(Request $request)
+    {
+        $componentes = DB::table('componentes')
+                -> select('id','nombre')->where([
+                    ['nombre','like','%'.$request->input('nom').'%'],
+                    ])
+                ->get();
+        return response()->json(view('Prescriptions.componentes.todos',compact('componentes'))->render());
     }
 }
