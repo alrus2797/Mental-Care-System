@@ -31,13 +31,13 @@
 							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}">
 									<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</td>
-							<td>
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/'}}"  id="user">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 							</td>
-							<td>
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/editar'}}"  id="edit">
 									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 							 </td>
-							<td>
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id.'/eliminar'}}"  id="elimin">
 									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								</td>
 						</tr>
