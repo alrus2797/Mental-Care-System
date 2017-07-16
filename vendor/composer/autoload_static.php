@@ -332,6 +332,7 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+<<<<<<< HEAD
         'CratePagoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_104807_create_pago_table.php',
         'CreateAdmisionesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
         'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_101623_create_citas_table.php',
@@ -356,6 +357,16 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'CreatePrescriptionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_024227_create_prescriptions_table.php',
         'CreatePresentacionsTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_13_023310_create_presentacions_table.php',
         'CreateTiposcomprobantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_001126_create_tiposcomprobantes_table.php',
+=======
+        'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_101623_create_citas_table.php',
+        'CreateDiasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_025843_create_dias_table.php',
+        'CreateEspecialidadTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_031153_create_especialidad_table.php',
+        'CreateEstadosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_030326_create_estados_table.php',
+        'CreateHorarioMedicosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_025413_create_horario_medicos_table.php',
+        'CreateMedicosTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_024600_create_medicos_table.php',
+        'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateSlotsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_15_025949_create_slots_table.php',
+>>>>>>> Appointments
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',

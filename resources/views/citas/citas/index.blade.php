@@ -14,7 +14,7 @@
 			<table class="table table-responsive table-bordered table-condensed table-hover">
 				<thead>
 					<th>ID</th>
-					<th>Asunto</th>
+					<th>Motivo de Cita</th>
 					<th>FECHA</th>
 					<th>HORA</th>
 					<th>Sintomas</th>
