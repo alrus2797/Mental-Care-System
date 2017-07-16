@@ -10,7 +10,7 @@
 
 
 
-<div style="background-color: rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; margin: 30px">
+<div >
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
@@ -71,10 +71,18 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
-
-
-
+        <div class="form-group col-sm-12">
+          <div class="col-sm-3">
+        <form action="{{asset('personas')}}{{'/'.$tabla->id.'/editar'}}">
+                    <input class="btn btn-primary" type="submit" value="Editar Persona">
+                </form>
+              </div>
+              <div class="col-sm-3">
+                <form action="{{asset('personas')}}">
+                    <input class="btn btn-primary" type="submit" value="Todas las Personas">
+                </form>
+              </div>
+            </div>
     </div>
 
 
