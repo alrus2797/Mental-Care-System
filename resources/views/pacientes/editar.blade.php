@@ -4,6 +4,9 @@
 @section('content')
 
  <h2>Edición de paciente</h2>
+<div id="PacienteEditar" class="row">
+
+
 
 <div>
 <form method="POST" action="{{asset('pacientes/'.$get->id)}}">
@@ -71,11 +74,23 @@
             <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email"  value="{{$getPersona->email}}">
       </div>
 
+      <div class="form-group">
+       <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
+       <div class="col-sm-3">
+              <select class="form-control" id="estado" name="estado">
+                @foreach ($estados as $estado)
+                <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                @endforeach
+              </select>
+       </div>
+      </div>
 
 
  <button type="submit" class="btn btn-primary">Guardar</button>
 
 
 </form>
+</div>
+
 </div>
 @endsection
