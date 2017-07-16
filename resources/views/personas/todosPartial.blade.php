@@ -27,13 +27,13 @@
 							<td>{{$persona->telefono}}</td>
 							<td>{{$persona->email}}</td>
 							<td>
-									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									<a href="{{asset('personas')}}{{'/'.$persona->id}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 							</td>
 							<td>
-									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+									<a href="{{asset('personas')}}{{'/'.$persona->id.'/editar'}}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 							 </td>
 							<td>
-									<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+									<a href="{{asset('personas')}}{{'/'.$persona->id.'/eliminar'}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 								</td>
 
 						</tr>
