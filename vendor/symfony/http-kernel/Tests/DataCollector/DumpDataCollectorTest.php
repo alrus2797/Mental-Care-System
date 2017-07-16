@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\HttpKernel\Tests\DataCollector;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\DataCollector\DumpDataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +19,7 @@ use Symfony\Component\VarDumper\Cloner\Data;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DumpDataCollectorTest extends TestCase
+class DumpDataCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function testDump()
     {

@@ -10,6 +10,8 @@
 
 /**
  * String helpers.
+ *
+ * @since Class available since Release 3.6.0
  */
 class PHPUnit_Util_String
 {

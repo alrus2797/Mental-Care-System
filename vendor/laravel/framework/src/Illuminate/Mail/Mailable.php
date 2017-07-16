@@ -329,18 +329,6 @@ class Mailable implements MailableContract
     }
 
     /**
-     * Determine if the given recipient is set on the mailable.
-     *
-     * @param  object|array|string  $address
-     * @param  string|null  $name
-     * @return bool
-     */
-    public function hasFrom($address, $name = null)
-    {
-        return $this->hasRecipient($address, $name, 'from');
-    }
-
-    /**
      * Set the recipients of the message.
      *
      * @param  object|array|string  $address
@@ -532,7 +520,7 @@ class Mailable implements MailableContract
     public function markdown($view, array $data = [])
     {
         $this->markdown = $view;
-        $this->viewData = array_merge($this->viewData, $data);
+        $this->viewData = $data;
 
         return $this;
     }
@@ -547,7 +535,7 @@ class Mailable implements MailableContract
     public function view($view, array $data = [])
     {
         $this->view = $view;
-        $this->viewData = array_merge($this->viewData, $data);
+        $this->viewData = $data;
 
         return $this;
     }
@@ -562,7 +550,7 @@ class Mailable implements MailableContract
     public function text($textView, array $data = [])
     {
         $this->textView = $textView;
-        $this->viewData = array_merge($this->viewData, $data);
+        $this->viewData = $data;
 
         return $this;
     }

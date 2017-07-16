@@ -31,10 +31,8 @@ class RedisCaster
         $prefix = Caster::PREFIX_VIRTUAL;
 
         if (defined('HHVM_VERSION_ID')) {
-            if (isset($a[Caster::PREFIX_PROTECTED.'serializer'])) {
-                $ser = $a[Caster::PREFIX_PROTECTED.'serializer'];
-                $a[Caster::PREFIX_PROTECTED.'serializer'] = isset(self::$serializer[$ser]) ? new ConstStub(self::$serializer[$ser], $ser) : $ser;
-            }
+            $ser = $a[Caster::PREFIX_PROTECTED.'serializer'];
+            $a[Caster::PREFIX_PROTECTED.'serializer'] = isset(self::$serializer[$ser]) ? new ConstStub(self::$serializer[$ser], $ser) : $ser;
 
             return $a;
         }

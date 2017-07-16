@@ -132,7 +132,7 @@ abstract class Bundle implements BundleInterface
     /**
      * Returns the bundle parent name.
      *
-     * @return string|null The Bundle parent name it overrides or null if no parent
+     * @return string The Bundle parent name it overrides or null if no parent
      */
     public function getParent()
     {
@@ -223,8 +223,6 @@ abstract class Bundle implements BundleInterface
     {
         $pos = strrpos(static::class, '\\');
         $this->namespace = false === $pos ? '' : substr(static::class, 0, $pos);
-        if (null === $this->name) {
-            $this->name = false === $pos ? static::class : substr(static::class, $pos + 1);
-        }
+        $this->name = false === $pos ? static::class : substr(static::class, $pos + 1);
     }
 }

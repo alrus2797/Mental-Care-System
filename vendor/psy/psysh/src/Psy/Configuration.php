@@ -3,7 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
- * (c) 2012-2017 Justin Hileman
+ * (c) 2012-2015 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -44,7 +44,7 @@ class Configuration
         'loop', 'configDir', 'dataDir', 'runtimeDir', 'manualDbFile',
         'requireSemicolons', 'useUnicode', 'historySize', 'eraseDuplicates',
         'tabCompletion', 'errorLoggingLevel', 'warnOnMultipleConfigs',
-        'colorMode', 'updateCheck', 'startupMessage',
+        'colorMode', 'updateCheck',
     );
 
     private $defaultIncludes;
@@ -52,7 +52,6 @@ class Configuration
     private $dataDir;
     private $runtimeDir;
     private $configFile;
-    /** @var string|false */
     private $historyFile;
     private $historySize;
     private $eraseDuplicates;
@@ -70,7 +69,6 @@ class Configuration
     private $warnOnMultipleConfigs = false;
     private $colorMode;
     private $updateCheck;
-    private $startupMessage;
 
     // services
     private $readline;
@@ -341,7 +339,7 @@ class Configuration
      */
     public function setHistoryFile($file)
     {
-        $this->historyFile = ConfigPaths::touchFileWithMkdir($file);
+        $this->historyFile = (string) $file;
     }
 
     /**
@@ -359,7 +357,7 @@ class Configuration
         }
 
         // Deprecation warning for incorrect psysh_history path.
-        // @todo remove this before v0.9.0
+        // TODO: remove this before v0.8.0
         $xdg = new Xdg();
         $oldHistory = $xdg->getHomeConfigDir() . '/psysh_history';
         if (@is_file($oldHistory)) {
@@ -372,9 +370,8 @@ class Configuration
                 $newHistory
             );
             @trigger_error($msg, E_USER_DEPRECATED);
-            $this->setHistoryFile($oldHistory);
 
-            return $this->historyFile;
+            return $this->historyFile = $oldHistory;
         }
 
         $files = ConfigPaths::getConfigFiles(array('psysh_history', 'history'), $this->configDir);
@@ -385,14 +382,16 @@ class Configuration
                 trigger_error($msg, E_USER_NOTICE);
             }
 
-            $this->setHistoryFile($files[0]);
-        } else {
-            // fallback: create our own history file
-            $dir = $this->configDir ?: ConfigPaths::getCurrentConfigDir();
-            $this->setHistoryFile($dir . '/psysh_history');
+            return $this->historyFile = $files[0];
         }
 
-        return $this->historyFile;
+        // fallback: create our own history file
+        $dir = $this->configDir ?: ConfigPaths::getCurrentConfigDir();
+        if (!is_dir($dir)) {
+            mkdir($dir, 0700, true);
+        }
+
+        return $this->historyFile = $dir . '/psysh_history';
     }
 
     /**
@@ -458,7 +457,7 @@ class Configuration
      * The pipe will be created inside the current temporary directory.
      *
      * @param string $type
-     * @param int    $pid
+     * @param id     $pid
      *
      * @return string Pipe name
      */
@@ -643,7 +642,7 @@ class Configuration
             return $this->useUnicode;
         }
 
-        // @todo detect `chsh` != 65001 on Windows and return false
+        // TODO: detect `chsh` != 65001 on Windows and return false
         return true;
     }
 
@@ -977,7 +976,7 @@ class Configuration
     /**
      * Get a PHP manual database connection.
      *
-     * @return \PDO
+     * @return PDO
      */
     public function getManualDb()
     {
@@ -1111,12 +1110,7 @@ class Configuration
                 case Checker::DAILY:
                 case Checker::WEEKLY:
                 case Checker::MONTHLY:
-                    $checkFile = $this->getUpdateCheckCacheFile();
-                    if ($checkFile === false) {
-                        $this->checker = new NoopChecker();
-                    } else {
-                        $this->checker = new IntervalChecker($checkFile, $interval);
-                    }
+                    $this->checker = new IntervalChecker($this->getUpdateCheckCacheFile(), $interval);
                     break;
 
                 case Checker::NEVER:
@@ -1168,32 +1162,15 @@ class Configuration
     /**
      * Get a cache file path for the update checker.
      *
-     * @return string|false Return false if config file/directory is not writable
+     * @return string
      */
     public function getUpdateCheckCacheFile()
     {
         $dir = $this->configDir ?: ConfigPaths::getCurrentConfigDir();
+        if (!is_dir($dir)) {
+            mkdir($dir, 0700, true);
+        }
 
-        return ConfigPaths::touchFileWithMkdir($dir . '/update_check.json');
-    }
-
-    /**
-     * Set the startup message.
-     *
-     * @param string $message
-     */
-    public function setStartupMessage($message)
-    {
-        $this->startupMessage = $message;
-    }
-
-    /**
-     * Get the startup message.
-     *
-     * @return string|null
-     */
-    public function getStartupMessage()
-    {
-        return $this->startupMessage;
+        return $dir . '/update_check.json';
     }
 }

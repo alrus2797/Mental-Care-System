@@ -5,6 +5,7 @@ namespace Illuminate\Console\Scheduling;
 use LogicException;
 use InvalidArgumentException;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Cache\Repository as Cache;
 
 class CallbackEvent extends Event
 {
@@ -25,14 +26,14 @@ class CallbackEvent extends Event
     /**
      * Create a new event instance.
      *
-     * @param  \Illuminate\Console\Scheduling\Mutex  $mutex
+     * @param  \Illuminate\Contracts\Cache\Repository  $cache
      * @param  string  $callback
      * @param  array  $parameters
      * @return void
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(Mutex $mutex, $callback, array $parameters = [])
+    public function __construct(Cache $cache, $callback, array $parameters = [])
     {
         if (! is_string($callback) && ! is_callable($callback)) {
             throw new InvalidArgumentException(
@@ -40,7 +41,7 @@ class CallbackEvent extends Event
             );
         }
 
-        $this->mutex = $mutex;
+        $this->cache = $cache;
         $this->callback = $callback;
         $this->parameters = $parameters;
     }
@@ -56,7 +57,7 @@ class CallbackEvent extends Event
     public function run(Container $container)
     {
         if ($this->description) {
-            $this->mutex->create($this);
+            $this->cache->put($this->mutexName(), true, 1440);
         }
 
         try {
@@ -78,7 +79,7 @@ class CallbackEvent extends Event
     protected function removeMutex()
     {
         if ($this->description) {
-            $this->mutex->forget($this);
+            $this->cache->forget($this->mutexName());
         }
     }
 
@@ -98,7 +99,7 @@ class CallbackEvent extends Event
         }
 
         return $this->skip(function () {
-            return $this->mutex->exists($this);
+            return $this->cache->has($this->mutexName());
         });
     }
 

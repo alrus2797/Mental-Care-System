@@ -417,7 +417,7 @@ class Validator implements ValidatorContract
     {
         return $this->presentOrRuleIsImplicit($rule, $attribute, $value) &&
                $this->passesOptionalCheck($attribute) &&
-               $this->isNotNullIfMarkedAsNullable($rule, $attribute) &&
+               $this->isNotNullIfMarkedAsNullable($attribute, $value) &&
                $this->hasNotFailedPreviousRuleIfPresenceRule($rule, $attribute);
     }
 
@@ -470,17 +470,17 @@ class Validator implements ValidatorContract
     /**
      * Determine if the attribute fails the nullable check.
      *
-     * @param  string  $rule
      * @param  string  $attribute
+     * @param  mixed  $value
      * @return bool
      */
-    protected function isNotNullIfMarkedAsNullable($rule, $attribute)
+    protected function isNotNullIfMarkedAsNullable($attribute, $value)
     {
-        if (in_array($rule, $this->implicitRules) || ! $this->hasRule($attribute, ['Nullable'])) {
+        if (! $this->hasRule($attribute, ['Nullable'])) {
             return true;
         }
 
-        return ! is_null(Arr::get($this->data, $attribute, 0));
+        return ! is_null($value);
     }
 
     /**
@@ -813,21 +813,6 @@ class Validator implements ValidatorContract
     }
 
     /**
-     * Register an array of custom implicit validator extensions.
-     *
-     * @param  array  $extensions
-     * @return void
-     */
-    public function addDependentExtensions(array $extensions)
-    {
-        $this->addExtensions($extensions);
-
-        foreach ($extensions as $rule => $extension) {
-            $this->dependentRules[] = Str::studly($rule);
-        }
-    }
-
-    /**
      * Register a custom validator extension.
      *
      * @param  string  $rule
@@ -851,20 +836,6 @@ class Validator implements ValidatorContract
         $this->addExtension($rule, $extension);
 
         $this->implicitRules[] = Str::studly($rule);
-    }
-
-    /**
-     * Register a custom dependent validator extension.
-     *
-     * @param  string   $rule
-     * @param  \Closure|string  $extension
-     * @return void
-     */
-    public function addDependentExtension($rule, $extension)
-    {
-        $this->addExtension($rule, $extension);
-
-        $this->dependentRules[] = Str::studly($rule);
     }
 
     /**
@@ -1055,7 +1026,7 @@ class Validator implements ValidatorContract
     {
         $callback = $this->extensions[$rule];
 
-        if (is_callable($callback)) {
+        if ($callback instanceof Closure) {
             return call_user_func_array($callback, $parameters);
         } elseif (is_string($callback)) {
             return $this->callClassBasedExtension($callback, $parameters);

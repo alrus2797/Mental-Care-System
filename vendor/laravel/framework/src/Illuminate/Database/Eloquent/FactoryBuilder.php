@@ -103,19 +103,6 @@ class FactoryBuilder
     }
 
     /**
-     * Create a model and persist it in the database if requested.
-     *
-     * @param  array  $attributes
-     * @return \Closure
-     */
-    public function lazy(array $attributes = [])
-    {
-        return function () use ($attributes) {
-            return $this->create($attributes);
-        };
-    }
-
-    /**
      * Create a collection of models and persist them to the database.
      *
      * @param  array  $attributes
@@ -126,27 +113,12 @@ class FactoryBuilder
         $results = $this->make($attributes);
 
         if ($results instanceof Model) {
-            $this->store(collect([$results]));
+            $results->save();
         } else {
-            $this->store($results);
+            $results->each->save();
         }
 
         return $results;
-    }
-
-    /**
-     * Set the connection name on the results and store them.
-     *
-     * @param  \Illuminate\Support\Collection  $results
-     * @return void
-     */
-    protected function store($results)
-    {
-        $results->each(function ($model) {
-            $model->setConnection($model->query()->getConnection()->getName());
-
-            $model->save();
-        });
     }
 
     /**
@@ -179,7 +151,7 @@ class FactoryBuilder
     public function raw(array $attributes = [])
     {
         if ($this->amount === null) {
-            return $this->getRawAttributes($attributes);
+            return $this->getRawAttributes();
         }
 
         if ($this->amount < 1) {
@@ -204,7 +176,7 @@ class FactoryBuilder
             $this->faker, $attributes
         );
 
-        return $this->expandAttributes(
+        return $this->callClosureAttributes(
             array_merge($this->applyStates($definition, $attributes), $attributes)
         );
     }
@@ -254,25 +226,16 @@ class FactoryBuilder
     }
 
     /**
-     * Expand all attributes to their underlying values.
+     * Evaluate any Closure attributes on the attribute array.
      *
      * @param  array  $attributes
      * @return array
      */
-    protected function expandAttributes(array $attributes)
+    protected function callClosureAttributes(array $attributes)
     {
         foreach ($attributes as &$attribute) {
-            if ($attribute instanceof Closure) {
-                $attribute = $attribute($attributes);
-            }
-
-            if ($attribute instanceof static) {
-                $attribute = $attribute->create()->getKey();
-            }
-
-            if ($attribute instanceof Model) {
-                $attribute = $attribute->getKey();
-            }
+            $attribute = $attribute instanceof Closure
+                            ? $attribute($attributes) : $attribute;
         }
 
         return $attributes;

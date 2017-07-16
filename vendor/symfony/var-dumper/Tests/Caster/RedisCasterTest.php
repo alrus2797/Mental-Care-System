@@ -11,14 +11,13 @@
 
 namespace Symfony\Component\VarDumper\Tests\Caster;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  * @requires extension redis
  */
-class RedisCasterTest extends TestCase
+class RedisCasterTest extends \PHPUnit_Framework_TestCase
 {
     use VarDumperTestTrait;
 

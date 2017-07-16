@@ -11,12 +11,11 @@
 
 namespace Symfony\Component\HttpKernel\Tests\Debug;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Debug\FileLinkFormatter;
 
-class FileLinkFormatterTest extends TestCase
+class FileLinkFormatterTest extends \PHPUnit_Framework_TestCase
 {
     public function testWhenNoFileLinkFormatAndNoRequest()
     {

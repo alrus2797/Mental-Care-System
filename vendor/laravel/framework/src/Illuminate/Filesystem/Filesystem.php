@@ -374,7 +374,7 @@ class Filesystem
      */
     public function files($directory)
     {
-        $glob = glob($directory.DIRECTORY_SEPARATOR.'*');
+        $glob = glob($directory.'/*');
 
         if ($glob === false) {
             return [];

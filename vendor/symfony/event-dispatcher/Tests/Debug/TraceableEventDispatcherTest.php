@@ -11,16 +11,14 @@
 
 namespace Symfony\Component\EventDispatcher\Tests\Debug;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
-use Symfony\Component\EventDispatcher\Debug\WrappedListener;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-class TraceableEventDispatcherTest extends TestCase
+class TraceableEventDispatcherTest extends \PHPUnit_Framework_TestCase
 {
     public function testAddRemoveListener()
     {
@@ -75,20 +73,6 @@ class TraceableEventDispatcherTest extends TestCase
         $this->assertSame(123, $tdispatcher->getListenerPriority('foo', $listeners[0]));
     }
 
-    public function testGetListenerPriorityWhileDispatching()
-    {
-        $tdispatcher = new TraceableEventDispatcher(new EventDispatcher(), new Stopwatch());
-        $priorityWhileDispatching = null;
-
-        $listener = function () use ($tdispatcher, &$priorityWhileDispatching, &$listener) {
-            $priorityWhileDispatching = $tdispatcher->getListenerPriority('bar', $listener);
-        };
-
-        $tdispatcher->addListener('bar', $listener, 5);
-        $tdispatcher->dispatch('bar');
-        $this->assertSame(5, $priorityWhileDispatching);
-    }
-
     public function testAddRemoveSubscriber()
     {
         $dispatcher = new EventDispatcher();
@@ -105,41 +89,25 @@ class TraceableEventDispatcherTest extends TestCase
         $this->assertCount(0, $dispatcher->getListeners('foo'));
     }
 
-    /**
-     * @dataProvider isWrappedDataProvider
-     *
-     * @param bool $isWrapped
-     */
-    public function testGetCalledListeners($isWrapped)
+    public function testGetCalledListeners()
     {
         $dispatcher = new EventDispatcher();
-        $stopWatch = new Stopwatch();
-        $tdispatcher = new TraceableEventDispatcher($dispatcher, $stopWatch);
-
-        $listener = function () {};
-
-        $tdispatcher->addListener('foo', $listener, 5);
+        $tdispatcher = new TraceableEventDispatcher($dispatcher, new Stopwatch());
+        $tdispatcher->addListener('foo', $listener = function () {});
 
         $listeners = $tdispatcher->getNotCalledListeners();
         $this->assertArrayHasKey('data', $listeners['foo.closure']);
         unset($listeners['foo.closure']['data']);
         $this->assertEquals(array(), $tdispatcher->getCalledListeners());
-        $this->assertEquals(array('foo.closure' => array('event' => 'foo', 'pretty' => 'closure', 'priority' => 5)), $listeners);
+        $this->assertEquals(array('foo.closure' => array('event' => 'foo', 'pretty' => 'closure', 'priority' => 0)), $listeners);
 
         $tdispatcher->dispatch('foo');
 
         $listeners = $tdispatcher->getCalledListeners();
+        $this->assertArrayHasKey('data', $listeners['foo.closure']);
         unset($listeners['foo.closure']['data']);
-        $this->assertEquals(array('foo.closure' => array('event' => 'foo', 'pretty' => 'closure', 'priority' => 5)), $listeners);
+        $this->assertEquals(array('foo.closure' => array('event' => 'foo', 'pretty' => 'closure', 'priority' => null)), $listeners);
         $this->assertEquals(array(), $tdispatcher->getNotCalledListeners());
-    }
-
-    public function isWrappedDataProvider()
-    {
-        return array(
-            array(false),
-            array(true),
-        );
     }
 
     public function testGetCalledListenersNested()
@@ -205,20 +173,14 @@ class TraceableEventDispatcherTest extends TestCase
     {
         $dispatcher = new TraceableEventDispatcher(new EventDispatcher(), new Stopwatch());
         $loop = 1;
-        $dispatchedEvents = 0;
         $dispatcher->addListener('foo', $listener1 = function () use ($dispatcher, &$loop) {
             ++$loop;
             if (2 == $loop) {
                 $dispatcher->dispatch('foo');
             }
         });
-        $dispatcher->addListener('foo', function () use (&$dispatchedEvents) {
-            ++$dispatchedEvents;
-        });
 
         $dispatcher->dispatch('foo');
-
-        $this->assertSame(2, $dispatchedEvents);
     }
 
     public function testDispatchReusedEventNested()

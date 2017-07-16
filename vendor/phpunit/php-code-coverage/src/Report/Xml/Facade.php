@@ -88,12 +88,20 @@ class Facade
 
         $this->setTotals($directory, $dirObject->getTotals());
 
-        foreach ($directory->getDirectories() as $node) {
-            $this->processDirectory($node, $dirObject);
-        }
+        foreach ($directory as $node) {
+            if ($node instanceof DirectoryNode) {
+                $this->processDirectory($node, $dirObject);
+                continue;
+            }
 
-        foreach ($directory->getFiles() as $node) {
-            $this->processFile($node, $dirObject);
+            if ($node instanceof FileNode) {
+                $this->processFile($node, $dirObject);
+                continue;
+            }
+
+            throw new RuntimeException(
+                'Unknown node type for XML report'
+            );
         }
     }
 

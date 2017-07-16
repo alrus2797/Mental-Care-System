@@ -15,21 +15,21 @@ class SendQueuedNotifications implements ShouldQueue
      *
      * @var \Illuminate\Support\Collection
      */
-    public $notifiables;
+    protected $notifiables;
 
     /**
      * The notification to be sent.
      *
      * @var \Illuminate\Notifications\Notification
      */
-    public $notification;
+    protected $notification;
 
     /**
      * All of the channels to send the notification too.
      *
      * @var array
      */
-    public $channels;
+    protected $channels;
 
     /**
      * Create a new job instance.
@@ -55,15 +55,5 @@ class SendQueuedNotifications implements ShouldQueue
     public function handle(ChannelManager $manager)
     {
         $manager->sendNow($this->notifiables, $this->notification, $this->channels);
-    }
-
-    /**
-     * Get the display name for the queued job.
-     *
-     * @return string
-     */
-    public function displayName()
-    {
-        return get_class($this->notification);
     }
 }

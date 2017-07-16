@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\HttpKernel\Tests\EventListener;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\HttpKernel\EventListener\DumpListener;
 use Symfony\Component\VarDumper\Cloner\ClonerInterface;
@@ -24,7 +23,7 @@ use Symfony\Component\VarDumper\VarDumper;
  *
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class DumpListenerTest extends TestCase
+class DumpListenerTest extends \PHPUnit_Framework_TestCase
 {
     public function testSubscribedEvents()
     {

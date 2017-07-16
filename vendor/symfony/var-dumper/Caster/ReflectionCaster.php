@@ -65,20 +65,7 @@ class ReflectionCaster
 
     public static function castGenerator(\Generator $c, array $a, Stub $stub, $isNested)
     {
-        if (!class_exists('ReflectionGenerator', false)) {
-            return $a;
-        }
-
-        // Cannot create ReflectionGenerator based on a terminated Generator
-        try {
-            $reflectionGenerator = new \ReflectionGenerator($c);
-        } catch (\Exception $e) {
-            $a[Caster::PREFIX_VIRTUAL.'closed'] = true;
-
-            return $a;
-        }
-
-        return self::castReflectionGenerator($reflectionGenerator, $a, $stub, $isNested);
+        return class_exists('ReflectionGenerator', false) ? self::castReflectionGenerator(new \ReflectionGenerator($c), $a, $stub, $isNested) : $a;
     }
 
     public static function castType(\ReflectionType $c, array $a, Stub $stub, $isNested)
@@ -101,32 +88,30 @@ class ReflectionCaster
         if ($c->getThis()) {
             $a[$prefix.'this'] = new CutStub($c->getThis());
         }
-        $function = $c->getFunction();
+        $x = $c->getFunction();
         $frame = array(
-            'class' => isset($function->class) ? $function->class : null,
-            'type' => isset($function->class) ? ($function->isStatic() ? '::' : '->') : null,
-            'function' => $function->name,
+            'class' => isset($x->class) ? $x->class : null,
+            'type' => isset($x->class) ? ($x->isStatic() ? '::' : '->') : null,
+            'function' => $x->name,
             'file' => $c->getExecutingFile(),
             'line' => $c->getExecutingLine(),
         );
         if ($trace = $c->getTrace(DEBUG_BACKTRACE_IGNORE_ARGS)) {
-            $function = new \ReflectionGenerator($c->getExecutingGenerator());
+            $x = new \ReflectionGenerator($c->getExecutingGenerator());
             array_unshift($trace, array(
                 'function' => 'yield',
-                'file' => $function->getExecutingFile(),
-                'line' => $function->getExecutingLine() - 1,
+                'file' => $x->getExecutingFile(),
+                'line' => $x->getExecutingLine() - 1,
             ));
             $trace[] = $frame;
             $a[$prefix.'trace'] = new TraceStub($trace, false, 0, -1, -1);
         } else {
-            $function = new FrameStub($frame, false, true);
-            $function = ExceptionCaster::castFrameStub($function, array(), $function, true);
+            $x = new FrameStub($frame, false, true);
+            $x = ExceptionCaster::castFrameStub($x, array(), $x, true);
             $a[$prefix.'executing'] = new EnumStub(array(
-                $frame['class'].$frame['type'].$frame['function'].'()' => $function[$prefix.'src'],
+                $frame['class'].$frame['type'].$frame['function'].'()' => $x[$prefix.'src'],
             ));
         }
-
-        $a[Caster::PREFIX_VIRTUAL.'closed'] = false;
 
         return $a;
     }

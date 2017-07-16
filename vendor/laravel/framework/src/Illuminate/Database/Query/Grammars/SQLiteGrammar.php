@@ -7,25 +7,6 @@ use Illuminate\Database\Query\Builder;
 class SQLiteGrammar extends Grammar
 {
     /**
-     * The components that make up a select clause.
-     *
-     * @var array
-     */
-    protected $selectComponents = [
-        'aggregate',
-        'columns',
-        'from',
-        'joins',
-        'wheres',
-        'groups',
-        'havings',
-        'orders',
-        'limit',
-        'offset',
-        'lock',
-    ];
-
-    /**
      * All of the available clause operators.
      *
      * @var array
@@ -35,36 +16,6 @@ class SQLiteGrammar extends Grammar
         'like', 'not like', 'between', 'ilike',
         '&', '|', '<<', '>>',
     ];
-
-    /**
-     * Compile a select query into SQL.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @return string
-     */
-    public function compileSelect(Builder $query)
-    {
-        $sql = parent::compileSelect($query);
-
-        if ($query->unions) {
-            $sql = 'select * from ('.$sql.') '.$this->compileUnions($query);
-        }
-
-        return $sql;
-    }
-
-    /**
-     * Compile a single union statement.
-     *
-     * @param  array  $union
-     * @return string
-     */
-    protected function compileUnion(array $union)
-    {
-        $conjuction = $union['all'] ? ' union all ' : ' union ';
-
-        return $conjuction.'select * from ('.$union['query']->toSql().')';
-    }
 
     /**
      * Compile a "where date" clause.

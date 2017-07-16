@@ -208,7 +208,7 @@ class Handler implements ExceptionHandlerContract
     {
         $e = FlattenException::create($e);
 
-        $handler = new SymfonyExceptionHandler(config('app.debug', false));
+        $handler = new SymfonyExceptionHandler(config('app.debug'));
 
         return SymfonyResponse::create($handler->getHtml($e), $e->getStatusCode(), $e->getHeaders());
     }

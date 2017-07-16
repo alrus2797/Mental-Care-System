@@ -19,7 +19,7 @@ class BroadcastEvent implements ShouldQueue
      *
      * @var mixed
      */
-    public $event;
+    protected $event;
 
     /**
      * Create a new job handler instance.
@@ -85,15 +85,5 @@ class BroadcastEvent implements ShouldQueue
         }
 
         return $value;
-    }
-
-    /**
-     * Get the display name for the queued job.
-     *
-     * @return string
-     */
-    public function displayName()
-    {
-        return get_class($this->event);
     }
 }

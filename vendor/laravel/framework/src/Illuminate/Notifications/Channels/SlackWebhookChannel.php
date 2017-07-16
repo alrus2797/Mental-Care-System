@@ -55,11 +55,9 @@ class SlackWebhookChannel
     protected function buildJsonPayload(SlackMessage $message)
     {
         $optionalFields = array_filter([
-            'channel' => data_get($message, 'channel'),
-            'icon_emoji' => data_get($message, 'icon'),
-            'icon_url' => data_get($message, 'image'),
-            'link_names' => data_get($message, 'linkNames'),
             'username' => data_get($message, 'username'),
+            'icon_emoji' => data_get($message, 'icon'),
+            'channel' => data_get($message, 'channel'),
         ]);
 
         return array_merge([
@@ -81,15 +79,14 @@ class SlackWebhookChannel
         return collect($message->attachments)->map(function ($attachment) use ($message) {
             return array_filter([
                 'color' => $attachment->color ?: $message->color(),
+                'title' => $attachment->title,
+                'text' => $attachment->content,
                 'fallback' => $attachment->fallback,
+                'title_link' => $attachment->url,
                 'fields' => $this->fields($attachment),
+                'mrkdwn_in' => $attachment->markdown,
                 'footer' => $attachment->footer,
                 'footer_icon' => $attachment->footerIcon,
-                'image_url' => $attachment->imageUrl,
-                'mrkdwn_in' => $attachment->markdown,
-                'text' => $attachment->content,
-                'title' => $attachment->title,
-                'title_link' => $attachment->url,
                 'ts' => $attachment->timestamp,
             ]);
         })->all();

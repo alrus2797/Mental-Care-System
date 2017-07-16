@@ -5,7 +5,7 @@ namespace Illuminate\View\Compilers\Concerns;
 trait CompilesComments
 {
     /**
-     * Compile Blade comments into an empty string.
+     * Compile Blade comments into valid PHP.
      *
      * @param  string  $value
      * @return string

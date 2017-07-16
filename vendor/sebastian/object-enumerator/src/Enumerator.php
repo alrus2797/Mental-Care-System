@@ -69,13 +69,7 @@ class Enumerator
             foreach ($reflector->getProperties() as $attribute) {
                 $attribute->setAccessible(true);
 
-                try {
-                    $value = $attribute->getValue($variable);
-                } catch (\Throwable $e) {
-                    continue;
-                } catch (\Exception $e) {
-                    continue;
-                }
+                $value = $attribute->getValue($variable);
 
                 if (!is_array($value) && !is_object($value)) {
                     continue;

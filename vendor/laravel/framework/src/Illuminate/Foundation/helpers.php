@@ -94,18 +94,15 @@ if (! function_exists('app')) {
      * Get the available container instance.
      *
      * @param  string  $abstract
-     * @param  array   $parameters
      * @return mixed|\Illuminate\Foundation\Application
      */
-    function app($abstract = null, array $parameters = [])
+    function app($abstract = null)
     {
         if (is_null($abstract)) {
             return Container::getInstance();
         }
 
-        return empty($parameters)
-            ? Container::getInstance()->make($abstract)
-            : Container::getInstance()->makeWith($abstract, $parameters);
+        return Container::getInstance()->make($abstract);
     }
 }
 
@@ -231,19 +228,15 @@ if (! function_exists('cache')) {
             return app('cache')->get($arguments[0], isset($arguments[1]) ? $arguments[1] : null);
         }
 
-        if (! is_array($arguments[0])) {
-            throw new Exception(
-                'When setting a value in the cache, you must pass an array of key / value pairs.'
-            );
-        }
+        if (is_array($arguments[0])) {
+            if (! isset($arguments[1])) {
+                throw new Exception(
+                    'You must set an expiration time when putting to the cache.'
+                );
+            }
 
-        if (! isset($arguments[1])) {
-            throw new Exception(
-                'You must specify an expiration time when setting a value in the cache.'
-            );
+            return app('cache')->put(key($arguments[0]), reset($arguments[0]), $arguments[1]);
         }
-
-        return app('cache')->put(key($arguments[0]), reset($arguments[0]), $arguments[1]);
     }
 }
 
@@ -350,7 +343,7 @@ if (! function_exists('database_path')) {
      */
     function database_path($path = '')
     {
-        return app()->databasePath($path);
+        return app()->databasePath().($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 
@@ -560,33 +553,25 @@ if (! function_exists('mix')) {
      * Get the path to a versioned Mix file.
      *
      * @param  string  $path
-     * @param  string  $manifestDirectory
      * @return \Illuminate\Support\HtmlString
      *
      * @throws \Exception
      */
-    function mix($path, $manifestDirectory = '')
+    function mix($path)
     {
         static $manifest;
-
-        if (! starts_with($path, '/')) {
-            $path = "/{$path}";
-        }
-
-        if ($manifestDirectory && ! starts_with($manifestDirectory, '/')) {
-            $manifestDirectory = "/{$manifestDirectory}";
-        }
-
-        if (file_exists(public_path($manifestDirectory.'/hot'))) {
-            return new HtmlString("//localhost:8080{$path}");
-        }
+        static $shouldHotReload;
 
         if (! $manifest) {
-            if (! file_exists($manifestPath = public_path($manifestDirectory.'/mix-manifest.json'))) {
+            if (! file_exists($manifestPath = public_path('mix-manifest.json'))) {
                 throw new Exception('The Mix manifest does not exist.');
             }
 
             $manifest = json_decode(file_get_contents($manifestPath), true);
+        }
+
+        if (! starts_with($path, '/')) {
+            $path = "/{$path}";
         }
 
         if (! array_key_exists($path, $manifest)) {
@@ -596,7 +581,9 @@ if (! function_exists('mix')) {
             );
         }
 
-        return new HtmlString($manifestDirectory.$manifest[$path]);
+        return $shouldHotReload = file_exists(public_path('hot'))
+                    ? new HtmlString("http://localhost:8080{$manifest[$path]}")
+                    : new HtmlString($manifest[$path]);
     }
 }
 
@@ -680,7 +667,7 @@ if (! function_exists('request')) {
             return app('request')->only($key);
         }
 
-        return data_get(app('request')->all(), $key, $default);
+        return app('request')->input($key, $default);
     }
 }
 
@@ -706,7 +693,7 @@ if (! function_exists('resource_path')) {
      */
     function resource_path($path = '')
     {
-        return app()->resourcePath($path);
+        return app()->resourcePath().($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }
 

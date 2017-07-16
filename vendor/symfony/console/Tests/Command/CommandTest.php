@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Console\Tests\Command;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Application;
@@ -24,7 +23,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class CommandTest extends TestCase
+class CommandTest extends \PHPUnit_Framework_TestCase
 {
     protected static $fixturesPath;
 
@@ -117,12 +116,7 @@ class CommandTest extends TestCase
      */
     public function testInvalidCommandNames($name)
     {
-        if (method_exists($this, 'expectException')) {
-            $this->expectException('InvalidArgumentException');
-            $this->expectExceptionMessage(sprintf('Command name "%s" is invalid.', $name));
-        } else {
-            $this->setExpectedException('InvalidArgumentException', sprintf('Command name "%s" is invalid.', $name));
-        }
+        $this->setExpectedException('InvalidArgumentException', sprintf('Command name "%s" is invalid.', $name));
 
         $command = new \TestCommand();
         $command->setName($name);
@@ -180,7 +174,7 @@ class CommandTest extends TestCase
     public function testSetAliasesNull()
     {
         $command = new \TestCommand();
-        $this->{method_exists($this, $_ = 'expectException') ? $_ : 'setExpectedException'}('InvalidArgumentException');
+        $this->setExpectedException('InvalidArgumentException');
         $command->setAliases(null);
     }
 

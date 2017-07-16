@@ -208,14 +208,14 @@ class PasswordBroker implements PasswordBrokerContract
     }
 
     /**
-     * Delete password reset tokens of the given user.
+     * Delete the given password reset token.
      *
-     * @param  \Illuminate\Contracts\Auth\CanResetPassword $user
+     * @param  string  $token
      * @return void
      */
-    public function deleteToken(CanResetPasswordContract $user)
+    public function deleteToken($token)
     {
-        $this->tokens->delete($user);
+        $this->tokens->delete($token);
     }
 
     /**

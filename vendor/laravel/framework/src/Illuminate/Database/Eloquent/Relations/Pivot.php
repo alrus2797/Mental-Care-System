@@ -12,7 +12,7 @@ class Pivot extends Model
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    public $parent;
+    protected $parent;
 
     /**
      * The name of the foreign key column.

@@ -7,8 +7,8 @@ use ReflectionProperty;
 /**
  * Match a property by its type
  *
- * It is recommended to use {@see DeepCopy\TypeFilter\TypeFilter} instead, as it applies on all occurrences
- * of given type in copied context (eg. array elements), not just on object properties.
+ * @deprecated It is recommended to use {@see DeepCopy\TypeFilter\TypeFilter} instead, as it applies on all occurrences
+ *             of given type in copied context (eg. array elements), not just on object properties.
  */
 class PropertyTypeMatcher implements Matcher
 {

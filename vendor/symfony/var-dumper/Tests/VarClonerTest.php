@@ -11,13 +11,12 @@
 
 namespace Symfony\Component\VarDumper\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class VarClonerTest extends TestCase
+class VarClonerTest extends \PHPUnit_Framework_TestCase
 {
     public function testMaxIntBoundary()
     {

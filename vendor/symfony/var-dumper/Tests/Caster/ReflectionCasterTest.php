@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\VarDumper\Tests\Caster;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 use Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo;
 use Symfony\Component\VarDumper\Tests\Fixtures\NotLoadableClass;
@@ -19,7 +18,7 @@ use Symfony\Component\VarDumper\Tests\Fixtures\NotLoadableClass;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class ReflectionCasterTest extends TestCase
+class ReflectionCasterTest extends \PHPUnit_Framework_TestCase
 {
     use VarDumperTestTrait;
 
@@ -77,7 +76,7 @@ Closure {
     \$b: & 123
   }
   file: "%sReflectionCasterTest.php"
-  line: "67 to 67"
+  line: "66 to 66"
 }
 EOTXT
             , $var
@@ -152,10 +151,11 @@ EOTXT
             $this->markTestSkipped('xdebug is active');
         }
 
-        $generator = new GeneratorDemo();
-        $generator = $generator->baz();
+        $g = new GeneratorDemo();
+        $g = $g->baz();
+        $r = new \ReflectionGenerator($g);
 
-        $expectedDump = <<<'EODUMP'
+        $xDump = <<<'EODUMP'
 Generator {
   this: Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo { …}
   executing: {
@@ -167,17 +167,16 @@ Generator {
       }
     }
   }
-  closed: false
 }
 EODUMP;
 
-        $this->assertDumpMatchesFormat($expectedDump, $generator);
+        $this->assertDumpMatchesFormat($xDump, $g);
 
-        foreach ($generator as $v) {
+        foreach ($g as $v) {
             break;
         }
 
-        $expectedDump = <<<'EODUMP'
+        $xDump = <<<'EODUMP'
 array:2 [
   0 => ReflectionGenerator {
     this: Symfony\Component\VarDumper\Tests\Fixtures\GeneratorDemo { …}
@@ -198,7 +197,6 @@ array:2 [
         : }
       }
     }
-    closed: false
   }
   1 => Generator {
     executing: {
@@ -210,23 +208,11 @@ array:2 [
         }
       }
     }
-    closed: false
   }
 ]
 EODUMP;
 
-        $r = new \ReflectionGenerator($generator);
-        $this->assertDumpMatchesFormat($expectedDump, array($r, $r->getExecutingGenerator()));
-
-        foreach ($generator as $v) {
-        }
-
-        $expectedDump = <<<'EODUMP'
-Generator {
-  closed: true
-}
-EODUMP;
-        $this->assertDumpMatchesFormat($expectedDump, $generator);
+        $this->assertDumpMatchesFormat($xDump, array($r, $r->getExecutingGenerator()));
     }
 }
 

@@ -11,12 +11,11 @@
 
 namespace Symfony\Component\HttpKernel\Tests\DataCollector;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Debug\Exception\SilencedErrorContext;
 use Symfony\Component\HttpKernel\DataCollector\LoggerDataCollector;
 use Symfony\Component\VarDumper\Cloner\Data;
 
-class LoggerDataCollectorTest extends TestCase
+class LoggerDataCollectorTest extends \PHPUnit_Framework_TestCase
 {
     private static $data;
 

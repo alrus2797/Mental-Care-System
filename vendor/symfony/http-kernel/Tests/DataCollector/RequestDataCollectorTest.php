@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\HttpKernel\Tests\DataCollector;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
@@ -28,7 +27,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\VarDumper\Cloner\Data;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 
-class RequestDataCollectorTest extends TestCase
+class RequestDataCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function testCollect()
     {

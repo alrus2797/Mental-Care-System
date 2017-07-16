@@ -30,7 +30,7 @@ interface Dispatcher
     public function subscribe($subscriber);
 
     /**
-     * Dispatch an event until the first non-null response is returned.
+     * Dispatch an event and call the listeners.
      *
      * @param  string|object  $event
      * @param  mixed  $payload
@@ -39,7 +39,7 @@ interface Dispatcher
     public function until($event, $payload = []);
 
     /**
-     * Dispatch an event and call the listeners.
+     * Fire an event until the first non-null response is returned.
      *
      * @param  string|object  $event
      * @param  mixed  $payload

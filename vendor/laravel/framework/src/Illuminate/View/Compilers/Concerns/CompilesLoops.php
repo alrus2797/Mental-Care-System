@@ -35,17 +35,12 @@ trait CompilesLoops
     }
 
     /**
-     * Compile the for-else-empty and empty statements into valid PHP.
+     * Compile the for-else-empty statements into valid PHP.
      *
-     * @param  string  $expression
      * @return string
      */
-    protected function compileEmpty($expression)
+    protected function compileEmpty()
     {
-        if ($expression) {
-            return "<?php if(empty{$expression}): ?>";
-        }
-
         $empty = '$__empty_'.$this->forElseCounter--;
 
         return "<?php endforeach; \$__env->popLoop(); \$loop = \$__env->getLastLoop(); if ({$empty}): ?>";
@@ -57,16 +52,6 @@ trait CompilesLoops
      * @return string
      */
     protected function compileEndforelse()
-    {
-        return '<?php endif; ?>';
-    }
-
-    /**
-     * Compile the end-empty statements into valid PHP.
-     *
-     * @return string
-     */
-    protected function compileEndEmpty()
     {
         return '<?php endif; ?>';
     }

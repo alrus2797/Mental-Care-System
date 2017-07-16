@@ -11,14 +11,11 @@
 
 namespace Symfony\Component\Yaml\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Parser;
 
-class ParserTest extends TestCase
+class ParserTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var Parser */
     protected $parser;
 
     protected function setUp()
@@ -43,11 +40,7 @@ class ParserTest extends TestCase
                 if (E_USER_DEPRECATED !== $type) {
                     restore_error_handler();
 
-                    if (class_exists('PHPUnit_Util_ErrorHandler')) {
-                        return call_user_func_array('PHPUnit_Util_ErrorHandler::handleError', func_get_args());
-                    }
-
-                    return call_user_func_array('PHPUnit\Util\ErrorHandler::handleError', func_get_args());
+                    return call_user_func_array('PHPUnit_Util_ErrorHandler::handleError', func_get_args());
                 }
 
                 $deprecations[] = $msg;
@@ -1316,15 +1309,10 @@ EOT
 
     /**
      * @dataProvider getInvalidBinaryData
-     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
      */
     public function testParseInvalidBinaryData($data, $expectedMessage)
     {
-        if (method_exists($this, 'expectException')) {
-            $this->expectExceptionMessageRegExp($expectedMessage);
-        } else {
-            $this->setExpectedExceptionRegExp(ParseException::class, $expectedMessage);
-        }
+        $this->setExpectedExceptionRegExp('\Symfony\Component\Yaml\Exception\ParseException', $expectedMessage);
 
         $this->parser->parse($data);
     }
@@ -1391,12 +1379,10 @@ EOT;
      */
     public function testParserThrowsExceptionWithCorrectLineNumber($lineNumber, $yaml)
     {
-        if (method_exists($this, 'expectException')) {
-            $this->expectException('\Symfony\Component\Yaml\Exception\ParseException');
-            $this->expectExceptionMessage(sprintf('Unexpected characters near "," at line %d (near "bar: "123",").', $lineNumber));
-        } else {
-            $this->setExpectedException('\Symfony\Component\Yaml\Exception\ParseException', sprintf('Unexpected characters near "," at line %d (near "bar: "123",").', $lineNumber));
-        }
+        $this->setExpectedException(
+            '\Symfony\Component\Yaml\Exception\ParseException',
+            sprintf('Unexpected characters near "," at line %d (near "bar: "123",").', $lineNumber)
+        );
 
         $this->parser->parse($yaml);
     }
@@ -1478,38 +1464,6 @@ bar: baz
 EOT;
 
         $this->assertSame(array('foo' => 'bar baz foobar foo', 'bar' => 'baz'), $this->parser->parse($yaml));
-    }
-
-    public function testCanParseVeryLongValue()
-    {
-        $longStringWithSpaces = str_repeat('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ', 20000);
-        $trickyVal = array('x' => $longStringWithSpaces);
-
-        $yamlString = Yaml::dump($trickyVal);
-        $arrayFromYaml = $this->parser->parse($yamlString);
-
-        $this->assertEquals($trickyVal, $arrayFromYaml);
-    }
-
-    /**
-     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
-     * @expectedExceptionMessage Reference "foo" does not exist at line 2
-     */
-    public function testParserCleansUpReferencesBetweenRuns()
-    {
-        $yaml = <<<YAML
-foo: &foo
-    baz: foobar
-bar:
-    <<: *foo
-YAML;
-        $this->parser->parse($yaml);
-
-        $yaml = <<<YAML
-bar:
-    <<: *foo
-YAML;
-        $this->parser->parse($yaml);
     }
 }
 

@@ -4,7 +4,7 @@ require_once __DIR__.'/AbstractStreamBufferAcceptanceTest.php';
 
 class Swift_Transport_StreamBuffer_ProcessAcceptanceTest extends Swift_Transport_StreamBuffer_AbstractStreamBufferAcceptanceTest
 {
-    protected function setUp()
+    public function setUp()
     {
         if (!defined('SWIFT_SENDMAIL_PATH')) {
             $this->markTestSkipped(

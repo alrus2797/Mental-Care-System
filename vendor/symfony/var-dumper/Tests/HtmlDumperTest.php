@@ -11,14 +11,13 @@
 
 namespace Symfony\Component\VarDumper\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class HtmlDumperTest extends TestCase
+class HtmlDumperTest extends \PHPUnit_Framework_TestCase
 {
     public function testGet()
     {

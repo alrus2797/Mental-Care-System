@@ -123,6 +123,8 @@ class Swift_Plugins_LoggerPluginTest extends \SwiftMailerTestCase
         }
     }
 
+    // -- Creation Methods
+
     private function _createLogger()
     {
         return $this->getMockBuilder('Swift_Plugins_Logger')->getMock();
