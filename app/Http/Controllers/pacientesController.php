@@ -24,9 +24,10 @@ class pacientesController extends Controller
       //$tabla = paciente::all();
 
       $tabla = DB::table('pacientes')
-              ->join('personas','pacientes.id','=','personas.id')
-
-              ->get();
+              ->join('personas','pacientes.persona_id','=','personas.id')
+              -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
+              -> select('pacientes.*', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+              -> get();
 
       return view('pacientes.todos',compact('tabla'));
 
@@ -177,16 +178,29 @@ class pacientesController extends Controller
 
     public function retrievePacientes(Request $datos)
     {
-      $respuesta = DB::table('pacientes')
-                  -> select('id', 'nombres', 'apellidopaterno', 'apellidomaterno', 'dni', 'direccion', 'historiaclinica')->where([
-                    ['nombres', 'like', '%'.$datos->input('nombres').'%'],
-                    ['apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
-                    ['apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
-                    ['dni', 'like', '%'.$datos->input('DNI').'%'],
-                    ['direccion', 'like', '%'.$datos->input('direccion').'%'],
-                    ['historiaclinica', 'like', '%'.$datos->input('historia').'%'],
+      /*$respuesta = DB::table('personas') 
+                  -> join('pacientes', 'personas.id', '=', 'pacientes.persona_id')
+                  -> select('pacientes.id', 'personas.nombres', 'personas.apellidopaterno', 'personas.apellidomaterno', 'personas.dni', 'personas.direccion', 'personas.telefono','pacientes.historials_id', 'pacientes.estado_id')
+                  -> where([
+                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
                     ])
-                  ->get();
+                  ->get();*/
+      $respuesta = DB::table('personas') 
+                  -> join('pacientes', 'personas.id', '=', 'pacientes.persona_id')
+                  -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
+                  -> select('pacientes.*', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+                  -> where([
+                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
+                    ])
+                  -> get();
       return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
     }
 
