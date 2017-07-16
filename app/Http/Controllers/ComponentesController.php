@@ -82,7 +82,11 @@ class ComponentesController extends Controller
      */
     public function update(Request $request, Componente $componente)
     {
-        //
+        //dd($request["nombre"]);
+        //dd($componente->nombre);
+        $componente->nombre = $request["nombre"];
+        $componente->save();
+        return redirect('componentes');
     }
 
     /**
@@ -93,7 +97,8 @@ class ComponentesController extends Controller
      */
     public function destroy(Componente $componente)
     {
-        //
+        $componente->delete();
+        return response()->json(true);
     }
 
     public function obtenerComponentes(Request $request)

@@ -8,7 +8,7 @@
   <div class="col-md-7">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">Nombre</span>
-      <input type="text" class="form-control" placeholder="Componente" aria-describedby="basic-addon1" name="nombre" required maxlength=="20">
+      <input type="text" class="form-control"  value="{{$componente->nombre}} " aria-describedby="basic-addon1" name="nombre" required maxlength=="20">
   </div>
   </div>
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
-usea App\Medicamento;
+use App\Medicamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

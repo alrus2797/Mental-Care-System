@@ -82,7 +82,7 @@ Route::get('pres/buscador',function(){
   return view('Prescriptions.buscador');
 });
 
-Route::resource('prescripcion','prescriptionController',['parameters'=>[
+Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
 
