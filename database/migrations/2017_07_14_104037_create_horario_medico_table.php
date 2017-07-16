@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicosTable extends Migration
+class CreateHorarioMedicoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicos', function (Blueprint $table) {
+        Schema::create('horario_medico', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->dateTime('fecha_hora_inicio');
+            $table->dateTime('fecha_hora_fin');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicos');
+        Schema::dropIfExists('horario_medico');
     }
 }

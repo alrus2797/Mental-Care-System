@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicosTable extends Migration
+class CreateEstadoCitaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicos', function (Blueprint $table) {
+        Schema::create('estado_cita', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->string('estado_cita',10);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicos');
+        Schema::dropIfExists('estado_cita');
     }
 }

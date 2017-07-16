@@ -14,11 +14,8 @@ class consultasSqlController extends Controller
 
     public function runQuery($sqlQuery)
     {
-
       return DB::select(DB::raw($sqlQuery));
     }
-
-
 
 
     public function queryAtencion()
@@ -55,5 +52,8 @@ class consultasSqlController extends Controller
       $abc='asasdasdd';
       return view('ManageReporting/repTratamiento',['consulta'=>$abc]);
     }
+
+
+
 
 }

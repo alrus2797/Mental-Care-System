@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMedicosTable extends Migration
+class CreatePagoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateMedicosTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas');
+        Schema::create('pago', function (Blueprint $table) {
+            $table->engine= 'InnoDB';
+            $table->string('codigo_pago',10)->primary();
+            $table->string('tipo_de_pago',50);
+            $table->string('descripcion',50);
+            $table->integer('monto');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateMedicosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medicos');
+        Schema::dropIfExists('pago');
     }
 }
