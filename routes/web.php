@@ -45,6 +45,7 @@ Route::get('componentes/todos','ComponentesController@todos');
 Route::resource('componentes','ComponentesController', ['parameters' => [
     'componentes' => 'componente'
 ]]);
+Route::get('obtenerComponentes', 'ComponentesController@obtenerComponentes'); 
 
 
 /*

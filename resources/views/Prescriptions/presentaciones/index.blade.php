@@ -11,10 +11,10 @@
 <form id="form" method="post" action="{{ asset('presentaciones')}}">
 	
   <div class="text-center">
-  <h2>Presentaciones</h2><br><br>
+  <br><h2>Presentaciones</h2><br><br>
   </div>
 	{{ csrf_field()}}
-<div class="row">
+
   <div class="col-md-3">
   	<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">@</span>
@@ -31,23 +31,18 @@
 
   <div class="col-md-3">
 	<button type="submit" class="btn btn-info">Crear</button>
-
   </div>
+</form>
 
-
-
-
-
-  <div class="col-md-3">
-    <div class="input-group">
-    <div class="input-group-addon">
-      <span class="glyphicon glyphicon-search"></span>
-    </div>
-    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" onkeyup="showPresentaciones($('#descripcion').val(), $('#unidad').val())">
-    </div>
-  </div><br><br>
-
-</div><br>
+<form>
+	<div class="col-md-3">
+	    <div class="input-group">
+	    <div class="input-group-addon">
+	      <span class="glyphicon glyphicon-search"></span>
+	    </div>
+	    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" onkeyup="showPresentaciones($('#descripcion').val(), $('#unidad').val())">
+	    </div>
+	</div><br><br>
 </form>
 
 <div class="container">

@@ -9,27 +9,35 @@
 <script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
 <form id="form">
-	<h3>Componentes</h3>
+  <div class="text-center">
+	<br><h2>Componentes</h2><br><br>
+  </div>
 	{{ csrf_field()}}
-<div class="row">
+
+    <div class="col-md-3">
+    	<div class="input-group">
+  		  <span class="input-group-addon" id="basic-addon1">Nombre</span>
+  		  <input type="text" class="form-control" placeholder="Componente" aria-describedby="basic-addon1" name="nombre" required maxlength=="20">
+  	</div>
+    </div>
+
+    <div class="col-md-3">
+  	<button type="submit" class="btn btn-info">Crear</button>
+    </div>
+
+</form>
+
+<form>
   <div class="col-md-3">
-  	<div class="input-group">
-		  <span class="input-group-addon" id="basic-addon1">Nombre</span>
-		  <input type="text" class="form-control" placeholder="Componente" aria-describedby="basic-addon1" name="nombre" required maxlength=="20">
-	</div>
   </div>
-
   <div class="col-md-3">
-	<button type="submit" class="btn btn-info">Crear</button>
-
-  </div>
-
-</div>
-
-
-
-</div>
-
+      <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </div>
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeyup="showComponentes($('#nombre').val())">
+      </div>
+  </div><br><br>
 </form>
 
 <div class="container">
@@ -88,6 +96,20 @@ function editar(id){
   });
 }
 
+function showComponentes(nom) {
+    var datos = {
+      "nom" : nom,
+    };
+    $.ajax({
+      data: datos,
+      url: 'obtenerComponentes',
+      type: 'get',
+      dataType : 'json',
+      success: function(data){
+        $("#todos").html(data);
+      }
+    });
+}
 
 </script>
 
