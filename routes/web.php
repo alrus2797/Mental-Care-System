@@ -118,7 +118,7 @@ Route::group(['prefix'=>'personas'],function(){
 Route::group(['prefix'=>'pacientes/estados'],function(){
 
   Route::get('/','pacientesEstadosController@todos' );
-  Route::post('/','pacientesEstadosController@todos' );
+  //Route::post('/','pacientesEstadosController@todos' );
   Route::get('todos','pacientesEstadosController@todos');
 
   Route::get('crear','pacientesEstadosController@crearObt' );

@@ -20,7 +20,7 @@ class pacientesController extends Controller
       //X-Total-Count
       //$tabla = paciente::all()->paginate(2);
       //$tabla = paciente::with('persona')->get();
-      $tabla = DB::table('pacientes')->paginate(20);
+      $tabla = DB::table('pacientes');
 
       //$tabla = paciente::all()->paginate(X-Total-Count);
       //return $tabla;

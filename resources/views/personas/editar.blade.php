@@ -6,8 +6,9 @@
 <h2>Edicion de Persona</h2>
 
 <div style="background-color: rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; margin: 30px">
-      <form id="register-form" method="POST" action="{{asset('personas/crear')}}">
+      <form id="register-form" method="POST" action="{{asset('personas/editar')}}">
         {{csrf_field()}}
+        <input type="hidden" id="id" name="id" value="{{$get->id}}">
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
           <div class="col-sm-3">
