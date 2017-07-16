@@ -20,39 +20,31 @@ class consultasSqlController extends Controller
 
     public function queryAtencion()
     {
-      $sqlQuery = "select paciente.id as idp,paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , autolesion ,medicina.descripcion, comentarios
-              from atencionmedica
-                  join paciente
-                      on atencionmedica.paciente = paciente.id
-                  join medicina
-                      on atencionmedica.medicamento = medicina.id
-                  join clinica
-                      on atencionmedica.clinica = clinica.id";
+      $sqlQuery = "";
       $results = $this->runQuery($sqlQuery);
 
       return view('ManageReporting/repAtencion',compact('results'));
     }
     public function queryAtendidos()
     {
-      $abc=' ';
-      return view('ManageReporting/repAtendidos',['consulta'=>$abc]);
+      $sqlQuery='';
+      return view('ManageReporting/repAtendidos',['consulta'=>$sqlQuery]);
     }
     public function queryFarmacos()
     {
-      $abc='asasdasdd';
-      return view('ManageReporting/repFarmacos',['consulta'=>$abc]);
+      $sqlQuery='';
+      return view('ManageReporting/repFarmacos',['consulta'=>$sqlQuery]);
     }
     public function queryMedRecetados()
     {
-      $abc='asasdasdd';
-      return view('ManageReporting/repMedRecetados',['consulta'=>$abc]);
+      $sqlQuery='';
+      return view('ManageReporting/repMedRecetados',['consulta'=>$sqlQuery]);
     }
     public function queryTratamiento()
     {
-      $abc='asasdasdd';
-      return view('ManageReporting/repTratamiento',['consulta'=>$abc]);
+      $sqlQuery='';
+      return view('ManageReporting/repTratamiento',['consulta'=>$sqlQuery]);
     }
-
 
 
 

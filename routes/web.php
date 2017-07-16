@@ -45,6 +45,11 @@ Route::get('/reportes/descargarRep', function(){
 	return view('ManageReporting.descargarRep');
 });
 
-
 Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
+Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
+Route::get('/reportes/repFarmacos','consultasSqlController@queryFarmacos');
+Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados');
+Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
+
+
 Route::get('/reportes/descargarRep','descargasRepController@queryArchivosRep');
