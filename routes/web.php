@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
@@ -21,7 +22,7 @@ Route::get('/reportes', function(){
 	return view('ManageReporting.index');
 });
 
-Route::get('/reportes/repTratamiento', function(){
+Route::get('/reportes/repTratamiento', function(Request $request){
 	return view('ManageReporting.repTratamiento');
 });
 
@@ -50,6 +51,5 @@ Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
 Route::get('/reportes/repFarmacos','consultasSqlController@queryFarmacos');
 Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados');
 Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
-
 
 Route::get('/reportes/descargarRep','descargasRepController@queryArchivosRep');

@@ -40,12 +40,26 @@ class consultasSqlController extends Controller
       $sqlQuery='';
       return view('ManageReporting/repMedRecetados',['consulta'=>$sqlQuery]);
     }
-    public function queryTratamiento()
+
+
+    public function queryTratamiento(Request $request)
     {
-      $sqlQuery='';
-      return view('ManageReporting/repTratamiento',['consulta'=>$sqlQuery]);
+
+      if($request->nombre != "" || $request->dni!= "")
+      {
+        $sqlQuery="select personas.nombres          as nombre,
+                          personas.apellidopaterno  as ap_paterno,
+                          personas.apellidomaterno  as ap_materno,
+                          personas.created_at       as fecha_admision
+                          from personas inner join pacientes
+                          on personas.id=pacientes.persona_id where personas.nombres like '%".$request->nombre."%';";
+        $results = $this->runQuery($sqlQuery);
+        return view('ManageReporting/repTratamiento',compact('results'));
+      }
+      else
+      {
+        $results=NULL;
+        return view('ManageReporting/repTratamiento',compact('results') );
+      }
     }
-
-
-
 }
