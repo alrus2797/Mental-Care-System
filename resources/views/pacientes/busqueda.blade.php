@@ -28,7 +28,7 @@
 							<td>{{$paciente->telefono}}</td>
 							<td>{{$paciente->email}}</td>
 							<td>{{$paciente->nombre_estado}}</td>
-							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}">
+							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
 									<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</td>
 							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/'}}"  id="user">
@@ -43,7 +43,6 @@
 						</tr>
 					@endforeach
 				</tbody>
-			</table>-->
-	{{$respuesta}}
+			</table>
 	</div>
 </div>

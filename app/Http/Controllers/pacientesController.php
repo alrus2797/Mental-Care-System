@@ -187,21 +187,10 @@ class pacientesController extends Controller
 
     public function retrievePacientes(Request $datos)
     {
-      /*$respuesta = DB::table('personas')
-                  -> join('pacientes', 'personas.id', '=', 'pacientes.persona_id')
-                  -> select('pacientes.id', 'personas.nombres', 'personas.apellidopaterno', 'personas.apellidomaterno', 'personas.dni', 'personas.direccion', 'personas.telefono','pacientes.historials_id', 'pacientes.estado_id')
-                  -> where([
-                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
-                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
-                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
-                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
-                    ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
-                    ])
-                  ->get();*/
       $respuesta = DB::table('pacientes')
                   -> join('personas', 'personas.id', '=', 'pacientes.persona_id')
                   -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
-                  -> select('pacientes.*', 'pacientes.id as paciente_id', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+                  -> select('pacientes.*', 'pacientes.id as pac_id', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
                   -> where([
                     ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
                     ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
