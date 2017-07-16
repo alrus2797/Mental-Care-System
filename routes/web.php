@@ -66,7 +66,8 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('crear','pacientesController@crearObt' );
 
-  Route::get('crearNuevaPersona','personasController@crearNuevaPersona' ); //Testing
+  Route::get('crearNuevaPersona','pacientesController@crearNuevaPersona' ); //Testing
+  Route::post('crearPersonaPaciente','pacientesController@crearPersonaPaciente' );
 
   Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
 

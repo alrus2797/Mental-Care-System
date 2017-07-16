@@ -36,8 +36,9 @@
 <div class="row">
 
   <div> <b> ¿No existe? Créalo </b> </div>
-  <button type="button" id="botonCrear" class="btn btn-default" aria-label="Center Align" onclick="crearNuevoPersona()"> </button>
-  <div class="personaNueva col-sm-12"> <div>
+  <div class="personaNueva col-sm-12">
+    <button type="button" id="botonCrear" class="btn btn-default" aria-label="Center Align" onclick="crearNuevaPersona()"> Crear Paciente y Persona Nueva </button>
+  </div>
 
 </div>
 
@@ -67,13 +68,13 @@
 
 <script>
 
-  function crearNuevoPersona(){
+  function crearNuevaPersona(){
 
     $.ajax(
 
       {
         url:'crearNuevaPersona',
-        type: 'post',
+        type: 'get',
         dataType: 'json',
         success: function(data){
             $(".personaNueva").html(data);

@@ -79,13 +79,49 @@ class pacientesController extends Controller
 
     }
 
-    public function crearNuevoPersona()
+    public function crearNuevaPersona()
     {
 
-      response()->json(view('pacientes.crearPersonaPaciente')->render());
+      $estados = pacientesEstados::all();
+      return response()->json(view('pacientes.crearPersonaPaciente',compact('estados'))->render());
 
     }
 
+
+    public function crearPersonaPaciente()
+    {
+      $per = new persona;
+
+      $per->apellidopaterno = request('apellidopaterno');
+      $per->apellidomaterno = request('apellidomaterno');
+      $per->nombres = request('nombres');
+      $per->dni = request('dni');
+      $per->direccion = request('direccion');
+      $per->telefono = request('telefono');
+      $per->email = request('email');
+
+      $per->save();
+
+      $post = new paciente;
+
+      $post->persona_id = $per->id;
+      $post->estado_id = request('estado');
+
+      $historial = new historial;
+
+      $historial -> save();
+
+      $post->historials_id = $historial -> id;
+
+      $post->save();
+
+
+
+
+
+      return redirect('pacientes');
+
+    }
 
     public function editar($id)
     {

@@ -1,8 +1,8 @@
 
 
-<div class="PersonaNueva">
+<div class="personaNueva">
 
-  <form method="POST" action="{{asset('paciente/crearNuevoPersonaPaciente')}}">
+  <form method="POST" action="{{asset('pacientes/crearPersonaPaciente')}}">
 
 {{csrf_field()}}
 
@@ -57,6 +57,17 @@
     <div class="col-sm-3">
           <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" >
     </div>
+  </div>
+
+  <div class="form-group">
+   <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
+   <div class="col-sm-3">
+          <select class="form-control" id="estado" name="estado">
+            @foreach ($estados as $estado)
+            <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+            @endforeach
+          </select>
+   </div>
   </div>
 
 
