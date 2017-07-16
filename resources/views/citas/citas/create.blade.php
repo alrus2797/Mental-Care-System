@@ -16,13 +16,16 @@
 		@endif
 	</div>
 </div>
+	
+
+
 
 	{!!Form::open(array('url'=>'citas/citas','method'=>'POST','autocomplete'=>'off'))!!}
 	{{Form::token()}}
 	<div class="row">
 		<div class="col-lg -6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
-				<label for="asunto">Asunto</label>
+				<label for="asunto">Motivos de la Cita</label>
 				<input type="text" name="asunto" class="form-control" placeholder="asunto...">
 			</div>
 			<div class="form-group">

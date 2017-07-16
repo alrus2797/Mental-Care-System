@@ -15,18 +15,14 @@ class CreateCitasTable extends Migration
     {
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('asunto',100);
-            $table->dateTime('fecha_hora');
-            $table->string('sintomas',100);
-            $table->string('observaciones',100)->nullable();
-            $table->integer('estado_cita_id_estado')->unsigned();
-            $table->foreign('estado_cita_id_estado')->references('id')->on('estado_cita');
-            $table->integer('pago_cod_pago',10)->unsigned()->nullable();
-            $table->integer('pago_cod_pago',10)->references('id')->on('pago');
-            $table->integer('paciente_idpaciente')->unsigned()->nullable();
-            $table->foreign('paciente_idpaciente')->references('id')->on('paciente');
-            $table->integer('medico_idmedico')->unsigned()->nullable();
-            $table->foreign('medico_idmedico')->references('id')->on('medico');
+            $table->integer('paciente_id')->unsigned()->nullable();
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->integer('horario_medico_id',12)->unsigned()->nullable();
+            $table->foreign('horario_medico_id',12)->references('id')->on('horario_medico');
+            $table->dateTime('fecha_de_cita');
+            $table->string('motivo_cita',255);
+            $table->integer('estado_id')->unsigned()->nullable();
+            $table->foreign('estado_id')->references('id')->on('estados');
             $table->timestamps();
         });
     }
