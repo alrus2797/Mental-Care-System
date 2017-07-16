@@ -17,13 +17,17 @@ class pacientesController extends Controller
 
     public function todos()
     {
-      //X-Total-Count
+
       //$tabla = paciente::all()->paginate(2);
       //$tabla = paciente::with('persona')->get();
-      $tabla = DB::table('pacientes');
+      //$tabla = DB::table('pacientes')->paginate(20);
+      //$tabla = paciente::all();
 
-      //$tabla = paciente::all()->paginate(X-Total-Count);
-      //return $tabla;
+      $tabla = DB::table('pacientes')
+              ->join('personas','pacientes.id','=','personas.id')
+
+              ->get();
+
       return view('pacientes.todos',compact('tabla'));
 
     }
