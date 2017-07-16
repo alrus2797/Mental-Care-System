@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\paciente;
 use App\persona;
+use App\pacientesEstados;
 
 class pacientesController extends Controller
 {
@@ -41,21 +42,29 @@ class pacientesController extends Controller
     }
 
 
-    public function agregar($Request)
+    public function agregar()
     {
 
       $post = new paciente;
-
-      $post = persona::find();
-
+      
       $post->persona_id = request('id');
-      $post->estado_id = '1';
-      $post->historials_id = '12';
-
+      $post->estado_id = request('estado');
+      //$post->historials_id = '12';
 
       $post->save();
-      //paciente::create(request(['historiaclinica','apellidopaterno','apellidomaterno',
-        //'nombres','dni','direccion']));
+
+      $per = persona::find(request('id'));
+
+      $per->apellidopaterno = request('apellidopaterno');
+      $per->apellidomaterno = request('apellidomaterno');
+      $per->nombres = request('nombres');
+      $per->dni = request('dni');
+      $per->direccion = request('direccion');
+      $per->telefono = request('telefono');
+      $per->email = request('email');
+
+      $per->save();
+
       return redirect('pacientes');
 
     }
@@ -135,25 +144,10 @@ class pacientesController extends Controller
       //$respuesta = persona::all();
 
       $respuesta = persona::find($datos->input('id'));
-      /*$respuesta = array("id" => $datos->input('id'),
-                         "nombres" => $datos->input('nombres'),
-                         "apellidopaterno" => $datos->input('apellidoP'),
-                         "apellidomaterno" => $datos->input('apellidoM'),
-                         "dni" => $datos->input('DNI'),
-                         "direccion" => $datos->input('direccion'),
-                         "telefono" => $datos->input('telefono'),
-                         "email" => $datos->input('email'));*
-      //$respuesta_json = json_encode($respuesta);
-      /*$respuesta_final = new stdClass(array("id" => $datos->input('id'),
-                                     "nombres" => $datos->input('nombres'),
-                                     "apellidopaterno" => $datos->input('apellidoP'),
-                                     "apellidomaterno" => $datos->input('apellidoM'),
-                                     "dni" => $datos->input('DNI'),
-                                     "direccion" => $datos->input('direccion'),
-                                     "telefono" => $datos->input('telefono'),
-                                     "email" => $datos->input('email') ));*/
 
-      return response()->json(view('pacientes.formPaciente', compact('respuesta'))->render());
+      $estados = pacientesEstados::all();
+
+      return response()->json(view('pacientes.formPaciente', compact('respuesta'), compact('estados'))->render());
       //return view('personas.busquedaDNI', compact('respuesta');
 
     }

@@ -10,7 +10,7 @@
   <input type="hidden" class="form-control" id="id" placeholder="Ingrese apellido paterno" name="id" value="{{$respuesta->id}}">
 
     <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
+      <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" value="{{$respuesta->apellidopaterno}}">
       </div>
@@ -19,14 +19,14 @@
 
 
     <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Apellido Materno:</label>
+      <label class="col-sm-2 col-form-label" for="apellidomaterno">Apellido Materno:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" value="{{$respuesta->apellidomaterno}}">
       </div>
 
     </div>
         <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Nombres:</label>
+      <label class="col-sm-2 col-form-label" for="nombres">Nombres:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" value="{{$respuesta->nombres}}">
       </div>
@@ -35,21 +35,21 @@
 
 
     <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">DNI:</label>
+      <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" value="{{$respuesta->dni}}">
       </div>
     </div>
 
      <div class="form-group">
-      <label class="col-sm-2 col-form-label" for="email">Dirección:</label>
+      <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$respuesta->direccion}}">
       </div>
     </div>
 
     <div class="form-group">
-     <label class="col-sm-2 col-form-label" for="email">Telefono:</label>
+     <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
      <div class="col-sm-3">
            <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$respuesta->telefono}}">
      </div>
@@ -63,16 +63,20 @@
   </div>
 
   <div class="form-group">
-   <label class="col-sm-2 col-form-label" for="email">Estado:</label>
+   <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
    <div class="col-sm-3">
-         <input type="text" class="form-control" id="estado" placeholder="Ingrese dirección" name="email" value="hola">
+          <select class="form-control" id="estado" name="estado">
+            @foreach ($estados as $estado)
+            <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+            @endforeach
+          </select>
    </div>
   </div>
 
   <button type="submit" class="btn btn-primary">Guardar</button>
 
 
-  </form>
+</form>
 
 
 
