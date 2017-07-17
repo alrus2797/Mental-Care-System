@@ -6,21 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
-    protected $table="paciente";
+    protected $table="pacientes";
     protected $primaryKey='idpaciente';
-    
+
     public $timestamps=false;
 
     protected $fillable =[
     	'nombre',
     	'apellidos',
         'genero',
-    	'direccion', 
+    	'direccion',
         'telefono',
         'email',
     ];
 
     protected $guarded=[
 
-    ]; 
+    ];
+
+    public function persona()
+    {
+        return $this->belongsTo('App\Persona');
+    }
+
 }
