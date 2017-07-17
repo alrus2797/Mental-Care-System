@@ -17,21 +17,7 @@ class consultasSqlController extends Controller
       return DB::select(DB::raw($sqlQuery));
     }
 
-    /*
-    {
-      $ano = substr($request->mes,0,4);
-      $numerosemana= substr($request->mes,5);
-      if ($numerosemana > 0 and $numerosemana < 54) {$numerosemana = $numerosemana;
-      $primerdia = $numerosemana * 7 -7;
-      $ultimodia = $numerosemana * 7 -1;
-      $principioano = "$ano-01-01";
-      $fecha1 = date('Y-m-d', strtotime("$principioano + $primerdia DAY"));
-      $fecha2 = date('Y-m-d', strtotime ("$principioano + $ultimodia DAY"));
-      if ($fecha2 <= date('Y-m-d', strtotime("$ano-12-31"))) {$fecha2 = $fecha2;} else {$fecha2 = date('Y-m-d',strtotime("$ano-12-31"));}
-      echo 'la semana nº '.$numerosemana.' del año '.$ano.', va desde '.$fecha1.' hasta '.$fecha2.'</br>';} else {echo "este número de semana no es válido";}
 
-    }
-    */
 
 
     public function queryAtencion()
@@ -47,12 +33,63 @@ class consultasSqlController extends Controller
       $results = $this->runQuery($sqlQuery);
       return view('ManageReporting/repAtendidos',compact('results'));
     }
-    public function queryFarmacos()
+    public function queryFarmacos(Request $request)
     {
-      $sqlQuery='';
-      $results = $this->runQuery($sqlQuery);
-      return view('ManageReporting/repFarmacos',compact('results'));
+      if($request->semana =="")
+      {
+        $results =NULL;
+        return view('ManageReporting/repFarmacos',compact('results'));
+      }
+      else
+      {
+        $anio = substr($request->semana,0,4);
+        $numerosemana= substr($request->semana,6);
+        if ($numerosemana > 0 and $numerosemana < 54)
+        {
+          $numerosemana = $numerosemana;
+          $primerdia = $numerosemana * 7 -6;
+          $ultimodia = $numerosemana * 7 -0;
+          $principioano = "$anio-01-01";
+          $fecha1 = date('Y-m-d', strtotime("$principioano + $primerdia DAY"));
+          $fecha2 = date('Y-m-d', strtotime ("$principioano + $ultimodia DAY"));
+          if ($fecha2 <= date('Y-m-d', strtotime("$anio-12-31")))
+            $fecha2 = $fecha2;
+          else
+            $fecha2 = date('Y-m-d',strtotime("$anio-12-31"));
+        }
+        else
+        {
+          $results =NULL;
+          return view('ManageReporting/repFarmacos',compact('results'));
+        }
+
+        $sqlQuery="select
+                    medicamentos.nombre           as medicamento,
+                    medicamentos.descripcion      as medicamentoDesc,
+                    medicamentos.efecSecundarios  as medicamentoEfecSec,
+                    medicamentos.adversos         as medicamentoAdver,
+                    prescriptions.created_at      as fechaPres
+                  from
+                  prescriptions
+                  INNER join medicina_prescription
+                    on prescriptions.id = medicina_prescription.prescription_id
+                  INNER JOIN medicinas
+                    on medicina_prescription.medicina_id = medicinas.id
+                  inner join medicamentos
+                    on medicinas.medicamento_id = medicamentos.id
+                  where '$fecha1' < prescriptions.created_at AND  '$fecha2' > prescriptions.created_at ; ";
+          $results = $this->runQuery($sqlQuery);
+
+          $fecha1_str= date_format(date_create($fecha1),"d-M-Y");
+          $fecha2_str= date_format(date_create($fecha2),"d-M-Y");
+
+          return view('ManageReporting/repFarmacos',compact('results'),['fecha1'=>$fecha1_str,'fecha2'=>$fecha2_str]);
+      }
+      //$sqlQuery='';
+      //$results = $this->runQuery($sqlQuery);
     }
+
+
 
     public function queryMedRecetados(Request $request)
     {
@@ -96,7 +133,9 @@ class consultasSqlController extends Controller
                           personas.apellidomaterno  as ap_materno,
                           personas.created_at       as fecha_admision
                           from personas inner join pacientes
-                          on personas.id=pacientes.persona_id where concat(personas.apellidopaterno,' ',personas.apellidomaterno,' ',personas.nombres) like '%".$request->nombre."%';";
+                            on personas.id=pacientes.persona_id
+                          where
+                            concat(personas.apellidopaterno,' ',personas.apellidomaterno,' ',personas.nombres) like '%".$request->nombre."%';";
 
         $results = $this->runQuery($sqlQuery);
         return view('ManageReporting/repTratamiento',compact('results'));
