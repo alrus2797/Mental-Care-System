@@ -68,7 +68,7 @@
               <select class="form-control" id="estado" name="estado">
 
                 @foreach ($estados as $estado)
-                <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                <option value="{{$estado->id}}" @if ($estado->id == $get->estado_id) selected @endif>{{$estado->nombre}}</option>
                 @endforeach
               </select>
        </div>
