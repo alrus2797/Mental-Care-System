@@ -18,7 +18,6 @@ return array(
     'App\\Http\\Controllers\\CitasController' => $baseDir . '/app/Http/Controllers/CitasController.php',
     'App\\Http\\Controllers\\ComponentesController' => $baseDir . '/app/Http/Controllers/ComponentesController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-<<<<<<< HEAD
     'App\\Http\\Controllers\\HistorialController' => $baseDir . '/app/Http/Controllers/HistorialController.php',
     'App\\Http\\Controllers\\MedicamentosController' => $baseDir . '/app/Http/Controllers/MedicamentosController.php',
     'App\\Http\\Controllers\\MedicinasController' => $baseDir . '/app/Http/Controllers/MedicinasController.php',
@@ -28,13 +27,10 @@ return array(
     'App\\Http\\Controllers\\PresentacionesController' => $baseDir . '/app/Http/Controllers/PresentacionesController.php',
     'App\\Http\\Controllers\\TestsController' => $baseDir . '/app/Http/Controllers/TestsController.php',
     'App\\Http\\Controllers\\consultasSqlController' => $baseDir . '/app/Http/Controllers/consultasSqlController.php',
+    'App\\Http\\Controllers\\descargasRepController' => $baseDir . '/app/Http/Controllers/descargasRepController.php',
     'App\\Http\\Controllers\\pacientesController' => $baseDir . '/app/Http/Controllers/pacientesController.php',
     'App\\Http\\Controllers\\personasController' => $baseDir . '/app/Http/Controllers/PersonasController.php',
-=======
-    'App\\Http\\Controllers\\consultasSqlController' => $baseDir . '/app/Http/Controllers/consultasSqlController.php',
-    'App\\Http\\Controllers\\descargasRepController' => $baseDir . '/app/Http/Controllers/descargasRepController.php',
     'App\\Http\\Controllers\\repInfTratController' => $baseDir . '/app/Http/Controllers/repInfTratController.php',
->>>>>>> ManageReporting
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -61,7 +57,6 @@ return array(
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
-<<<<<<< HEAD
     'Collective\\Html\\Componentable' => $vendorDir . '/laravelcollective/html/src/Componentable.php',
     'Collective\\Html\\Eloquent\\FormAccessible' => $vendorDir . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
     'Collective\\Html\\FormBuilder' => $vendorDir . '/laravelcollective/html/src/FormBuilder.php',
@@ -71,12 +66,7 @@ return array(
     'Collective\\Html\\HtmlServiceProvider' => $vendorDir . '/laravelcollective/html/src/HtmlServiceProvider.php',
     'CreateAdmisionesTable' => $baseDir . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
     'CreateCitasTable' => $baseDir . '/database/migrations/2017_07_14_101623_create_citas_table.php',
-=======
-    'CreateAdmisionesTable' => $baseDir . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
-    'CreateCitasTable' => $baseDir . '/database/migrations/2017_07_14_101623_create_citas_table.php',
-    'CreateClinicasInfTable' => $baseDir . '/database/migrations/2017_07_17_031726_create_clinicasInf_table.php',
     'CreateClinicasTable' => $baseDir . '/database/migrations/2017_07_17_033311_create_clinicas_table.php',
->>>>>>> ManageReporting
     'CreateComponenteMedicamentoTable' => $baseDir . '/database/migrations/2017_07_02_145036_create_componente_medicamento_table.php',
     'CreateComponentesTable' => $baseDir . '/database/migrations/2017_06_13_023338_create_componentes_table.php',
     'CreateComprobantesTable' => $baseDir . '/database/migrations/2017_06_16_001304_create_comprobantes_table.php',

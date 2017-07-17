@@ -290,7 +290,6 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'App\\Http\\Controllers\\CitasController' => __DIR__ . '/../..' . '/app/Http/Controllers/CitasController.php',
         'App\\Http\\Controllers\\ComponentesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComponentesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-<<<<<<< HEAD
         'App\\Http\\Controllers\\HistorialController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistorialController.php',
         'App\\Http\\Controllers\\MedicamentosController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicamentosController.php',
         'App\\Http\\Controllers\\MedicinasController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicinasController.php',
@@ -300,13 +299,10 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'App\\Http\\Controllers\\PresentacionesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PresentacionesController.php',
         'App\\Http\\Controllers\\TestsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestsController.php',
         'App\\Http\\Controllers\\consultasSqlController' => __DIR__ . '/../..' . '/app/Http/Controllers/consultasSqlController.php',
+        'App\\Http\\Controllers\\descargasRepController' => __DIR__ . '/../..' . '/app/Http/Controllers/descargasRepController.php',
         'App\\Http\\Controllers\\pacientesController' => __DIR__ . '/../..' . '/app/Http/Controllers/pacientesController.php',
         'App\\Http\\Controllers\\personasController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonasController.php',
-=======
-        'App\\Http\\Controllers\\consultasSqlController' => __DIR__ . '/../..' . '/app/Http/Controllers/consultasSqlController.php',
-        'App\\Http\\Controllers\\descargasRepController' => __DIR__ . '/../..' . '/app/Http/Controllers/descargasRepController.php',
         'App\\Http\\Controllers\\repInfTratController' => __DIR__ . '/../..' . '/app/Http/Controllers/repInfTratController.php',
->>>>>>> ManageReporting
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -333,7 +329,6 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
-<<<<<<< HEAD
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
         'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
@@ -343,12 +338,7 @@ class ComposerStaticInit782bef55560f4b8060af33a1717aec29
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CreateAdmisionesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
         'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_101623_create_citas_table.php',
-=======
-        'CreateAdmisionesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_041137_create_admisiones_table.php',
-        'CreateCitasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_14_101623_create_citas_table.php',
-        'CreateClinicasInfTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_17_031726_create_clinicasInf_table.php',
         'CreateClinicasTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_17_033311_create_clinicas_table.php',
->>>>>>> ManageReporting
         'CreateComponenteMedicamentoTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_02_145036_create_componente_medicamento_table.php',
         'CreateComponentesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_13_023338_create_componentes_table.php',
         'CreateComprobantesTable' => __DIR__ . '/../..' . '/database/migrations/2017_06_16_001304_create_comprobantes_table.php',
