@@ -167,6 +167,9 @@ Route::get('/reportes/repMedRecetados', function(){
 Route::get('/reportes/descargarRep', function(){
 	return view('ManageReporting.descargarRep');
 });
+Route::get('/reportes/infoTratamiento', function(){
+	return view('ManageReporting.infoTratamiento');
+});
 
 Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
 Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
@@ -175,6 +178,7 @@ Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados
 Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
 
 Route::get('/reportes/descargarRep','consultasSqlController@queryArchivosRep');
+Route::get('/reportes/infoTratamiento','descargasRepController@generarPDF');
 
 
 //------------------------------------------------------------------------------

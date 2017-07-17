@@ -37,12 +37,11 @@
       <div class="col-md-10 col-md-offset-0 table-responsive">
 
 
-   <table class="table table-hover table-bordered" id="tableToSort">
+   <table class="table table-hover table-bordered">
     <tr>
         <th onclick="sortTable(0)">Nombre </th>
         <th onclick="sortTable(1)">Tipo de Reporte</th>
         <th >Fecha que se generó</th>
-        <th>Descripcion</th>
         <th>Descarga</th>
 
     </tr>
@@ -51,11 +50,8 @@
           <td >{{$row->nombre}}</td>
           <td >{{$row->tipo}}</td>
           <td >{{$row->created_at}}</td>
-          <td style="width: 40%;" >
-              {{$row->detalles}}
-          </td>
-          <td><a href="{{$row->nombre}}.pdf" download="{{$row->nombre}}.pdf">PDF</a>
-              <a href="{{$row->nombre}}.csv" download="{{$row->nombre}}.csv">EXCEL</a> </td>
+          <td>
+            <a href="{{asset('reportesPDF/'.$row->nombre.'.pdf')}}" target="_blank">Ver en pdf</a>
 
          <tr>
     @endforeach

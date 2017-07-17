@@ -46,7 +46,7 @@
       <tr>
         <td>{{$row->ap_paterno}} {{$row->ap_materno}} , {{$row->nombre}} </td>
         <td>{{$row->fecha_admision}}</td>
-        <td><a href="">Ver</a></td>
+        <td><a href="infoTratamiento">Ver</a></td>
       </tr>
     @endforeach
     </table>
