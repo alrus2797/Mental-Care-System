@@ -16,7 +16,7 @@ class descargasRepController extends Controller
 
   public function queryArchivosRep()
   {
-    $sqlQuery = "select * from reportes ;";
+    $sqlQuery = "select * from reporte ;";
     $results = $this->runQuery($sqlQuery);
     return view('ManageReporting/descargarRep',compact('results'));
   }
