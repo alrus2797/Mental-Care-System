@@ -38,7 +38,7 @@ Route::get('componentes/seleccionar',function(){
 
 /*
   Medicamentos
-*/  
+*/
 
 Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
@@ -46,7 +46,7 @@ Route::get('medicamentos/todos','MedicamentosController@todos');
 Route::resource('medicamentos','MedicamentosController', ['parameters' => [
     'medicamentos' => 'medicamento'
 ]]);
-Route::get('obtenerMedicamentos', 'MedicamentosController@obtenerMedicamentos'); 
+Route::get('obtenerMedicamentos', 'MedicamentosController@obtenerMedicamentos');
 
 Route::resource('medicinas','MedicinasController');
 
@@ -55,7 +55,7 @@ Route::get('componentes/todos','ComponentesController@todos');
 Route::resource('componentes','ComponentesController', ['parameters' => [
     'componentes' => 'componente'
 ]]);
-Route::get('obtenerComponentes', 'ComponentesController@obtenerComponentes'); 
+Route::get('obtenerComponentes', 'ComponentesController@obtenerComponentes');
 
 ///***********************************************************
 
@@ -66,7 +66,7 @@ Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController', ['parameters' => [
     'presentaciones' => 'presentacion'
 ]]);
-Route::get('obtenerPresentaciones', 'PresentacionesController@obtenerPresentaciones'); 
+Route::get('obtenerPresentaciones', 'PresentacionesController@obtenerPresentaciones');
 
 
 //Route::get('prescripcion/todos','PrescriptionController@todos');
@@ -133,11 +133,13 @@ Route::group(['prefix'=>'pacientes'],function(){
 
 });
 
+
+//------------------------------------------------------------------------------
 Route::get('/reportes', function(){
 	return view('ManageReporting.index');
 });
 
-Route::get('/reportes/repTratamiento', function(Request $request){
+Route::get('/reportes/repTratamiento', function(){
 	return view('ManageReporting.repTratamiento');
 });
 
@@ -166,6 +168,11 @@ Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
 Route::get('/reportes/repFarmacos','consultasSqlController@queryFarmacos');
 Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados');
 Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
+
+Route::get('/reportes/descargarRep','consultasSqlController@queryArchivosRep');
+
+
+//------------------------------------------------------------------------------
 
 Route::resource('citas/citas','CitasController');
 Route::resource('citas/paciente','PacienteController');
@@ -218,5 +225,3 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
   Route::get('{id}','PacientesEstadosController@mostrar' );
 
 });
-
-Route::get('/reportes/descargarRep','descargasRepController@queryArchivosRep');

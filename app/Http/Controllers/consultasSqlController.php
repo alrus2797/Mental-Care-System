@@ -61,7 +61,7 @@ class consultasSqlController extends Controller
                     inner join estados
                     	on citas.estado_id =estados.id
                     where '$fecha1' < citas.fecha_de_cita AND  citas.fecha_de_cita <'$fecha2' ; ";
-      
+
       $results = $this->runQuery($sqlQuery);
       $fecha1_str= date_format(date_create($fecha1),"d-M-Y");
       $fecha2_str= date_format(date_create($fecha2),"d-M-Y");
@@ -191,5 +191,14 @@ class consultasSqlController extends Controller
         $results=NULL;
         return view('ManageReporting/repTratamiento',compact('results') );
       }
+    }
+
+
+    public function queryArchivosRep()
+    {
+      $sqlQuery = "select * from reporte ";
+      $results = $this->runQuery($sqlQuery);
+
+      return view('ManageReporting/descargarRep',compact('results'));
     }
 }

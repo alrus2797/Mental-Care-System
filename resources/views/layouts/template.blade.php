@@ -27,7 +27,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
    <script type="text/javascript">
 function printDiv(divName)
 {
@@ -93,7 +93,7 @@ function printDiv(divName)
         <!--<li ><a href="#">Admisión</a></li> -->
         <li ><a href="#">Citas</a></li>
         <li ><a href="#">Historial</a></li>
-        <li ><a href="#">Manejo de Reportes</a></li>
+        <li ><a href="{{url('reportes/')}}">Manejo de Reportes</a></li>
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
