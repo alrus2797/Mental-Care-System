@@ -11,7 +11,7 @@
 			<div class="form-group ">
 				<label for="observacion"> Observaciones</label>
 				<input type="text" class="form-control" id="obs" name="observacion">
-				<input type="hidden" name="medico_id">
+				<input type="hidden" name="medico_id" >
 			</div>
 			<div class="form-group ">
 				<label > Instrucción</label>

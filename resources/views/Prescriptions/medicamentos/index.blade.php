@@ -6,8 +6,10 @@
 <h2 >Medicamentos</h2>
 
 <div id="buscador"> </div>
+
   <br>
   <br>
+
  <table class="table table-condensed">
     <thead>
       <tr>

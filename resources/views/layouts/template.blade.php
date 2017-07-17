@@ -4,19 +4,30 @@
   <title>MC - @yield('title')</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script src="{{asset('js/alertify.min.js')}} " >  </script>
   <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+
+
   <script src="{{asset('js/jquery.min.js')}}"></script>
+  <!-- Latest compiled and minified JavaScript -->
+
   <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
   <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>  
    <script type="text/javascript">
 function printDiv(divName)
 {
@@ -99,8 +110,7 @@ function printDiv(divName)
     </div>
 
     <div class="col-xs-12">
-      <div class="container margintop-70">
-
+      <div class="container margintop-70" id="cont">
           @yield('content')
 
       </div>
@@ -116,6 +126,8 @@ function printDiv(divName)
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
+
+
 </script>
 
 </body>

@@ -35,6 +35,8 @@ class MedicamentosController extends Controller
         $m->adversos = $request->adversos;
         $m->save();
 
+        $m->componentes()->attach($request->componentes);
+
         $me = new Medicina;
         $me->cantidad = $request->cantidad;
         $me->presentacion_id = $request->presentacion;

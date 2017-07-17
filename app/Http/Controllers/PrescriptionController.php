@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prescription;
-usea App\Medicamento;
+use App\Medicamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -46,7 +46,7 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
         //
-        $pres=new App\Prescription;
+        $pres=new Prescription;
         $pres->observacion=$request->observacion;
         $pres->instruccion=$request->instruccion;
         $pres->paciente_id=$request->paciente_id;
