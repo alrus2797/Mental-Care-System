@@ -48,7 +48,7 @@ class PacientesEstadosController extends Controller
     $post->save();
     //paciente::create(request(['historiaclinica','apellidopaterno','apellidomaterno',
       //'nombres','dni','direccion']));
-    return redirect('pacientes/estados/');
+    return redirect('pacientes/estados/todos');
 
   }
 

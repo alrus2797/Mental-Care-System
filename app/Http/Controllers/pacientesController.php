@@ -7,7 +7,7 @@ use Log;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use App\paciente;
+use App\Paciente;
 use App\Persona;
 use App\pacientesEstados;
 use App\Historial;
@@ -152,7 +152,7 @@ class pacientesController extends Controller
     {
 
       $post = persona::find(request('id'));
-
+      $pac = paciente::find(request('paciente_id'));
 
 
       $post->apellidopaterno = request('apellidopaterno');
@@ -160,8 +160,11 @@ class pacientesController extends Controller
       $post->nombres = request('nombres');
       $post->dni = request('dni');
       $post->direccion = request('direccion');
-
+      $post->telefono = request('telefono');
+      $post->email = request('email');
+      $pac->estado_id = request('estado');
       $post->save();
+      $pac->save();
 
       return redirect('pacientes/'.request('paciente_id'));
 

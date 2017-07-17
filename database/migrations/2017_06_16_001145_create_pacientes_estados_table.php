@@ -15,7 +15,7 @@ class CreatePacientesEstadosTable extends Migration
     {
         Schema::create('pacientes_estados', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',10);
+            $table->string('nombre',20);
             $table->timestamps();
         });
     }
