@@ -104,6 +104,9 @@ class pacientesController extends Controller
 
       $per->save();
 
+      //$ingreso= new App\Ingreso;
+      //$ingreso->paciente_id= $per->id;
+      //$per->ingresos()->attach($ingreso);
       return redirect('pacientes');
 
     }
@@ -217,7 +220,8 @@ class pacientesController extends Controller
                     ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
                     ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
                     ])
-                  -> get();
+                  -> get(); 
+
       return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
     }
 
