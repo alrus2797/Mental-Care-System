@@ -21,6 +21,7 @@ class CreateClinicasTable extends Migration
       });
     }
 
+
     /**
      * Reverse the migrations.
      *

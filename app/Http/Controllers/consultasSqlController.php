@@ -20,19 +20,65 @@ class consultasSqlController extends Controller
 
 
 
-    public function queryAtencion()
+    public function queryAtencion(Request $request)
     {
-      $sqlQuery = " ";
-      $results = $this->runQuery($sqlQuery);
+      $results=NULL;
+      $fecha1="";
+      $fecha2="";
+      if($request->semana=="")
+        return view('ManageReporting/repAtencion',compact('results'));
 
-      return view('ManageReporting/repAtencion',compact('results'));
+      $anio = substr($request->semana,0,4);
+      $numerosemana= substr($request->semana,6);
+      if ($numerosemana > 0 and $numerosemana < 54)
+      {
+        $numerosemana = $numerosemana;
+        $primerdia = $numerosemana * 7 -6;
+        $ultimodia = $numerosemana * 7 -0;
+        $principioano = "$anio-01-01";
+        $fecha1 = date('Y-m-d', strtotime("$principioano + $primerdia DAY"));
+        $fecha2 = date('Y-m-d', strtotime ("$principioano + $ultimodia DAY"));
+        if ($fecha2 <= date('Y-m-d', strtotime("$anio-12-31")))
+          $fecha2 = $fecha2;
+        else
+          $fecha2 = date('Y-m-d',strtotime("$anio-12-31"));
+      }
+      else
+      {
+        return view('ManageReporting/repAtencion',compact('results'));
+      }
+
+      $sqlQuery = " select concat(personas.nombres, personas.apellidopaterno, personas.apellidomaterno) as nombrePaciente ,
+                    citas.fecha_de_cita as fechacita,
+                    citas.motivo_cita as motivocita,
+                    estados.estado as estadocita
+
+                    from pacientes
+                    inner join personas
+                    	on pacientes.persona_id = personas.id
+                    inner join citas
+                    	ON pacientes.id = citas.paciente_id
+                    inner join estados
+                    	on citas.estado_id =estados.id
+                    where '$fecha1' < citas.fecha_de_cita AND  citas.fecha_de_cita <'$fecha2' ; ";
+      
+      $results = $this->runQuery($sqlQuery);
+      $fecha1_str= date_format(date_create($fecha1),"d-M-Y");
+      $fecha2_str= date_format(date_create($fecha2),"d-M-Y");
+
+      return view('ManageReporting/repAtencion',compact('results'),['fecha1'=>$fecha1_str,'fecha2'=>$fecha2_str]);
     }
+
+
     public function queryAtendidos()
     {
       $sqlQuery='';
       $results = $this->runQuery($sqlQuery);
       return view('ManageReporting/repAtendidos',compact('results'));
     }
+
+
+
     public function queryFarmacos(Request $request)
     {
       if($request->semana =="")
@@ -77,7 +123,7 @@ class consultasSqlController extends Controller
                     on medicina_prescription.medicina_id = medicinas.id
                   inner join medicamentos
                     on medicinas.medicamento_id = medicamentos.id
-                  where '$fecha1' < prescriptions.created_at AND  '$fecha2' > prescriptions.created_at ; ";
+                  where '$fecha1' < prescriptions.created_at AND  prescriptions.created_at <'$fecha2'; ";
           $results = $this->runQuery($sqlQuery);
 
           $fecha1_str= date_format(date_create($fecha1),"d-M-Y");
