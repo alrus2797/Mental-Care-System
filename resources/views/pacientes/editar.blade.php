@@ -17,18 +17,16 @@
 
         <input type="hidden" id="paciente_id" name="paciente_id" value="{{$get->id}}">
 
-    <div class="form-group">
+    <div class="form-group col-sm-12">
       <label class="col-sm-2 col-form-label" for="email">Historia Clinica:</label>
       <div class="col-sm-3">
-            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" value="{{$get->historials_id}}" readonly>
+            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" value="{{$get->historials_id}}" >
+      </div>
+      <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
+      <div class="col-sm-3">
+            <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno"  value="{{$getPersona->apellidopaterno}}">
       </div>
     </div>
-
-          <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
-          <div class="col-sm-3">
-              <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" value="{{$getPersona->apellidopaterno}}" >
-          </div>
-        </div>
 
     <div class="form-group col-sm-12">
       <label class="col-sm-2 col-form-label" for="email">Apellido Materno:</label>
@@ -74,6 +72,19 @@
                 @endforeach
               </select>
        </div>
+          <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-3">
+               <label class="form-control" id="registro" name="registro">{{$getPersona->created_at}}</label>
+          </div>
+      </div>
+
+      <div class="form-group col-sm-12">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3"></div>
+          <label class="col-sm-2 col-form-label" for="registro">Última Fecha de Actualización:</label>
+          <div class="col-sm-3">
+               <label class="form-control" id="actualizacion" name="actualizacion">{{$getPersona->updated_at}}</label>
+          </div>
       </div>
 
 
@@ -82,5 +93,5 @@
 
   </form>
 
-  </div>
+</div>
 @endsection
