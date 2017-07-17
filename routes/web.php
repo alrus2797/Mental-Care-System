@@ -69,10 +69,19 @@ Route::resource('prescripcion','prescriptionController');
 Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('/','pacientesController@todos' );
-  Route::get('todos','pacientesController@todos');
+  //Route::get('todos','pacientesController@todos');
 
   Route::get('crear','pacientesController@crearObt' );
-  Route::post('crear','pacientesController@crear');
+
+  Route::get('crearNuevaPersona','pacientesController@crearNuevaPersona' ); //Testing
+  Route::post('crearPersonaPaciente','pacientesController@crearPersonaPaciente' );
+
+  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+  Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
+
+  Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
+  Route::post('agregar', 'pacientesController@agregar');
 
   Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
   Route::post('eliminar','pacientesController@eliminar');
@@ -82,7 +91,6 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('buscar', 'pacientesController@buscar');
 
-  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
 
   Route::get('{id}','pacientesController@mostrar' );
 
@@ -117,3 +125,52 @@ Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
 
 Route::resource('citas/citas','CitasController');
 Route::resource('citas/paciente','PacienteController');
+Route::group(['prefix'=>'personas'],function(){
+
+  Route::get('/','PersonasController@todos' );
+  Route::get('todos','PersonasController@todos');
+
+  Route::get('crear','PersonasController@crearObt' );
+  Route::post('crear','PersonasController@crear');
+
+
+  Route::get('{id}/eliminar','PersonasController@eliminarConfirm');
+  Route::post('eliminar','PersonasController@eliminar');
+
+  Route::get('{id}/editar','PersonasController@editar');
+  Route::post('{id}','PersonasController@guardar');
+
+  Route::get('buscar', 'PersonasController@buscar');
+
+
+  Route::get('retrievePersonas', 'PersonasController@retrievePersonas');
+
+
+  Route::get('{id}','PersonasController@mostrar' );
+
+});
+
+
+Route::group(['prefix'=>'pacientes/estados'],function(){
+
+  Route::get('/','PacientesEstadosController@todos');
+  Route::get('todos','PacientesEstadosController@todos');
+
+  Route::get('crear','PacientesEstadosController@crearObt' );
+  Route::post('crear','PacientesEstadosController@crear');
+
+  Route::get('{id}/eliminar','PacientesEstadosController@eliminarConfirm');
+  Route::post('eliminar','PacientesEstadosController@eliminar');
+
+  Route::get('{id}/editar','PacientesEstadosController@editar');
+  Route::post('{id}','PacientesEstadosController@guardar');
+
+  //Route::get('buscar', 'pacientesEstadosController@buscar');
+
+
+  //Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
+
+
+  Route::get('{id}','PacientesEstadosController@mostrar' );
+
+});
