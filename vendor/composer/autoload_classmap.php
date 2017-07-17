@@ -39,7 +39,7 @@ return array(
     'App\\Http\\Requests\\PacienteFormRequest' => $baseDir . '/app/Http/Requests/PacienteFormRequest.php',
     'App\\Medicamento' => $baseDir . '/app/Medicamento.php',
     'App\\Medicina' => $baseDir . '/app/Medicina.php',
-    'App\\Medico' => $baseDir . '/app/Medico.php',
+    'App\\Medico' => $baseDir . '/app/medico.php',
     'App\\Model' => $baseDir . '/app/Model.php',
     'App\\Paciente' => $baseDir . '/app/paciente.php',
     'App\\Prescription' => $baseDir . '/app/Prescription.php',

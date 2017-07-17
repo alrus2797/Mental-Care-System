@@ -70,7 +70,7 @@ function eliminar(id) {
   alertify.confirm('Confirmar', 'Desea eliminar este componentes?',
     function(){
 
-      var urls = "{{asset('presentaciones')}}"+"/"+id;
+      var urls = "{{asset('componentes')}}"+"/"+id;
       console.log(urls);
         $.ajax({
           url: urls ,
@@ -79,7 +79,7 @@ function eliminar(id) {
         })
         .done(function( data ) {
           console.log( data );
-          $("#todos").load("{{ asset('presentaciones/todos') }}" );
+          $("#todos").load("{{ asset('componentes/todos') }}" );
           alertify.success('Borrado Con Éxito');
         });
 
