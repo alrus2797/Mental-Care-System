@@ -212,7 +212,7 @@ class consultasSqlController extends Controller
 
     public function queryArchivosRep()
     {
-      $sqlQuery = "select * from reporte ;";
+      $sqlQuery = "select * from reporte order by fecha;";
       $results = $this->runQuery($sqlQuery);
 
       return view('ManageReporting/descargarRep',compact('results'));
