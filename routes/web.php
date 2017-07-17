@@ -11,7 +11,7 @@
 |
 */
 
-//********testing
+use Illuminate\Http\Request;
 
 Route::get('test',function(){
   $faker=Faker\Factory::create("es_PE");
@@ -100,7 +100,7 @@ Route::get('/reportes', function(){
 	return view('ManageReporting.index');
 });
 
-Route::get('/reportes/repTratamiento', function(){
+Route::get('/reportes/repTratamiento', function(Request $request){
 	return view('ManageReporting.repTratamiento');
 });
 
@@ -120,8 +120,15 @@ Route::get('/reportes/repMedRecetados', function(){
 	return view('ManageReporting.repMedRecetados');
 });
 
+Route::get('/reportes/descargarRep', function(){
+	return view('ManageReporting.descargarRep');
+});
 
 Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
+Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
+Route::get('/reportes/repFarmacos','consultasSqlController@queryFarmacos');
+Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados');
+Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
 
 Route::resource('citas/citas','CitasController');
 Route::resource('citas/paciente','PacienteController');
@@ -174,3 +181,5 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
   Route::get('{id}','PacientesEstadosController@mostrar' );
 
 });
+
+Route::get('/reportes/descargarRep','descargasRepController@queryArchivosRep');

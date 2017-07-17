@@ -13,37 +13,44 @@
   </div>
 
 <div class="col-md-10 col-md-offset-0 table-responsive">
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="date">Selecciona la semana : </label>
+      <input type="week" class="form-control" name="semana">
+    </div>
+    <button type="submit" class="btn btn-default">Buscar</button>
+  </form>
+  <hr>
+
+  @if($results == NULL)
+      <div><h4>No se encontraron resultados</h4></div>
+  @else
+
+  <h4>Resultados resultados encontrados entre <strong>{{$fecha1}} y {{$fecha2}}</strong></h4>
+  <hr>
+
    <table class="table table-hover table-bordered">
     <tr>
-        <th>Paciente</th>
         <th>Medicamento</th>
-        <th>Clinica</th>
-        <th>Descripción</th>
+        <th>Fecha de Preescripción</th>
+        <th>Descripción </th>
+        <th>Efectos secundarios</th>
+        <th>Efectos adversos</th>
     </tr>
-        <?php
-            $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                    from atencionmedica
-                        join paciente
-                            on atencionmedica.paciente = paciente.id
-                        join medicina
-                            on atencionmedica.medicamento = medicina.id
-                        join clinica
-                            on atencionmedica.clinica = clinica.id";
-
-            $result = DB::select(DB::raw($sqlQuery));
-            foreach ($result as $row)
-            {
-                echo "<tr>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-
-                echo "</tr>";
-            }
-        ?>
+    @foreach ($results as $row)
+      <tr>
+        <td>{{$row->medicamento}}</td>
+        <td>{{$row->fechaPres}}</td>
+        <td>{{$row->medicamentoDesc}}</td>
+        <td>{{$row->medicamentoEfecSec}}</td>
+        <td>{{$row->medicamentoAdver}}</td>
+      </tr>
+    @endforeach
     </table>
+    @endif
 </div>
+
+
 
 
 </div>

@@ -13,43 +13,53 @@
         <p>Reportes semanales de pacientes atendidos al día por cada condición mental.</p>
       </div>
       <div class="col-md-10 col-md-offset-0 table-responsive">
-   <table class="table table-hover table-bordered">
-    <tr>
-        <th>Paciente</th>
-        <th>Medicamento</th>
-        <th>Clinica</th>
-        <th>Descripción</th>
-        <th>autolesion</th>
-    </tr>
 
-      @foreach ($results as $row)
-      <tr>
-         <td>{{$row->paciente}}</td>
-         <td>{{$row->medicina}}</td>
-         <td>{{$row->clinica}}</td>
-         <td>{{$row->descripcion}}</td>
-         @if($row->autolesion=='no')
-          <td><button type="button" class="btn btn-sm" data-toggle="modal" data-target="#myModal{{$row->idp}}">{{$row->autolesion}} </button></td>
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="date">Selecciona la semana : </label>
+            <input type="week" class="form-control" name="semana">
+          </div>
+          <button type="submit" class="btn btn-default">Buscar</button>
+        </form>
+        <hr>
+
+        @if($results == NULL)
+            <div><h4>No se encontraron resultados</h4></div>
         @else
-          <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal{{$row->idp}}"> {{$row->autolesion}}</button></td>
-        @endif
-        <div class="modal fade" id="myModal{{$row->idp}}" role="dialog">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Descripsión de autolesiódel Paciente : {{$row->paciente}}</h4>
-                </div>
-                <div class="modal-body">
-                  <p>{{$row->comentarios}}</p>
+
+        <h4>Resultados resultados encontrados entre <strong>{{$fecha1}} y {{$fecha2}}</strong></h4>
+       <table class="table table-hover table-bordered">
+        <tr>
+            <th>Nombre del Paciente</th>
+            <th>Fecha de la Cita</th>
+            <th>Motivo de la Cita</th>
+            <th>Estado</th>
+        </tr>
+
+          <hr>
+
+          @foreach ($results as $row)
+          <tr>
+
+            <!--<div class="modal fade" id="myModal{{$row->idp}}" role="dialog">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Descripsión de autolesiódel Paciente : {{$row->paciente}}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>{{$row->comentarios}}</p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
+            </div>-->
+          <tr>
+          @endforeach
+        </table>
+  @endif
 
-            </div>
-          </div>
-          </div>
-      <tr>
-      @endforeach
-    </table>
 
 </div >
 

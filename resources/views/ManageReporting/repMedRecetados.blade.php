@@ -13,37 +13,45 @@
       <h2>Reporte de medicamentos recetados</h2>
     <p>Reportes de medicamentos recetados durante el mes.</p>
   </div>
+
+
 <div class="col-md-10 col-md-offset-0 table-responsive">
-   <table class="table table-hover table-bordered">
+
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="date">Selecciona el mes : </label>
+      <input type="month" class="form-control" name="mes">
+    </div>
+    <button type="submit" class="btn btn-default">Buscar</button>
+  </form>
+
+  <hr>
+
+  @if($results == NULL)
+      <div><h4>No se encontraron resultados</h4></div>
+  @else
+  <table class="table table-hover table-bordered">
+  <tr>
+      <th>Nombre del medicamento</th>
+      <th>Fecha de Preescripción</th>
+      <th>Descripción</th>
+      <th>Efectos Secundarios</th>
+      <th>Efectos Adversos</th>
+  </tr>
+
+  @foreach ($results as $row)
     <tr>
-        <th>Paciente</th>
-        <th>Medicamento</th>
-        <th>Clinica</th>
-        <th>Descripción</th>
+      <td>{{$row->medicamento}}</td>
+      <td>{{$row->fechaPres}}</td>
+      <td>{{$row->medicamentoDesc}}</td>
+      <td>{{$row->medicamentoEfecSec}}</td>
+      <td>{{$row->medicamentoAdver}}</td>
+
     </tr>
-        <?php
-            $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                                from atencionmedica
-                                    join paciente
-                                        on atencionmedica.paciente = paciente.id
-                                    join medicina
-                                        on atencionmedica.medicamento = medicina.id
-                                    join clinica
-                                        on atencionmedica.clinica = clinica.id";
+  @endforeach
+  </table>
+  @endif
 
-            $result = DB::select(DB::raw($sqlQuery));                   
-            foreach ($result as $row)
-            {
-                echo "<tr>";
-                echo "<td>".$row->paciente."</td>";
-                echo "<td>".$row->medicina."</td>";
-                echo "<td>".$row->clinica."</td>";
-                echo "<td>".$row->descripcion."</td>";
-
-                echo "</tr>";
-            }
-        ?>
-    </table>
 </div>
      </div>
  <div class="col-sm-offset-0 ">

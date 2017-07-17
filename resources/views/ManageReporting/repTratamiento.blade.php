@@ -7,50 +7,60 @@
 
    @section('content')
 
-   <div id="printableArea">
-   	<div class="page-header">
-      <h2>Reporte de información de tratamiento</h2>
-    <p>Reportes que contengan información del tratamiento prescrito del paciente.</p>
-  </div>
 
-	<div class="col-md-10 col-md-offset-0 table-responsive">
-   <table class="table table-hover table-bordered">
+     <div id="printableArea">
+     	<div class="page-header">
+        <h2>Reporte de información de tratamiento</h2>
+      <p>Reportes que contengan información del tratamiento prescrito del paciente.</p>
+    </div>
+
+    <form class="form-inline" method="get" action="">
+
+      <div class="form-group">
+        <label for="text">DNI :</label>
+        <input type="text" class="form-control"  placeholder="DNI del Paciente" name="dni">
+      </div>
+
+        <div class="form-group">
+          <label for="text">Nombre :</label>
+          <input type="text" class="form-control"  placeholder="Nombre del Paciente" name="nombre">
+        </div>
+
+      <button type="submit" class="btn btn-default">Buscar</button>
+    </form>
+    <hr>
+
+  	<div class="col-md-10 col-md-offset-0 table-responsive">
+
+    @if($results == NULL)
+        <div><h4>No se encontraron resultados</h4></div>
+    @else
+    <table class="table table-hover table-bordered" id="tableToSort">
     <tr>
         <th>Paciente</th>
-        <th>Medicamento</th>
-        <th>Clinica</th>
-        <th>Descripción</th>
+        <th>Fecha Admision</th>
+        <th>Ver</th>
     </tr>
-        <?php
-            $sqlQuery = "select paciente.nombre as paciente, medicina.nombre as medicina, clinica.nombre as clinica , medicina.descripcion
-                    from atencionmedica
-                        join paciente
-                            on atencionmedica.paciente = paciente.id
-                        join medicina
-                            on atencionmedica.medicamento = medicina.id
-                        join clinica
-                            on atencionmedica.clinica = clinica.id";
 
-            $result = DB::select(DB::raw($sqlQuery));
-            foreach ($result as $row)
-            {
-                echo "<tr>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-                echo "<td>"." - "."</td>";
-
-                echo "</tr>";
-            }
-        ?>
+    @foreach ($results as $row)
+      <tr>
+        <td>{{$row->ap_paterno}} {{$row->ap_materno}} , {{$row->nombre}} </td>
+        <td>{{$row->fecha_admision}}</td>
+        <td><a href="">Ver</a></td>
+      </tr>
+    @endforeach
     </table>
-</div>
-   </div>
+    @endif
+
+      <ul class="pagination">
+        <li class="active"><a href="#">1</a></li>
+      </ul>
+  </div>
+     </div>
 
 
-<div class="col-sm-offset-0 ">
-	<input type="button" class="btn btn-default"  onclick="printDiv('printableArea')" value="Imprimir o exportar a PDF" />
-</div>
+
+
 
 
    @endsection
