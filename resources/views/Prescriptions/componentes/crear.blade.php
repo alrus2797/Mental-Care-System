@@ -1,4 +1,4 @@
-<!--<form id="crear_comp" action="{{url('componentes/create')}}" method="post">
+<form id="crear_comp" action="{{url('componentes/create')}}" method="post">
   <div class="container">
     <h3>Nuevo Componente</h3>
     {{ csrf_field()}}
@@ -29,4 +29,3 @@ var alert=alertify.genericDialog ($('#crear_comp')[0]).set('selector', 'input[ty
 
 
 </script>
--->

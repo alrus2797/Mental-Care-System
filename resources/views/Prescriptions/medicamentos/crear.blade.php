@@ -1,5 +1,8 @@
 
 
+
+
+
 <form id="crear" action="{{ asset('medicamentos')  }}" method="post">
 	<div class="container">
 			<h3>Nuevo Medicamento</h3>
@@ -16,7 +19,7 @@
 
 			<div class="form-group col-md-3">
 				<label for="presentacion">Presentación</label>
-				<select class="form-control" name="presentacion" id="presentacion">
+				<select class="form-control" name="presentacion" id="presentacion" >
 					@foreach ($presentaciones as $p)
 					<option value="{{ $p->id }}">{{ $p->unidad}} {{ $p->descripcion}}</option>
 					@endforeach
@@ -32,27 +35,36 @@
 
 		<!--componentes-->
 		<div class="row">
-			<div class="form-group col-md-3">
+			<!--<div class="form-group col-md-3">
 				<label for="componentes">Componentes</label>
-				<select class="form-control" name="presentacion" id="componentes">
-					@foreach ($presentaciones as $p)
-					<option value="{{ $p->id }}">{{ $p->unidad}} {{ $p->descripcion}}</option>
+				<select class="form-control" name="componentes" id="componentes">
+					@foreach ($componentes as $c)
+					<option value="{{ $c->id }}">{{ $c->nombre}}</option>
 					@endforeach
 				</select>
-			</div>
-			<div class="form-group col-md-2">
-				<br>
-				<button id="nuevo_com" type="button" class="btn btn-default btn-large"> <a href="{{asset('componentes')}} "><i class="glyphicon glyphicon-plus"></i> Añadir componentes </a></button>
+			</div>-->
+
+			</script>
+			<div class="form-group col-md-4">
+				<script type="text/javascript">
+$('#componentes').multiSelect();
+				</script>
+
+				<select id='componentes' multiple='multiple' name="componentes[]">
+					@foreach($componentes as $c)
+						  <option value='{{$c->id}}' >{{$c->nombre}}</option>
+					@endforeach
+				</select>
+
 			</div>
 			<div id="crear_componente"> </div>
+			<br>
+			<br>
+			<br>
+			<br>
+
 		</div>
-		<script type="text/javascript">
-		/*	$("#nuevo_com").click(function(){
-						$.ajax({url: "{{asset('componentes/create')}} ", success: function(resultado){
-								$("#crear_componente").html(resultado);
-						}});
-				});*/
-		</script>
+
 
 		<div class="row">
 			<div class="form-group col-md-4">
@@ -97,7 +109,9 @@ alertify.genericDialog || alertify.dialog('genericDialog',function factory(){
                     basic:true,
                     maximizable:true,
                     resizable:true,
-                    padding:true
+                    padding:true,
+										startMaximized:true,
+										overflow:false
                 }
             };
         },

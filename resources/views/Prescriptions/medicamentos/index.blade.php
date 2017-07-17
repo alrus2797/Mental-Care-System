@@ -1,13 +1,69 @@
 @extends('layouts.template')
-@section('title','medicamentos')
+@section('title','Medicamentos')
 
 @section('content')
 
-<h2 >Medicamentos</h2>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/alertify.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/default-alertify.min.css')}}">
+<script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
-<div id="buscador"> </div>
+<form id="form" method="post" action="{{ asset('medicamentos')}}">
+
+  <div class="text-center">
+  <br><h2 >Medicamentos</h2><br>
+
+  <button id="nuevo" type="button" class="btn btn-primary btn-large">Nuevo Medicamento </button>
+  <br><br><br>
+
+  </div>
+
+  {{ csrf_field()}}
+
+  <div class="col-md-1">
+    <p>Buscar por: </p>
+  </div>
+  <div class="col-md-2">
+    <select onChange="options()" id="opc" class="form-control">
+      <option value="1">Medicamento</option>
+      <option value="2">Componente</option>
+    </select>
+  </div>
+  
+  <div class="col-md-3">
+    
+  </div>
+
+  <div id="crear"></div>
+</form>
+
+<!--<div id="buscador"> </div>-->
+
+<form>
+  <div class="col-md-3">
+      <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </div>
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese medicamento" onkeyup="showMedicamentos($('#nombre').val(),$('#componente').val())">
+      </div>
+  </div>
+</form>
+
+<form>
+  <div class="col-md-3">
+      <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </div>
+      <input type="text" class="form-control" id="componente" name="componente" placeholder="Ingrese Componente" onkeyup="showMedicamentos($('#nombre').val(),$('#componente').val())">
+      </div>
+  </div><br><br>
+</form>
+
+<!--
   <br>
   <br>
+
  <table class="table table-condensed">
     <thead>
       <tr>
@@ -34,7 +90,8 @@
 
         </td>
         <td><a onclick="editar({{$m->id}} )" href="#"> <span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <!--Nueva versión-->
+        -->
+        <!--Nueva versión
         <td><a href="{{asset('medicamentos')}} "><span class="glyphicon glyphicon-plus"></span></a> </td>
         <td><a  onclick="eliminar({{$m->id}})" href="# "><span class="glyphicon glyphicon-trash"></span></a> </td>
 
@@ -42,14 +99,31 @@
     @endforeach
     </tbody>
   </table>
+-->
 
 <div id="ver" ></div>
 
-  <script type="text/javascript">
-   $("#buscador").load("{{asset('medicamentos/asdf')}}");
-  </script>
+<div class="container">
+  <div id="todos"></div>
+</div>
+
+<style type="text/css">
+  #todos{
+    padding-top: 25px;
+  }
+</style>
 
 <script type="text/javascript">
+//  $("#buscador").load("{{asset('medicamentos/asdf')}}");
+
+  $("#todos" ).load("{{ asset('medicamentos/todos') }}" );
+
+  $("#nuevo").click(function(){
+      $.ajax({url: "{{asset('medicamentos/create')}} ", success: function(resultado){
+          $("#crear").html(resultado);
+      }});
+  });
+
   function ver(id) {
     $.ajax({
 //        data:{medicina:id},
@@ -60,8 +134,7 @@
             $("#ver").html(resultado);
         }});
   }
-</script>
-<script type="text/javascript">
+
   function editar(id) {
     $.ajax({
 //        data:{_method: 'PUT'},
@@ -72,9 +145,7 @@
             $("#ver").html(resultado);
         }});
   }
-</script>
 
-  <script type="text/javascript">
     function eliminar(id) {
       $.ajax({
         data:{ _token: '{{csrf_token()}}', _method: 'delete' } ,
@@ -85,6 +156,23 @@
             //$("#eliminado").html(resultado);
         }});
     }
+  
+    function showMedicamentos(nom,comp) {
+      var datos = {
+        "nom" : nom,
+        "comp":comp,
+      };
+      $.ajax({
+        data: datos,
+        url: 'obtenerMedicamentos',
+        type: 'get',
+        dataType : 'json',
+        success: function(data){
+          $("#todos").html(data);
+        }
+      });
+    }
+
   </script>
 
 @endsection

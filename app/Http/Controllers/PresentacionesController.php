@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Presentacion;
 use Illuminate\Http\Request;
 
@@ -18,13 +19,13 @@ class PresentacionesController extends Controller
     }
 
     /**
-     *    
+     *
      */
-    public function todos() 
-    { 
-        $ps = Presentacion::all(); 
-        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]); 
-    } 
+    public function todos()
+    {
+        $ps = Presentacion::all();
+        return view('Prescriptions.presentaciones.todos', ["presentaciones"=>$ps]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +49,7 @@ class PresentacionesController extends Controller
         $p->descripcion = $request->descripcion;
         $p->unidad = $request->unidad;
         $p->save();
-        
+
         return redirect("presentaciones");
     }
 
@@ -100,5 +101,16 @@ class PresentacionesController extends Controller
     {
         $presentacion->delete();
         return response()->json(true);
+    }
+    
+    public function obtenerPresentaciones(Request $request)
+    {
+        $presentaciones = DB::table('presentacions')
+                -> select('id','descripcion','unidad')->where([
+                    ['descripcion','like','%'.$request->input('descrip').'%'],
+                    ['unidad','like','%'.$request->input('uni').'%'],
+                    ])
+                ->get();
+        return response()->json(view('Prescriptions.presentaciones.todos',compact('presentaciones'))->render());
     }
 }

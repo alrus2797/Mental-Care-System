@@ -32,11 +32,21 @@ Route::get('medicamentos/asdf',function(){
 	return view('Prescriptions.medicamentos.buscador');
 });
 
+Route::get('componentes/seleccionar',function(){
+  return view('Prescriptions.componentes.seleccionar');
+});
+
+/*
+  Medicamentos
+*/  
+
 Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
+Route::get('medicamentos/todos','MedicamentosController@todos');
 Route::resource('medicamentos','MedicamentosController', ['parameters' => [
     'medicamentos' => 'medicamento'
 ]]);
+Route::get('obtenerMedicamentos', 'MedicamentosController@obtenerMedicamentos'); 
 
 Route::resource('medicinas','MedicinasController');
 
@@ -45,7 +55,9 @@ Route::get('componentes/todos','ComponentesController@todos');
 Route::resource('componentes','ComponentesController', ['parameters' => [
     'componentes' => 'componente'
 ]]);
+Route::get('obtenerComponentes', 'ComponentesController@obtenerComponentes'); 
 
+///***********************************************************
 
 /*
 	Presentaciones
@@ -54,6 +66,10 @@ Route::get('presentaciones/todos','PresentacionesController@todos');
 Route::resource('presentaciones','PresentacionesController', ['parameters' => [
     'presentaciones' => 'presentacion'
 ]]);
+Route::get('obtenerPresentaciones', 'PresentacionesController@obtenerPresentaciones'); 
+
+
+//Route::get('prescripcion/todos','PrescriptionController@todos');
 
 
 /*
@@ -62,9 +78,30 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
 Route::get('med',function(){
 	return view('Prescriptions.medicamentos.crear');
 });
+//******************************************************************************************
+//Route::resource('prescripcion','prescriptionController');
+/*Route::get('pres',function(){
+  return view('Prescriptions.index');
+});
+¨*/
+Route::get('pres/buscador',function(){
+  return view('Prescriptions.buscador');
+});
 
-Route::resource('prescripcion','prescriptionController');
+Route::resource('prescripcion','PrescriptionController',['parameters'=>[
+  'prescriptions'=>'prescription'
+  ]]);
 
+//Route::get('pacientes/historia',function(){
+  //return view('pacientes.historial');
+//});
+Route::post('pacientes/historial','pacientesController@historial');
+
+Route::get('pres/crear',function(){
+  return view('Prescriptions.crear');
+});
+
+//******************************************************************************************
 
 Route::group(['prefix'=>'pacientes'],function(){
 
