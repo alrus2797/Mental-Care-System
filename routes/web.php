@@ -36,11 +36,17 @@ Route::get('componentes/seleccionar',function(){
   return view('Prescriptions.componentes.seleccionar');
 });
 
+/*
+  Medicamentos
+*/  
+
 Route::post('medicamentos/eliminar/{id}','MedicamentosController@eliminar');
 
+Route::get('medicamentos/todos','MedicamentosController@todos');
 Route::resource('medicamentos','MedicamentosController', ['parameters' => [
     'medicamentos' => 'medicamento'
 ]]);
+Route::get('obtenerMedicamentos', 'MedicamentosController@obtenerMedicamentos'); 
 
 Route::resource('medicinas','MedicinasController');
 
