@@ -137,8 +137,7 @@ $("#register-form").validate({
       strongDNI: true
     },
     nombres: {
-      required: true,
-      lettersonly: true
+      required: true
     },
     telefono: {
       required: true,
@@ -151,27 +150,33 @@ $("#register-form").validate({
   },
   messages: {
     email: {
-      required: 'Este espacio es requerido',
-      email: 'Ingrese un correo electronico <em>valido</em>'
+      required: 'Este espacio es requerido.',
+      email: 'Ingrese un correo electronico <em>valido</em>.'
     },
     dni: {
-      required: 'Este espacio es requerido',
-      dni: 'Ingrese un dni <em>valido</em>'
+      required: 'Este espacio es requerido.',
+      dni: 'Ingrese un dni <em>valido</em>.',
+      strongDNI: 'Ingrese un dni <em>valido</em>.'
     },
     apellidopaterno: {
-      required: 'Este espacio es requerido'
+      required: 'Este espacio es requerido.',
+      nowhitespace: 'No se permiten espacios en blanco.',
+      lettersonly: 'Solo letras.'
     },
     apellidomaterno: {
-      required: 'Este espacio es requerido'
+      required: 'Este espacio es requerido.',
+      nowhitespace: 'No se permiten espacios en blanco.',
+      lettersonly: 'Solo letras.'
     },
     nombres: {
-      required: 'Este espacio es requerido'
+      required: 'Este espacio es requerido.'
     },
     telefono: {
-      required: 'Este espacio es requerido'
+      required: 'Este espacio es requerido.',
+      digits: 'Ingrese solo numeros.'
     },
     direccion: {
-      required: 'Este espacio es requerido'
+      required: 'Este espacio es requerido.'
     }
   }
 });

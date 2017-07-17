@@ -2,7 +2,7 @@
 <div class="formPaciente col-sm-12" style="background-color: rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; margin: 30px">
 
 
-  <form method="POST" action="{{asset('pacientes/agregar')}}">
+  <form id="register-form3" method="POST" action="{{asset('pacientes/agregar')}}">
 
   {{csrf_field()}}
 
@@ -68,3 +68,106 @@
 
 
 </div>
+
+<script>
+$(function() {
+
+$.validator.setDefaults({
+  errorClass: 'help-block',
+  highlight: function(element) {
+    $(element)
+      .closest('.form-group')
+      .addClass('has-error');
+  },
+  unhighlight: function(element) {
+    $(element)
+      .closest('.form-group')
+      .removeClass('has-error');
+  },
+  errorPlacement: function (error, element) {
+    if (element.prop('type') === 'checkbox') {
+      error.insertAfter(element.parent());
+    } else {
+      error.insertAfter(element);
+    }
+  }
+});
+
+$.validator.addMethod('strongPassword', function(value, element) {
+  return this.optional(element)
+    || value.length >= 6
+    && /\d/.test(value)
+    && /[a-z]/i.test(value);
+}, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
+
+$.validator.addMethod('strongDNI',function(value,element){
+  return this.optional(element)
+  || value.length == 8;
+},"ingreso un DNI <em>valido</em>\.")
+
+$("#register-form3").validate({
+  rules: {
+    email: {
+      required: true,
+      email: true
+    },
+    apellidopaterno: {
+      required: true,
+      nowhitespace: true,
+      lettersonly: true
+    },
+    apellidomaterno: {
+      required: true,
+      nowhitespace: true,
+      lettersonly: true
+    },
+    dni: {
+      required: true,
+      strongDNI: true
+    },
+    nombres: {
+      required: true
+    },
+    telefono: {
+      required: true,
+      digits: true,
+
+    },
+    direccion: {
+      required: true
+    }
+  },
+  messages: {
+    email: {
+      required: 'Este espacio es requerido.',
+      email: 'Ingrese un correo electronico <em>valido</em>.'
+    },
+    dni: {
+      required: 'Este espacio es requerido.',
+      dni: 'Ingrese un dni <em>valido</em>.',
+      strongDNI: 'Ingrese un dni <em>valido</em>.'
+    },
+    apellidopaterno: {
+      required: 'Este espacio es requerido.',
+      nowhitespace: 'No se permiten espacios en blanco.',
+      lettersonly: 'Solo letras.'
+    },
+    apellidomaterno: {
+      required: 'Este espacio es requerido.',
+      nowhitespace: 'No se permiten espacios en blanco.',
+      lettersonly: 'Solo letras.'
+    },
+    nombres: {
+      required: 'Este espacio es requerido.'
+    },
+    telefono: {
+      required: 'Este espacio es requerido.',
+      digits: 'Ingrese solo numeros.'
+    },
+    direccion: {
+      required: 'Este espacio es requerido.'
+    }
+  }
+});
+
+});
