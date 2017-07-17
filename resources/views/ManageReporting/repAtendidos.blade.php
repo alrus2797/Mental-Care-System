@@ -12,24 +12,41 @@
     <p>Reportes mensuales de pacientes atendidos por clínica.</p>
   </div>
 
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="date">Selecciona el mes : </label>
+      <input type="month" class="form-control" name="mes">
+    </div>
+    <button type="submit" class="btn btn-default">Buscar</button>
+  </form>
+
 <div class="col-md-10 col-md-offset-0 table-responsive">
+
+  @if($results == NULL)
+      <div><h4>No se encontraron resultados</h4></div>
+  @else
+
+  <h4>Resultados resultados encontrados entre <strong>{{$fecha1}} y {{$fecha2}}</strong></h4>
+  <hr>
+
    <table class="table table-hover table-bordered">
-   <tr>
-        <th>Paciente</th>
+    <tr>
         <th>Medico</th>
-        <th>Receta</th>
-        <th>Fecha</th>
-        <th>Au*</th>
-        <th>Clinica</th>
-        <th>Comentarios</th>
-	</tr>
-
-  <ul class="pagination">
-    <li class="active"><a href="#">1</a></li>
-  </ul>
-
-
+        <th>Paciente</th>
+        <th>Fecha de la cita </th>
+        <th>Observación</th>
+    </tr>
+    @foreach ($results as $row)
+      <tr>
+        <td>{{$row->nombre_med}}</td>
+        <td>{{$row->nombre_pac}}</td>
+        <td>{{$row->fecha}}</td>
+        <td>{{$row->obsmed}}</td>
+      </tr>
+    @endforeach
     </table>
+    @endif
+
 </div>
 
 </div>

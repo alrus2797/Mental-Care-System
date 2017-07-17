@@ -70,9 +70,25 @@ class consultasSqlController extends Controller
     }
 
 
-    public function queryAtendidos()
+    public function queryAtendidos(Request $request)
     {
-      $sqlQuery='';
+      $results=NULL;
+      if($request->mes=="")
+        return view('ManageReporting/repAtendidos',compact('results'));
+      $anio =substr($request->mes,0,4);
+      $mes  =substr($request->mes,5);
+      $year_moth=$anio.$mes;
+      $sqlQuery = "select concat(per_med.apellidopaterno,' ',per_med.apellidomaterno,' ',per_med.nombres) as nombre_med,
+                  concat(per_pac.apellidopaterno,' ',per_pac.apellidomaterno,' ',per_pac.nombres) as nombre_pac , prescriptions.created_at as fecha, prescriptions.observacion as obsmed
+                  from medicos
+                  inner join prescriptions
+                    on medicos.id = prescriptions.medico_id
+                  inner join pacientes
+                    on pacientes.id = prescriptions.paciente_id
+                  inner join personas  per_pac
+                    on per_pac.id = pacientes.persona_id
+                  INNER join personas per_med
+                    on per_med.id = medicos.personas_id where extract(YEAR_MONTH from prescriptions.created_at ) = '".$year_moth."' ";
       $results = $this->runQuery($sqlQuery);
       return view('ManageReporting/repAtendidos',compact('results'));
     }
@@ -196,7 +212,7 @@ class consultasSqlController extends Controller
 
     public function queryArchivosRep()
     {
-      $sqlQuery = "select * from reporte ";
+      $sqlQuery = "select * from reporte ;";
       $results = $this->runQuery($sqlQuery);
 
       return view('ManageReporting/descargarRep',compact('results'));
