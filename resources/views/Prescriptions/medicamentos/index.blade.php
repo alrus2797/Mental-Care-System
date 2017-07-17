@@ -23,13 +23,13 @@
     <p>Buscar por: </p>
   </div>
   <div class="col-md-2">
-    <select class="form-control">
-      <option>Medicamento</option>
-      <option>Componente</option>
+    <select onChange="options()" id="opc" class="form-control">
+      <option value="1">Medicamento</option>
+      <option value="2">Componente</option>
     </select>
   </div>
   
-  <div class="col-md-4">
+  <div class="col-md-3">
     
   </div>
 
@@ -44,7 +44,18 @@
       <div class="input-group-addon">
         <span class="glyphicon glyphicon-search"></span>
       </div>
-      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" onkeyup="showMedicamentos($('#nombre').val())">
+      <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese medicamento" onkeyup="showMedicamentos($('#nombre').val(),$('#componente').val())">
+      </div>
+  </div>
+</form>
+
+<form>
+  <div class="col-md-3">
+      <div class="input-group">
+      <div class="input-group-addon">
+        <span class="glyphicon glyphicon-search"></span>
+      </div>
+      <input type="text" class="form-control" id="componente" name="componente" placeholder="Ingrese Componente" onkeyup="showMedicamentos($('#nombre').val(),$('#componente').val())">
       </div>
   </div><br><br>
 </form>
@@ -146,9 +157,10 @@
         }});
     }
   
-    function showMedicamentos(nom) {
+    function showMedicamentos(nom,comp) {
       var datos = {
         "nom" : nom,
+        "comp":comp,
       };
       $.ajax({
         data: datos,

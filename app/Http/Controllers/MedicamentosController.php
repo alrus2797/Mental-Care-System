@@ -25,6 +25,7 @@ class MedicamentosController extends Controller
         ->join('medicamentos','medicinas.medicamento_id','=','medicamentos.id')
         ->join('presentacions','medicinas.presentacion_id','=','presentacions.id')
         ->select('medicamentos.id','cantidad','medicamentos.nombre','medicamentos.descripcion','medicamentos.efecSecundarios','medicamentos.adversos','presentacions.descripcion','presentacions.unidad')
+        ->orderBy('medicamentos.nombre', 'asc')
         ->get();
         //$medicinas = Medicina::all();
         return view('Prescriptions.medicamentos.todos', ["medicinas"=>$medicinas]);
@@ -96,8 +97,11 @@ class MedicamentosController extends Controller
         $medicinas = DB::table('medicinas')
         ->join('medicamentos','medicinas.medicamento_id','=','medicamentos.id')
         ->join('presentacions','medicinas.presentacion_id','=','presentacions.id')
-        ->select('medicamentos.id','cantidad','medicamentos.nombre','medicamentos.descripcion','medicamentos.efecSecundarios','medicamentos.adversos','presentacions.descripcion','presentacions.unidad')
-        ->where('nombre','like','%'.$request->input('nom').'%')
+        ->join('componente_medicamento','medicamentos.id','=','componente_medicamento.medicamento_id')
+        ->join('componentes','componentes.id','=','componente_medicamento.componente_id')
+        ->select('medicamentos.id','cantidad','medicamentos.nombre','medicamentos.descripcion','medicamentos.efecSecundarios','medicamentos.adversos','presentacions.descripcion','presentacions.unidad')->distinct()
+        ->where([['medicamentos.nombre','like','%'.$request->input('nom').'%'],['componentes.nombre','like','%'.$request->input('comp').'%']])
+        ->orderBy('medicamentos.nombre', 'asc')
         ->get();
 
         return response()->json(view('Prescriptions.medicamentos.todos',compact('medicinas'))->render());
