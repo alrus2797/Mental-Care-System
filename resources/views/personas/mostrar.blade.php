@@ -71,6 +71,7 @@
           </div>
         </div>
 
+
         <div class="form-group col-sm-12">
           <div class="col-sm-3">
         <form action="{{asset('personas')}}{{'/'.$tabla->id.'/editar'}}">
@@ -83,6 +84,7 @@
                 </form>
               </div>
             </div>
+
     </div>
 
 

@@ -27,7 +27,7 @@
 
 
  <button type="submit" class="btn btn-primary">Guardar</button>
-
+ <a href="{{asset('pacientes/estados/todos')}}">Cancelar</a>
 
 </form>
 </div>

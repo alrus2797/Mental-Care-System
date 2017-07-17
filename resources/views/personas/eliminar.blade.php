@@ -55,7 +55,7 @@
 
 
          <button type="submit" class="btn btn-primary"> Eliminar </button>
-         <a href="{{asset('personas/')}}">Cancelar</a>
+         <a href="{{asset('personas')}}">Cancelar</a>
 
 
        </form>

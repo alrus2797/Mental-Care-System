@@ -69,7 +69,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Guardar</button>
-
+        <a href="{{asset('personas')}}">Cancelar</a>
 
       </form>
 

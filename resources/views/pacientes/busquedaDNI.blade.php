@@ -1,6 +1,6 @@
 <div class="table-responsive">
 	<div class="tablaPersonasDNI col-sm-12">
-			<table class="table-striped col-sm-12">
+			<table class="table col-sm-12">
 				<thead>
 					<tr>
 						<th>Nombres</th>

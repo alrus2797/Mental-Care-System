@@ -17,11 +17,12 @@
 
         <input type="hidden" id="paciente_id" name="paciente_id" value="{{$get->id}}">
 
-        <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="email">Historia Clinica:</label>
-          <div class="col-sm-3">
-            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" value="{{$get->historials_id}}" >
-          </div>
+    <div class="form-group">
+      <label class="col-sm-2 col-form-label" for="email">Historia Clinica:</label>
+      <div class="col-sm-3">
+            <input type="text" class="form-control" id="historiaclinica" placeholder="Ingrese historia clinica" name="historiaclinica" value="{{$get->historials_id}}" readonly>
+      </div>
+    </div>
 
           <label class="col-sm-2 col-form-label" for="email">Apellido Paterno:</label>
           <div class="col-sm-3">

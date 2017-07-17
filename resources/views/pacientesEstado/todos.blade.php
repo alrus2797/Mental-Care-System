@@ -21,15 +21,15 @@
 				<tbody>
 					@foreach($tabla as $estado)
 						<tr>
-							<td><a href="{{asset('pacientes')}}{{'/estados/'.$estado->id}}">{{$estado->nombre}}</td>
-							<td>
+							<td>{{$estado->nombre}}</td>
+							<td><a href="{{asset('pacientes')}}{{'/estados/'.$estado->id.'/eliminar'}}">
   							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 							</td>
 						</tr>
 					@endforeach
 				</tbody>
 			</table>
-			
+
 	</div>
 
 </div>

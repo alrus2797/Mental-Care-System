@@ -7,7 +7,7 @@ use Log;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use App\persona;
+use App\Persona;
 
 class personasController extends Controller
 {
