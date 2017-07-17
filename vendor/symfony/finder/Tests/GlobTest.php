@@ -11,11 +11,14 @@
 
 namespace Symfony\Component\Finder\Tests;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Finder\Finder;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\Finder\Glob;
 
-class GlobTest extends TestCase
+class GlobTest extends \PHPUnit_Framework_TestCase
 {
     public function testGlobToRegexDelimiters()
     {

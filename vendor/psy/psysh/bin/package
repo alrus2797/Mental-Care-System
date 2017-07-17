@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+<<<<<<< HEAD
 set -e
 
+=======
+>>>>>>> PatientRecord
 cd "${BASH_SOURCE%/*}/.."
 
 USAGE="usage: bin/package [-v PACKAGE_VERSION]"
@@ -40,10 +43,19 @@ echo "Packaging $PKG_VERSION"
 
 mkdir -p dist || exit 1
 
+<<<<<<< HEAD
 ./bin/build || exit 1
 chmod +x *.phar
 
 echo "Creating tarballs"
+=======
+if [ -z "$PKG_VERSION" ]; then
+  PKG_VERSION=$(git describe --tag --exact-match) || exit 1
+  if [[ $(php --version) = PHP\ 5.3* ]]; then
+    PKG_VERSION=${PKG_VERSION}-php53
+  fi
+fi
+>>>>>>> PatientRecord
 
 # Support BSD tar because OS X :(
 if [[ $(tar --version) = bsdtar* ]]; then
@@ -53,3 +65,9 @@ else
   tar --transform "s/.*/psysh/" -czf dist/psysh-${PKG_VERSION}.tar.gz psysh.phar
   tar --transform "s/.*/psysh/" -czf dist/psysh-${PKG_VERSION}-compat.tar.gz psysh-compat.phar
 fi
+<<<<<<< HEAD
+=======
+
+tar $TAR_FLAGS -czf dist/psysh-${PKG_VERSION}.tar.gz psysh.phar || exit 1
+tar $TAR_FLAGS -czf dist/psysh-${PKG_VERSION}-compat.tar.gz psysh-compat.phar
+>>>>>>> PatientRecord

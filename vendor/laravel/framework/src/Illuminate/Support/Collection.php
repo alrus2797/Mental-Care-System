@@ -32,8 +32,13 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
      * @var array
      */
     protected static $proxies = [
+<<<<<<< HEAD
         'average', 'avg', 'contains', 'each', 'every', 'filter', 'first', 'flatMap',
         'map', 'partition', 'reject', 'sortBy', 'sortByDesc', 'sum',
+=======
+        'contains', 'each', 'every', 'filter', 'first', 'map',
+        'partition', 'reject', 'sortBy', 'sortByDesc', 'sum',
+>>>>>>> PatientRecord
     ];
 
     /**
@@ -59,6 +64,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+<<<<<<< HEAD
      * Create a new collection by invoking the callback a given amount of times.
      *
      * @param  int  $amount
@@ -79,6 +85,8 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+=======
+>>>>>>> PatientRecord
      * Get all of the items in the collection.
      *
      * @return array
@@ -366,6 +374,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+<<<<<<< HEAD
      * Apply the callback if the value is truthy.
      *
      * @param  bool  $value
@@ -398,6 +407,8 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+=======
+>>>>>>> PatientRecord
      * Filter items by the given key value pair.
      *
      * @param  string  $key
@@ -487,35 +498,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
-     * Filter items by the given key value pair.
-     *
-     * @param  string  $key
-     * @param  mixed  $values
-     * @param  bool  $strict
-     * @return static
-     */
-    public function whereNotIn($key, $values, $strict = false)
-    {
-        $values = $this->getArrayableItems($values);
-
-        return $this->reject(function ($item) use ($key, $values, $strict) {
-            return in_array(data_get($item, $key), $values, $strict);
-        });
-    }
-
-    /**
-     * Filter items by the given key value pair using strict comparison.
-     *
-     * @param  string  $key
-     * @param  mixed  $values
-     * @return static
-     */
-    public function whereNotInStrict($key, $values)
-    {
-        return $this->whereNotIn($key, $values, true);
-    }
-
-    /**
      * Get the first item from the collection.
      *
      * @param  callable|null  $callback
@@ -600,8 +582,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
             }
 
             foreach ($groupKeys as $groupKey) {
-                $groupKey = is_bool($groupKey) ? (int) $groupKey : $groupKey;
-
                 if (! array_key_exists($groupKey, $results)) {
                     $results[$groupKey] = new static;
                 }
@@ -770,6 +750,7 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+<<<<<<< HEAD
      * Run a map over each nested chunk of items.
      *
      * @param  callable  $callback
@@ -802,6 +783,8 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
     }
 
     /**
+=======
+>>>>>>> PatientRecord
      * Run an associative map over each of the items.
      *
      * The callback should return an associative array with a single key/value pair.
@@ -1350,19 +1333,6 @@ class Collection implements ArrayAccess, Arrayable, Countable, IteratorAggregate
         }
 
         return $this->slice(0, $limit);
-    }
-
-    /**
-     * Pass the collection to the given callback and then return it.
-     *
-     * @param  callable  $callback
-     * @return $this
-     */
-    public function tap(callable $callback)
-    {
-        $callback(new static($this->items));
-
-        return $this;
     }
 
     /**

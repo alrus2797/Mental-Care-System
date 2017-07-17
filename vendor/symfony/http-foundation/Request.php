@@ -220,6 +220,7 @@ class Request
 
     protected static $requestFactory;
 
+<<<<<<< HEAD
     private $isHostValid = true;
     private $isClientIpsValid = true;
     private $isForwardedValid = true;
@@ -242,6 +243,8 @@ class Request
         self::HEADER_X_FORWARDED_PORT => 'host',
     );
 
+=======
+>>>>>>> PatientRecord
     /**
      * Constructor.
      *
@@ -657,7 +660,6 @@ class Request
      *  * Request::HEADER_CLIENT_HOST:  defaults to X-Forwarded-Host  (see getHost())
      *  * Request::HEADER_CLIENT_PORT:  defaults to X-Forwarded-Port  (see getPort())
      *  * Request::HEADER_CLIENT_PROTO: defaults to X-Forwarded-Proto (see getScheme() and isSecure())
-     *  * Request::HEADER_FORWARDED:    defaults to Forwarded         (see RFC 7239)
      *
      * Setting an empty value allows to disable the trusted header for the given key.
      *
@@ -881,13 +883,41 @@ class Request
      */
     public function getClientIps()
     {
+        $clientIps = array();
         $ip = $this->server->get('REMOTE_ADDR');
 
         if (!$this->isFromTrustedProxy()) {
             return array($ip);
         }
 
-        return $this->getTrustedValues(self::HEADER_CLIENT_IP, $ip) ?: array($ip);
+        $hasTrustedForwardedHeader = self::$trustedHeaders[self::HEADER_FORWARDED] && $this->headers->has(self::$trustedHeaders[self::HEADER_FORWARDED]);
+        $hasTrustedClientIpHeader = self::$trustedHeaders[self::HEADER_CLIENT_IP] && $this->headers->has(self::$trustedHeaders[self::HEADER_CLIENT_IP]);
+
+        if ($hasTrustedForwardedHeader) {
+            $forwardedHeader = $this->headers->get(self::$trustedHeaders[self::HEADER_FORWARDED]);
+            preg_match_all('{(for)=("?\[?)([a-z0-9\.:_\-/]*)}', $forwardedHeader, $matches);
+            $forwardedClientIps = $matches[3];
+
+            $forwardedClientIps = $this->normalizeAndFilterClientIps($forwardedClientIps, $ip);
+            $clientIps = $forwardedClientIps;
+        }
+
+        if ($hasTrustedClientIpHeader) {
+            $xForwardedForClientIps = array_map('trim', explode(',', $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_IP])));
+
+            $xForwardedForClientIps = $this->normalizeAndFilterClientIps($xForwardedForClientIps, $ip);
+            $clientIps = $xForwardedForClientIps;
+        }
+
+        if ($hasTrustedForwardedHeader && $hasTrustedClientIpHeader && $forwardedClientIps !== $xForwardedForClientIps) {
+            throw new ConflictingHeadersException('The request has both a trusted Forwarded header and a trusted Client IP header, conflicting with each other with regards to the originating IP addresses of the request. This is the result of a misconfiguration. You should either configure your proxy only to send one of these headers, or configure Symfony to distrust one of them.');
+        }
+
+        if (!$hasTrustedForwardedHeader && !$hasTrustedClientIpHeader) {
+            return $this->normalizeAndFilterClientIps(array(), $ip);
+        }
+
+        return $clientIps;
     }
 
     /**
@@ -903,7 +933,7 @@ class Request
      * ("Client-Ip" for instance), configure it via the $trustedHeaderSet
      * argument of the Request::setTrustedProxies() method instead.
      *
-     * @return string|null The client IP address
+     * @return string The client IP address
      *
      * @see getClientIps()
      * @see http://en.wikipedia.org/wiki/X-Forwarded-For
@@ -1010,29 +1040,35 @@ class Request
      * configure it via via the $trustedHeaderSet argument of the
      * Request::setTrustedProxies() method instead.
      *
-     * @return int|string can be a string if fetched from the server bag
+     * @return string
      */
     public function getPort()
     {
-        if ($this->isFromTrustedProxy() && $host = $this->getTrustedValues(self::HEADER_CLIENT_PORT)) {
-            $host = $host[0];
-        } elseif ($this->isFromTrustedProxy() && $host = $this->getTrustedValues(self::HEADER_CLIENT_HOST)) {
-            $host = $host[0];
-        } elseif (!$host = $this->headers->get('HOST')) {
-            return $this->server->get('SERVER_PORT');
+        if ($this->isFromTrustedProxy()) {
+            if (self::$trustedHeaders[self::HEADER_CLIENT_PORT] && $port = $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PORT])) {
+                return $port;
+            }
+
+            if (self::$trustedHeaders[self::HEADER_CLIENT_PROTO] && 'https' === $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PROTO], 'http')) {
+                return 443;
+            }
         }
 
-        if ($host[0] === '[') {
-            $pos = strpos($host, ':', strrpos($host, ']'));
-        } else {
-            $pos = strrpos($host, ':');
+        if ($host = $this->headers->get('HOST')) {
+            if ($host[0] === '[') {
+                $pos = strpos($host, ':', strrpos($host, ']'));
+            } else {
+                $pos = strrpos($host, ':');
+            }
+
+            if (false !== $pos) {
+                return (int) substr($host, $pos + 1);
+            }
+
+            return 'https' === $this->getScheme() ? 443 : 80;
         }
 
-        if (false !== $pos) {
-            return (int) substr($host, $pos + 1);
-        }
-
-        return 'https' === $this->getScheme() ? 443 : 80;
+        return $this->server->get('SERVER_PORT');
     }
 
     /**
@@ -1232,8 +1268,8 @@ class Request
      */
     public function isSecure()
     {
-        if ($this->isFromTrustedProxy() && $proto = $this->getTrustedValues(self::HEADER_CLIENT_PROTO)) {
-            return in_array(strtolower($proto[0]), array('https', 'on', 'ssl', '1'), true);
+        if ($this->isFromTrustedProxy() && self::$trustedHeaders[self::HEADER_CLIENT_PROTO] && $proto = $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_PROTO])) {
+            return in_array(strtolower(current(explode(',', $proto))), array('https', 'on', 'ssl', '1'));
         }
 
         $https = $this->server->get('HTTPS');
@@ -1259,8 +1295,10 @@ class Request
      */
     public function getHost()
     {
-        if ($this->isFromTrustedProxy() && $host = $this->getTrustedValues(self::HEADER_CLIENT_HOST)) {
-            $host = $host[0];
+        if ($this->isFromTrustedProxy() && self::$trustedHeaders[self::HEADER_CLIENT_HOST] && $host = $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_HOST])) {
+            $elements = explode(',', $host);
+
+            $host = $elements[count($elements) - 1];
         } elseif (!$host = $this->headers->get('HOST')) {
             if (!$host = $this->server->get('SERVER_NAME')) {
                 $host = $this->server->get('SERVER_ADDR', '');
@@ -1455,10 +1493,10 @@ class Request
     public function getRequestFormat($default = 'html')
     {
         if (null === $this->format) {
-            $this->format = $this->attributes->get('_format');
+            $this->format = $this->attributes->get('_format', $default);
         }
 
-        return null === $this->format ? $default : $this->format;
+        return $this->format;
     }
 
     /**
@@ -2041,48 +2079,8 @@ class Request
         return self::$trustedProxies && IpUtils::checkIp($this->server->get('REMOTE_ADDR'), self::$trustedProxies);
     }
 
-    private function getTrustedValues($type, $ip = null)
-    {
-        $clientValues = array();
-        $forwardedValues = array();
-
-        if (self::$trustedHeaders[$type] && $this->headers->has(self::$trustedHeaders[$type])) {
-            foreach (explode(',', $this->headers->get(self::$trustedHeaders[$type])) as $v) {
-                $clientValues[] = (self::HEADER_CLIENT_PORT === $type ? '0.0.0.0:' : '').trim($v);
-            }
-        }
-
-        if (self::$trustedHeaders[self::HEADER_FORWARDED] && $this->headers->has(self::$trustedHeaders[self::HEADER_FORWARDED])) {
-            $forwardedValues = $this->headers->get(self::$trustedHeaders[self::HEADER_FORWARDED]);
-            $forwardedValues = preg_match_all(sprintf('{(?:%s)=(?:"?\[?)([a-zA-Z0-9\.:_\-/]*+)}', self::$forwardedParams[$type]), $forwardedValues, $matches) ? $matches[1] : array();
-        }
-
-        if (null !== $ip) {
-            $clientValues = $this->normalizeAndFilterClientIps($clientValues, $ip);
-            $forwardedValues = $this->normalizeAndFilterClientIps($forwardedValues, $ip);
-        }
-
-        if ($forwardedValues === $clientValues || !$clientValues) {
-            return $forwardedValues;
-        }
-
-        if (!$forwardedValues) {
-            return $clientValues;
-        }
-
-        if (!$this->isForwardedValid) {
-            return null !== $ip ? array('0.0.0.0', $ip) : array();
-        }
-        $this->isForwardedValid = false;
-
-        throw new ConflictingHeadersException(sprintf('The request has both a trusted "%s" header and a trusted "%s" header, conflicting with each other. You should either configure your proxy to remove one of them, or configure your project to distrust the offending one.', self::$trustedHeaders[self::HEADER_FORWARDED], self::$trustedHeaders[$type]));
-    }
-
     private function normalizeAndFilterClientIps(array $clientIps, $ip)
     {
-        if (!$clientIps) {
-            return array();
-        }
         $clientIps[] = $ip; // Complete the IP chain with the IP the request actually came from
         $firstTrustedIp = null;
 

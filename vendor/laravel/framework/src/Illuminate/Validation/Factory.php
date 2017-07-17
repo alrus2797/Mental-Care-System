@@ -46,13 +46,6 @@ class Factory implements FactoryContract
     protected $implicitExtensions = [];
 
     /**
-     * All of the custom dependent validator extensions.
-     *
-     * @var array
-     */
-    protected $dependentExtensions = [];
-
-    /**
      * All of the custom validator message replacers.
      *
      * @var array
@@ -169,8 +162,6 @@ class Factory implements FactoryContract
         // array of data that is given to a validator instances via instantiation.
         $validator->addImplicitExtensions($this->implicitExtensions);
 
-        $validator->addDependentExtensions($this->dependentExtensions);
-
         $validator->addReplacers($this->replacers);
 
         $validator->setFallbackMessages($this->fallbackMessages);
@@ -211,6 +202,7 @@ class Factory implements FactoryContract
     }
 
     /**
+<<<<<<< HEAD
      * Register a custom dependent validator extension.
      *
      * @param  string   $rule
@@ -229,6 +221,9 @@ class Factory implements FactoryContract
 
     /**
      * Register a custom validator message replacer.
+=======
+     * Register a custom implicit validator message replacer.
+>>>>>>> PatientRecord
      *
      * @param  string   $rule
      * @param  \Closure|string  $replacer

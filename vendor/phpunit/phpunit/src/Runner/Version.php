@@ -12,6 +12,8 @@ use SebastianBergmann\Version;
 
 /**
  * This class defines the current version of PHPUnit.
+ *
+ * @since Class available since Release 2.0.0
  */
 class PHPUnit_Runner_Version
 {
@@ -30,7 +32,11 @@ class PHPUnit_Runner_Version
         }
 
         if (self::$version === null) {
+<<<<<<< HEAD
             $version       = new Version('5.7.21', dirname(dirname(__DIR__)));
+=======
+            $version       = new Version('5.7.11', dirname(dirname(__DIR__)));
+>>>>>>> PatientRecord
             self::$version = $version->getVersion();
         }
 
@@ -39,6 +45,8 @@ class PHPUnit_Runner_Version
 
     /**
      * @return string
+     *
+     * @since Method available since Release 4.8.13
      */
     public static function series()
     {
@@ -61,6 +69,8 @@ class PHPUnit_Runner_Version
 
     /**
      * @return string
+     *
+     * @since Method available since Release 4.0.0
      */
     public static function getReleaseChannel()
     {

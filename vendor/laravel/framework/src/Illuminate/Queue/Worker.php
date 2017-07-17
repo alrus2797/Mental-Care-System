@@ -5,15 +5,12 @@ namespace Illuminate\Queue;
 use Exception;
 use Throwable;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Database\DetectsLostConnections;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Illuminate\Contracts\Cache\Repository as CacheContract;
 
 class Worker
 {
-    use DetectsLostConnections;
-
     /**
      * The queue manager instance.
      *
@@ -47,14 +44,14 @@ class Worker
      *
      * @var bool
      */
-    public $shouldQuit = false;
+    protected $shouldQuit = false;
 
     /**
      * Indicates if the worker is paused.
      *
      * @var bool
      */
-    public $paused = false;
+    protected $paused = false;
 
     /**
      * Create a new queue worker.
@@ -244,8 +241,6 @@ class Worker
             }
         } catch (Exception $e) {
             $this->exceptions->report($e);
-
-            $this->stopWorkerIfLostConnection($e);
         } catch (Throwable $e) {
             $this->exceptions->report($e = new FatalThrowableError($e));
 
@@ -267,8 +262,6 @@ class Worker
             return $this->process($connectionName, $job, $options);
         } catch (Exception $e) {
             $this->exceptions->report($e);
-
-            $this->stopWorkerIfLostConnection($e);
         } catch (Throwable $e) {
             $this->exceptions->report($e = new FatalThrowableError($e));
 
@@ -277,20 +270,7 @@ class Worker
     }
 
     /**
-     * Stop the worker if we have lost connection to a database.
-     *
-     * @param  \Exception  $e
-     * @return void
-     */
-    protected function stopWorkerIfLostConnection($e)
-    {
-        if ($this->causedByLostConnection($e)) {
-            $this->shouldQuit = true;
-        }
-    }
-
-    /**
-     * Process the given job from the queue.
+     * Process a given job from the queue.
      *
      * @param  string  $connectionName
      * @param  \Illuminate\Contracts\Queue\Job  $job
@@ -354,7 +334,7 @@ class Worker
             // If we catch an exception, we will attempt to release the job back onto the queue
             // so it is not lost entirely. This'll let the job be retried at a later time by
             // another listener (or this same one). We will re-throw this exception after.
-            if (! $job->isDeleted() && ! $job->isReleased() && ! $job->hasFailed()) {
+            if (! $job->isDeleted()) {
                 $job->release($options->delay);
             }
         }
@@ -593,26 +573,5 @@ class Worker
     public function setCache(CacheContract $cache)
     {
         $this->cache = $cache;
-    }
-
-    /**
-     * Get the queue manager instance.
-     *
-     * @return \Illuminate\Queue\QueueManager
-     */
-    public function getManager()
-    {
-        return $this->manager;
-    }
-
-    /**
-     * Set the queue manager instance.
-     *
-     * @param  \Illuminate\Queue\QueueManager  $manager
-     * @return void
-     */
-    public function setManager(QueueManager $manager)
-    {
-        $this->manager = $manager;
     }
 }

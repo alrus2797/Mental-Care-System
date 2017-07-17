@@ -28,7 +28,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      *
      * @var string
      */
+<<<<<<< HEAD
     const VERSION = '5.4.28';
+=======
+    const VERSION = '5.4.9';
+>>>>>>> PatientRecord
 
     /**
      * The base path for the Laravel installation.
@@ -294,56 +298,51 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the path to the application "app" directory.
      *
-     * @param string $path Optionally, a path to append to the app path
      * @return string
      */
-    public function path($path = '')
+    public function path()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'app'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath.DIRECTORY_SEPARATOR.'app';
     }
 
     /**
      * Get the base path of the Laravel installation.
      *
-     * @param string $path Optionally, a path to append to the base path
      * @return string
      */
-    public function basePath($path = '')
+    public function basePath()
     {
-        return $this->basePath.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath;
     }
 
     /**
      * Get the path to the bootstrap directory.
      *
-     * @param string $path Optionally, a path to append to the bootstrap path
      * @return string
      */
-    public function bootstrapPath($path = '')
+    public function bootstrapPath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'bootstrap'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath.DIRECTORY_SEPARATOR.'bootstrap';
     }
 
     /**
      * Get the path to the application configuration files.
      *
-     * @param string $path Optionally, a path to append to the config path
      * @return string
      */
-    public function configPath($path = '')
+    public function configPath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'config'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath.DIRECTORY_SEPARATOR.'config';
     }
 
     /**
      * Get the path to the database directory.
      *
-     * @param string $path Optionally, a path to append to the database path
      * @return string
      */
-    public function databasePath($path = '')
+    public function databasePath()
     {
-        return ($this->databasePath ?: $this->basePath.DIRECTORY_SEPARATOR.'database').($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->databasePath ?: $this->basePath.DIRECTORY_SEPARATOR.'database';
     }
 
     /**
@@ -409,12 +408,11 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     /**
      * Get the path to the resources directory.
      *
-     * @param  string  $path
      * @return string
      */
-    public function resourcePath($path = '')
+    public function resourcePath()
     {
-        return $this->basePath.DIRECTORY_SEPARATOR.'resources'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+        return $this->basePath.DIRECTORY_SEPARATOR.'resources';
     }
 
     /**
@@ -525,7 +523,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      */
     public function runningInConsole()
     {
-        return php_sapi_name() == 'cli' || php_sapi_name() == 'phpdbg';
+        return php_sapi_name() == 'cli';
     }
 
     /**

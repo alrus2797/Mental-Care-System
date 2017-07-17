@@ -11,8 +11,11 @@
 
 namespace Symfony\Component\HttpKernel\Tests\DataCollector;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\ParameterBag;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
@@ -27,7 +30,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-class RequestDataCollectorTest extends TestCase
+class RequestDataCollectorTest extends \PHPUnit_Framework_TestCase
 {
     public function testCollect()
     {

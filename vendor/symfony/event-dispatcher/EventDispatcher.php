@@ -104,6 +104,7 @@ class EventDispatcher implements EventDispatcherInterface
      */
     public function hasListeners($eventName = null)
     {
+<<<<<<< HEAD
         if (null !== $eventName) {
             return !empty($this->listeners[$eventName]);
         }
@@ -115,6 +116,9 @@ class EventDispatcher implements EventDispatcherInterface
         }
 
         return false;
+=======
+        return (bool) count($this->getListeners($eventName));
+>>>>>>> PatientRecord
     }
 
     /**

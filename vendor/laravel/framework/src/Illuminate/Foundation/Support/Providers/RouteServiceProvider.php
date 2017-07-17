@@ -31,7 +31,6 @@ class RouteServiceProvider extends ServiceProvider
 
             $this->app->booted(function () {
                 $this->app['router']->getRoutes()->refreshNameLookups();
-                $this->app['router']->getRoutes()->refreshActionLookups();
             });
         }
     }
@@ -67,9 +66,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function loadRoutes()
     {
-        if (method_exists($this, 'map')) {
-            $this->app->call([$this, 'map']);
-        }
+        $this->app->call([$this, 'map']);
     }
 
     /**

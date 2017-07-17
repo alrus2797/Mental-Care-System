@@ -24,7 +24,7 @@ use Symfony\Component\Yaml\Tag\TaggedValue;
  */
 class Inline
 {
-    const REGEX_QUOTED_STRING = '(?:"([^"\\\\]*+(?:\\\\.[^"\\\\]*+)*+)"|\'([^\']*+(?:\'\'[^\']*+)*+)\')';
+    const REGEX_QUOTED_STRING = '(?:"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"|\'([^\']*(?:\'\'[^\']*)*)\')';
 
     public static $parsedLineNumber;
 
@@ -220,9 +220,9 @@ class Inline
             case Escaper::requiresDoubleQuoting($value):
                 return Escaper::escapeWithDoubleQuotes($value);
             case Escaper::requiresSingleQuoting($value):
-            case Parser::preg_match('{^[0-9]+[_0-9]*$}', $value):
-            case Parser::preg_match(self::getHexRegex(), $value):
-            case Parser::preg_match(self::getTimestampRegex(), $value):
+            case preg_match('{^[0-9]+[_0-9]*$}', $value):
+            case preg_match(self::getHexRegex(), $value):
+            case preg_match(self::getTimestampRegex(), $value):
                 return Escaper::escapeWithSingleQuotes($value);
             default:
                 return $value;
@@ -287,12 +287,22 @@ class Inline
     /**
      * Parses a YAML scalar.
      *
+<<<<<<< HEAD
      * @param string   $scalar
      * @param int      $flags
      * @param string[] $delimiters
      * @param int      &$i
      * @param bool     $evaluate
      * @param array    $references
+=======
+     * @param string $scalar
+     * @param int    $flags
+     * @param string $delimiters
+     * @param array  $stringDelimiters
+     * @param int    &$i
+     * @param bool   $evaluate
+     * @param array  $references
+>>>>>>> PatientRecord
      *
      * @return string
      *
@@ -319,10 +329,14 @@ class Inline
                 $i += strlen($output);
 
                 // remove comments
-                if (Parser::preg_match('/[ \t]+#/', $output, $match, PREG_OFFSET_CAPTURE)) {
+                if (preg_match('/[ \t]+#/', $output, $match, PREG_OFFSET_CAPTURE)) {
                     $output = substr($output, 0, $match[0][1]);
                 }
+<<<<<<< HEAD
             } elseif (Parser::preg_match('/^(.'.($legacyOmittedKeySupport ? '+' : '*').'?)('.implode('|', $delimiters).')/', substr($scalar, $i), $match)) {
+=======
+            } elseif (preg_match('/^(.+?)('.implode('|', $delimiters).')/', substr($scalar, $i), $match)) {
+>>>>>>> PatientRecord
                 $output = $match[1];
                 $i += strlen($output);
             } else {
@@ -358,7 +372,7 @@ class Inline
      */
     private static function parseQuotedScalar($scalar, &$i)
     {
-        if (!Parser::preg_match('/'.self::REGEX_QUOTED_STRING.'/Au', substr($scalar, $i), $match)) {
+        if (!preg_match('/'.self::REGEX_QUOTED_STRING.'/Au', substr($scalar, $i), $match)) {
             throw new ParseException(sprintf('Malformed inline YAML string: %s.', substr($scalar, $i)));
         }
 
@@ -482,10 +496,11 @@ class Inline
             $isKeyQuoted = in_array($mapping[$i], array('"', "'"), true);
             $key = self::parseScalar($mapping, $flags, array(':', ' '), $i, false, array(), true);
 
-            if (':' !== $key && false === $i = strpos($mapping, ':', $i)) {
+            if (false === $i = strpos($mapping, ':', $i)) {
                 break;
             }
 
+<<<<<<< HEAD
             if (':' === $key) {
                 @trigger_error('Omitting the key of a mapping is deprecated and will throw a ParseException in 4.0.', E_USER_DEPRECATED);
             }
@@ -496,6 +511,10 @@ class Inline
                 if ('' !== $key && $evaluatedKey !== $key && !is_string($evaluatedKey) && !is_int($evaluatedKey)) {
                     @trigger_error('Implicit casting of incompatible mapping keys to strings is deprecated since version 3.3 and will throw \Symfony\Component\Yaml\Exception\ParseException in 4.0. Pass the PARSE_KEYS_AS_STRINGS flag to explicitly enable the type casts.', E_USER_DEPRECATED);
                 }
+=======
+            if (!isset($mapping[$i + 1]) || !in_array($mapping[$i + 1], array(' ', ',', '[', ']', '{', '}'), true)) {
+                @trigger_error('Using a colon that is not followed by an indication character (i.e. " ", ",", "[", "]", "{", "}" is deprecated since version 3.2 and will throw a ParseException in 4.0.', E_USER_DEPRECATED);
+>>>>>>> PatientRecord
             }
 
             if (':' !== $key && !$isKeyQuoted && (!isset($mapping[$i + 1]) || !in_array($mapping[$i + 1], array(' ', ',', '[', ']', '{', '}'), true))) {
@@ -569,7 +588,7 @@ class Inline
      * @param int    $flags
      * @param array  $references
      *
-     * @return mixed The evaluated YAML string
+     * @return string A YAML string
      *
      * @throws ParseException when object parsing support was disabled and the parser detected a PHP object or when a reference could not be resolved
      */
@@ -649,6 +668,7 @@ class Inline
                         return;
                     case 0 === strpos($scalar, '!!float '):
                         return (float) substr($scalar, 8);
+<<<<<<< HEAD
                     case 0 === strpos($scalar, '!!binary '):
                         return self::evaluateBinaryScalar(substr($scalar, 9));
                     default:
@@ -659,6 +679,9 @@ class Inline
             case $scalar[0] === '+' || $scalar[0] === '-' || $scalar[0] === '.' || is_numeric($scalar[0]):
                 switch (true) {
                     case Parser::preg_match('{^[+-]?[0-9][0-9_]*$}', $scalar):
+=======
+                    case preg_match('{^[+-]?[0-9][0-9_]*$}', $scalar):
+>>>>>>> PatientRecord
                         $scalar = str_replace('_', '', (string) $scalar);
                         // omitting the break / return as integers are handled in the next case
                     case ctype_digit($scalar):
@@ -672,7 +695,7 @@ class Inline
 
                         return '0' == $scalar[1] ? octdec($scalar) : (((string) $raw === (string) $cast) ? $cast : $raw);
                     case is_numeric($scalar):
-                    case Parser::preg_match(self::getHexRegex(), $scalar):
+                    case preg_match(self::getHexRegex(), $scalar):
                         $scalar = str_replace('_', '', $scalar);
 
                         return '0x' === $scalar[0].$scalar[1] ? hexdec($scalar) : (float) $scalar;
@@ -681,14 +704,21 @@ class Inline
                         return -log(0);
                     case '-.inf' === $scalarLower:
                         return log(0);
+<<<<<<< HEAD
                     case Parser::preg_match('/^(-|\+)?[0-9][0-9,]*(\.[0-9_]+)?$/', $scalar):
                     case Parser::preg_match('/^(-|\+)?[0-9][0-9_]*(\.[0-9_]+)?$/', $scalar):
+=======
+                    case 0 === strpos($scalar, '!!binary '):
+                        return self::evaluateBinaryScalar(substr($scalar, 9));
+                    case preg_match('/^(-|\+)?[0-9][0-9,]*(\.[0-9_]+)?$/', $scalar):
+                    case preg_match('/^(-|\+)?[0-9][0-9_]*(\.[0-9_]+)?$/', $scalar):
+>>>>>>> PatientRecord
                         if (false !== strpos($scalar, ',')) {
                             @trigger_error('Using the comma as a group separator for floats is deprecated since version 3.2 and will be removed in 4.0.', E_USER_DEPRECATED);
                         }
 
                         return (float) str_replace(array(',', '_'), '', $scalar);
-                    case Parser::preg_match(self::getTimestampRegex(), $scalar):
+                    case preg_match(self::getTimestampRegex(), $scalar):
                         if (Yaml::PARSE_DATETIME & $flags) {
                             // When no timezone is provided in the parsed date, YAML spec says we must assume UTC.
                             return new \DateTime($scalar, new \DateTimeZone('UTC'));
@@ -760,7 +790,7 @@ class Inline
             throw new ParseException(sprintf('The normalized base64 encoded data (data without whitespace characters) length must be a multiple of four (%d bytes given).', strlen($parsedBinaryData)));
         }
 
-        if (!Parser::preg_match('#^[A-Z0-9+/]+={0,2}$#i', $parsedBinaryData)) {
+        if (!preg_match('#^[A-Z0-9+/]+={0,2}$#i', $parsedBinaryData)) {
             throw new ParseException(sprintf('The base64 encoded data (%s) contains invalid characters.', $parsedBinaryData));
         }
 
@@ -769,7 +799,7 @@ class Inline
 
     private static function isBinaryString($value)
     {
-        return !preg_match('//u', $value) || preg_match('/[^\x00\x07-\x0d\x1B\x20-\xff]/', $value);
+        return !preg_match('//u', $value) || preg_match('/[^\x09-\x0d\x20-\xff]/', $value);
     }
 
     /**

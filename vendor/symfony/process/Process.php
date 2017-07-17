@@ -169,6 +169,7 @@ class Process implements \IteratorAggregate
         $this->setTimeout($timeout);
         $this->useFileHandles = '\\' === DIRECTORY_SEPARATOR;
         $this->pty = false;
+        $this->enhanceWindowsCompatibility = true;
         $this->enhanceSigchildCompatibility = '\\' !== DIRECTORY_SEPARATOR && $this->isSigchildEnabled();
         if (null !== $options) {
             @trigger_error(sprintf('The $options parameter of the %s constructor is deprecated since version 3.3 and will be removed in 4.0.', __CLASS__), E_USER_DEPRECATED);
@@ -288,8 +289,8 @@ class Process implements \IteratorAggregate
         $this->callback = $this->buildCallback($callback);
         $this->hasCallback = null !== $callback;
         $descriptors = $this->getDescriptors();
-        $inheritEnv = $this->inheritEnv;
 
+<<<<<<< HEAD
         if (is_array($commandline = $this->commandline)) {
             $commandline = implode(' ', array_map(array($this, 'escapeArgument'), $commandline));
 
@@ -321,24 +322,53 @@ class Process implements \IteratorAggregate
         if ('\\' === DIRECTORY_SEPARATOR && $this->enhanceWindowsCompatibility) {
             $this->options['bypass_shell'] = true;
             $commandline = $this->prepareWindowsCommandLine($commandline, $envBackup, $env);
+=======
+        $commandline = $this->commandline;
+        $envline = '';
+
+        if (null !== $this->env && $this->inheritEnv) {
+            if ('\\' === DIRECTORY_SEPARATOR && !empty($this->options['bypass_shell']) && !$this->enhanceWindowsCompatibility) {
+                throw new LogicException('The "bypass_shell" option must be false to inherit environment variables while enhanced Windows compatibility is off');
+            }
+            $env = '\\' === DIRECTORY_SEPARATOR ? '(SET %s)&&' : 'export %s;';
+            foreach ($this->env as $k => $v) {
+                $envline .= sprintf($env, ProcessUtils::escapeArgument("$k=$v"));
+            }
+            $env = null;
+        } else {
+            $env = $this->env;
+        }
+        if ('\\' === DIRECTORY_SEPARATOR && $this->enhanceWindowsCompatibility) {
+            $commandline = 'cmd /V:ON /E:ON /D /C "('.$envline.$commandline.')';
+            foreach ($this->processPipes->getFiles() as $offset => $filename) {
+                $commandline .= ' '.$offset.'>'.ProcessUtils::escapeArgument($filename);
+            }
+            $commandline .= '"';
+
+            if (!isset($this->options['bypass_shell'])) {
+                $this->options['bypass_shell'] = true;
+            }
+>>>>>>> PatientRecord
         } elseif (!$this->useFileHandles && $this->enhanceSigchildCompatibility && $this->isSigchildEnabled()) {
             // last exit code is output on the fourth pipe and caught to work around --enable-sigchild
             $descriptors[3] = array('pipe', 'w');
 
             // See https://unix.stackexchange.com/questions/71205/background-process-pipe-input
+<<<<<<< HEAD
             $commandline = '{ ('.$commandline.') <&3 3<&- 3>/dev/null & } 3<&0;';
+=======
+            $commandline = $envline.'{ ('.$this->commandline.') <&3 3<&- 3>/dev/null & } 3<&0;';
+>>>>>>> PatientRecord
             $commandline .= 'pid=$!; echo $pid >&3; wait $pid; code=$?; echo $code >&3; exit $code';
 
             // Workaround for the bug, when PTS functionality is enabled.
             // @see : https://bugs.php.net/69442
             $ptsWorkaround = fopen(__FILE__, 'r');
+        } elseif ('' !== $envline) {
+            $commandline = $envline.$commandline;
         }
 
         $this->process = proc_open($commandline, $descriptors, $this->processPipes->pipes, $this->cwd, $env, $this->options);
-
-        foreach ($envBackup as $k => $v) {
-            putenv(false === $v ? $k : "$k=$v");
-        }
 
         if (!is_resource($this->process)) {
             throw new RuntimeException('Unable to launch a new process.');
@@ -412,7 +442,7 @@ class Process implements \IteratorAggregate
         if (null !== $callback) {
             if (!$this->processPipes->haveReadSupport()) {
                 $this->stop(0);
-                throw new \LogicException('Pass the callback to the Process::start method or enableOutput to use a callback with Process::wait');
+                throw new \LogicException('Pass the callback to the Process:start method or enableOutput to use a callback with Process::wait');
             }
             $this->callback = $this->buildCallback($callback);
         }
@@ -1141,7 +1171,10 @@ class Process implements \IteratorAggregate
             return !is_array($value);
         });
 
-        $this->env = $env;
+        $this->env = array();
+        foreach ($env as $key => $value) {
+            $this->env[$key] = (string) $value;
+        }
 
         return $this;
     }

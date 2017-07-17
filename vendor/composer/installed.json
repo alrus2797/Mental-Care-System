@@ -1,5 +1,272 @@
 [
     {
+        "name": "doctrine/lexer",
+        "version": "v1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/lexer.git",
+            "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
+            "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2014-09-09 13:34:57",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Lexer\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "lexer",
+            "parser"
+        ]
+    },
+    {
+        "name": "doctrine/annotations",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/annotations.git",
+            "reference": "54cacc9b81758b14e3ce750f205a393d52339e97"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/54cacc9b81758b14e3ce750f205a393d52339e97",
+            "reference": "54cacc9b81758b14e3ce750f205a393d52339e97",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/lexer": "1.*",
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "doctrine/cache": "1.*",
+            "phpunit/phpunit": "^5.7"
+        },
+        "time": "2017-02-24 16:22:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Docblock Annotations Parser",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "docblock",
+            "parser"
+        ]
+    },
+    {
+        "name": "doctrine/cache",
+        "version": "v1.6.1",
+        "version_normalized": "1.6.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/cache.git",
+            "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/cache/zipball/b6f544a20f4807e81f7044d31e679ccbb1866dc3",
+            "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3",
+            "shasum": ""
+        },
+        "require": {
+            "php": "~5.5|~7.0"
+        },
+        "conflict": {
+            "doctrine/common": ">2.2,<2.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8|~5.0",
+            "predis/predis": "~1.0",
+            "satooshi/php-coveralls": "~0.6"
+        },
+        "time": "2016-10-29 11:16:17",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.6.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Caching library offering an object-oriented API for many cache backends",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "cache",
+            "caching"
+        ]
+    },
+    {
+        "name": "doctrine/collections",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/collections.git",
+            "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/collections/zipball/1a4fb7e902202c33cce8c55989b945612943c2ba",
+            "reference": "1a4fb7e902202c33cce8c55989b945612943c2ba",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "doctrine/coding-standard": "~0.1@dev",
+            "phpunit/phpunit": "^5.7"
+        },
+        "time": "2017-01-03 10:49:41",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Common\\Collections\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Collections Abstraction library",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "array",
+            "collections",
+            "iterator"
+        ]
+    },
+    {
         "name": "doctrine/inflector",
         "version": "v1.1.0",
         "version_normalized": "1.1.0.0",
@@ -20,7 +287,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.*"
         },
-        "time": "2015-11-06T14:35:42+00:00",
+        "time": "2015-11-06 14:35:42",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -69,7 +336,156 @@
         ]
     },
     {
+        "name": "doctrine/common",
+        "version": "v2.7.2",
+        "version_normalized": "2.7.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/common.git",
+            "reference": "930297026c8009a567ac051fd545bf6124150347"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/common/zipball/930297026c8009a567ac051fd545bf6124150347",
+            "reference": "930297026c8009a567ac051fd545bf6124150347",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/annotations": "1.*",
+            "doctrine/cache": "1.*",
+            "doctrine/collections": "1.*",
+            "doctrine/inflector": "1.*",
+            "doctrine/lexer": "1.*",
+            "php": "~5.6|~7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.4.6"
+        },
+        "time": "2017-01-13 14:02:13",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.7.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Common\\": "lib/Doctrine/Common"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
+                "name": "Johannes Schmitt",
+                "email": "schmittjoh@gmail.com"
+            }
+        ],
+        "description": "Common Library for Doctrine projects",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "annotations",
+            "collections",
+            "eventmanager",
+            "persistence",
+            "spl"
+        ]
+    },
+    {
+        "name": "doctrine/dbal",
+        "version": "v2.5.12",
+        "version_normalized": "2.5.12.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/dbal.git",
+            "reference": "7b9e911f9d8b30d43b96853dab26898c710d8f44"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/7b9e911f9d8b30d43b96853dab26898c710d8f44",
+            "reference": "7b9e911f9d8b30d43b96853dab26898c710d8f44",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": ">=2.4,<2.8-dev",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*",
+            "symfony/console": "2.*||^3.0"
+        },
+        "suggest": {
+            "symfony/console": "For helpful console commands such as SQL execution and import of files."
+        },
+        "time": "2017-02-08 12:53:47",
+        "bin": [
+            "bin/doctrine-dbal"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Roman Borschel",
+                "email": "roman@code-factory.org"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            }
+        ],
+        "description": "Database Abstraction Layer",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "dbal",
+            "persistence",
+            "queryobject"
+        ]
+    },
+    {
         "name": "erusev/parsedown",
+<<<<<<< HEAD
         "version": "1.6.3",
         "version_normalized": "1.6.3.0",
         "source": {
@@ -81,12 +497,29 @@
             "type": "zip",
             "url": "https://api.github.com/repos/erusev/parsedown/zipball/728952b90a333b5c6f77f06ea9422b94b585878d",
             "reference": "728952b90a333b5c6f77f06ea9422b94b585878d",
+=======
+        "version": "1.6.1",
+        "version_normalized": "1.6.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/erusev/parsedown.git",
+            "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/erusev/parsedown/zipball/20ff8bbb57205368b4b42d094642a3e52dac85fb",
+            "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
+<<<<<<< HEAD
         "time": "2017-05-14T14:47:48+00:00",
+=======
+        "time": "2016-11-02 15:56:58",
+>>>>>>> PatientRecord
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -189,7 +622,7 @@
             "phpunit/phpunit": "3.7.*",
             "squizlabs/php_codesniffer": "1.*"
         },
-        "time": "2014-04-08T15:00:19+00:00",
+        "time": "2014-04-08 15:00:19",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -230,7 +663,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
+<<<<<<< HEAD
         "time": "2017-06-09T14:24:12+00:00",
+=======
+        "time": "2016-11-14 01:06:16",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -272,6 +709,7 @@
     },
     {
         "name": "symfony/var-dumper",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -283,24 +721,41 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/var-dumper/zipball/9ee920bba1d2ce877496dcafca7cbffff4dbe08a",
             "reference": "9ee920bba1d2ce877496dcafca7cbffff4dbe08a",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/var-dumper.git",
+            "reference": "b54b23f9a19b465e76fdaac0f6732410467c83b2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/b54b23f9a19b465e76fdaac0f6732410467c83b2",
+            "reference": "b54b23f9a19b465e76fdaac0f6732410467c83b2",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9",
             "symfony/polyfill-mbstring": "~1.0"
         },
-        "conflict": {
-            "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
-        },
         "require-dev": {
+<<<<<<< HEAD
             "ext-iconv": "*",
             "twig/twig": "~1.34|~2.4"
+=======
+            "twig/twig": "~1.20|~2.0"
+>>>>>>> PatientRecord
         },
         "suggest": {
-            "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
             "ext-symfony_debug": ""
         },
+<<<<<<< HEAD
         "time": "2017-07-05T13:02:37+00:00",
+=======
+        "time": "2017-01-03 08:53:57",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -358,7 +813,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-10-10T12:19:37+00:00",
+        "time": "2016-10-10 12:19:37",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -391,6 +846,7 @@
     },
     {
         "name": "symfony/debug",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -402,6 +858,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/debug/zipball/63b85a968486d95ff9542228dc2e4247f16f9743",
             "reference": "63b85a968486d95ff9542228dc2e4247f16f9743",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/debug.git",
+            "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/debug/zipball/810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+            "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -414,7 +883,11 @@
         "require-dev": {
             "symfony/http-kernel": "~2.8|~3.0"
         },
+<<<<<<< HEAD
         "time": "2017-07-05T13:02:37+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -449,6 +922,7 @@
     },
     {
         "name": "symfony/console",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -460,6 +934,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/console/zipball/a97e45d98c59510f085fa05225a1acb74dfe0546",
             "reference": "a97e45d98c59510f085fa05225a1acb74dfe0546",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/console.git",
+            "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/console/zipball/4f9e449e76996adf310498a8ca955c6deebe29dd",
+            "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -485,7 +972,11 @@
             "symfony/filesystem": "",
             "symfony/process": ""
         },
+<<<<<<< HEAD
         "time": "2017-07-03T13:19:36+00:00",
+=======
+        "time": "2017-01-08 20:47:33",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -520,6 +1011,7 @@
     },
     {
         "name": "nikic/php-parser",
+<<<<<<< HEAD
         "version": "v3.0.6",
         "version_normalized": "3.0.6.0",
         "source": {
@@ -531,6 +1023,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/0808939f81c1347a3c8a82a5925385a08074b0f1",
             "reference": "0808939f81c1347a3c8a82a5925385a08074b0f1",
+=======
+        "version": "v3.0.3",
+        "version_normalized": "3.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
+            "reference": "5b8182cc0abb4b0ff290ba9df6c0e1323286013a",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -540,7 +1045,11 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0|~5.0"
         },
+<<<<<<< HEAD
         "time": "2017-06-28T20:53:48+00:00",
+=======
+        "time": "2017-02-03 21:57:31",
+>>>>>>> PatientRecord
         "bin": [
             "bin/php-parse"
         ],
@@ -597,7 +1106,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~1.5"
         },
-        "time": "2015-04-20T18:58:01+00:00",
+        "time": "2015-04-20 18:58:01",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -638,7 +1147,7 @@
         "require-dev": {
             "phpunit/phpunit": "@stable"
         },
-        "time": "2014-10-24T07:27:01+00:00",
+        "time": "2014-10-24 07:27:01",
         "type": "project",
         "installation-source": "dist",
         "autoload": {
@@ -654,6 +1163,7 @@
     },
     {
         "name": "psy/psysh",
+<<<<<<< HEAD
         "version": "v0.8.9",
         "version_normalized": "0.8.9.0",
         "source": {
@@ -665,6 +1175,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/bobthecow/psysh/zipball/58a31cc4404c8f632d8c557bc72056af2d3a83db",
             "reference": "58a31cc4404c8f632d8c557bc72056af2d3a83db",
+=======
+        "version": "v0.8.1",
+        "version_normalized": "0.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bobthecow/psysh.git",
+            "reference": "701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a",
+            "reference": "701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -688,7 +1211,11 @@
             "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
             "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
         },
+<<<<<<< HEAD
         "time": "2017-07-06T14:53:52+00:00",
+=======
+        "time": "2017-01-15 17:54:13",
+>>>>>>> PatientRecord
         "bin": [
             "bin/psysh"
         ],
@@ -748,7 +1275,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8 || ^5.0"
         },
-        "time": "2016-09-01T10:05:43+00:00",
+        "time": "2016-09-01 10:05:43",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -781,6 +1308,7 @@
     },
     {
         "name": "symfony/css-selector",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -792,12 +1320,29 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/css-selector/zipball/4d882dced7b995d5274293039370148e291808f2",
             "reference": "4d882dced7b995d5274293039370148e291808f2",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/css-selector.git",
+            "reference": "f0e628f04fc055c934b3211cfabdb1c59eefbfaa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/css-selector/zipball/f0e628f04fc055c934b3211cfabdb1c59eefbfaa",
+            "reference": "f0e628f04fc055c934b3211cfabdb1c59eefbfaa",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
+<<<<<<< HEAD
         "time": "2017-05-01T15:01:29+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -856,7 +1401,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.8|5.1.*"
         },
-        "time": "2016-09-20T12:50:39+00:00",
+        "time": "2016-09-20 12:50:39",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -885,6 +1430,7 @@
     },
     {
         "name": "symfony/routing",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -896,6 +1442,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/routing/zipball/dc70bbd0ca7b19259f63cdacc8af370bc32a4728",
             "reference": "dc70bbd0ca7b19259f63cdacc8af370bc32a4728",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/routing.git",
+            "reference": "fda2c67d47ec801726ca888c95d701d31b27b444"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/routing/zipball/fda2c67d47ec801726ca888c95d701d31b27b444",
+            "reference": "fda2c67d47ec801726ca888c95d701d31b27b444",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -924,7 +1483,11 @@
             "symfony/http-foundation": "For using a Symfony Request object",
             "symfony/yaml": "For using the YAML loader"
         },
+<<<<<<< HEAD
         "time": "2017-06-24T09:29:48+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -965,6 +1528,7 @@
     },
     {
         "name": "symfony/process",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -976,12 +1540,29 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/process/zipball/5ab8949b682b1bf9d4511a228b5e045c96758c30",
             "reference": "5ab8949b682b1bf9d4511a228b5e045c96758c30",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/process.git",
+            "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/process/zipball/350e810019fc52dd06ae844b6a6d382f8a0e8893",
+            "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
+<<<<<<< HEAD
         "time": "2017-07-03T08:12:02+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1016,6 +1597,7 @@
     },
     {
         "name": "symfony/http-foundation",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1027,6 +1609,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/http-foundation/zipball/f347a5f561b03db95ed666959db42bbbf429b7e5",
             "reference": "f347a5f561b03db95ed666959db42bbbf429b7e5",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/http-foundation.git",
+            "reference": "33eb76bf1d833c705433e5361a646c164696394b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/http-foundation/zipball/33eb76bf1d833c705433e5361a646c164696394b",
+            "reference": "33eb76bf1d833c705433e5361a646c164696394b",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1036,7 +1631,11 @@
         "require-dev": {
             "symfony/expression-language": "~2.8|~3.0"
         },
+<<<<<<< HEAD
         "time": "2017-06-24T09:29:48+00:00",
+=======
+        "time": "2017-01-08 20:47:33",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1071,6 +1670,7 @@
     },
     {
         "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1082,6 +1682,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/67535f1e3fd662bdc68d7ba317c93eecd973617e",
             "reference": "67535f1e3fd662bdc68d7ba317c93eecd973617e",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/event-dispatcher.git",
+            "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9137eb3a3328e413212826d63eeeb0217836e2b6",
+            "reference": "9137eb3a3328e413212826d63eeeb0217836e2b6",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1101,7 +1714,11 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
+<<<<<<< HEAD
         "time": "2017-06-09T14:53:08+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1136,6 +1753,7 @@
     },
     {
         "name": "symfony/http-kernel",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1147,6 +1765,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/http-kernel/zipball/33f87c957122cfbd9d90de48698ee074b71106ea",
             "reference": "33f87c957122cfbd9d90de48698ee074b71106ea",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/http-kernel.git",
+            "reference": "8a898e340a89022246645b1288d295f49c9381e4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/http-kernel/zipball/8a898e340a89022246645b1288d295f49c9381e4",
+            "reference": "8a898e340a89022246645b1288d295f49c9381e4",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1189,7 +1820,11 @@
             "symfony/finder": "",
             "symfony/var-dumper": ""
         },
+<<<<<<< HEAD
         "time": "2017-07-05T13:28:15+00:00",
+=======
+        "time": "2017-01-12 21:36:33",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1224,6 +1859,7 @@
     },
     {
         "name": "symfony/finder",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1235,12 +1871,29 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/finder/zipball/baea7f66d30854ad32988c11a09d7ffd485810c4",
             "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/finder.git",
+            "reference": "8c71141cae8e2957946b403cc71a67213c0380d6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/finder/zipball/8c71141cae8e2957946b403cc71a67213c0380d6",
+            "reference": "8c71141cae8e2957946b403cc71a67213c0380d6",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
+<<<<<<< HEAD
         "time": "2017-06-01T21:01:25+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1275,17 +1928,17 @@
     },
     {
         "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.8",
-        "version_normalized": "5.4.8.0",
+        "version": "v5.4.5",
+        "version_normalized": "5.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517"
+            "reference": "cd142238a339459b10da3d8234220963f392540c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/9a06dc570a0367850280eefd3f1dc2da45aef517",
-            "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
+            "reference": "cd142238a339459b10da3d8234220963f392540c",
             "shasum": ""
         },
         "require": {
@@ -1295,7 +1948,7 @@
             "mockery/mockery": "~0.9.1",
             "symfony/phpunit-bridge": "~3.2"
         },
-        "time": "2017-05-01T15:54:03+00:00",
+        "time": "2016-12-29 10:02:40",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1331,17 +1984,17 @@
     },
     {
         "name": "paragonie/random_compat",
-        "version": "v2.0.10",
-        "version_normalized": "2.0.10.0",
+        "version": "v2.0.4",
+        "version_normalized": "2.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
-            "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+            "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
             "shasum": ""
         },
         "require": {
@@ -1353,7 +2006,7 @@
         "suggest": {
             "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
         },
-        "time": "2017-03-13T16:27:32+00:00",
+        "time": "2016-11-07 23:38:38",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1381,31 +2034,31 @@
     },
     {
         "name": "ramsey/uuid",
-        "version": "3.6.1",
-        "version_normalized": "3.6.1.0",
+        "version": "3.5.2",
+        "version_normalized": "3.5.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ramsey/uuid.git",
-            "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e"
+            "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ramsey/uuid/zipball/4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
-            "reference": "4ae32dd9ab8860a4bbd750ad269cba7f06f7934e",
+            "url": "https://api.github.com/repos/ramsey/uuid/zipball/5677cfe02397dd6b58c861870dfaa5d9007d3954",
+            "reference": "5677cfe02397dd6b58c861870dfaa5d9007d3954",
             "shasum": ""
         },
         "require": {
             "paragonie/random_compat": "^1.0|^2.0",
-            "php": "^5.4 || ^7.0"
+            "php": ">=5.4"
         },
         "replace": {
             "rhumsaa/uuid": "self.version"
         },
         "require-dev": {
             "apigen/apigen": "^4.1",
-            "codeception/aspect-mock": "^1.0 | ^2.0",
+            "codeception/aspect-mock": "1.0.0",
             "doctrine/annotations": "~1.2.0",
-            "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
+            "goaop/framework": "1.0.0-alpha.2",
             "ircmaxell/random-lib": "^1.1",
             "jakub-onderka/php-parallel-lint": "^0.9.0",
             "mockery/mockery": "^0.9.4",
@@ -1423,7 +2076,7 @@
             "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
             "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
         },
-        "time": "2017-03-26T20:37:53+00:00",
+        "time": "2016-11-22 19:21:44",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1465,6 +2118,7 @@
     },
     {
         "name": "symfony/translation",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1476,6 +2130,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/translation/zipball/35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
             "reference": "35dd5fb003c90e8bd4d8cabdf94bf9c96d06fdc3",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/translation.git",
+            "reference": "6520f3d4cce604d9dd1e86cac7af954984dd9bda"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/6520f3d4cce604d9dd1e86cac7af954984dd9bda",
+            "reference": "6520f3d4cce604d9dd1e86cac7af954984dd9bda",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1489,15 +2156,24 @@
         "require-dev": {
             "psr/log": "~1.0",
             "symfony/config": "~2.8|~3.0",
+<<<<<<< HEAD
             "symfony/intl": "^2.8.18|^3.2.5",
             "symfony/yaml": "~3.3"
+=======
+            "symfony/intl": "~2.8|~3.0",
+            "symfony/yaml": "~2.8|~3.0"
+>>>>>>> PatientRecord
         },
         "suggest": {
             "psr/log": "To use logging capability in translator",
             "symfony/config": "",
             "symfony/yaml": ""
         },
+<<<<<<< HEAD
         "time": "2017-06-24T16:45:30+00:00",
+=======
+        "time": "2017-01-02 20:32:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1553,7 +2229,7 @@
             "friendsofphp/php-cs-fixer": "~2",
             "phpunit/phpunit": "~4.0 || ~5.0"
         },
-        "time": "2017-01-16T07:55:07+00:00",
+        "time": "2017-01-16 07:55:07",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1606,7 +2282,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0|~5.0"
         },
-        "time": "2017-01-23T04:29:33+00:00",
+        "time": "2017-01-23 04:29:33",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1633,6 +2309,7 @@
     },
     {
         "name": "monolog/monolog",
+<<<<<<< HEAD
         "version": "1.23.0",
         "version_normalized": "1.23.0.0",
         "source": {
@@ -1644,6 +2321,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
             "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+=======
+        "version": "1.22.0",
+        "version_normalized": "1.22.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Seldaek/monolog.git",
+            "reference": "bad29cb8d18ab0315e6c477751418a82c850d558"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bad29cb8d18ab0315e6c477751418a82c850d558",
+            "reference": "bad29cb8d18ab0315e6c477751418a82c850d558",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1679,7 +2369,11 @@
             "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
             "sentry/sentry": "Allow sending log messages to a Sentry server"
         },
+<<<<<<< HEAD
         "time": "2017-06-19T01:22:40+00:00",
+=======
+        "time": "2016-11-26 00:15:39",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1713,17 +2407,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.40",
-        "version_normalized": "1.0.40.0",
+        "version": "1.0.34",
+        "version_normalized": "1.0.34.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61"
+            "reference": "469ad53c13ea19a0e54e3e5d70f61227ddcc0299"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3828f0b24e2c1918bb362d57a53205d6dc8fde61",
-            "reference": "3828f0b24e2c1918bb362d57a53205d6dc8fde61",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/469ad53c13ea19a0e54e3e5d70f61227ddcc0299",
+            "reference": "469ad53c13ea19a0e54e3e5d70f61227ddcc0299",
             "shasum": ""
         },
         "require": {
@@ -1745,14 +2439,14 @@
             "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
             "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
             "league/flysystem-copy": "Allows you to use Copy.com storage",
+            "league/flysystem-dropbox": "Allows you to use Dropbox storage",
             "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
             "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
             "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
             "league/flysystem-webdav": "Allows you to use WebDAV storage",
-            "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
-            "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
+            "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
         },
-        "time": "2017-04-28T10:15:08+00:00",
+        "time": "2017-01-30 17:41:17",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1798,6 +2492,7 @@
     },
     {
         "name": "laravel/framework",
+<<<<<<< HEAD
         "version": "v5.4.28",
         "version_normalized": "5.4.28.0",
         "source": {
@@ -1809,6 +2504,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/laravel/framework/zipball/442511fc62121085d184355e4f964c88942bbecb",
             "reference": "442511fc62121085d184355e4f964c88942bbecb",
+=======
+        "version": "v5.4.9",
+        "version_normalized": "5.4.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "600330ae1d218919b3b307e0578461a2df248663"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/600330ae1d218919b3b307e0578461a2df248663",
+            "reference": "600330ae1d218919b3b307e0578461a2df248663",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -1893,7 +2601,11 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.2).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
         },
+<<<<<<< HEAD
         "time": "2017-06-30T13:43:07+00:00",
+=======
+        "time": "2017-02-03 19:47:35",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1956,7 +2668,11 @@
         "suggest": {
             "illuminate/database": "The Illuminate Database package (~5.1)."
         },
+<<<<<<< HEAD
         "time": "2017-06-01T16:31:26+00:00",
+=======
+        "time": "2016-12-30 18:13:17",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1994,8 +2710,69 @@
     },
     {
         "name": "laravelcollective/html",
+<<<<<<< HEAD
         "version": "v5.4.8",
         "version_normalized": "5.4.8.0",
+=======
+        "version": "v5.4.1",
+        "version_normalized": "5.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/LaravelCollective/html.git",
+            "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/LaravelCollective/html/zipball/7570f25d58a00fd6909c0563808590f9cdb14d47",
+            "reference": "7570f25d58a00fd6909c0563808590f9cdb14d47",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/http": "5.4.*",
+            "illuminate/routing": "5.4.*",
+            "illuminate/session": "5.4.*",
+            "illuminate/support": "5.4.*",
+            "illuminate/view": "5.4.*",
+            "php": ">=5.6.4"
+        },
+        "require-dev": {
+            "illuminate/database": "5.4.*",
+            "mockery/mockery": "~0.9.4",
+            "phpunit/phpunit": "~5.4"
+        },
+        "time": "2017-01-26 19:27:05",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Collective\\Html\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com"
+            },
+            {
+                "name": "Adam Engebretson",
+                "email": "adam@laravelcollective.com"
+            }
+        ],
+        "description": "HTML and Form Builders for the Laravel Framework",
+        "homepage": "http://laravelcollective.com"
+    },
+    {
+        "name": "fzaninotto/faker",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
+>>>>>>> PatientRecord
         "source": {
             "type": "git",
             "url": "https://github.com/LaravelCollective/html.git",
@@ -2020,7 +2797,11 @@
             "mockery/mockery": "~0.9.4",
             "phpunit/phpunit": "~5.4"
         },
+<<<<<<< HEAD
         "time": "2017-05-22T06:35:07+00:00",
+=======
+        "time": "2016-04-29 12:21:54",
+>>>>>>> PatientRecord
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2075,7 +2856,7 @@
             "phpunit/php-file-iterator": "1.3.3",
             "satooshi/php-coveralls": "dev-master"
         },
-        "time": "2015-05-11T14:41:42+00:00",
+        "time": "2015-05-11 14:41:42",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2097,17 +2878,17 @@
     },
     {
         "name": "mockery/mockery",
-        "version": "0.9.9",
-        "version_normalized": "0.9.9.0",
+        "version": "0.9.7",
+        "version_normalized": "0.9.7.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/mockery/mockery.git",
-            "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
+            "url": "https://github.com/padraic/mockery.git",
+            "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mockery/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
-            "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
+            "url": "https://api.github.com/repos/padraic/mockery/zipball/4de7969f4664da3cef1ccd83866c9f59378c3371",
+            "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371",
             "shasum": ""
         },
         "require": {
@@ -2118,7 +2899,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-        "time": "2017-02-28T12:52:32+00:00",
+        "time": "2016-12-19 14:50:55",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2184,7 +2965,7 @@
             "phpunit/phpunit": "^4.6",
             "sebastian/version": "^1.0.1"
         },
-        "time": "2016-11-23T20:04:58+00:00",
+        "time": "2016-11-23 20:04:58",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2235,7 +3016,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.6"
         },
-        "time": "2015-12-27T11:43:31+00:00",
+        "time": "2015-12-27 11:43:31",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2293,7 +3074,11 @@
             "mockery/mockery": "^0.9.4",
             "phpunit/phpunit": "^5.2||^4.8.24"
         },
+<<<<<<< HEAD
         "time": "2017-07-14T14:27:02+00:00",
+=======
+        "time": "2016-11-25 06:54:22",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2344,7 +3129,11 @@
             "mockery/mockery": "^0.9.4",
             "phpunit/phpunit": "^4.4"
         },
+<<<<<<< HEAD
         "time": "2017-07-15T11:38:20+00:00",
+=======
+        "time": "2016-09-30 07:12:33",
+>>>>>>> PatientRecord
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2368,17 +3157,17 @@
     },
     {
         "name": "phpunit/php-token-stream",
-        "version": "1.4.11",
-        "version_normalized": "1.4.11.0",
+        "version": "1.4.9",
+        "version_normalized": "1.4.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-            "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
+            "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
-            "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
+            "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
             "shasum": ""
         },
         "require": {
@@ -2388,7 +3177,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.2"
         },
-        "time": "2017-02-27T10:12:30+00:00",
+        "time": "2016-11-15 14:06:22",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2419,6 +3208,7 @@
     },
     {
         "name": "symfony/yaml",
+<<<<<<< HEAD
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -2430,6 +3220,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/symfony/yaml/zipball/1f93a8d19b8241617f5074a123e282575b821df8",
             "reference": "1f93a8d19b8241617f5074a123e282575b821df8",
+=======
+        "version": "v3.2.2",
+        "version_normalized": "3.2.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "50eadbd7926e31842893c957eca362b21592a97d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
+            "reference": "50eadbd7926e31842893c957eca362b21592a97d",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -2441,7 +3244,11 @@
         "suggest": {
             "symfony/console": "For validating YAML files using the lint command"
         },
+<<<<<<< HEAD
         "time": "2017-06-15T12:58:50+00:00",
+=======
+        "time": "2017-01-03 13:51:32",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2492,7 +3299,7 @@
         "require": {
             "php": ">=5.6"
         },
-        "time": "2016-10-03T07:35:21+00:00",
+        "time": "2016-10-03 07:35:21",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2537,7 +3344,7 @@
         "require": {
             "php": ">=5.6.0"
         },
-        "time": "2015-07-28T20:34:47+00:00",
+        "time": "2015-07-28 20:34:47",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2584,7 +3391,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.4"
         },
-        "time": "2016-11-19T07:33:16+00:00",
+        "time": "2016-11-19 07:33:16",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2620,17 +3427,17 @@
     },
     {
         "name": "sebastian/object-enumerator",
-        "version": "2.0.1",
-        "version_normalized": "2.0.1.0",
+        "version": "2.0.0",
+        "version_normalized": "2.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/object-enumerator.git",
-            "reference": "1311872ac850040a79c3c058bea3e22d0f09cbb7"
+            "reference": "96f8a3f257b69e8128ad74d3a7fd464bcbaa3b35"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/1311872ac850040a79c3c058bea3e22d0f09cbb7",
-            "reference": "1311872ac850040a79c3c058bea3e22d0f09cbb7",
+            "url": "https://api.github.com/repos/sebastianbergmann/object-enumerator/zipball/96f8a3f257b69e8128ad74d3a7fd464bcbaa3b35",
+            "reference": "96f8a3f257b69e8128ad74d3a7fd464bcbaa3b35",
             "shasum": ""
         },
         "require": {
@@ -2640,7 +3447,7 @@
         "require-dev": {
             "phpunit/phpunit": "~5"
         },
-        "time": "2017-02-18T15:18:39+00:00",
+        "time": "2016-11-19 07:35:10",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2690,7 +3497,7 @@
         "suggest": {
             "ext-uopz": "*"
         },
-        "time": "2015-10-12T03:26:01+00:00",
+        "time": "2015-10-12 03:26:01",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2742,7 +3549,7 @@
             "ext-mbstring": "*",
             "phpunit/phpunit": "~4.4"
         },
-        "time": "2016-11-19T08:54:04+00:00",
+        "time": "2016-11-19 08:54:04",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2809,7 +3616,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.0"
         },
-        "time": "2016-11-26T07:53:53+00:00",
+        "time": "2016-11-26 07:53:53",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2861,7 +3668,11 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
         },
+<<<<<<< HEAD
         "time": "2017-05-22T07:24:03+00:00",
+=======
+        "time": "2015-12-08 07:14:41",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2917,7 +3728,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.4"
         },
-        "time": "2017-01-29T09:50:25+00:00",
+        "time": "2017-01-29 09:50:25",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2978,7 +3789,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2015-06-21T13:50:34+00:00",
+        "time": "2015-06-21 13:50:34",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3028,7 +3839,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~2.0"
         },
-        "time": "2015-06-14T21:17:01+00:00",
+        "time": "2015-06-14 21:17:01",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3089,7 +3900,11 @@
         "suggest": {
             "ext-soap": "*"
         },
+<<<<<<< HEAD
         "time": "2017-06-30T09:13:00+00:00",
+=======
+        "time": "2016-12-08 20:27:08",
+>>>>>>> PatientRecord
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3122,32 +3937,27 @@
     },
     {
         "name": "phpunit/php-timer",
-        "version": "1.0.9",
-        "version_normalized": "1.0.9.0",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-timer.git",
-            "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f"
+            "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
-            "reference": "3dcf38ca72b158baf0bc245e9184d3fdffa9c46f",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
+            "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
             "shasum": ""
         },
         "require": {
-            "php": "^5.3.3 || ^7.0"
+            "php": ">=5.3.3"
         },
         "require-dev": {
-            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
+            "phpunit/phpunit": "~4|~5"
         },
-        "time": "2017-02-26T11:10:40+00:00",
+        "time": "2016-05-12 18:03:57",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
             "classmap": [
@@ -3189,7 +3999,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2016-10-03T07:40:28+00:00",
+        "time": "2016-10-03 07:40:28",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3222,26 +4032,26 @@
     },
     {
         "name": "sebastian/code-unit-reverse-lookup",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/code-unit-reverse-lookup.git",
-            "reference": "4419fcdb5eabb9caa61a27c7a1db532a6b55dd18"
+            "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/4419fcdb5eabb9caa61a27c7a1db532a6b55dd18",
-            "reference": "4419fcdb5eabb9caa61a27c7a1db532a6b55dd18",
+            "url": "https://api.github.com/repos/sebastianbergmann/code-unit-reverse-lookup/zipball/c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
+            "reference": "c36f5e7cfce482fde5bf8d10d41a53591e0198fe",
             "shasum": ""
         },
         "require": {
-            "php": "^5.6 || ^7.0"
+            "php": ">=5.6"
         },
         "require-dev": {
-            "phpunit/phpunit": "^5.7 || ^6.0"
+            "phpunit/phpunit": "~5"
         },
-        "time": "2017-03-04T06:30:41+00:00",
+        "time": "2016-02-13 06:45:14",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3269,38 +4079,38 @@
     },
     {
         "name": "phpunit/php-code-coverage",
-        "version": "4.0.8",
-        "version_normalized": "4.0.8.0",
+        "version": "4.0.5",
+        "version_normalized": "4.0.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-            "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d"
+            "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
-            "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
+            "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c19cfc7cbb0e9338d8c469c7eedecc2a428b0971",
+            "reference": "c19cfc7cbb0e9338d8c469c7eedecc2a428b0971",
             "shasum": ""
         },
         "require": {
-            "ext-dom": "*",
-            "ext-xmlwriter": "*",
             "php": "^5.6 || ^7.0",
-            "phpunit/php-file-iterator": "^1.3",
-            "phpunit/php-text-template": "^1.2",
-            "phpunit/php-token-stream": "^1.4.2 || ^2.0",
-            "sebastian/code-unit-reverse-lookup": "^1.0",
+            "phpunit/php-file-iterator": "~1.3",
+            "phpunit/php-text-template": "~1.2",
+            "phpunit/php-token-stream": "^1.4.2",
+            "sebastian/code-unit-reverse-lookup": "~1.0",
             "sebastian/environment": "^1.3.2 || ^2.0",
-            "sebastian/version": "^1.0 || ^2.0"
+            "sebastian/version": "~1.0|~2.0"
         },
         "require-dev": {
-            "ext-xdebug": "^2.1.4",
-            "phpunit/phpunit": "^5.7"
+            "ext-xdebug": ">=2.1.4",
+            "phpunit/phpunit": "^5.4"
         },
         "suggest": {
-            "ext-xdebug": "^2.5.1"
+            "ext-dom": "*",
+            "ext-xdebug": ">=2.4.0",
+            "ext-xmlwriter": "*"
         },
-        "time": "2017-04-02T07:44:40+00:00",
+        "time": "2017-01-20 15:06:43",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3334,31 +4144,31 @@
     },
     {
         "name": "phpspec/prophecy",
-        "version": "v1.7.0",
-        "version_normalized": "1.7.0.0",
+        "version": "v1.6.2",
+        "version_normalized": "1.6.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
+            "reference": "6c52c2722f8460122f96f86346600e1077ce22cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
-            "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/6c52c2722f8460122f96f86346600e1077ce22cb",
+            "reference": "6c52c2722f8460122f96f86346600e1077ce22cb",
             "shasum": ""
         },
         "require": {
             "doctrine/instantiator": "^1.0.2",
             "php": "^5.3|^7.0",
             "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-            "sebastian/comparator": "^1.1|^2.0",
-            "sebastian/recursion-context": "^1.0|^2.0|^3.0"
+            "sebastian/comparator": "^1.1",
+            "sebastian/recursion-context": "^1.0|^2.0"
         },
         "require-dev": {
-            "phpspec/phpspec": "^2.5|^3.2",
+            "phpspec/phpspec": "^2.0",
             "phpunit/phpunit": "^4.8 || ^5.6.5"
         },
-        "time": "2017-03-02T20:05:34+00:00",
+        "time": "2016-11-21 14:58:47",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3399,17 +4209,17 @@
     },
     {
         "name": "myclabs/deep-copy",
-        "version": "1.6.1",
-        "version_normalized": "1.6.1.0",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/myclabs/DeepCopy.git",
-            "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
+            "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
-            "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+            "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+            "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
             "shasum": ""
         },
         "require": {
@@ -3419,7 +4229,7 @@
             "doctrine/collections": "1.*",
             "phpunit/phpunit": "~4.1"
         },
-        "time": "2017-04-12T18:52:22+00:00",
+        "time": "2017-01-26 22:05:40",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3443,6 +4253,7 @@
     },
     {
         "name": "phpunit/phpunit",
+<<<<<<< HEAD
         "version": "5.7.21",
         "version_normalized": "5.7.21.0",
         "source": {
@@ -3454,6 +4265,19 @@
             "type": "zip",
             "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3b91adfb64264ddec5a2dee9851f354aa66327db",
             "reference": "3b91adfb64264ddec5a2dee9851f354aa66327db",
+=======
+        "version": "5.7.11",
+        "version_normalized": "5.7.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/phpunit.git",
+            "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6ad2472daba76b0689042b7709f86d4f06bcaab",
+            "reference": "a6ad2472daba76b0689042b7709f86d4f06bcaab",
+>>>>>>> PatientRecord
             "shasum": ""
         },
         "require": {
@@ -3477,7 +4301,7 @@
             "sebastian/global-state": "^1.1",
             "sebastian/object-enumerator": "~2.0",
             "sebastian/resource-operations": "~1.0",
-            "sebastian/version": "~1.0.3|~2.0",
+            "sebastian/version": "~1.0|~2.0",
             "symfony/yaml": "~2.1|~3.0"
         },
         "conflict": {
@@ -3490,7 +4314,11 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "~1.1"
         },
+<<<<<<< HEAD
         "time": "2017-06-21T08:11:54+00:00",
+=======
+        "time": "2017-02-05 15:31:31",
+>>>>>>> PatientRecord
         "bin": [
             "phpunit"
         ],

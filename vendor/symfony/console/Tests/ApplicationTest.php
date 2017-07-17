@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Console\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Helper\FormatterHelper;
@@ -33,7 +32,7 @@ use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 use Symfony\Component\Console\Exception\CommandNotFoundException;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-class ApplicationTest extends TestCase
+class ApplicationTest extends \PHPUnit_Framework_TestCase
 {
     protected static $fixturesPath;
 
@@ -274,12 +273,7 @@ class ApplicationTest extends TestCase
      */
     public function testFindWithAmbiguousAbbreviations($abbreviation, $expectedExceptionMessage)
     {
-        if (method_exists($this, 'expectException')) {
-            $this->expectException('Symfony\Component\Console\Exception\CommandNotFoundException');
-            $this->expectExceptionMessage($expectedExceptionMessage);
-        } else {
-            $this->setExpectedException('Symfony\Component\Console\Exception\CommandNotFoundException', $expectedExceptionMessage);
-        }
+        $this->setExpectedException('Symfony\Component\Console\Exception\CommandNotFoundException', $expectedExceptionMessage);
 
         $application = new Application();
         $application->add(new \FooCommand());
@@ -636,21 +630,6 @@ class ApplicationTest extends TestCase
         putenv('COLUMNS=120');
     }
 
-    public function testRenderExceptionEscapesLines()
-    {
-        $application = new Application();
-        $application->setAutoExit(false);
-        putenv('COLUMNS=22');
-        $application->register('foo')->setCode(function () {
-            throw new \Exception('dont break here <info>!</info>');
-        });
-        $tester = new ApplicationTester($application);
-
-        $tester->run(array('command' => 'foo'), array('decorated' => false));
-        $this->assertStringEqualsFile(self::$fixturesPath.'/application_renderexception_escapeslines.txt', $tester->getDisplay(true), '->renderException() escapes lines containing formatting');
-        putenv('COLUMNS=120');
-    }
-
     public function testRun()
     {
         $application = new Application();
@@ -764,12 +743,8 @@ class ApplicationTest extends TestCase
         $input = new ArgvInput(array('cli.php', '-v', 'foo:bar'));
         $application->run($input, $output);
 
-        $this->addToAssertionCount(1);
-
         $input = new ArgvInput(array('cli.php', '--verbose', 'foo:bar'));
         $application->run($input, $output);
-
-        $this->addToAssertionCount(1);
     }
 
     public function testRunReturnsIntegerExitCode()
@@ -1019,6 +994,7 @@ class ApplicationTest extends TestCase
         $this->assertContains('before.foo.error.after.', $tester->getDisplay());
     }
 
+<<<<<<< HEAD
     public function testRunDispatchesAllEventsWithExceptionInListener()
     {
         $dispatcher = $this->getDispatcher();
@@ -1039,8 +1015,12 @@ class ApplicationTest extends TestCase
         $this->assertContains('before.error.after.', $tester->getDisplay());
     }
 
+=======
+>>>>>>> PatientRecord
     public function testRunWithError()
     {
+        $this->setExpectedException('Exception', 'dymerr');
+
         $application = new Application();
         $application->setAutoExit(false);
         $application->setCatchExceptions(false);
@@ -1052,13 +1032,7 @@ class ApplicationTest extends TestCase
         });
 
         $tester = new ApplicationTester($application);
-
-        try {
-            $tester->run(array('command' => 'dym'));
-            $this->fail('Error expected.');
-        } catch (\Error $e) {
-            $this->assertSame('dymerr', $e->getMessage());
-        }
+        $tester->run(array('command' => 'dym'));
     }
 
     public function testRunAllowsErrorListenersToSilenceTheException()
@@ -1305,6 +1279,32 @@ class ApplicationTest extends TestCase
         $this->assertSame(array($width, 80), $application->getTerminalDimensions());
     }
 
+    protected function getDispatcher($skipCommand = false)
+    {
+        $dispatcher = new EventDispatcher();
+        $dispatcher->addListener('console.command', function (ConsoleCommandEvent $event) use ($skipCommand) {
+            $event->getOutput()->write('before.');
+
+            if ($skipCommand) {
+                $event->disableCommand();
+            }
+        });
+        $dispatcher->addListener('console.terminate', function (ConsoleTerminateEvent $event) use ($skipCommand) {
+            $event->getOutput()->writeln('after.');
+
+            if (!$skipCommand) {
+                $event->setExitCode(113);
+            }
+        });
+        $dispatcher->addListener('console.exception', function (ConsoleExceptionEvent $event) {
+            $event->getOutput()->write('caught.');
+
+            $event->setException(new \LogicException('caught.', $event->getExitCode(), $event->getException()));
+        });
+
+        return $dispatcher;
+    }
+
     public function testSetRunCustomDefaultCommand()
     {
         $command = new \FooCommand();
@@ -1361,6 +1361,7 @@ class ApplicationTest extends TestCase
         $inputStream = $tester->getInput()->getStream();
         $this->assertEquals($tester->getInput()->isInteractive(), @posix_isatty($inputStream));
     }
+<<<<<<< HEAD
 
     protected function getDispatcher($skipCommand = false)
     {
@@ -1410,6 +1411,8 @@ class ApplicationTest extends TestCase
             $this->assertSame($e->getMessage(), 'Class \'UnknownClass\' not found');
         }
     }
+=======
+>>>>>>> PatientRecord
 }
 
 class CustomApplication extends Application

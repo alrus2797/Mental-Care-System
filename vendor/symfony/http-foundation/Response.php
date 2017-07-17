@@ -179,7 +179,7 @@ class Response
         503 => 'Service Unavailable',
         504 => 'Gateway Timeout',
         505 => 'HTTP Version Not Supported',
-        506 => 'Variant Also Negotiates',                                     // RFC2295
+        506 => 'Variant Also Negotiates (Experimental)',                      // RFC2295
         507 => 'Insufficient Storage',                                        // RFC4918
         508 => 'Loop Detected',                                               // RFC5842
         510 => 'Not Extended',                                                // RFC2774
@@ -202,9 +202,27 @@ class Response
         $this->setStatusCode($status);
         $this->setProtocolVersion('1.0');
 
+<<<<<<< HEAD
         /* RFC2616 - 14.18 says all Responses need to have a Date */
         if (!$this->headers->has('Date')) {
             $this->setDate(\DateTime::createFromFormat('U', time()));
+=======
+        // Deprecations
+        $class = get_class($this);
+        if ($this instanceof \PHPUnit_Framework_MockObject_MockObject || $this instanceof \Prophecy\Doubler\DoubleInterface) {
+            $class = get_parent_class($class);
+        }
+        if (isset(self::$deprecationsTriggered[$class])) {
+            return;
+        }
+
+        self::$deprecationsTriggered[$class] = true;
+        foreach (self::$deprecatedMethods as $method) {
+            $r = new \ReflectionMethod($class, $method);
+            if (__CLASS__ !== $r->getDeclaringClass()->getName()) {
+                @trigger_error(sprintf('Extending %s::%s() in %s is deprecated since version 3.2 and won\'t be supported anymore in 4.0 as it will be final.', __CLASS__, $method, $class), E_USER_DEPRECATED);
+            }
+>>>>>>> PatientRecord
         }
     }
 
@@ -334,7 +352,6 @@ class Response
             return $this;
         }
 
-        /* RFC2616 - 14.18 says all Responses need to have a Date */
         if (!$this->headers->has('Date')) {
             $this->setDate(\DateTime::createFromFormat('U', time()));
         }
@@ -648,11 +665,6 @@ class Response
      */
     public function getDate()
     {
-        /*
-            RFC2616 - 14.18 says all Responses need to have a Date.
-            Make sure we provide one even if it the header
-            has been removed in the meantime.
-         */
         if (!$this->headers->has('Date')) {
             $this->setDate(\DateTime::createFromFormat('U', time()));
         }

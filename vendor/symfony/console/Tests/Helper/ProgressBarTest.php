@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Console\Tests\Helper;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\Helper;
 use Symfony\Component\Console\Output\StreamOutput;
@@ -19,7 +18,7 @@ use Symfony\Component\Console\Output\StreamOutput;
 /**
  * @group time-sensitive
  */
-class ProgressBarTest extends TestCase
+class ProgressBarTest extends \PHPUnit_Framework_TestCase
 {
     public function testMultipleStart()
     {
@@ -770,23 +769,5 @@ class ProgressBarTest extends TestCase
         $count = substr_count($expected, "\n");
 
         return "\x0D\x1B[2K".($count ? str_repeat("\x1B[1A\x1B[2K", $count) : '').$expected;
-    }
-
-    public function testBarWidthWithMultilineFormat()
-    {
-        putenv('COLUMNS=10');
-
-        $bar = new ProgressBar($output = $this->getOutputStream());
-        $bar->setFormat("%bar%\n0123456789");
-
-        // before starting
-        $bar->setBarWidth(5);
-        $this->assertEquals(5, $bar->getBarWidth());
-
-        // after starting
-        $bar->start();
-        rewind($output->getStream());
-        $this->assertEquals(5, $bar->getBarWidth(), stream_get_contents($output->getStream()));
-        putenv('COLUMNS=120');
     }
 }

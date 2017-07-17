@@ -11,7 +11,15 @@
 
 namespace Symfony\Component\HttpKernel\EventListener;
 
+<<<<<<< HEAD
 use Psr\Container\ContainerInterface;
+=======
+use Symfony\Component\HttpFoundation\Cookie;
+use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+>>>>>>> PatientRecord
 
 /**
  * Sets the session in the request.

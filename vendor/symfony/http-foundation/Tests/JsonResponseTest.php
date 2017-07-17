@@ -11,10 +11,9 @@
 
 namespace Symfony\Component\HttpFoundation\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class JsonResponseTest extends TestCase
+class JsonResponseTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructorEmptyCreatesJsonObject()
     {

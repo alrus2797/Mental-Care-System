@@ -11,12 +11,10 @@
 
 namespace Symfony\Component\Yaml\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Inline;
 use Symfony\Component\Yaml\Yaml;
 
-class InlineTest extends TestCase
+class InlineTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider getTestsForParse
@@ -656,15 +654,10 @@ class InlineTest extends TestCase
 
     /**
      * @dataProvider getInvalidBinaryData
-     * @expectedException \Symfony\Component\Yaml\Exception\ParseException
      */
     public function testParseInvalidBinaryData($data, $expectedMessage)
     {
-        if (method_exists($this, 'expectException')) {
-            $this->expectExceptionMessageRegExp($expectedMessage);
-        } else {
-            $this->setExpectedExceptionRegExp(ParseException::class, $expectedMessage);
-        }
+        $this->setExpectedExceptionRegExp('\Symfony\Component\Yaml\Exception\ParseException', $expectedMessage);
 
         Inline::parse($data);
     }
@@ -687,6 +680,7 @@ class InlineTest extends TestCase
     {
         Inline::parse('{this, is not, supported}');
     }
+<<<<<<< HEAD
 
     public function testVeryLongQuotedStrings()
     {
@@ -755,4 +749,6 @@ class InlineTest extends TestCase
             'float' => array('{0.25: "foo"}', array('0.25' => 'foo')),
         );
     }
+=======
+>>>>>>> PatientRecord
 }

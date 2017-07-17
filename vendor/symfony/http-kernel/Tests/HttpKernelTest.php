@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\HttpKernel\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface;
@@ -28,7 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-class HttpKernelTest extends TestCase
+class HttpKernelTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \RuntimeException
@@ -337,9 +336,13 @@ class HttpKernelTest extends TestCase
     public function testInconsistentClientIpsOnMasterRequests()
     {
         $request = new Request();
+<<<<<<< HEAD
         $request->setTrustedProxies(array('1.1.1.1'), Request::HEADER_X_FORWARDED_FOR | Request::HEADER_FORWARDED);
+=======
+        $request->setTrustedProxies(array('1.1.1.1'));
+>>>>>>> PatientRecord
         $request->server->set('REMOTE_ADDR', '1.1.1.1');
-        $request->headers->set('FORWARDED', 'for=2.2.2.2');
+        $request->headers->set('FORWARDED', '2.2.2.2');
         $request->headers->set('X_FORWARDED_FOR', '3.3.3.3');
 
         $dispatcher = new EventDispatcher();

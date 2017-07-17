@@ -11,10 +11,9 @@ class MessageSelector
      *
      * @param  string  $line
      * @param  int  $number
-     * @param  string  $locale
      * @return mixed
      */
-    public function choose($line, $number, $locale)
+    public function choose($line, $number)
     {
         $segments = explode('|', $line);
 
@@ -24,13 +23,8 @@ class MessageSelector
 
         $segments = $this->stripConditions($segments);
 
-        $pluralIndex = $this->getPluralIndex($locale, $number);
-
-        if (count($segments) == 1 || ! isset($segments[$pluralIndex])) {
-            return $segments[0];
-        }
-
-        return $segments[$pluralIndex];
+        return count($segments) == 1 || $number == 1
+                        ? $segments[0] : $segments[1];
     }
 
     /**
@@ -95,6 +89,7 @@ class MessageSelector
             return preg_replace('/^[\{\[]([^\[\]\{\}]*)[\}\]]/', '', $part);
         })->all();
     }
+<<<<<<< HEAD
 
     /**
      * Get the index to use for pluralization.
@@ -409,4 +404,6 @@ class MessageSelector
                 return 0;
         }
     }
+=======
+>>>>>>> PatientRecord
 }

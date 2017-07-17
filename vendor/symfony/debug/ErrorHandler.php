@@ -100,9 +100,12 @@ class ErrorHandler
     private static $stackedErrors = array();
     private static $stackedErrorLevels = array();
     private static $toStringException = null;
+<<<<<<< HEAD
     private static $silencedErrorCache = array();
     private static $silencedErrorCount = 0;
     private static $exitCode = 0;
+=======
+>>>>>>> PatientRecord
 
     /**
      * Registers the error handler.
@@ -228,7 +231,7 @@ class ErrorHandler
 
         if ($flush) {
             foreach ($this->bootstrappingLogger->cleanLogs() as $log) {
-                $type = $log[2]['exception'] instanceof \ErrorException ? $log[2]['exception']->getSeverity() : E_ERROR;
+                $type = $log[2]['exception']->getSeverity();
                 if (!isset($flush[$type])) {
                     $this->bootstrappingLogger->log($log[0], $log[1], $log[2]);
                 } elseif ($this->loggers[$type][0]) {
@@ -355,10 +358,12 @@ class ErrorHandler
     /**
      * Handles errors by filtering then logging them according to the configured bit fields.
      *
-     * @param int    $type    One of the E_* constants
+     * @param int    $type      One of the E_* constants
      * @param string $message
      * @param string $file
      * @param int    $line
+     * @param array  $context
+     * @param array  $backtrace
      *
      * @return bool Returns false when no handling happens so that the PHP engine can handle the error itself
      *
@@ -366,7 +371,7 @@ class ErrorHandler
      *
      * @internal
      */
-    public function handleError($type, $message, $file, $line)
+    public function handleError($type, $message, $file, $line, array $context, array $backtrace = null)
     {
         // Level is the current error reporting level to manage silent error.
         // Strong errors are not authorized to be silenced.
@@ -378,20 +383,9 @@ class ErrorHandler
         if (!$type || (!$log && !$throw)) {
             return $type && $log;
         }
-        $scope = $this->scopedErrors & $type;
 
-        if (4 < $numArgs = func_num_args()) {
-            $context = $scope ? (func_get_arg(4) ?: array()) : array();
-            $backtrace = 5 < $numArgs ? func_get_arg(5) : null; // defined on HHVM
-        } else {
-            $context = array();
-            $backtrace = null;
-        }
-
-        if (isset($context['GLOBALS']) && $scope) {
-            $e = $context;                  // Whatever the signature of the method,
-            unset($e['GLOBALS'], $context); // $context is always a reference in 5.3
-            $context = $e;
+        if (isset($context['GLOBALS']) && ($this->scopedErrors & $type)) {
+            unset($context['GLOBALS']);
         }
 
         if (null !== $backtrace && $type & E_ERROR) {
@@ -428,7 +422,7 @@ class ErrorHandler
                 return;
             }
         } else {
-            if ($scope) {
+            if ($this->scopedErrors & $type) {
                 $errorAsException = new ContextErrorException($logMessage, 0, $type, $file, $line, $context);
             } else {
                 $errorAsException = new \ErrorException($logMessage, 0, $type, $file, $line);
@@ -519,9 +513,6 @@ class ErrorHandler
      */
     public function handleException($exception, array $error = null)
     {
-        if (null === $error) {
-            self::$exitCode = 255;
-        }
         if (!$exception instanceof \Exception) {
             $exception = new FatalThrowableError($exception);
         }
@@ -597,7 +588,7 @@ class ErrorHandler
             return;
         }
 
-        if ($exit = null === $error) {
+        if (null === $error) {
             $error = error_get_last();
         }
 
@@ -621,20 +612,14 @@ class ErrorHandler
             } else {
                 $exception = new FatalErrorException($handler->levels[$error['type']].': '.$error['message'], 0, $error['type'], $error['file'], $error['line'], 2, true, $trace);
             }
+        } elseif (!isset($exception)) {
+            return;
         }
 
         try {
-            if (isset($exception)) {
-                self::$exitCode = 255;
-                $handler->handleException($exception, $error);
-            }
+            $handler->handleException($exception, $error);
         } catch (FatalErrorException $e) {
             // Ignore this re-throw
-        }
-
-        if ($exit && self::$exitCode) {
-            $exitCode = self::$exitCode;
-            register_shutdown_function('register_shutdown_function', function () use ($exitCode) { exit($exitCode); });
         }
     }
 

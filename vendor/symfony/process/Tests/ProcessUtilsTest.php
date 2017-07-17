@@ -11,13 +11,16 @@
 
 namespace Symfony\Component\Process\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\ProcessUtils;
 
+<<<<<<< HEAD
 /**
  * @group legacy
  */
 class ProcessUtilsTest extends TestCase
+=======
+class ProcessUtilsTest extends \PHPUnit_Framework_TestCase
+>>>>>>> PatientRecord
 {
     /**
      * @dataProvider dataArguments
@@ -47,7 +50,6 @@ class ProcessUtilsTest extends TestCase
             array("'<|>\" \"'\\''f'", '<|>" "\'f'),
             array("''", ''),
             array("'with\\trailingbs\\'", 'with\trailingbs\\'),
-            array("'withNonAsciiAccentLikeéÉèÈàÀöä'", 'withNonAsciiAccentLikeéÉèÈàÀöä'),
         );
     }
 }

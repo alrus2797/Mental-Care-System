@@ -446,7 +446,7 @@ class Data implements \ArrayAccess, \Countable, \IteratorAggregate, \Serializabl
         $cursor->hashCut = $hashCut;
         foreach ($children as $key => $child) {
             $cursor->hashKeyIsBinary = isset($key[0]) && !preg_match('//u', $key);
-            $cursor->hashKey = $dumpKeys ? $key : null;
+            $cursor->hashKey = $dumpKeys ? $key :  null;
             $this->dumpItem($dumper, $cursor, $refs, $child);
             if (++$cursor->hashIndex === $this->maxItemsPerDepth || $cursor->stop) {
                 $parentCursor->stop = true;

@@ -246,7 +246,7 @@ abstract class HasOneOrMany extends Relation
      * Attach a model instance to the parent model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @return \Illuminate\Database\Eloquent\Model|false
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function save(Model $model)
     {

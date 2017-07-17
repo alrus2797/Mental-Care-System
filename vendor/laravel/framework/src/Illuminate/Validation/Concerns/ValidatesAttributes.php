@@ -430,7 +430,7 @@ trait ValidatesAttributes
      */
     protected function validateDimensions($attribute, $value, $parameters)
     {
-        if (! $this->isValidFileInstance($value) || ! $sizeDetails = @getimagesize($value->getRealPath())) {
+        if (! $this->isValidFileInstance($value) || ! $sizeDetails = getimagesize($value->getRealPath())) {
             return false;
         }
 
@@ -484,9 +484,13 @@ trait ValidatesAttributes
             [1, 1], array_filter(sscanf($parameters['ratio'], '%f/%d'))
         );
 
+<<<<<<< HEAD
         $precision = 1 / max($width, $height);
 
         return abs($numerator / $denominator - $width / $height) > $precision;
+=======
+        return $numerator / $denominator !== $width / $height;
+>>>>>>> PatientRecord
     }
 
     /**
@@ -934,9 +938,7 @@ trait ValidatesAttributes
             return false;
         }
 
-        return $value->getPath() != '' &&
-                (in_array($value->getMimeType(), $parameters) ||
-                 in_array(explode('/', $value->getMimeType())[0].'/*', $parameters));
+        return $value->getPath() != '' && in_array($value->getMimeType(), $parameters);
     }
 
     /**

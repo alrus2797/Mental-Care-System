@@ -37,7 +37,11 @@ abstract class ServiceProvider
     /**
      * Create a new service provider instance.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Foundation\Application $app
+=======
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+>>>>>>> PatientRecord
      * @return void
      */
     public function __construct($app)

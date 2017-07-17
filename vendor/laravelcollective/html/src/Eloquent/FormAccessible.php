@@ -41,6 +41,7 @@ trait FormAccessible
             return $this->mutateFormAttribute($key, $value);
         }
 
+<<<<<<< HEAD
         $keys = explode('.', $key);
 
         if ($this->isNestedModel($keys[0])) {
@@ -56,11 +57,14 @@ trait FormAccessible
             return data_get($relatedModel, $key);
         }
 
+=======
+>>>>>>> PatientRecord
         // No form mutator, let the model resolve this
         return data_get($this, $key);
     }
 
     /**
+<<<<<<< HEAD
      * Check for a nested model.
      *
      * @param  string  $key
@@ -77,6 +81,8 @@ trait FormAccessible
     }
 
     /**
+=======
+>>>>>>> PatientRecord
      * @param $key
      *
      * @return bool

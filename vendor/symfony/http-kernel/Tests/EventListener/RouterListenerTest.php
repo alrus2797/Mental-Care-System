@@ -11,8 +11,11 @@
 
 namespace Symfony\Component\HttpKernel\Tests\EventListener;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +29,7 @@ use Symfony\Component\HttpKernel\HttpKernel;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\Routing\RequestContext;
 
-class RouterListenerTest extends TestCase
+class RouterListenerTest extends \PHPUnit_Framework_TestCase
 {
     private $requestStack;
 

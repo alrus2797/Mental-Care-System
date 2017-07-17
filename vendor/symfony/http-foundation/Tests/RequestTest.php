@@ -11,13 +11,16 @@
 
 namespace Symfony\Component\HttpFoundation\Tests;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 
-class RequestTest extends TestCase
+class RequestTest extends \PHPUnit_Framework_TestCase
 {
     protected function tearDown()
     {
@@ -302,7 +305,7 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @dataProvider getFormatToMimeTypeMapProviderWithAdditionalNullFormat
+     * @dataProvider getFormatToMimeTypeMapProvider
      */
     public function testGetFormatFromMimeType($format, $mimeTypes)
     {
@@ -313,19 +316,7 @@ class RequestTest extends TestCase
         $request->setFormat($format, $mimeTypes);
         foreach ($mimeTypes as $mime) {
             $this->assertEquals($format, $request->getFormat($mime));
-
-            if (null !== $format) {
-                $this->assertEquals($mimeTypes[0], $request->getMimeType($format));
-            }
         }
-    }
-
-    public function getFormatToMimeTypeMapProviderWithAdditionalNullFormat()
-    {
-        return array_merge(
-            array(array(null, array(null, 'unexistent-mime-type'))),
-            $this->getFormatToMimeTypeMapProvider()
-        );
     }
 
     public function testGetFormatFromMimeTypeWithParameters()
@@ -339,8 +330,10 @@ class RequestTest extends TestCase
      */
     public function testGetMimeTypeFromFormat($format, $mimeTypes)
     {
-        $request = new Request();
-        $this->assertEquals($mimeTypes[0], $request->getMimeType($format));
+        if (null !== $format) {
+            $request = new Request();
+            $this->assertEquals($mimeTypes[0], $request->getMimeType($format));
+        }
     }
 
     /**
@@ -348,7 +341,9 @@ class RequestTest extends TestCase
      */
     public function testGetMimeTypesFromFormat($format, $mimeTypes)
     {
-        $this->assertEquals($mimeTypes, Request::getMimeTypes($format));
+        if (null !== $format) {
+            $this->assertEquals($mimeTypes, Request::getMimeTypes($format));
+        }
     }
 
     public function testGetMimeTypesFromInexistentFormat()
@@ -368,6 +363,7 @@ class RequestTest extends TestCase
     public function getFormatToMimeTypeMapProvider()
     {
         return array(
+            array(null, array(null, 'unexistent-mime-type')),
             array('txt', array('text/plain')),
             array('js', array('application/javascript', 'application/x-javascript', 'text/javascript')),
             array('css', array('text/css')),
@@ -850,7 +846,7 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @dataProvider getClientIpsProvider
+     * @dataProvider testGetClientIpsProvider
      */
     public function testGetClientIp($expected, $remoteAddr, $httpForwardedFor, $trustedProxies)
     {
@@ -860,7 +856,7 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @dataProvider getClientIpsProvider
+     * @dataProvider testGetClientIpsProvider
      */
     public function testGetClientIps($expected, $remoteAddr, $httpForwardedFor, $trustedProxies)
     {
@@ -870,7 +866,7 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @dataProvider getClientIpsForwardedProvider
+     * @dataProvider testGetClientIpsForwardedProvider
      */
     public function testGetClientIpsForwarded($expected, $remoteAddr, $httpForwarded, $trustedProxies)
     {
@@ -879,7 +875,7 @@ class RequestTest extends TestCase
         $this->assertEquals($expected, $request->getClientIps());
     }
 
-    public function getClientIpsForwardedProvider()
+    public function testGetClientIpsForwardedProvider()
     {
         //              $expected                                  $remoteAddr  $httpForwarded                                       $trustedProxies
         return array(
@@ -892,7 +888,7 @@ class RequestTest extends TestCase
         );
     }
 
-    public function getClientIpsProvider()
+    public function testGetClientIpsProvider()
     {
         //        $expected                   $remoteAddr                $httpForwardedFor            $trustedProxies
         return array(
@@ -949,7 +945,7 @@ class RequestTest extends TestCase
 
     /**
      * @expectedException \Symfony\Component\HttpFoundation\Exception\ConflictingHeadersException
-     * @dataProvider getClientIpsWithConflictingHeadersProvider
+     * @dataProvider testGetClientIpsWithConflictingHeadersProvider
      */
     public function testGetClientIpsWithConflictingHeaders($httpForwarded, $httpXForwardedFor)
     {
@@ -968,7 +964,7 @@ class RequestTest extends TestCase
         $request->getClientIps();
     }
 
-    public function getClientIpsWithConflictingHeadersProvider()
+    public function testGetClientIpsWithConflictingHeadersProvider()
     {
         //        $httpForwarded                   $httpXForwardedFor
         return array(
@@ -981,9 +977,9 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @dataProvider getClientIpsWithAgreeingHeadersProvider
+     * @dataProvider testGetClientIpsWithAgreeingHeadersProvider
      */
-    public function testGetClientIpsWithAgreeingHeaders($httpForwarded, $httpXForwardedFor, $expectedIps)
+    public function testGetClientIpsWithAgreeingHeaders($httpForwarded, $httpXForwardedFor)
     {
         $request = new Request();
 
@@ -997,21 +993,25 @@ class RequestTest extends TestCase
 
         $request->initialize(array(), array(), array(), array(), array(), $server);
 
-        $clientIps = $request->getClientIps();
+        $request->getClientIps();
 
+<<<<<<< HEAD
         $this->assertSame($expectedIps, $clientIps);
+=======
+        Request::setTrustedProxies(array());
+>>>>>>> PatientRecord
     }
 
-    public function getClientIpsWithAgreeingHeadersProvider()
+    public function testGetClientIpsWithAgreeingHeadersProvider()
     {
         //        $httpForwarded                               $httpXForwardedFor
         return array(
-            array('for="192.0.2.60"',                          '192.0.2.60',             array('192.0.2.60')),
-            array('for=192.0.2.60, for=87.65.43.21',           '192.0.2.60,87.65.43.21', array('87.65.43.21', '192.0.2.60')),
-            array('for="[::face]", for=192.0.2.60',            '::face,192.0.2.60',      array('192.0.2.60', '::face')),
-            array('for="192.0.2.60:80"',                       '192.0.2.60',             array('192.0.2.60')),
-            array('for=192.0.2.60;proto=http;by=203.0.113.43', '192.0.2.60',             array('192.0.2.60')),
-            array('for="[2001:db8:cafe::17]:4711"',            '2001:db8:cafe::17',      array('2001:db8:cafe::17')),
+            array('for="192.0.2.60"',                          '192.0.2.60'),
+            array('for=192.0.2.60, for=87.65.43.21',           '192.0.2.60,87.65.43.21'),
+            array('for="[::face]", for=192.0.2.60',            '::face,192.0.2.60'),
+            array('for="192.0.2.60:80"',                       '192.0.2.60'),
+            array('for=192.0.2.60;proto=http;by=203.0.113.43', '192.0.2.60'),
+            array('for="[2001:db8:cafe::17]:4711"',            '2001:db8:cafe::17'),
         );
     }
 
@@ -1442,11 +1442,6 @@ class RequestTest extends TestCase
         $request = new Request();
         $this->assertEquals('html', $request->getRequestFormat());
 
-        // Ensure that setting different default values over time is possible,
-        // aka. setRequestFormat determines the state.
-        $this->assertEquals('json', $request->getRequestFormat('json'));
-        $this->assertEquals('html', $request->getRequestFormat('html'));
-
         $request = new Request();
         $this->assertNull($request->getRequestFormat(null));
 
@@ -1675,12 +1670,12 @@ class RequestTest extends TestCase
         return $request;
     }
 
-    public function testTrustedProxiesXForwardedFor()
+    public function testTrustedProxies()
     {
         $request = Request::create('http://example.com/');
         $request->server->set('REMOTE_ADDR', '3.3.3.3');
         $request->headers->set('X_FORWARDED_FOR', '1.1.1.1, 2.2.2.2');
-        $request->headers->set('X_FORWARDED_HOST', 'foo.example.com:1234, real.example.com:8080');
+        $request->headers->set('X_FORWARDED_HOST', 'foo.example.com, real.example.com:8080');
         $request->headers->set('X_FORWARDED_PROTO', 'https');
         $request->headers->set('X_FORWARDED_PORT', 443);
 
@@ -1707,7 +1702,7 @@ class RequestTest extends TestCase
         // trusted proxy via setTrustedProxies()
         Request::setTrustedProxies(array('3.3.3.3', '2.2.2.2'), Request::HEADER_X_FORWARDED_ALL);
         $this->assertEquals('1.1.1.1', $request->getClientIp());
-        $this->assertEquals('foo.example.com', $request->getHost());
+        $this->assertEquals('real.example.com', $request->getHost());
         $this->assertEquals(443, $request->getPort());
         $this->assertTrue($request->isSecure());
 
@@ -1774,6 +1769,7 @@ class RequestTest extends TestCase
         Request::setTrustedHeaderName(Request::HEADER_CLIENT_PROTO, 'X_FORWARDED_PROTO');
     }
 
+<<<<<<< HEAD
     public function testTrustedProxiesForwarded()
     {
         $request = Request::create('http://example.com/');
@@ -1823,6 +1819,8 @@ class RequestTest extends TestCase
         $this->assertTrue($request->isSecure());
     }
 
+=======
+>>>>>>> PatientRecord
     /**
      * @group legacy
      * @expectedException \InvalidArgumentException
@@ -2013,6 +2011,7 @@ class RequestTest extends TestCase
                 $this->assertSame($expectedPort, $request->getPort());
             }
         } else {
+<<<<<<< HEAD
             if (method_exists($this, 'expectException')) {
                 $this->expectException(SuspiciousOperationException::class);
                 $this->expectExceptionMessage('Invalid Host');
@@ -2020,6 +2019,9 @@ class RequestTest extends TestCase
                 $this->setExpectedException(SuspiciousOperationException::class, 'Invalid Host');
             }
 
+=======
+            $this->setExpectedException('UnexpectedValueException', 'Invalid Host');
+>>>>>>> PatientRecord
             $request->getHost();
         }
     }
@@ -2133,6 +2135,7 @@ class RequestTest extends TestCase
             array('CONNECT', false),
         );
     }
+<<<<<<< HEAD
 
     /**
      * @group legacy
@@ -2188,6 +2191,8 @@ class RequestTest extends TestCase
         Request::setTrustedHeaderName(Request::HEADER_CLIENT_PORT, 'X_FORWARDED_PORT');
         Request::setTrustedHeaderName(Request::HEADER_CLIENT_PROTO, 'X_FORWARDED_PROTO');
     }
+=======
+>>>>>>> PatientRecord
 }
 
 class RequestContentProxy extends Request

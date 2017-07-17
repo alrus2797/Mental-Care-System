@@ -75,7 +75,7 @@ class ProcessUtils
             return $escapedArgument;
         }
 
-        return "'".str_replace("'", "'\\''", $argument)."'";
+        return escapeshellarg($argument);
     }
 
     /**

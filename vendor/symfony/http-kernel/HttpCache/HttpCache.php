@@ -460,7 +460,11 @@ class HttpCache implements HttpKernelInterface, TerminableInterface
         // make sure HttpCache is a trusted proxy
         if (!in_array('127.0.0.1', $trustedProxies = Request::getTrustedProxies())) {
             $trustedProxies[] = '127.0.0.1';
+<<<<<<< HEAD
             Request::setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_ALL);
+=======
+            Request::setTrustedProxies($trustedProxies);
+>>>>>>> PatientRecord
         }
 
         // always a "master" request (as the real master request can be in cache)

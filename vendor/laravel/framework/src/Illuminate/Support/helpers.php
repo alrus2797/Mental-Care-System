@@ -5,7 +5,6 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Debug\Dumper;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\HigherOrderTapProxy;
 
 if (! function_exists('append_config')) {
     /**
@@ -326,7 +325,7 @@ if (! function_exists('array_wrap')) {
      */
     function array_wrap($value)
     {
-        return Arr::wrap($value);
+        return ! is_array($value) ? [$value] : $value;
     }
 }
 
@@ -521,11 +520,11 @@ if (! function_exists('dd')) {
      * @param  mixed
      * @return void
      */
-    function dd(...$args)
+    function dd()
     {
-        foreach ($args as $x) {
+        array_map(function ($x) {
             (new Dumper)->dump($x);
-        }
+        }, func_get_args());
 
         die(1);
     }
@@ -611,19 +610,6 @@ if (! function_exists('head')) {
     function head($array)
     {
         return reset($array);
-    }
-}
-
-if (! function_exists('kebab_case')) {
-    /**
-     * Convert a string to kebab case.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    function kebab_case($value)
-    {
-        return Str::kebab($value);
     }
 }
 
@@ -938,15 +924,11 @@ if (! function_exists('tap')) {
      * Call the given Closure with the given value then return the value.
      *
      * @param  mixed  $value
-     * @param  callable|null  $callback
+     * @param  callable  $callback
      * @return mixed
      */
-    function tap($value, $callback = null)
+    function tap($value, $callback)
     {
-        if (is_null($callback)) {
-            return new HigherOrderTapProxy($value);
-        }
-
         $callback($value);
 
         return $value;

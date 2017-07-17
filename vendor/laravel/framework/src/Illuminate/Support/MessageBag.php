@@ -121,13 +121,11 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
     /**
      * Determine if messages exist for any of the given keys.
      *
-     * @param  array|string  $keys
+     * @param  array  $keys
      * @return bool
      */
     public function hasAny($keys = [])
     {
-        $keys = is_array($keys) ? $keys : func_get_args();
-
         foreach ($keys as $key) {
             if ($this->has($key)) {
                 return true;
@@ -238,13 +236,18 @@ class MessageBag implements Arrayable, Countable, Jsonable, JsonSerializable, Me
      */
     protected function transform($messages, $format, $messageKey)
     {
-        return collect((array) $messages)
-            ->map(function ($message) use ($format, $messageKey) {
-                // We will simply spin through the given messages and transform each one
-                // replacing the :message place holder with the real message allowing
-                // the messages to be easily formatted to each developer's desires.
-                return str_replace([':message', ':key'], [$message, $messageKey], $format);
-            })->all();
+        $messages = (array) $messages;
+
+        // We will simply spin through the given messages and transform each one
+        // replacing the :message place holder with the real message allowing
+        // the messages to be easily formatted to each developer's desires.
+        $replace = [':message', ':key'];
+
+        foreach ($messages as &$message) {
+            $message = str_replace($replace, [$message, $messageKey], $format);
+        }
+
+        return $messages;
     }
 
     /**

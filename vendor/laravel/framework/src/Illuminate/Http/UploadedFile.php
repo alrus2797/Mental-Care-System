@@ -13,16 +13,6 @@ class UploadedFile extends SymfonyUploadedFile
     use FileHelpers, Macroable;
 
     /**
-     * Begin creating a new file fake.
-     *
-     * @return \Illuminate\Http\Testing\FileFactory
-     */
-    public static function fake()
-    {
-        return new Testing\FileFactory;
-    }
-
-    /**
      * Store the uploaded file on a filesystem disk.
      *
      * @param  string  $path

@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 Version 3.1.0-dev
+=======
+Version 3.0.4-dev
+>>>>>>> PatientRecord
 -----------------
 
 Nothing yet.
 
+<<<<<<< HEAD
 Version 3.0.6 (2017-06-28)
 --------------------------
 
@@ -47,6 +52,8 @@ Version 3.0.4 (2017-02-10)
 * Error recovery from missing semicolons is now supported in more cases.
 * Error recovery from trailing commas in positions where PHP does not support them is now supported.
 
+=======
+>>>>>>> PatientRecord
 Version 3.0.3 (2017-02-03)
 --------------------------
 

@@ -16,21 +16,34 @@ use Illuminate\Http\Request;
 Route::get('test',function(){
   $faker=Faker\Factory::create("es_PE");
   return $faker->realtext;
+Route::get('/', function () {
+    return view('home');
 });
 
+Auth::routes();
 
 Route::get('diego', function () {
     return view('pacientes.buscar');
 });
 //*******************************************
+Route::get('/home', 'HomeController@index');
 
+Route::get('/diagnostico/pendientes', 'ControlerDiagnostico@pendientes')->name('diagnostico.pendientes');
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('departamento','ControladorDepartamento');
+    Route::resource('usuarios','ControlerUser');
+    Route::resource('paciente','ControlerPaciente');
+    Route::resource('especialidad','ControlerEspecialidad');
+    Route::resource('sintoma','ControlerSintoma');
+    Route::resource('enfermedad','ControlerEnfermedad');
+    Route::resource('turnos','ControlerTurno');
+    Route::resource('diagnostico','ControlerDiagnostico');
+    Route::resource('categoriaSintoma','ControllerCategoriaSintoma');
+    Route::get('updatepassview/{usuario}', 'ControlerUser@updatepassview')->name('updatepassview');
+    Route::patch('updatepass/{usuario}', 'ControlerUser@updatepass')->name('updatepass');
 Route::get('/estadistica',function(){
   return view('estadistica.hola');
-});
-
-
-Route::get('/',function(){
-  return view('welcome');
 });
 
 Route::get('medicamentos/asdf',function(){
@@ -233,4 +246,9 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
 
   Route::get('{id}','PacientesEstadosController@mostrar' );
 
+});
+
+
+Route::get('/',function(){
+  return view('welcome');
 });

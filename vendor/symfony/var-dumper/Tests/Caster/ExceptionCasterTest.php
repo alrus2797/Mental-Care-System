@@ -11,14 +11,13 @@
 
 namespace Symfony\Component\VarDumper\Tests\Caster;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\VarDumper\Caster\ExceptionCaster;
 use Symfony\Component\VarDumper\Caster\FrameStub;
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
 
-class ExceptionCasterTest extends TestCase
+class ExceptionCasterTest extends \PHPUnit_Framework_TestCase
 {
     use VarDumperTestTrait;
 
@@ -43,9 +42,15 @@ Exception {
   #message: "foo"
   #code: 0
   #file: "%sExceptionCasterTest.php"
+<<<<<<< HEAD
   #line: 27
   trace: {
     %sExceptionCasterTest.php:27: {
+=======
+  #line: 26
+  -trace: {
+    %sExceptionCasterTest.php:26: {
+>>>>>>> PatientRecord
       : {
       :     return new \Exception(''.$msg);
       : }
@@ -72,7 +77,7 @@ EODUMP;
 
         $expectedDump = <<<'EODUMP'
 {
-  %sExceptionCasterTest.php:27: {
+  %sExceptionCasterTest.php:26: {
     : {
     :     return new \Exception(''.$msg);
     : }
@@ -101,9 +106,15 @@ Exception {
   #message: "1"
   #code: 0
   #file: "%sExceptionCasterTest.php"
+<<<<<<< HEAD
   #line: 27
   trace: {
     %sExceptionCasterTest.php:27: {
+=======
+  #line: 26
+  -trace: {
+    %sExceptionCasterTest.php:26: {
+>>>>>>> PatientRecord
       : {
       :     return new \Exception(''.$msg);
       : }
@@ -129,9 +140,15 @@ Exception {
   #message: "1"
   #code: 0
   #file: "%sExceptionCasterTest.php"
+<<<<<<< HEAD
   #line: 27
   trace: {
     %sExceptionCasterTest.php: 27
+=======
+  #line: 26
+  -trace: {
+    %sExceptionCasterTest.php: 26
+>>>>>>> PatientRecord
     %sExceptionCasterTest.php: %d
 %A
 EODUMP;
@@ -156,11 +173,19 @@ EODUMP;
   #<span class=sf-dump-protected title="Protected property">message</span>: "<span class=sf-dump-str>1</span>"
   #<span class=sf-dump-protected title="Protected property">code</span>: <span class=sf-dump-num>0</span>
   #<span class=sf-dump-protected title="Protected property">file</span>: "<span class=sf-dump-str title="%sExceptionCasterTest.php
+<<<<<<< HEAD
 %d characters"><span class="sf-dump-ellipsis sf-dump-ellipsis-path">%s%eVarDumper</span><span class=sf-dump-ellipsis>%e</span>Tests%eCaster%eExceptionCasterTest.php</span>"
   #<span class=sf-dump-protected title="Protected property">line</span>: <span class=sf-dump-num>27</span>
   <span class=sf-dump-meta>trace</span>: {<samp>
     <span class=sf-dump-meta title="%sExceptionCasterTest.php
 Stack level %d."><span class="sf-dump-ellipsis sf-dump-ellipsis-path">%s%eVarDumper</span><span class=sf-dump-ellipsis>%e</span>Tests%eCaster%eExceptionCasterTest.php</span>: <span class=sf-dump-num>27</span>
+=======
+%d characters"><span class=sf-dump-ellipsis>%sTests</span>%eCaster%eExceptionCasterTest.php</span>"
+  #<span class=sf-dump-protected title="Protected property">line</span>: <span class=sf-dump-num>26</span>
+  -<span class=sf-dump-private title="Private property defined in class:&#10;`Exception`">trace</span>: {<samp>
+    <span class=sf-dump-meta title="%sExceptionCasterTest.php
+Stack level %d."><span class=sf-dump-ellipsis>%sVarDumper%eTests</span>%eCaster%eExceptionCasterTest.php</span>: <span class=sf-dump-num>26</span>
+>>>>>>> PatientRecord
      &hellip;%d
   </samp>}
 </samp>}

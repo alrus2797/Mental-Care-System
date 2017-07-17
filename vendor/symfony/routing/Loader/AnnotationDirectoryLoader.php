@@ -38,6 +38,7 @@ class AnnotationDirectoryLoader extends AnnotationFileLoader
 
         $collection = new RouteCollection();
         $collection->addResource(new DirectoryResource($dir, '/\.php$/'));
+<<<<<<< HEAD
         $files = iterator_to_array(new \RecursiveIteratorIterator(
             new \RecursiveCallbackFilterIterator(
                 new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS),
@@ -47,6 +48,9 @@ class AnnotationDirectoryLoader extends AnnotationFileLoader
             ),
             \RecursiveIteratorIterator::LEAVES_ONLY
         ));
+=======
+        $files = iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir), \RecursiveIteratorIterator::LEAVES_ONLY));
+>>>>>>> PatientRecord
         usort($files, function (\SplFileInfo $a, \SplFileInfo $b) {
             return (string) $a > (string) $b ? 1 : -1;
         });

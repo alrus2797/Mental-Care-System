@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Debug\Tests\Exception;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpFoundation\Exception\SuspiciousOperationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -29,7 +28,7 @@ use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\HttpKernel\Exception\UnsupportedMediaTypeHttpException;
 
-class FlattenExceptionTest extends TestCase
+class FlattenExceptionTest extends \PHPUnit_Framework_TestCase
 {
     public function testStatusCode()
     {

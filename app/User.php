@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'carnet', 'departamento_id', 'email', 'password'
     ];
 
     /**
@@ -26,4 +26,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function departamento()
+    {
+        return $this->belongsTo('App\Departamento');
+    }
+
+    public function turno()
+    {
+        return $this->belongsTo('App\Turno');
+    }
+
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Especialidad');
+    }
+
+    public function diagnosticos()
+    {
+        return $this->hasMany('App\Diagnostico');
+    }
+
 }

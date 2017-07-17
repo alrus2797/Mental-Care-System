@@ -11,10 +11,13 @@
 
 namespace Symfony\Component\HttpKernel\Tests\Controller;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestAttributeValueResolver;
 use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
@@ -25,7 +28,7 @@ use Symfony\Component\HttpKernel\Tests\Fixtures\Controller\NullableController;
 use Symfony\Component\HttpKernel\Tests\Fixtures\Controller\VariadicController;
 use Symfony\Component\HttpFoundation\Request;
 
-class ArgumentResolverTest extends TestCase
+class ArgumentResolverTest extends \PHPUnit_Framework_TestCase
 {
     /** @var ArgumentResolver */
     private static $resolver;

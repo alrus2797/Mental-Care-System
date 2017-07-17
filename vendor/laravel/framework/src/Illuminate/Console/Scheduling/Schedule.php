@@ -5,35 +5,37 @@ namespace Illuminate\Console\Scheduling;
 use Illuminate\Console\Application;
 use Illuminate\Container\Container;
 use Symfony\Component\Process\ProcessUtils;
+use Illuminate\Contracts\Cache\Repository as Cache;
 
 class Schedule
 {
     /**
+     * The cache store implementation.
+     *
+<<<<<<< HEAD
+     * @var \Illuminate\Console\Scheduling\Event[]
+=======
+     * @var \Illuminate\Contracts\Cache\Repository
+>>>>>>> PatientRecord
+     */
+    protected $cache;
+
+    /**
      * All of the events on the schedule.
      *
-     * @var \Illuminate\Console\Scheduling\Event[]
+     * @var array
      */
     protected $events = [];
 
     /**
-     * The mutex implementation.
-     *
-     * @var \Illuminate\Console\Scheduling\Mutex
-     */
-    protected $mutex;
-
-    /**
      * Create a new event instance.
      *
+     * @param  \Illuminate\Contracts\Cache\Repository  $cache
      * @return void
      */
-    public function __construct()
+    public function __construct(Cache $cache)
     {
-        $container = Container::getInstance();
-
-        $this->mutex = $container->bound(Mutex::class)
-                                ? $container->make(Mutex::class)
-                                : $container->make(CacheMutex::class);
+        $this->cache = $cache;
     }
 
     /**
@@ -45,9 +47,7 @@ class Schedule
      */
     public function call($callback, array $parameters = [])
     {
-        $this->events[] = $event = new CallbackEvent(
-            $this->mutex, $callback, $parameters
-        );
+        $this->events[] = $event = new CallbackEvent($this->cache, $callback, $parameters);
 
         return $event;
     }
@@ -71,19 +71,6 @@ class Schedule
     }
 
     /**
-     * Add a new job callback event to the schedule.
-     *
-     * @param  object|string  $job
-     * @return \Illuminate\Console\Scheduling\Event
-     */
-    public function job($job)
-    {
-        return $this->call(function () use ($job) {
-            dispatch(is_string($job) ? resolve($job) : $job);
-        })->name(is_string($job) ? $job : get_class($job));
-    }
-
-    /**
      * Add a new command event to the schedule.
      *
      * @param  string  $command
@@ -96,7 +83,7 @@ class Schedule
             $command .= ' '.$this->compileParameters($parameters);
         }
 
-        $this->events[] = $event = new Event($this->mutex, $command);
+        $this->events[] = $event = new Event($this->cache, $command);
 
         return $event;
     }

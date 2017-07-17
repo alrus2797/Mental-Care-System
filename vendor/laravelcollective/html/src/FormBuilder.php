@@ -2,6 +2,7 @@
 
 namespace Collective\Html;
 
+<<<<<<< HEAD
 use BadMethodCallException;
 use DateTime;
 use Illuminate\Contracts\Routing\UrlGenerator;
@@ -13,6 +14,16 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Traits\Macroable;
+=======
+use DateTime;
+use BadMethodCallException;
+use Illuminate\Support\Collection;
+use Illuminate\Support\HtmlString;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Traits\Macroable;
+use Illuminate\Contracts\Routing\UrlGenerator;
+>>>>>>> PatientRecord
 
 class FormBuilder
 {
@@ -70,8 +81,11 @@ class FormBuilder
      */
     protected $labels = [];
 
+<<<<<<< HEAD
     protected $request;
 
+=======
+>>>>>>> PatientRecord
     /**
      * The reserved form open attributes.
      *
@@ -93,6 +107,7 @@ class FormBuilder
      */
     protected $skipValueTypes = ['file', 'password', 'checkbox', 'radio'];
 
+<<<<<<< HEAD
 
     /**
      * Input Type.
@@ -101,6 +116,8 @@ class FormBuilder
      */
     protected $type = null;
 
+=======
+>>>>>>> PatientRecord
     /**
      * Create a new form builder instance.
      *
@@ -109,13 +126,20 @@ class FormBuilder
      * @param  \Illuminate\Contracts\View\Factory         $view
      * @param  string                                     $csrfToken
      */
+<<<<<<< HEAD
     public function __construct(HtmlBuilder $html, UrlGenerator $url, Factory $view, $csrfToken, Request $request = null)
+=======
+    public function __construct(HtmlBuilder $html, UrlGenerator $url, Factory $view, $csrfToken)
+>>>>>>> PatientRecord
     {
         $this->url = $url;
         $this->html = $html;
         $this->view = $view;
         $this->csrfToken = $csrfToken;
+<<<<<<< HEAD
         $this->request = $request;
+=======
+>>>>>>> PatientRecord
     }
 
     /**
@@ -267,8 +291,11 @@ class FormBuilder
      */
     public function input($type, $name, $value = null, $options = [])
     {
+<<<<<<< HEAD
         $this->type = $type;
 
+=======
+>>>>>>> PatientRecord
         if (! isset($options['name'])) {
             $options['name'] = $name;
         }
@@ -334,6 +361,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Create a search input field.
      *
      * @param  string $name
@@ -348,6 +376,8 @@ class FormBuilder
     }
 
     /**
+=======
+>>>>>>> PatientRecord
      * Create an e-mail input field.
      *
      * @param  string $name
@@ -495,8 +525,11 @@ class FormBuilder
      */
     public function textarea($name, $value = null, $options = [])
     {
+<<<<<<< HEAD
         $this->type = 'textarea';
 
+=======
+>>>>>>> PatientRecord
         if (! isset($options['name'])) {
             $options['name'] = $name;
         }
@@ -517,7 +550,11 @@ class FormBuilder
         // the element. Then we'll create the final textarea elements HTML for us.
         $options = $this->html->attributes($options);
 
+<<<<<<< HEAD
         return $this->toHtmlString('<textarea' . $options . '>' . e($value). '</textarea>');
+=======
+        return $this->toHtmlString('<textarea' . $options . '>' . $this->html->escapeAll($value). '</textarea>');
+>>>>>>> PatientRecord
     }
 
     /**
@@ -563,6 +600,7 @@ class FormBuilder
      * @param  string $name
      * @param  array  $list
      * @param  string $selected
+<<<<<<< HEAD
      * @param  array  $selectAttributes
      * @param  array  $optionsAttributes
      *
@@ -577,15 +615,30 @@ class FormBuilder
     ) {
         $this->type = 'select';
 
+=======
+     * @param  array  $options
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    public function select($name, $list = [], $selected = null, $options = [])
+    {
+>>>>>>> PatientRecord
         // When building a select box the "value" attribute is really the selected one
         // so we will use that when checking the model or session for a value which
         // should provide a convenient method of re-populating the forms on post.
         $selected = $this->getValueAttribute($name, $selected);
 
+<<<<<<< HEAD
         $selectAttributes['id'] = $this->getIdAttribute($name, $selectAttributes);
 
         if (! isset($selectAttributes['name'])) {
             $selectAttributes['name'] = $name;
+=======
+        $options['id'] = $this->getIdAttribute($name, $options);
+
+        if (! isset($options['name'])) {
+            $options['name'] = $name;
+>>>>>>> PatientRecord
         }
 
         // We will simply loop through the options and build an HTML value for each of
@@ -593,6 +646,7 @@ class FormBuilder
         // all together into one single HTML element that can be put on the form.
         $html = [];
 
+<<<<<<< HEAD
         if (isset($selectAttributes['placeholder'])) {
             $html[] = $this->placeholderOption($selectAttributes['placeholder'], $selected);
             unset($selectAttributes['placeholder']);
@@ -601,16 +655,33 @@ class FormBuilder
         foreach ($list as $value => $display) {
             $optionAttributes = isset($optionsAttributes[$value]) ? $optionsAttributes[$value] : [];
             $html[] = $this->getSelectOption($display, $value, $selected, $optionAttributes);
+=======
+        if (isset($options['placeholder'])) {
+            $html[] = $this->placeholderOption($options['placeholder'], $selected);
+            unset($options['placeholder']);
+        }
+
+        foreach ($list as $value => $display) {
+            $html[] = $this->getSelectOption($display, $value, $selected);
+>>>>>>> PatientRecord
         }
 
         // Once we have all of this HTML, we can join this into a single element after
         // formatting the attributes into an HTML "attributes" string, then we will
         // build out a final select statement, which will contain all the values.
+<<<<<<< HEAD
         $selectAttributes = $this->html->attributes($selectAttributes);
 
         $list = implode('', $html);
 
         return $this->toHtmlString("<select{$selectAttributes}>{$list}</select>");
+=======
+        $options = $this->html->attributes($options);
+
+        $list = implode('', $html);
+
+        return $this->toHtmlString("<select{$options}>{$list}</select>");
+>>>>>>> PatientRecord
     }
 
     /**
@@ -674,6 +745,7 @@ class FormBuilder
      * @param  string $display
      * @param  string $value
      * @param  string $selected
+<<<<<<< HEAD
      * @param  array  $attributes
      *
      * @return \Illuminate\Support\HtmlString
@@ -685,6 +757,18 @@ class FormBuilder
         }
 
         return $this->option($display, $value, $selected, $attributes);
+=======
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    public function getSelectOption($display, $value, $selected)
+    {
+        if (is_array($display)) {
+            return $this->optionGroup($display, $value, $selected);
+        }
+
+        return $this->option($display, $value, $selected);
+>>>>>>> PatientRecord
     }
 
     /**
@@ -693,19 +777,33 @@ class FormBuilder
      * @param  array  $list
      * @param  string $label
      * @param  string $selected
+<<<<<<< HEAD
      * @param  array  $attributes
      *
      * @return \Illuminate\Support\HtmlString
      */
     protected function optionGroup($list, $label, $selected, array $attributes = [])
+=======
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    protected function optionGroup($list, $label, $selected)
+>>>>>>> PatientRecord
     {
         $html = [];
 
         foreach ($list as $value => $display) {
+<<<<<<< HEAD
             $html[] = $this->option($display, $value, $selected, $attributes);
         }
 
         return $this->toHtmlString('<optgroup label="' . e($label) . '">' . implode('', $html) . '</optgroup>');
+=======
+            $html[] = $this->option($display, $value, $selected);
+        }
+
+        return $this->toHtmlString('<optgroup label="' . $this->html->escapeAll($label) . '">' . implode('', $html) . '</optgroup>');
+>>>>>>> PatientRecord
     }
 
     /**
@@ -714,6 +812,7 @@ class FormBuilder
      * @param  string $display
      * @param  string $value
      * @param  string $selected
+<<<<<<< HEAD
      * @param  array  $attributes
      *
      * @return \Illuminate\Support\HtmlString
@@ -725,6 +824,18 @@ class FormBuilder
         $options = ['value' => $value, 'selected' => $selected] + $attributes;
 
         return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display) . '</option>');
+=======
+     *
+     * @return \Illuminate\Support\HtmlString
+     */
+    protected function option($display, $value, $selected)
+    {
+        $selected = $this->getSelectedValue($value, $selected);
+
+        $options = ['value' => $value, 'selected' => $selected];
+
+        return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . $this->html->escapeAll($display) . '</option>');
+>>>>>>> PatientRecord
     }
 
     /**
@@ -739,6 +850,7 @@ class FormBuilder
     {
         $selected = $this->getSelectedValue(null, $selected);
 
+<<<<<<< HEAD
         $options = [
             'selected' => $selected,
             'disabled' => 'disabled',
@@ -747,6 +859,12 @@ class FormBuilder
         ];
 
         return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display) . '</option>');
+=======
+        $options = compact('selected');
+        $options['value'] = '';
+
+        return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . $this->html->escapeAll($display) . '</option>');
+>>>>>>> PatientRecord
     }
 
     /**
@@ -760,9 +878,13 @@ class FormBuilder
     protected function getSelectedValue($value, $selected)
     {
         if (is_array($selected)) {
+<<<<<<< HEAD
             return in_array($value, $selected, true) ? 'selected' : null;
         } elseif ($selected instanceof Collection) {
             return $selected->contains($value) ? 'selected' : null;
+=======
+            return in_array($value, $selected) ? 'selected' : null;
+>>>>>>> PatientRecord
         }
 
         return ((string) $value == (string) $selected) ? 'selected' : null;
@@ -815,8 +937,11 @@ class FormBuilder
      */
     protected function checkable($type, $name, $value, $checked, $options)
     {
+<<<<<<< HEAD
         $this->type = $type;
 
+=======
+>>>>>>> PatientRecord
         $checked = $this->getCheckedState($type, $name, $value, $checked);
 
         if ($checked) {
@@ -861,6 +986,7 @@ class FormBuilder
      */
     protected function getCheckboxCheckedState($name, $value, $checked)
     {
+<<<<<<< HEAD
         $request = $this->request($name);
 
         if (isset($this->session) && ! $this->oldInputIsEmpty() && is_null($this->old($name)) && !$request) {
@@ -868,6 +994,13 @@ class FormBuilder
         }
 
         if ($this->missingOldAndModel($name) && !$request) {
+=======
+        if (isset($this->session) && ! $this->oldInputIsEmpty() && is_null($this->old($name))) {
+            return false;
+        }
+
+        if ($this->missingOldAndModel($name)) {
+>>>>>>> PatientRecord
             return $checked;
         }
 
@@ -893,9 +1026,13 @@ class FormBuilder
      */
     protected function getRadioCheckedState($name, $value, $checked)
     {
+<<<<<<< HEAD
         $request = $this->request($name);
 
         if ($this->missingOldAndModel($name) && !$request) {
+=======
+        if ($this->missingOldAndModel($name)) {
+>>>>>>> PatientRecord
             return $checked;
         }
 
@@ -1140,6 +1277,7 @@ class FormBuilder
             return $value;
         }
 
+<<<<<<< HEAD
         $old = $this->old($name);
 
         if (! is_null($old) && $name != '_method') {
@@ -1163,6 +1301,10 @@ class FormBuilder
         $request = $this->request($name);
         if (!is_null($request)) {
             return $request;
+=======
+        if (! is_null($this->old($name)) && $name != '_method') {
+            return $this->old($name);
+>>>>>>> PatientRecord
         }
 
         if (! is_null($value)) {
@@ -1175,6 +1317,7 @@ class FormBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Get value from current Request
      * @param $name
      * @return array|null|string
@@ -1202,6 +1345,18 @@ class FormBuilder
 
         if (method_exists($this->model, 'getFormValue')) {
             return $this->model->getFormValue($key);
+=======
+     * Get the model value that should be assigned to the field.
+     *
+     * @param  string $name
+     *
+     * @return mixed
+     */
+    protected function getModelValueAttribute($name)
+    {
+        if (method_exists($this->model, 'getFormValue')) {
+            return $this->model->getFormValue($this->transformKey($name));
+>>>>>>> PatientRecord
         }
 
         return data_get($this->model, $this->transformKey($name));
@@ -1217,6 +1372,7 @@ class FormBuilder
     public function old($name)
     {
         if (isset($this->session)) {
+<<<<<<< HEAD
             $key = $this->transformKey($name);
             $payload = $this->session->getOldInput($key);
 
@@ -1236,6 +1392,9 @@ class FormBuilder
             }
 
             return $payload;
+=======
+            return $this->session->getOldInput($this->transformKey($name));
+>>>>>>> PatientRecord
         }
     }
 
@@ -1309,12 +1468,25 @@ class FormBuilder
      */
     public function __call($method, $parameters)
     {
+<<<<<<< HEAD
         if (static::hasComponent($method)) {
             return $this->componentCall($method, $parameters);
         }
 
         if (static::hasMacro($method)) {
             return $this->macroCall($method, $parameters);
+=======
+        try {
+            return $this->componentCall($method, $parameters);
+        } catch (BadMethodCallException $e) {
+            //
+        }
+
+        try {
+            return $this->macroCall($method, $parameters);
+        } catch (BadMethodCallException $e) {
+            //
+>>>>>>> PatientRecord
         }
 
         throw new BadMethodCallException("Method {$method} does not exist.");

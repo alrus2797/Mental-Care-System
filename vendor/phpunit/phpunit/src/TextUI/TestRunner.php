@@ -22,6 +22,8 @@ use SebastianBergmann\Environment\Runtime;
 /**
  * A TestRunner for the Command Line Interface (CLI)
  * PHP SAPI Module.
+ *
+ * @since Class available since Release 2.0.0
  */
 class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
 {
@@ -62,6 +64,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
     /**
      * @param PHPUnit_Runner_TestSuiteLoader $loader
      * @param CodeCoverageFilter             $filter
+     *
+     * @since Method available since Release 3.4.0
      */
     public function __construct(PHPUnit_Runner_TestSuiteLoader $loader = null, CodeCoverageFilter $filter = null)
     {
@@ -399,12 +403,20 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
                 [SebastianBergmann\Comparator\Comparator::class]
             );
 
+            $codeCoverage->setAddUncoveredFilesFromWhitelist(
+                $arguments['addUncoveredFilesFromWhitelist']
+            );
+
             $codeCoverage->setCheckForUnintentionallyCoveredCode(
                 $arguments['strictCoverage']
             );
 
             $codeCoverage->setCheckForMissingCoversAnnotation(
                 $arguments['strictCoverage']
+            );
+
+            $codeCoverage->setProcessUncoveredFilesFromWhitelist(
+                $arguments['processUncoveredFilesFromWhitelist']
             );
 
             if (isset($arguments['forceCoversAnnotation'])) {
@@ -423,14 +435,6 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
 
             if (isset($arguments['configuration'])) {
                 $filterConfiguration = $arguments['configuration']->getFilterConfiguration();
-
-                $codeCoverage->setAddUncoveredFilesFromWhitelist(
-                    $filterConfiguration['whitelist']['addUncoveredFilesFromWhitelist']
-                );
-
-                $codeCoverage->setProcessUncoveredFilesFromWhitelist(
-                    $filterConfiguration['whitelist']['processUncoveredFilesFromWhitelist']
-                );
 
                 foreach ($filterConfiguration['whitelist']['include']['directory'] as $dir) {
                     $this->codeCoverageFilter->addDirectoryToWhitelist(
@@ -461,15 +465,15 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
                 $this->writeMessage('Error', 'No whitelist configured, no code coverage will be generated');
 
                 $codeCoverageReports = 0;
-
-                unset($codeCoverage);
             }
         }
 
-        if (isset($codeCoverage)) {
+        if ($codeCoverageReports > 0) {
             $result->setCodeCoverage($codeCoverage);
+        }
 
-            if ($codeCoverageReports > 1 && isset($arguments['cacheTokens'])) {
+        if ($codeCoverageReports > 1) {
+            if (isset($arguments['cacheTokens'])) {
                 $codeCoverage->setCacheTokens($arguments['cacheTokens']);
             }
         }
@@ -691,6 +695,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
 
     /**
      * @param string $buffer
+     *
+     * @since Method available since Release 3.1.0
      */
     protected function write($buffer)
     {
@@ -709,6 +715,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
      * Returns the loader to be used.
      *
      * @return PHPUnit_Runner_TestSuiteLoader
+     *
+     * @since Method available since Release 2.2.0
      */
     public function getLoader()
     {
@@ -721,6 +729,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
 
     /**
      * @param array $arguments
+     *
+     * @since Method available since Release 3.2.1
      */
     protected function handleConfiguration(array &$arguments)
     {
@@ -1122,6 +1132,8 @@ class PHPUnit_TextUI_TestRunner extends PHPUnit_Runner_BaseTestRunner
     /**
      * @param string $type
      * @param string $message
+     *
+     * @since Method available since Release 5.0.0
      */
     private function writeMessage($type, $message)
     {

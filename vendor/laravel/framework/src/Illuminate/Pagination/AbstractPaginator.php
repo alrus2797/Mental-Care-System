@@ -122,7 +122,7 @@ abstract class AbstractPaginator implements Htmlable
      *
      * @param  int  $start
      * @param  int  $end
-     * @return array
+     * @return string
      */
     public function getUrlRange($start, $end)
     {

@@ -18,7 +18,7 @@ class DatabaseJob extends Job implements JobContract
     /**
      * The database job payload.
      *
-     * @var \stdClass
+     * @var \StdClass
      */
     protected $job;
 
@@ -27,7 +27,7 @@ class DatabaseJob extends Job implements JobContract
      *
      * @param  \Illuminate\Container\Container  $container
      * @param  \Illuminate\Queue\DatabaseQueue  $database
-     * @param  \stdClass  $job
+     * @param  \StdClass  $job
      * @param  string  $connectionName
      * @param  string  $queue
      * @return void
@@ -45,7 +45,7 @@ class DatabaseJob extends Job implements JobContract
      * Release the job back into the queue.
      *
      * @param  int  $delay
-     * @return mixed
+     * @return void
      */
     public function release($delay = 0)
     {
@@ -53,7 +53,7 @@ class DatabaseJob extends Job implements JobContract
 
         $this->delete();
 
-        return $this->database->release($this->queue, $this->job, $delay);
+        $this->database->release($this->queue, $this->job, $delay);
     }
 
     /**

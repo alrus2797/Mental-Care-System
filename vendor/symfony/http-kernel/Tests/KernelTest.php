@@ -11,8 +11,11 @@
 
 namespace Symfony\Component\HttpKernel\Tests;
 
+<<<<<<< HEAD
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Loader\LoaderInterface;
+=======
+>>>>>>> PatientRecord
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Config\EnvParametersResource;
@@ -24,7 +27,7 @@ use Symfony\Component\HttpKernel\Tests\Fixtures\KernelForTest;
 use Symfony\Component\HttpKernel\Tests\Fixtures\KernelForOverrideName;
 use Symfony\Component\HttpKernel\Tests\Fixtures\KernelWithoutBundles;
 
-class KernelTest extends TestCase
+class KernelTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructor()
     {
@@ -727,6 +730,7 @@ EOF;
         $kernel->terminate(Request::create('/'), new Response());
     }
 
+<<<<<<< HEAD
     public function testKernelWithoutBundles()
     {
         $kernel = new KernelWithoutBundles('test', true);
@@ -743,6 +747,8 @@ EOF;
         $this->assertEquals('_123', $kernel->getName());
     }
 
+=======
+>>>>>>> PatientRecord
     /**
      * @group legacy
      * @expectedDeprecation The Symfony\Component\HttpKernel\Kernel::getEnvParameters() method is deprecated as of 3.3 and will be removed in 4.0. Use the %cenv()%c syntax to get the value of any environment variable from configuration files instead.

@@ -2,6 +2,7 @@
 
 All notable changes of the PHPUnit 4.8 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [4.8.36] - 2017-06-21
 
 ### Added
@@ -14,6 +15,8 @@ All notable changes of the PHPUnit 4.8 release series are documented in this fil
 
 * Backported the forward compatibility layer for PHPUnit 6 from PHPUnit 5 so that `PHPUnit\Framework\TestCase` can be used instead of `PHPUnit_Framework_TestCase`
 
+=======
+>>>>>>> PatientRecord
 ## [4.8.34] - 2017-01-26
 
 * Fixed [#2447](https://github.com/sebastianbergmann/phpunit/issues/2447): Reverted backwards incompatible change to handling of boolean environment variable values specified in XML
@@ -253,8 +256,11 @@ New PHAR release due to updated dependencies
 * Made the argument check of `assertContains()` and `assertNotContains()` more strict to prevent undefined behavior such as [#1808](https://github.com/sebastianbergmann/phpunit/issues/1808)
 * Changed the name of the default group from `__nogroup__` to `default`
 
+<<<<<<< HEAD
 [4.8.36]: https://github.com/sebastianbergmann/phpunit/compare/4.8.35...4.8.36
 [4.8.35]: https://github.com/sebastianbergmann/phpunit/compare/4.8.34...4.8.35
+=======
+>>>>>>> PatientRecord
 [4.8.34]: https://github.com/sebastianbergmann/phpunit/compare/4.8.33...4.8.34
 [4.8.33]: https://github.com/sebastianbergmann/phpunit/compare/4.8.32...4.8.33
 [4.8.32]: https://github.com/sebastianbergmann/phpunit/compare/4.8.31...4.8.32

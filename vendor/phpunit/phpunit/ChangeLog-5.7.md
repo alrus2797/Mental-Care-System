@@ -2,6 +2,7 @@
 
 All notable changes of the PHPUnit 5.7 release series are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+<<<<<<< HEAD
 ## [5.7.21] - 2017-06-21
 
 ### Added
@@ -74,6 +75,8 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 
 * Fixed [#2475](https://github.com/sebastianbergmann/phpunit/pull/2475): Defining a test suite with only one file does not work
 
+=======
+>>>>>>> PatientRecord
 ## [5.7.11] - 2017-02-05
 
 ### Fixed
@@ -84,7 +87,7 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 
 ### Fixed
 
-* Fixed [#2462](https://github.com/sebastianbergmann/phpunit/issues/2462): Code Coverage whitelist is filled even if no code coverage data is to be collected
+* Fixed [#2462](https://github.com/sebastianbergmann/phpunit/issues/2462): Code Coverage blacklist is filled even if no code coverage data is to be collected
 
 ## [5.7.9] - 2017-01-28
 
@@ -171,6 +174,7 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 * The `--tap` and `--log-tap` commandline options have been deprecated
 * The `--self-update` and `--self-upgrade` commandline options have been deprecated (PHAR binary only)
 
+<<<<<<< HEAD
 [5.7.21]: https://github.com/sebastianbergmann/phpunit/compare/5.7.20...5.7.21
 [5.7.20]: https://github.com/sebastianbergmann/phpunit/compare/5.7.19...5.7.20
 [5.7.19]: https://github.com/sebastianbergmann/phpunit/compare/5.7.18...5.7.19
@@ -181,6 +185,8 @@ All notable changes of the PHPUnit 5.7 release series are documented in this fil
 [5.7.14]: https://github.com/sebastianbergmann/phpunit/compare/5.7.13...5.7.14
 [5.7.13]: https://github.com/sebastianbergmann/phpunit/compare/5.7.12...5.7.13
 [5.7.12]: https://github.com/sebastianbergmann/phpunit/compare/5.7.11...5.7.12
+=======
+>>>>>>> PatientRecord
 [5.7.11]: https://github.com/sebastianbergmann/phpunit/compare/5.7.10...5.7.11
 [5.7.10]: https://github.com/sebastianbergmann/phpunit/compare/5.7.9...5.7.10
 [5.7.9]: https://github.com/sebastianbergmann/phpunit/compare/5.7.8...5.7.9

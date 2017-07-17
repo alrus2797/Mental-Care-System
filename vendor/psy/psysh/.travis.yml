@@ -11,13 +11,25 @@ matrix:
     - php: 7.0
     - php: 7.1
     - php: hhvm
+<<<<<<< HEAD
       dist: trusty
   allow_failures:
     - php: hhvm
+=======
+      env: COMPOSER_FLAGS="--prefer-lowest --prefer-stable"
+
+before_install:
+  - '[[ "$TRAVIS_PHP_VERSION" != hhvm* ]] && (php --ini | grep xdebug) && phpenv config-rm xdebug.ini || true'
+>>>>>>> PatientRecord
 
 install: travis_retry composer update --no-interaction
 
+<<<<<<< HEAD
 script: vendor/bin/phpunit --verbose
+=======
+script:
+  - vendor/bin/phpunit
+>>>>>>> PatientRecord
 
 before_deploy: bin/package -v $TRAVIS_TAG
 
@@ -31,4 +43,8 @@ deploy:
   on:
     tags: true
     repo: bobthecow/psysh
+<<<<<<< HEAD
     condition: ($TRAVIS_PHP_VERSION = 5.3* || $TRAVIS_PHP_VERSION = 7.1*)
+=======
+    condition: ($TRAVIS_PHP_VERSION = 5.3* || $TRAVIS_PHP_VERSION = 7.0*) && -z "$COMPOSER_FLAGS"
+>>>>>>> PatientRecord
