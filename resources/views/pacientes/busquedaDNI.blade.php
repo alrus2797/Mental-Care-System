@@ -24,9 +24,13 @@
 							<td>{{$persona->telefono}}</td>
 							<td>{{$persona->email}}</td>
 							<td>
+								@if ($persona->pac_id == null)
 								<button type="button" id="botonSeleccionar" class="btn btn-default" aria-label="Center Align" onclick="seleccionarPersona('{{$persona->id}}', '{{$persona->nombres}}', '{{$persona->apellidopaterno}}', '{{$persona->apellidomaterno}}', '{{$persona->dni}}', '{{$persona->direccion}}', '{{$persona->telefono}}', '{{$persona->email}}')">
   							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear
 								</button>
+								@else
+								<span class="label label-primary" aria-label="Center Align">Ya existe paciente</span>
+								@endif
 							</td>
 						</tr>
 					@endforeach
@@ -36,8 +40,6 @@
 </div>
 
 <div class="formPaciente col-sm-12"></div>
-
-<!-- {{$persona->id}},{{$persona->nombres}},{{$persona->apellidopaterno}},{{$persona->apellidomaterno}},{{$persona->dni}},{{$persona->direccion}},{{$persona->telefono}},{{$persona->email}}-->
 
 <script>
 	function seleccionarPersona(id, nombres, apellidoP, apellidoM, DNI, direccion, telefono, email) {

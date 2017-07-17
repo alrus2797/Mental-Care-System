@@ -8,7 +8,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 
 use App\paciente;
-use App\persona;
+use App\Persona;
 use App\pacientesEstados;
 use App\Historial;
 
@@ -206,8 +206,9 @@ class pacientesController extends Controller
     public function retrievePersonasDNI(Request $datos)
     {
       $respuesta = DB::table('personas')
-                  -> select('id', 'nombres', 'apellidopaterno', 'apellidomaterno', 'dni', 'direccion','telefono','email')
-                  -> where( 'dni', 'like', '%'.$datos->input('DNI').'%')
+                  -> leftJoin('pacientes', 'pacientes.persona_id', '=', 'personas.id')
+                  -> select('*', 'personas.id as id','pacientes.id as pac_id')
+                  -> where( 'personas.dni', 'like', '%'.$datos->input('DNI').'%')
                 -> get();
       //$respuesta = persona::all();
       return response()->json(view('pacientes.busquedaDNI', compact('respuesta'))->render());
