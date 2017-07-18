@@ -1,166 +1,98 @@
-
 @extends('layouts.template')
 @section('title', 'NEstadistica')
-
-
-   
+ 
    @section('content')      
    	<b>
-   		<p>Bienvenido a Estadistica</p>
+   		<h2>Bienvenido a Estadistica</h2>
    	</b>
-
-   <?php
-
-// CONEXION //////////////////////////////////////////////////////////
-$host = "localhost";
-$puerto = "3306";
-$usuario = "root";
-$contrasenna = "";
-$bbdd = "ment-care";
-$tabla = "paciente";
-$conexion = mysqli_connect($host,$usuario,$contrasenna);
-
-mysqli_select_db($conexion,$bbdd);
-mysqli_set_charset($conexion,"utf8");
-//////////////////////////////////////////////////////////////////////
-	?>
 
 <html>
 	<head>
-
-		<!--meta charset="utf-8"-->
-    	<!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
-    	<!--meta name="viewport" content="width=device-width, initial-scale=1"-->
-    	<!-- CSS de Bootstrap -->
+		@include('estadistica.funciones2')
+		@include('estadistica.extras_funciones')
     	<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
-
-
 		<title>ASAROVA</title>
 		<script type="text/javascript" src="{{asset('js/jquery-1.12.0.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/Chart.bundle.min.js')}}"></script>
+		<script type="text/javascript" src="{{asset('js/Chart.bundle.min.js')}}"> </script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			<?php 
+			$tipo='pie';
+			$grafico=new Grafico();
+///////////////////////////paciente-estado
+			$consulta = "SELECT DISTINCT estado FROM paciente";
+			$array_filas=$grafico->get_datos($consulta);
+			
+			//////obtengo etiquetas para el pie
+			$estados=[];
+			foreach ($array_filas as $fila) {
+				array_push($estados, $fila[0]);
+			}
+			//////////por cada dato cuantos hay
+			$tabla="paciente";
+			$columna="estado";
+				////////////esto seria como un template
+			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
+			$id_nombre1="cuadro_freq_estados_pacientes";
+			///////////////graficamos
+			$grafico->torta_lista([$frecuencia,$estados],$id_nombre1);
+
+////////////////////////////% medico por especialidad
+			$consulta = "SELECT DISTINCT id_especialidad,nombre FROM especialidad";
+
+			$array_filas2=$grafico->get_datos($consulta);
+			//////obtengo etiquetas para el pie
+			$nombre_especialidad=[];
+			
+			foreach ($array_filas2 as $fila) {
+				array_push($nombre_especialidad, $fila[1]);
+			}
+
+			/////////por cada dato cuantos hay
+			$tabla="medico";
+			$columna="id_especialidad";
+			$id_nombre2="porcentaje_medicos_x_especialidad";
+				////////////esto seria como un template
+			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
+			$array_porcentaje=[];
+			$Nmedicos=$grafico->cantidadXtabla($tabla);
+			foreach ($frecuencia as $cantidad) {
+				$porcentaje=($cantidad*100)/$Nmedicos;
+				array_push($array_porcentaje, redondear_dos_decimal($porcentaje));
+			}
+
+			$grafico->torta_lista([$array_porcentaje,$nombre_especialidad],$id_nombre2);
+
+/////////////Top 5 de los médicos más citados///
+			$consulta = "SELECT DISTINCT id,persona_id FROM medico";
+			//////obtengo etiquetas para el pie
+			$array_filas3=$grafico->get_datos($consulta);
+
+			$tabla="citas";
+			$columna="id_medico";
+			$id_nombre3="top5_medico_citados";
+			$array_idpaciente=[];
+			foreach ($array_filas3 as $fila) {
+				array_push($array_idpaciente, $fila[1]);
+			}
+			$frecuencia=$grafico->each_dato($array_filas3,$tabla,$columna);
+
+			$resultado=ordenar_mayormenor($frecuencia,$array_idpaciente);
+			$tabla="personas";
+			$columna="id";
+			$labels=$grafico->mediconombreXid($resultado[1],$tabla,$columna);
+			$resultado[1]=$labels;
+			$grafico->bar_lista($resultado,$id_nombre3);
+			?>
+			});
+		</script>
+		
+	</head>
+<body>
 
 <?php
-echo 
-	'
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		//document.write(getRandom());
-		var datos = {
-			type: "pie",
-			data : {
-				datasets :[{
-					data : [
-	';
-	
-	//					5,
-	//					10,
-	//					40,
-	//					12,
-	//					23,
-
-//for ($i=1;$i<10;$i++) {echo ($i*10).',';}
-
-// CONSULTA MYSQL ////////////////////////////////////////////////////
-$consulta = "SELECT DISTINCT estado FROM paciente";
-$resultado = mysqli_query($conexion,$consulta);
-//////////////////////////////////////////////////////////////////////
-
-// CAPTURAR DATOS DE LA BBDD /////////////////////////////////////////
-$datos = [];
-while($fila = mysqli_fetch_row($resultado))
- 	{ array_push($datos,$fila[0]); }
-$Num_Estados = count($datos);
-
-//echo "[ ";
-//for ($i=0;$i<$Num_Estados;$i++)
-// 	{ echo $datos[$i].', '; }
-//echo "] ";
-
-//echo "<BR><BR><BR>";
-$frecuencias = [];
-for ($i=0;$i<$Num_Estados;$i++)
-	{
-	$consulta = "SELECT COUNT(*) FROM paciente where estado=".$datos[$i];
-	$NPac = mysqli_query($conexion,$consulta);
-	$NPac_S = mysqli_fetch_row($NPac);
-	$NPac_Est_i = $NPac_S[0];
-	echo $NPac_Est_i.', ';
-	//echo $NPac_S[0].', ';
-	array_push($frecuencias,$NPac_Est_i);
-	}
-
-// /////////////////////////////////////////////////////////////////////
-
-echo	
-	'
-					],
-					backgroundColor: [
-						"#F7464A",
-						"#46BFBD",
-						"#FDB45C",
-						"#949FB1",
-					],
-				}],
-				labels : [
-					"Estado 1",
-					"Estado 2",
-					"Estado 3",
-					"Estado 4",
-				]
-			},
-			options : {
-				responsive : true,
-			}
-		};
-
-		var canvas = document.getElementById("chart").getContext("2d");
-		window.pie = new Chart(canvas, datos);
-	';
-	/*
-		setInterval(function(){
-			datos.data.datasets.splice(0);
-			var newData = {
-				backgroundColor : [
-					"#F7464A",
-					"#46BFBD",
-					"#FDB45C",
-					"#949FB1",
-					"#4D5360",
-				],
-				data : [getRandom(), getRandom(), getRandom(), getRandom(), getRandom()]
-			};
-
-			datos.data.datasets.push(newData);
-
-			window.pie.update();
-
-		},12121);
-
-
-
-		function getRandom(){
-			return Math.round(Math.random() * 100);
-		}
-	*/
-
-echo
-	'
-		
-	});
-	
-	</script>
-
- 	';
-echo
-	'
-	</head>
-	';
-
-
-echo 
-	'
-	<body>
+/*
+echo '
 	>> ERIKA <<
 	';
 
@@ -171,29 +103,90 @@ echo "<BR><BR><BR>";
 
 echo "Nos las pagarás todas juntas!!!";
 echo " Esta también!!";
+echo " y esta !!";
 
 echo "<BR><BR><BR>";
 
 echo "[ ";
-for ($i=0;$i<$Num_Estados;$i++)
- 	{ echo $frecuencias[$i].', '; }
+foreach ($estados as $dato) {
+ echo $dato.', '; }
 echo "] ";
 
 echo 
 	'
 
-	';
-//phpinfo();
-
-mysqli_close($conexion);
+	';*/
+//mysqli_close($grafico->$conexion);
 ?>
+	<aside class="col-md-2">
+			<div class="list-group">
+				<a href="#" class="list-group-item active">Graficos sobre</a>
+				<a href="#" class="list-group-item"> Paciente </a>
+				<a href="#" class="list-group-item"> Medicos </a>
+				<a href="#" class="list-group-item"> Otros </a>
+			</div>
+	</aside>
+	<div class="content">
+		<div class="container-fluid">
+		<div class="card">
+		<div class="row">
+			<h3 style="text-align: center;">Estados Por Pacientes</h3>
+			<div class="col-md-8">
+				<div id="canvas-holder" style="width:80%;">
+				<canvas id="cuadro_freq_estados_pacientes" width="500" height="350"></canvas>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<label class="text"> Inicio</label>
+			 	<input class="form-control" type="date" name="uno">
+			</div>
+			<div  class="col-md-2">
+				<label class="text"> Hasta</label>
+				<input  class="form-control" type="date" name="dos">
+			</div>
+			<br>
+			<br>
+			<div class="col-md-2" >
+				<button type="submit" class="btn btn-info btn-fill pull-right">
+				Analizar
+            	</button>	
+			</div>
+			
+		</div>
+		<div class="row" >
+			<h3 style="text-align: center;">Porcentaje por Medicos de Especialidad</h3>
+			<div class="col-md-8">
+				<div id="canvas-holder" style="width:90%;">
+					<canvas id="porcentaje_medicos_x_especialidad" width="500" height="350"></canvas>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h3 style="text-align: center;">Top de los 5 meicos màs citados</h3>
+			<div class="col-md-8">
+			<div id="canvas-container" style="width:90%;">
+				<canvas id="top5_medico_citados" width="500" height="350"></canvas>
+			</div>
+			</div>
+		</div>
 
-	<div id="canvas-container" style="width:50%;">
-		<canvas id="chart" width="500" height="350"></canvas>
+		</div>
+		</div>
 	</div>
 
-
+	<!--<div class="wrapper">
+    <div class="sidebar" >
+    <div class="sidebar-wrapper">
+    	<div class="col-md-3">
+    	<a href="#" class="list-group-item active">Paciente</a>
+		<a href="#" class="list-group-item"> Medicos </a>
+		<a href="#" class="list-group-item"> Otros </a>
+		</div>
+    </div>
+    </div>
+    </div>-->
 	<!-- Librería jQuery requerida por los plugins de JavaScript -->
+
     <script src="http://code.jquery.com/jquery.js"></script>
  
     <!-- Todos los plugins JavaScript de Bootstrap (también puedes
