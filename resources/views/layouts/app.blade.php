@@ -20,6 +20,31 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    <script src="{{asset('js/alertify.min.js')}} " >  </script>
+    <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
+    <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.min.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
+
+      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+
 </head>
 <body>
 <div id="app">
@@ -177,6 +202,5 @@
 </div>
 
 <!-- Scripts -->
-<script src="/js/app.js"></script>
 </body>
 </html>

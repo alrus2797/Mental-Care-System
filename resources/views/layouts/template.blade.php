@@ -10,10 +10,10 @@
   <script src="{{asset('js/alertify.min.js')}} " >  </script>
   <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-  <script src="{{asset('js/jquery.min.js')}}"></script>
   <!-- Latest compiled and minified JavaScript -->
 
   <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
@@ -29,7 +29,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
+
+
    <script type="text/javascript">
+
 function printDiv(divName)
 {
      var printContents = document.getElementById(divName).innerHTML;
