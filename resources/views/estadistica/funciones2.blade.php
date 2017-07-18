@@ -38,7 +38,7 @@ class Grafico
 	$datos = [];
 	while($fila = mysqli_fetch_row($resultado))
 	 	{ array_push($datos,$fila); }
-		return $datos;
+		return $datos;		
 	}
 
 	public function each_dato($datos,$tabla,$columna)

@@ -4,6 +4,7 @@
    @section('content')      
    	<b>
    		<h2>Bienvenido a Estadistica</h2>
+   		<h1>Graficos</h1>
    	</b>
 
 <html>
@@ -37,52 +38,6 @@
 			///////////////graficamos
 			$grafico->torta_lista([$frecuencia,$estados],$id_nombre1);
 
-////////////////////////////% medico por especialidad
-			$consulta = "SELECT DISTINCT id_especialidad,nombre FROM especialidad";
-
-			$array_filas2=$grafico->get_datos($consulta);
-			//////obtengo etiquetas para el pie
-			$nombre_especialidad=[];
-			
-			foreach ($array_filas2 as $fila) {
-				array_push($nombre_especialidad, $fila[1]);
-			}
-
-			/////////por cada dato cuantos hay
-			$tabla="medico";
-			$columna="id_especialidad";
-			$id_nombre2="porcentaje_medicos_x_especialidad";
-				////////////esto seria como un template
-			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
-			$array_porcentaje=[];
-			$Nmedicos=$grafico->cantidadXtabla($tabla);
-			foreach ($frecuencia as $cantidad) {
-				$porcentaje=($cantidad*100)/$Nmedicos;
-				array_push($array_porcentaje, redondear_dos_decimal($porcentaje));
-			}
-
-			$grafico->torta_lista([$array_porcentaje,$nombre_especialidad],$id_nombre2);
-
-/////////////Top 5 de los médicos más citados///
-			$consulta = "SELECT DISTINCT id,persona_id FROM medico";
-			//////obtengo etiquetas para el pie
-			$array_filas3=$grafico->get_datos($consulta);
-
-			$tabla="citas";
-			$columna="id_medico";
-			$id_nombre3="top5_medico_citados";
-			$array_idpaciente=[];
-			foreach ($array_filas3 as $fila) {
-				array_push($array_idpaciente, $fila[1]);
-			}
-			$frecuencia=$grafico->each_dato($array_filas3,$tabla,$columna);
-
-			$resultado=ordenar_mayormenor($frecuencia,$array_idpaciente);
-			$tabla="personas";
-			$columna="id";
-			$labels=$grafico->mediconombreXid($resultado[1],$tabla,$columna);
-			$resultado[1]=$labels;
-			$grafico->bar_lista($resultado,$id_nombre3);
 			?>
 			});
 		</script>
@@ -120,53 +75,35 @@ echo
 ?>
 	<aside class="col-md-2">
 			<div class="list-group">
-				<a href="#" class="list-group-item active">Graficos sobre</a>
-				<a href="#" class="list-group-item"> Paciente </a>
-				<a href="#" class="list-group-item"> Medicos </a>
-				<a href="#" class="list-group-item"> Otros </a>
+				<a href="/estadistica/paciente" class="list-group-item active">Paciente</a>
+				<a href="/estadistica/medicos" class="list-group-item"> Medico </a>
+				<a href="/estadistica/citas" class="list-group-item"> Citas </a>
 			</div>
 	</aside>
 	<div class="content">
 		<div class="container-fluid">
 		<div class="card">
+		<h3 style="text-align: center;"> Estados Por Pacientes</h3>
 		<div class="row">
-			<h3 style="text-align: center;">Estados Por Pacientes</h3>
-			<div class="col-md-8">
+			<div class="col-md-4">
+				<label class="text"> Inicio</label>
+			 	<input class="form-control" type="date" name="uno">
+			</div>
+			<div  class="col-md-4">
+				<label class="text"> Hasta</label>
+				<input  class="form-control" type="date" name="dos">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10">
 				<div id="canvas-holder" style="width:80%;">
 				<canvas id="cuadro_freq_estados_pacientes" width="500" height="350"></canvas>
 				</div>
 			</div>
-			<div class="col-md-2">
-				<label class="text"> Inicio</label>
-			 	<input class="form-control" type="date" name="uno">
-			</div>
-			<div  class="col-md-2">
-				<label class="text"> Hasta</label>
-				<input  class="form-control" type="date" name="dos">
-			</div>
-			<br>
-			<br>
 			<div class="col-md-2" >
 				<button type="submit" class="btn btn-info btn-fill pull-right">
 				Analizar
             	</button>	
-			</div>
-			
-		</div>
-		<div class="row" >
-			<h3 style="text-align: center;">Porcentaje por Medicos de Especialidad</h3>
-			<div class="col-md-8">
-				<div id="canvas-holder" style="width:90%;">
-					<canvas id="porcentaje_medicos_x_especialidad" width="500" height="350"></canvas>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<h3 style="text-align: center;">Top de los 5 meicos màs citados</h3>
-			<div class="col-md-8">
-			<div id="canvas-container" style="width:90%;">
-				<canvas id="top5_medico_citados" width="500" height="350"></canvas>
-			</div>
 			</div>
 		</div>
 

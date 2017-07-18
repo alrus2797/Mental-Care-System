@@ -16,10 +16,17 @@ Route::get('diego', function () {
 });
 //*******************************************
 
-Route::get('/estadistica',function(){
-  return view('estadistica.hola');
+Route::get('/estadistica/paciente',function(){
+  return view('estadistica.paciente');
 });
 
+Route::get('/estadistica/medicos',function(){
+  return view('estadistica.medicos');
+});
+
+Route::get('/estadistica/citas',function(){
+  return view('estadistica.citas');
+});
 
 Route::get('/',function(){
   return view('welcome');
