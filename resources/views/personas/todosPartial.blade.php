@@ -7,9 +7,11 @@
 						<th>Apellido Paterno</th>
 						<th>Apellido Materno</th>
 						<th>DNI</th>
+						<th>Sexo</th>
+						<!--<th>Fecha Nacimiento</th>
 						<th>Dirección</th>
 						<th>Teléfono</th>
-						<th>Email</th>
+						<th>Email</th>-->
 						<th> Ver</th>
 						<th> Editar </th>
 						<th> Eliminar </th>
@@ -22,10 +24,12 @@
 							<td>{{$persona->nombres}}</td>
 							<td>{{$persona->apellidopaterno}}</td>
 							<td>{{$persona->apellidomaterno}}</td>
-							<td><a href="{{asset('personas')}}{{'/'.$persona->id}}">{{$persona->dni}}</td>
+							<td>{{$persona->dni}}</td>
+							<td>{{$persona->sexo}}</td>
+							<!--<td>{{$persona->fechanacimiento}}</td>
 							<td>{{$persona->direccion}}</td>
 							<td>{{$persona->telefono}}</td>
-							<td>{{$persona->email}}</td>
+							<td>{{$persona->email}}</td>-->
 							<td>
 									<a href="{{asset('personas')}}{{'/'.$persona->id}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
 							</td>

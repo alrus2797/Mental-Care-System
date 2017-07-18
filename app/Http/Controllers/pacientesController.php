@@ -101,7 +101,8 @@ class pacientesController extends Controller
       $per->direccion = request('direccion');
       $per->telefono = request('telefono');
       $per->email = request('email');
-
+      $per->sexo = request('sexo');
+      $pe->fechanacimiento = request('fechanacimiento');
       $per->save();
 
       //$ingreso= new App\Ingreso;
@@ -131,7 +132,8 @@ class pacientesController extends Controller
       $per->direccion = request('direccion');
       $per->telefono = request('telefono');
       $per->email = request('email');
-
+      $per->sexo = request('sexo');
+      $per->fechanacimiento = request('fechanacimiento');
       $per->save();
 
       $post = new paciente;
@@ -139,11 +141,11 @@ class pacientesController extends Controller
       $post->persona_id = $per->id;
       $post->estado_id = request('estado');
 
-      $historial = new historial;
+      //$historial = new historial;
 
-      $historial -> save();
+      //$historial -> save();
 
-      $post->historials_id = $historial -> id;
+      //$post->historials_id = $historial -> id;
 
       $post->save();
 
@@ -180,6 +182,8 @@ class pacientesController extends Controller
       $post->direccion = request('direccion');
       $post->telefono = request('telefono');
       $post->email = request('email');
+      $post->sexo = request('sexo');
+      $post->fechanacimiento = request('fechanacimiento');
       $pac->estado_id = request('estado');
       $post->save();
       $pac->save();
@@ -218,9 +222,9 @@ class pacientesController extends Controller
                     ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
                     ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
                     ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
-                    ['personas.direccion', 'like', '%'.$datos->input('direccion').'%']
+                    ['personas.telefono', 'like', '%'.$datos->input('telefono').'%']
                     ])
-                  -> get(); 
+                  -> get();
 
       return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
     }

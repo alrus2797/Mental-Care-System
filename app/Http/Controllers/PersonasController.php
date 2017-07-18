@@ -63,7 +63,8 @@ class personasController extends Controller
       $post->direccion = request('direccion');
       $post->telefono = request('telefono');
       $post->email = request('email');
-
+      $post->sexo = request('sexo');
+      $post->fechanacimiento = request('sexo');
       $post->save();
       //paciente::create(request(['historiaclinica','apellidopaterno','apellidomaterno',
         //'nombres','dni','direccion']));
