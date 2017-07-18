@@ -28,7 +28,7 @@
 
 
     <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
-    <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+    {{--<link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>--}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
@@ -44,8 +44,19 @@
       <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
       <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
+<script>
+    function printDiv(divName)
+    {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    }
+    </script>
 
-</head>
+
+    </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
@@ -100,6 +111,30 @@
                                     <li><a href="{{ url('personas')}}">Todas las Personas</a></li>
                                 </ul>
                             </li>
+                            <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
+                            <!--<li ><a href="#">Admisión</a></li> -->
+                            <li ><a href="#">Citas</a></li>
+                            <li ><a href="{{url('reportes/')}}">Manejo de Reportes</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
+                                    </li>
+                                    <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
+                                    <li ><a href="{{url('estadistica')}}">Estadística</a></li>
+
+                                    {{--<li>--}}
+                                    {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
+                                    {{--</li>--}}
+                                </ul>
+                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <i class="fa fa-sitemap"></i> Sistema <span class="caret"></span>
@@ -124,23 +159,7 @@
 
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>
-                                </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
-                                    </li>
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
-                                    {{--</li>--}}
-                                </ul>
-                            </li>
                         @else
                             {{--<li class="dropdown">--}}
                                 {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
