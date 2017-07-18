@@ -52,7 +52,6 @@ class consultasSqlController extends Controller
                     citas.fecha_de_cita as fechacita,
                     citas.motivo_cita as motivocita,
                     estados.estado as estadocita
-
                     from pacientes
                     inner join personas
                     	on pacientes.persona_id = personas.id
@@ -190,7 +189,8 @@ class consultasSqlController extends Controller
 
       if($request->nombre != "" || $request->dni!= "")
       {
-        $sqlQuery="select personas.nombres          as nombre,
+        $sqlQuery="select pacientes.id              as id_pacientes,
+                          personas.nombres          as nombre,
                           personas.apellidopaterno  as ap_paterno,
                           personas.apellidomaterno  as ap_materno,
                           personas.created_at       as fecha_admision

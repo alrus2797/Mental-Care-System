@@ -29,17 +29,6 @@ Route::get('/estadistica',function(){
 });
 
 
-Route::get('/',function(){
-  return view('welcome');
-});
-
-Route::get('medicamentos/asdf',function(){
-	return view('Prescriptions.medicamentos.buscador');
-});
-
-Route::get('componentes/seleccionar',function(){
-  return view('Prescriptions.componentes.seleccionar');
-});
 
 /*
   Medicamentos
@@ -171,14 +160,25 @@ Route::get('/reportes/infoTratamiento', function(){
 	return view('ManageReporting.infoTratamiento');
 });
 
+Route::get('/reportes/exportarRep', function(){
+	return view('ManageReporting.exportarRep');
+});
+
+
+Route::get('/reportes/exportarRep','descargasRepController@exportpdf');
+
 Route::get('/reportes/repAtencion','consultasSqlController@queryAtencion');
 Route::get('/reportes/repAtendidos','consultasSqlController@queryAtendidos');
 Route::get('/reportes/repFarmacos','consultasSqlController@queryFarmacos');
 Route::get('/reportes/repMedRecetados','consultasSqlController@queryMedRecetados');
 Route::get('/reportes/repTratamiento','consultasSqlController@queryTratamiento');
-
 Route::get('/reportes/descargarRep','consultasSqlController@queryArchivosRep');
 Route::get('/reportes/infoTratamiento','descargasRepController@generarPDF');
+
+
+
+
+
 
 
 //------------------------------------------------------------------------------
@@ -233,4 +233,29 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
 
   Route::get('{id}','PacientesEstadosController@mostrar' );
 
+});
+
+//PATIEN RECORDS
+Route::get('/', function () {
+    return view('home');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/diagnostico/pendientes', 'ControlerDiagnostico@pendientes')->name('diagnostico.pendientes');
+
+Route::group(['middleware' => ['web']], function () {
+    Route::resource('departamento','ControladorDepartamento');
+    Route::resource('usuarios','ControlerUser');
+    Route::resource('paciente','ControlerPaciente');
+    Route::resource('especialidad','ControlerEspecialidad');
+    Route::resource('sintoma','ControlerSintoma');
+    Route::resource('enfermedad','ControlerEnfermedad');
+    Route::resource('turnos','ControlerTurno');
+    Route::resource('diagnostico','ControlerDiagnostico');
+    Route::resource('categoriaSintoma','ControllerCategoriaSintoma');
+    Route::get('updatepassview/{usuario}', 'ControlerUser@updatepassview')->name('updatepassview');
+    Route::patch('updatepass/{usuario}', 'ControlerUser@updatepass')->name('updatepass');
 });

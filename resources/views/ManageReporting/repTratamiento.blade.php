@@ -37,6 +37,7 @@
     @else
     <table class="table table-hover table-bordered" id="tableToSort">
     <tr>
+        <th>ID</th>
         <th>Paciente</th>
         <th>Fecha Admision</th>
         <th>Ver</th>
@@ -44,9 +45,10 @@
 
     @foreach ($results as $row)
       <tr>
+        <td>{{$row->id_pacientes}}</td>
         <td>{{$row->ap_paterno}} {{$row->ap_materno}} , {{$row->nombre}} </td>
         <td>{{$row->fecha_admision}}</td>
-        <td><a href="infoTratamiento">Ver</a></td>
+        <td><a href="infoTratamiento?id={{$row->id_pacientes}}">Ver</a></td>
       </tr>
     @endforeach
     </table>

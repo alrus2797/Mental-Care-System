@@ -8,7 +8,7 @@
    @section('content')
 
 <div id="printableArea">
-     <div class="page-header">
+     <div class="page-header" id=topdfheader>
           <h2>Reporte semanal de atención </h2>
         <p>Reportes semanales de pacientes atendidos al día por cada condición mental.</p>
       </div>
@@ -22,7 +22,7 @@
           <button type="submit" class="btn btn-default">Buscar</button>
         </form>
         <hr>
-
+<div id="topdfbody">
         @if($results == NULL)
             <div><h4>No se encontraron resultados</h4></div>
         @else
@@ -41,30 +41,20 @@
           @foreach ($results as $row)
           <tr>
 
-            <!--<div class="modal fade" id="myModal{{$row->idp}}" role="dialog">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Descripsión de autolesiódel Paciente : {{$row->paciente}}</h4>
-                    </div>
-                    <div class="modal-body">
-                      <p>{{$row->comentarios}}</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>-->
+            <td>{{$row->nombrePaciente}}</td>
+            <td>{{$row->fechacita}}</td>
+            <td>{{$row->motivocita}}</td>
+            <td>{{$row->estadocita}}</td>
           <tr>
           @endforeach
         </table>
   @endif
 
-
+</div>
 </div >
 
 <div class="col-sm-offset-0">
-	<input type="button" class="btn btn-default"  onclick="printDiv('printableArea')" value="Imprimir o exportar a PDF" />
+	<a  onclick="cargar()" target="_blank">Ver en pdf</a>
 </div>
 
 
