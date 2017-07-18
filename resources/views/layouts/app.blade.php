@@ -63,15 +63,15 @@
                                     <li><a href="{{ url('personas/')}}">Todas las Personas</a></li>
                                 </ul>
                             </li>
-                            {{--<li class="dropdown">--}}
-                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-                                    {{--<i class="fa fa-sitemap"></i> Sistema <span class="caret"></span>--}}
-                                {{--</a>--}}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-sitemap"></i> Sistema <span class="caret"></span>
+                                </a>
 
-                                {{--<ul class="dropdown-menu" role="menu">--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('usuarios.index')}}"><i class="fa fa-users"></i> Usuarios</a>--}}
-                                    {{--</li>--}}
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{route('usuarios.index')}}"><i class="fa fa-users"></i> Usuarios</a>
+                                    </li>
                                     {{--<li>--}}
                                         {{--<a href="{{route('departamento.index')}}"><i class="fa fa-cubes"></i> Departamentos</a>--}}
                                     {{--</li>--}}
@@ -85,8 +85,8 @@
                                         {{--<a href="{{route('categoriaSintoma.index')}}"><i class="fa fa-list"></i> Categorias Sintoma</a>--}}
                                     {{--</li>--}}
 
-                                {{--</ul>--}}
-                            {{--</li>--}}
+                                </ul>
+                            </li>
                             <li class="dropdown">
                                 {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
                                     {{--<i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>--}}
