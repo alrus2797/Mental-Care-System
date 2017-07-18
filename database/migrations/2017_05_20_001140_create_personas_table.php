@@ -19,7 +19,8 @@ class CreatePersonasTable extends Migration
             $table->string('apellidomaterno',100);
             $table->string('nombres',100);
             $table->unsignedInteger('dni');
-
+            $table->string('sexo',1);
+            $table->date('fechanacimiento');
             $table->string('direccion',200);
             $table->string('telefono',9);
             $table->string('email');

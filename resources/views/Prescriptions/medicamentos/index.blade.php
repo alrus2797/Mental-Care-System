@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title','Medicamentos')
 
 @section('content')
@@ -28,9 +28,9 @@
       <option value="2">Componente</option>
     </select>
   </div>
-  
+
   <div class="col-md-3">
-    
+
   </div>
 
   <div id="crear"></div>
@@ -156,7 +156,7 @@
             //$("#eliminado").html(resultado);
         }});
     }
-  
+
     function showMedicamentos(nom,comp) {
       var datos = {
         "nom" : nom,
