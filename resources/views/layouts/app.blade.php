@@ -153,7 +153,15 @@
             </div>
         </div>
     </nav>
-    @yield('content')
+
+    <div class="col-xs-12">
+      <div class="container margintop-70">
+      @yield('content')
+      </div>
+    </div>
+
+
+
 </div>
 
 <!-- Scripts -->
