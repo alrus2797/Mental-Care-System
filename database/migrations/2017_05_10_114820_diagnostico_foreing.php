@@ -13,10 +13,10 @@ class DiagnosticoForeing extends Migration
      */
     public function up()
     {
-        Schema::table('diagnosticos', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
-        });
+//        Schema::table('diagnosticos', function($table) {
+//            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreign('paciente_id')->references('id')->on('pacientes');
+//        });
     }
 
     /**
@@ -26,9 +26,9 @@ class DiagnosticoForeing extends Migration
      */
     public function down()
     {
-        Schema::table('diagnosticos', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['paciente_id']);
-        });
+//        Schema::table('diagnosticos', function (Blueprint $table) {
+//            $table->dropForeign(['user_id']);
+//            $table->dropForeign(['paciente_id']);
+//        });
     }
 }
