@@ -35,7 +35,29 @@
           </div>
         </div>
 
-
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 col-form-label" for="sexo">Sexo:</label>
+          <div class="col-sm-3">
+                <select class="form-control" id="sexo" name="sexo">
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                  <option value="O">Otro</option>
+                </select>
+          </div>
+          <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha de Nacimiento:</label>
+          <div class="col-sm-3">
+            <div class="col-sm-3">
+              {{ Form::selectRange('day', 1, 31) }}
+            </div>
+            <div class="col-sm-5">
+              {{ Form::selectMonth('month') }}
+            </div>
+            <div class="col-sm-4">
+              {{ Form::selectYear('year', Carbon\Carbon::now()->year, 1900) }}
+            </div>
+          </div>
+        </div>
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>

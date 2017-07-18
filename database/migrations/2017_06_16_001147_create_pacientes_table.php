@@ -26,6 +26,8 @@ class CreatePacientesTable extends Migration
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('pacientes_estados');
 
+            $table->integer('departamento_id')->unsigned();
+            $table->foreign('departamento_id')->references('id')->on('departamentos');
 
             $table->timestamps();
         });

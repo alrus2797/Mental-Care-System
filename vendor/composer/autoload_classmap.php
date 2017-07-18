@@ -74,6 +74,7 @@ return array(
     'CreateComponenteMedicamentoTable' => $baseDir . '/database/migrations/2017_07_02_145036_create_componente_medicamento_table.php',
     'CreateComponentesTable' => $baseDir . '/database/migrations/2017_06_13_023338_create_componentes_table.php',
     'CreateComprobantesTable' => $baseDir . '/database/migrations/2017_06_16_001304_create_comprobantes_table.php',
+    'CreateDepartamentosTable' => $baseDir . '/database/migrations/2017_07_18_151046_create_departamentos_table.php',
     'CreateDiasTable' => $baseDir . '/database/migrations/2017_07_15_025843_create_dias_table.php',
     'CreateEgresosTable' => $baseDir . '/database/migrations/2017_06_16_001458_create_egresos_table.php',
     'CreateEspecialidadTable' => $baseDir . '/database/migrations/2017_06_03_031153_create_especialidad_table.php',

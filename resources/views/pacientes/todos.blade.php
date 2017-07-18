@@ -15,9 +15,7 @@
 						<th>Apellido Paterno</th>
 						<th>Apellido Materno</th>
 						<th>DNI</th>
-						<th>Dirección</th>
-						<th>Teléfono</th>
-						<th>Email</th>
+						<th>Sexo</th>
 						<th>Estado</th>
             <th>Historia</th>
 						<th> Ver</th>
@@ -33,9 +31,7 @@
 							<td>{{$paciente->apellidopaterno}}</td>
 							<td>{{$paciente->apellidomaterno}}</td>
 							<td>{{$paciente->dni}}</td>
-							<td>{{$paciente->direccion}}</td>
-							<td>{{$paciente->telefono}}</td>
-							<td>{{$paciente->email}}</td>
+							<td>{{$persona->sexo}}</td>
 							<td>{{$paciente->nombre_estado}}</td>
               				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}" id="historia">
               						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
