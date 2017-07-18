@@ -1,6 +1,6 @@
 
 
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title', 'Ver Paciente')
 
 @section('content')

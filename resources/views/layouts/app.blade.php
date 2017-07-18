@@ -55,12 +55,24 @@
                         <li><a href="{{ route('login') }}"><i class="fa fa-vcard-o"></i> Ingresar</a></li>
                     @else
                         @if ( Auth::user()->tipo_usuario == 'Administrador' )
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('pacientes/crear')}}">Nuevo Paciente</a></li>
+                                <li><a href="{{ url('pacientes/buscar')}}">Buscar Pacientes</a></li>
+                                <li><a href="{{ url('pacientes')}}">Todos los Pacientes</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ url('pacientes/estados/crear')}}">Nuevo Estado de Paciente</a></li>
+                                <li><a href="{{ url('pacientes/estados/todos')}}">Todos los Estados de Pacientes</a></li>
+                            </ul>
+                        </li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personas <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ url('personas/crear')}}">Nueva Persona</a></li>
                                     <li><a href="{{ url('personas/buscar')}}">Buscar Persona</a></li>
-                                    <li><a href="{{ url('personas/')}}">Todas las Personas</a></li>
+                                    <li><a href="{{ url('personas')}}">Todas las Personas</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
