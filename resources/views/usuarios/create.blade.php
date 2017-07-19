@@ -10,33 +10,18 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('usuarios.store') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre completo</label>
-
+                        <div class="form-group{{ ($errors->has('persona_id')) ? $errors->first('persona_id') : '' }}">
+                            <label for="persona_id" class="col-md-4 control-label">Persona</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" onkeyup="this.value=this.value.replace(/[^A-Za-z ]/g,'');"  required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                <select class="form-control selectpicker" name="persona_id" id="persona_id" data-live-search="true">
+                                    @foreach($personas as $paciente)
+                                        <option value="{{$paciente->id}}">{{$paciente->nombre_completo()}}</option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first('persona_id','<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
-                            <label for="documento" class="col-md-4 control-label">DNI</label>
-
-                            <div class="col-md-6">
-                                <input id="documento" type="text" class="form-control" name="documento" value="{{ old('documento') }}" onkeypress="return isNumber(event)" required>
-
-                                @if ($errors->has('documento'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('documento') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('departamento_id') ? ' has-error' : '' }}">
                             <label for="departamento_id" class="col-md-4 control-label">Departamento</label>
@@ -106,43 +91,6 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo electronico</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="col-md-6" align="left">
@@ -179,16 +127,5 @@
     document.addEventListener('DOMContentLoaded', function() {
         evento_tipo_usuario();
     }, false);
-    function isNumber(evt) {
-        if(document.getElementById('documento').value.length < 8){
-            evt = (evt) ? evt : window.event;
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        }else{
-            return true;
-        }
-    }
+
 </script>
