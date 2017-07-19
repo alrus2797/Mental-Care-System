@@ -103,10 +103,13 @@
     </div>
 
     <div class="form-group col-sm-12">
-      <label class="col-sm-2 col-form-label" for="fecha">Fecha:</label>
-      <div class="col-sm-6">
-            <input type="date" class="form-control" id="fecha" name="fecha">
+      <label class="col-sm-2 col-form-label" for="fecha">Fecha de Ingreso:</label>
+      <div class="col-sm-3">
+            <input type="date" class="form-control" id="fecha" name="fecha" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
       </div>
+      <div class="col-sm-2"> </div>
+      <div class="col-sm-2"> </div>
+      <div class="col-sm-3"> </div>
     </div>
 
 

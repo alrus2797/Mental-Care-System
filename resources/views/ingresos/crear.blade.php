@@ -6,6 +6,10 @@
 
 <h2>Crear Ingreso</h2><br><br>
 
+<div class="form-group col-sm-12">
+      <h3> <b> Buscar Persona </b> </h3>
+</div>
+
 <div >
     <form>
       {{csrf_field()}}
@@ -44,11 +48,11 @@
     </form>
 
     <div class="form-group col-sm-12">
-      <div class="tablaPersonasDNI col-sm-12 "><b>No hay resultados</b></div>
+      <div class="tablaPersonasDNI col-sm-12 "></div>
     </div>
 
     <div class="form-group col-sm-12">
-      <div> <b> ¿No existe? Créalo </b> </div>
+      <h3> <b> ¿No existe persona? Crear </b> </h3>
     </div>
     <div class="form-group col-sm-12">
       <div class="personaNueva col-sm-12">
