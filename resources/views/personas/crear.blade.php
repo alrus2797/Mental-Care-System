@@ -115,6 +115,7 @@ $.validator.addMethod('strongDNI',function(value,element){
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
 
+<<<<<<< Updated upstream
 $.validator.addMethod('checkDNI', function(value, element){
   var exist;
   var parametros = {
@@ -136,6 +137,13 @@ $.validator.addMethod('checkDNI', function(value, element){
   return !exist;
 })
 
+=======
+$.validator.addMethod('compareFechas',function(value,element){
+    return '2012-11-03' == '2012-11-04';
+})
+
+
+>>>>>>> Stashed changes
 $("#register-form").validate({
   rules: {
     email: {
@@ -163,7 +171,14 @@ $("#register-form").validate({
     },
     direccion: {
       required: true
-    }
+    },
+    fechanacimiento: {
+      required: true,
+      compareFechas: true
+    },
+    sexo: {
+    required: true
+  }
   },
   messages: {
     email: {
@@ -191,6 +206,13 @@ $("#register-form").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.',
+      compareFechas: 'Ingrese una fecha que no exceda la actual.'
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });

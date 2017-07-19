@@ -171,6 +171,12 @@ $("#register-form3").validate({
     },
     direccion: {
       required: true
+    },
+    fechanacimiento: {
+      required: true
+    },
+    sexo: {
+    required: true
     }
   },
   messages: {
@@ -202,6 +208,12 @@ $("#register-form3").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.'
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });
