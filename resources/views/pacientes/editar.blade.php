@@ -99,8 +99,19 @@
           </select>
           </div>
           <div class="col-sm-2"> </div>
-          <div class="col-sm-2"> </div>
-          <div class="col-sm-3"> </div>
+          <div class="col-sm-2">
+          <label  for="componentes">Alergias:</label>
+            <select id='componentes' multiple='multiple' name="componentes[]">
+              @foreach($componentes as $c)
+                  <option value='{{$c->id}}' >{{$c->nombre}}</option>
+              @endforeach
+            </select>
+  <label for=""></label></div>
+
+          <div class="col-sm-3">
+
+
+          </div>
       </div>
 
       <div class="form-group col-sm-12">
@@ -126,6 +137,13 @@
 
 
 <script>
+
+$('#componentes').multiSelect();
+var a= {!!json_encode($alergias)!!}
+a=a.map(String)
+$('#componentes').multiSelect("select",a);
+
+
 $(function() {
 
 $.validator.setDefaults({

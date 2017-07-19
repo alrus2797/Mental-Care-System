@@ -12,6 +12,7 @@ use App\Persona;
 use App\pacientesEstados;
 use App\Historial;
 use App\Departamento;
+use App\Componente;
 
 class pacientesController extends Controller
 {
@@ -177,7 +178,12 @@ class pacientesController extends Controller
       $getPersona = persona::find($get->persona_id);
       $estados = pacientesEstados::all();
       $departamentos = departamento::all();
-      return view('pacientes.editar',compact('get','getPersona','estados','departamentos'));
+      $componentes= Componente::all();
+      $alergias= $get->componentes->pluck('id')->all();
+
+
+
+      return view('pacientes.editar',compact('get','getPersona','estados','departamentos','componentes','alergias'));
 
     }
 
@@ -202,7 +208,7 @@ class pacientesController extends Controller
       $pac->departamento_id = request('departamento');
       $post->save();
       $pac->save();
-
+      $pac->componentes()->sync(request('componentes'));
       return redirect('pacientes/'.request('paciente_id'));
 
     }
