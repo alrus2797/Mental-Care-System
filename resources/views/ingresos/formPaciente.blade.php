@@ -7,8 +7,8 @@
   {{csrf_field()}}
 
 
-  <input type="hidden" class="form-control" id="id" placeholder="Ingrese apellido paterno" name="id" value="{{$respuesta->id}}">
-
+  <input type="hidden" class="form-control" id="id" placeholder="ID Persona" name="id" value="{{$respuesta->id}}">
+  <input type="hidden" class="form-control" id="pac_id" placeholder="ID Paciente" name="pac_id" value="{{$pac_id}}">
 
 
     <div class="form-group col-sm-12">

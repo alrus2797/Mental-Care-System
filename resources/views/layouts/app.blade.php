@@ -106,7 +106,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ url('ingresos/crear')}}">Nuevo Ingreso</a></li>
-                                <!--<li><a href="{{ url('ingresos/buscar')}}">Buscar Ingresos</a></li>-->
+                                <li><a href="{{ url('ingresos/buscar')}}">Buscar Ingresos</a></li>
                                 <li><a href="{{ url('ingresos')}}">Todos los Ingresos</a></li>
                             </ul>
                         </li>

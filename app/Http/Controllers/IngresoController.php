@@ -37,7 +37,8 @@ class IngresoController extends Controller
     {
 
       $tabla = DB::table('ingresos')
-              ->join('personas','ingresos.persona_id','=','personas.id')
+              ->join('pacientes','ingresos.paciente_id','=','pacientes.id')
+              ->join('personas','pacientes.persona_id','=','personas.id')
               -> select('ingresos.*', 'personas.*', 'ingresos.id as ing_id')
               ->orderBy('ingresos.id', 'desc')
               ->paginate(20);
@@ -46,7 +47,7 @@ class IngresoController extends Controller
       if($request->ajax()){
 
 
-        return response()->json(view('pacientes.todosPartial',['tabla'=>$tabla])->render());
+        return response()->json(view('ingresos.todosPartial',['tabla'=>$tabla])->render());
       }
 
 
@@ -76,14 +77,9 @@ class IngresoController extends Controller
 
       $post = new ingreso;
 
-      $post->persona_id = request('id');
+      $post->paciente_id = request('pac_id');
       $post->fecha = request('fecha');
 
-      //$historial = new historial;
-
-      //$historial -> save();
-
-      //$post->historials_id = $historial -> id;
 
       $post->save();
 
@@ -147,10 +143,13 @@ class IngresoController extends Controller
       $post->save();
 
 
+      $ing = new ingreso;
 
+      $ing->paciente_id = $post->id;
+      $ing->fecha = request('fecha');
+      $ing->save();
 
-
-      return redirect('pacientes');
+      return redirect('ingresos');
 
     }
 
@@ -158,10 +157,8 @@ class IngresoController extends Controller
     {
 
       $get = ingreso::find($id);
-      $getPersona = persona::find($get->persona_id);
-      $estados = pacientesEstados::all();
-      $departamentos = departamento::all();
-      return view('ingresos.editar',compact('get','getPersona','estados','departamentos'));
+
+      return view('ingresos.editar',compact('get'));
 
     }
 
@@ -169,21 +166,11 @@ class IngresoController extends Controller
     public function guardar()
     {
 
-      $post = persona::find(request('id'));
+      //$post = persona::find(request('id'));
       $ing = ingreso::find(request('ingreso_id'));
 
+      $ing -> fecha = request('fecha');
 
-      $post->apellidopaterno = request('apellidopaterno');
-      $post->apellidomaterno = request('apellidomaterno');
-      $post->nombres = request('nombres');
-      $post->dni = request('dni');
-      $post->direccion = request('direccion');
-      $post->telefono = request('telefono');
-      $post->email = request('email');
-      $post->sexo = request('sexo');
-      $post->fechanacimiento = request('fechanacimiento');
-      $ing->fecha = request('fecha');
-      $post->save();
       $ing->save();
 
       return redirect('ingresos');
@@ -193,14 +180,14 @@ class IngresoController extends Controller
 
     public function eliminarConfirm($id){
       $get = ingreso::find($id);
-      $getPersona = persona::find($get->persona_id);
+
       //$estado = pacientesEstados::find($get->estado_id);
       //$departamento = departamento::find($get->departamento_id);
-      return view('ingresos.eliminar',compact('get','getPersona'));
+      return view('ingresos.eliminar',compact('get'));
     }
 
     public function eliminar(){
-      $post = ingreso::find(request('id'));
+      $post = ingreso::find(request('ingreso_id'));
       $post->delete();
       return redirect('ingresos');
     }
@@ -225,7 +212,28 @@ class IngresoController extends Controller
                     ])
                   -> get();
 
-      return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
+      return response()->json(view('ingresos.busquedaDNI', compact('respuesta'))->render());
+    }
+
+
+    public function retrieveIngresos(Request $datos)
+    {
+      $respuesta = DB::table('ingresos')
+                  ->join('pacientes','ingresos.paciente_id','=','pacientes.id')
+                  -> join('personas', 'personas.id', '=', 'pacientes.persona_id')
+                  -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
+                  -> select('ingresos.*','pacientes.*', 'pacientes.id as pac_id', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+                  -> where([
+                    ['ingresos.fecha', 'like', '%'.$datos->input('fecha').'%'],
+                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['personas.telefono', 'like', '%'.$datos->input('telefono').'%']
+                    ])
+                  -> get();
+
+      return response()->json(view('ingresos.busqueda', compact('respuesta'))->render());
     }
 
     public function retrievePersonasDNI(Request $datos)
@@ -250,11 +258,11 @@ class IngresoController extends Controller
       //$respuesta = persona::all();
 
       $respuesta = persona::find($datos->input('id'));
-
+      $pac_id = $datos->input('pac_id');
       $estados = pacientesEstados::all();
       $departamentos = departamento::all();
 
-      return response()->json(view('ingresos.formPaciente', compact('respuesta','estados','departamentos'))->render());
+      return response()->json(view('ingresos.formPaciente', compact('respuesta','estados','departamentos','pac_id'))->render());
       //return view('personas.busquedaDNI', compact('respuesta');
 
     }

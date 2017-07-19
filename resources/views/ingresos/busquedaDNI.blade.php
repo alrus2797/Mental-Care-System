@@ -24,7 +24,7 @@
 							<td>{{$persona->telefono}}</td>
 							<td>{{$persona->email}}</td>
 							<td>
-								<button type="button" id="botonSeleccionar" class="btn btn-default" aria-label="Center Align" onclick="seleccionarPersona('{{$persona->id}}', '{{$persona->nombres}}', '{{$persona->apellidopaterno}}', '{{$persona->apellidomaterno}}', '{{$persona->dni}}', '{{$persona->direccion}}', '{{$persona->telefono}}', '{{$persona->email}}')">
+								<button type="button" id="botonSeleccionar" class="btn btn-default" aria-label="Center Align" onclick="seleccionarPersona('{{$persona->pac_id}}','{{$persona->id}}', '{{$persona->nombres}}', '{{$persona->apellidopaterno}}', '{{$persona->apellidomaterno}}', '{{$persona->dni}}', '{{$persona->direccion}}', '{{$persona->telefono}}', '{{$persona->email}}')">
   							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Crear
 								</button>
 							</td>
@@ -38,8 +38,9 @@
 <div class="formPaciente col-sm-12"></div>
 
 <script>
-	function seleccionarPersona(id, nombres, apellidoP, apellidoM, DNI, direccion, telefono, email) {
+	function seleccionarPersona(pac_id,id, nombres, apellidoP, apellidoM, DNI, direccion, telefono, email) {
     var parametros = {
+			"pac_id":pac_id,
 			"id" : id,
 			//"apellidoP" : apellidoP,
     	//"apellidoM" : apellidoM,

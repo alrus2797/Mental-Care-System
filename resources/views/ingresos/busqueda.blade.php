@@ -1,5 +1,5 @@
 <div class="table-responsive">
-	<div class="tablaPacientes col-sm-12">
+	<div class="tablaIngresos col-sm-12">
 			<table class="table col-sm-12">
 				<thead>
 					<tr>
@@ -7,9 +7,9 @@
 						<th>Apellido Paterno</th>
 						<th>Apellido Materno</th>
 						<th>DNI</th>
-
 						<th>Teléfono</th>
 						<th>Estado</th>
+						<th>Fecha de Ingreso</th>
             <th>Historia</th>
 						<th> Ver</th>
 						<th> Editar </th>
@@ -24,8 +24,9 @@
 							<td>{{$paciente->apellidomaterno}}</td>
 							<td>{{$paciente->dni}}</td>
 							<td>{{$paciente->telefono}}</td>
-							
+
 							<td>{{$paciente->nombre_estado}}</td>
+							<td>{{$paciente->fecha}}</td>
 							<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
 									<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 							</td>

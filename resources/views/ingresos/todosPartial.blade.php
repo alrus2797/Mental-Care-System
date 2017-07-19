@@ -8,9 +8,7 @@
 						<th>Apellido Materno</th>
 						<th>DNI</th>
 						<th>Sexo</th>
-						<th>Estado</th>
-            <th>Historia</th>
-						<th> Ver</th>
+            <th>Fecha del ingreso</th>
 						<th> Editar </th>
 						<th> Eliminar </th>
 
@@ -26,18 +24,12 @@
 							<td>@if ("M" == $paciente->sexo) Masculino @endif
 							@if ("F" == $paciente->sexo) Femenino @endif
 							@if ("O" == $paciente->sexo) Otro @endif</td>
-							<td>{{$paciente->nombre_estado}}</td>
-              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
-              						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-              				</td>
+              <td>{{$paciente->fecha}}</td>
 							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/'}}"  id="user"> <span class="glyphicon glyphicon-user" aria-hidden="true" ></span> </a>
-							</td>
-							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/editar'}}"  id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+									<a href="{{asset('ingresos')}}{{'/'.$paciente->ing_id.'/editar'}}"  id="edit"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
 							 </td>
 							<td>
-									<a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id.'/eliminar'}}"  id="elimin"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a>
+									<a href="{{asset('ingresos')}}{{'/'.$paciente->ing_id.'/eliminar'}}"  id="elimin"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a>
 								</td>
 
 						</tr>

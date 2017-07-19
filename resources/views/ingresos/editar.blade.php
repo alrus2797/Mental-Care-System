@@ -13,71 +13,10 @@
 
         {{csrf_field()}}
 
-        <input type="hidden" id="id" name="id" value="{{$getPersona->id}}">
 
         <input type="hidden" id="ingreso_id" name="ingreso_id" value="{{$get->id}}">
 
-        <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
-          <div class="col-sm-3">
-                <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" value="{{$getPersona->apellidopaterno}}" >
-          </div>
-          <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="apellidomaterno">Apellido Materno:</label>
-          <div class="col-sm-3">
-                <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" value="{{$getPersona->apellidomaterno}}">
-          </div>
-        </div>
 
-        <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="nombres">Nombres:</label>
-          <div class="col-sm-3">
-                <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" value="{{$getPersona->nombres}}">
-          </div>
-          <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="sexo">Sexo:</label>
-          <div class="col-sm-3">
-            <select class="form-control" id="sexo" name="sexo">
-              <option value="M" @if ("M" == $getPersona->sexo) selected @endif>Masculino</option>
-              <option value="F" @if ("F" == $getPersona->sexo) selected @endif>Femenino</option>
-              <option value="O" @if ("O" == $getPersona->sexo) selected @endif>Otro</option>
-            </select>
-          </div>
-
-        </div>
-
-
-
-        <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
-          <div class="col-sm-3">
-                <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" value="{{$getPersona->dni}}">
-          </div>
-          <div class="col-sm-2"></div>
-            <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
-          <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$getPersona->fechanacimiento}}">
-          </div>
-        </div>
-
-        <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
-          <div class="col-sm-3">
-            <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$getPersona->direccion}}" >
-          </div>
-          <div class="col-sm-2"></div>
-            <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
-          <div class="col-sm-3">
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$getPersona->telefono}}">
-          </div>
-        </div>
-
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 col-form-label" for="email">Email:</label>
-          <div class="col-sm-3">
-            <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" value="{{$getPersona->email}}" >
-          </div>
-        </div>
     <div class="form-group col-sm-12">
       <label class="col-sm-2 col-form-label" for="fecha">Fecha de Ingreso (Admisión):</label>
       <div class="col-sm-6">
@@ -89,16 +28,16 @@
       <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
           <div class="col-sm-3">
-            <label class="form-control" id="registro" name="registro">{{$getPersona->created_at}}</label>
+            <label class="form-control" id="registro" name="registro">{{$get->created_at}}</label>
           </div>
           <div class="col-sm-2"> </div>
           <label class="col-sm-2 col-form-label" for="registro">Última Fecha de Actualización:</label>
           <div class="col-sm-3">
-               <label class="form-control" id="actualizacion" name="actualizacion">{{$getPersona->updated_at}}</label>
+               <label class="form-control" id="actualizacion" name="actualizacion">{{$get->updated_at}}</label>
           </div>
       </div>
 
-    
+
 
       <button type="submit" class="btn btn-primary">Guardar</button>
       <a href="{{asset('ingresos')}}">Cancelar</a>

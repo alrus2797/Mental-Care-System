@@ -142,6 +142,8 @@ Route::group(['prefix'=>'ingresos'],function(){
 
   Route::get('retrievePersonasDNI', 'IngresoController@retrievePersonasDNI');
 
+  Route::get('retrieveIngresos', 'IngresoController@retrieveIngresos');
+
   Route::get('llenarPaciente', 'IngresoController@llenarPaciente');
   Route::post('agregar', 'IngresoController@agregar');
 
