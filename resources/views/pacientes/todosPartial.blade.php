@@ -29,7 +29,7 @@
 							<td>{{$paciente->apellidopaterno}}</td>
 							<td>{{$paciente->apellidomaterno}}</td>
 							<td>{{$paciente->dni}}</td>
-							<td>{{$persona->sexo}}</td>
+							<td>{{$paciente->sexo}}</td>
 							<!--<td>{{$persona->fechanacimiento}}</td>
 							<td>{{$paciente->direccion}}</td>
 							<td>{{$paciente->telefono}}</td>

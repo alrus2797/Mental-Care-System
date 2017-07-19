@@ -27,40 +27,61 @@
                 <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" value="{{$get->nombres}}">
           </div>
           <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="sexo">Sexo:</label>
+          <div class="col-sm-3">
+            <select class="form-control" id="sexo" name="sexo">
+              <option value="M" @if ("M" == $get->sexo) selected @endif>Masculino</option>
+              <option value="F" @if ("F" == $get->sexo) selected @endif>Femenino</option>
+              <option value="O" @if ("O" == $get->sexo) selected @endif>Otro</option>
+            </select>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
           <div class="col-sm-3">
                 <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" value="{{$get->dni}}">
           </div>
+          <div class="col-sm-2"></div>
+            <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$get->fechanacimiento}}">  
+          </div>
         </div>
-
-
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
           <div class="col-sm-3">
-                <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$get->direccion}}" >
+            <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$get->direccion}}" >
           </div>
           <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
+            <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-               <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$get->telefono}}">
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$get->telefono}}">
           </div>
         </div>
 
         <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="email">Email:</label>
+            <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$get->email}}" >
+            <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$get->email}}" >
           </div>
           <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-2"></div>
           <div class="col-sm-3">
-               <label class="form-control" id="registro" name="registro">{{$get->created_at}}</label>
+
           </div>
         </div>
+
+
         <div class="form-group col-sm-12">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-3"></div>
+            <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-3">
+            <label class="form-control" id="registro" name="registro">{{$get->created_at}}</label>
+          </div>
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="registro">Última Fecha de Actualización:</label>
           <div class="col-sm-3">

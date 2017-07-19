@@ -31,9 +31,9 @@
 							<td>{{$paciente->apellidopaterno}}</td>
 							<td>{{$paciente->apellidomaterno}}</td>
 							<td>{{$paciente->dni}}</td>
-							<td>{{$persona->sexo}}</td>
+							<td>{{$paciente->sexo}}</td>
 							<td>{{$paciente->nombre_estado}}</td>
-              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->id}}" id="historia">
+              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
               						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
               				</td>
 							<td>

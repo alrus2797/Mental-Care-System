@@ -11,6 +11,7 @@ use App\Paciente;
 use App\Persona;
 use App\pacientesEstados;
 use App\Historial;
+use App\Departamento;
 
 class pacientesController extends Controller
 {
@@ -62,8 +63,9 @@ class pacientesController extends Controller
       $paciente = paciente::find($id);
       $persona = persona::find($paciente -> persona_id);
       $estado = pacientesEstados::find($paciente->estado_id);
+      $departamento = departamento::find($paciente->departamento_id);
       //return $tabla;
-      return view('pacientes.mostrar',compact('paciente', 'persona','estado'));
+      return view('pacientes.mostrar',compact('paciente', 'persona','estado','departamento'));
 
     }
 
@@ -83,12 +85,13 @@ class pacientesController extends Controller
 
       $post->persona_id = request('id');
       $post->estado_id = request('estado');
+      $post->departamento_id = request('departamento');
 
-      $historial = new historial;
+      //$historial = new historial;
 
-      $historial -> save();
+      //$historial -> save();
 
-      $post->historials_id = $historial -> id;
+      //$post->historials_id = $historial -> id;
 
       $post->save();
 
@@ -102,12 +105,13 @@ class pacientesController extends Controller
       $per->telefono = request('telefono');
       $per->email = request('email');
       $per->sexo = request('sexo');
-      $pe->fechanacimiento = request('fechanacimiento');
+      $per->fechanacimiento = request('fechanacimiento');
       $per->save();
 
       //$ingreso= new App\Ingreso;
       //$ingreso->paciente_id= $per->id;
       //$per->ingresos()->attach($ingreso);
+
       return redirect('pacientes');
 
     }
@@ -116,7 +120,8 @@ class pacientesController extends Controller
     {
 
       $estados = pacientesEstados::all();
-      return response()->json(view('pacientes.crearPersonaPaciente',compact('estados'))->render());
+      $departamentos = departamento::all();
+      return response()->json(view('pacientes.crearPersonaPaciente',compact('estados','departamentos'))->render());
 
     }
 
@@ -140,7 +145,7 @@ class pacientesController extends Controller
 
       $post->persona_id = $per->id;
       $post->estado_id = request('estado');
-
+      $post->departamento_id = request('departamento');
       //$historial = new historial;
 
       //$historial -> save();
@@ -163,7 +168,8 @@ class pacientesController extends Controller
       $get = paciente::find($id);
       $getPersona = persona::find($get->persona_id);
       $estados = pacientesEstados::all();
-      return view('pacientes.editar',compact('get','getPersona','estados'));
+      $departamentos = departamento::all();
+      return view('pacientes.editar',compact('get','getPersona','estados','departamentos'));
 
     }
 
@@ -185,6 +191,7 @@ class pacientesController extends Controller
       $post->sexo = request('sexo');
       $post->fechanacimiento = request('fechanacimiento');
       $pac->estado_id = request('estado');
+      $pac->departamento_id = request('departamento');
       $post->save();
       $pac->save();
 
@@ -197,7 +204,8 @@ class pacientesController extends Controller
       $get = paciente::find($id);
       $getPersona = persona::find($get->persona_id);
       $estado = pacientesEstados::find($get->estado_id);
-      return view('pacientes.eliminar',compact('get','getPersona','estado'));
+      $departamento = departamento::find($get->departamento_id);
+      return view('pacientes.eliminar',compact('get','getPersona','estado','departamento'));
     }
 
     public function eliminar(){
@@ -248,8 +256,9 @@ class pacientesController extends Controller
       $respuesta = persona::find($datos->input('id'));
 
       $estados = pacientesEstados::all();
+      $departamentos = departamento::all();
 
-      return response()->json(view('pacientes.formPaciente', compact('respuesta'), compact('estados'))->render());
+      return response()->json(view('pacientes.formPaciente', compact('respuesta','estados','departamentos'))->render());
       //return view('personas.busquedaDNI', compact('respuesta');
 
     }
