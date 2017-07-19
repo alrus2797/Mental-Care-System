@@ -58,7 +58,6 @@ class CrearIniciales extends Migration
                 'name' => 'Administrador',
                 'email' => 'admin@sistema.com',
                 'password' => bcrypt('root'),
-                'documento' => '10000000',
                 'tipo_usuario' => 'Administrador',
                 'created_at' => date('Y-m-d h:i:s'),
                 'updated_at' => date('Y-m-d h:i:s')
