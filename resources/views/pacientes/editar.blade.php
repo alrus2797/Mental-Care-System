@@ -161,7 +161,7 @@ $.validator.addMethod('moretelephone',function(value,element){
   || /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(value);
 
 })
-<<<<<<< Updated upstream
+
 $.validator.addMethod('checkDNI', function(value, element){
   var exist;
   var parametros = {
@@ -174,7 +174,7 @@ $.validator.addMethod('checkDNI', function(value, element){
     dataType : 'json',
     async: false,
     success: function(data){
-      if (data == null)
+      if (data == null || data.id == {{$getPersona->id}})
         exist = false;
       else
         exist = true;

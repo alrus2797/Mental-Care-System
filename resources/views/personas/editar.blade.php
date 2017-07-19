@@ -138,7 +138,6 @@ $.validator.addMethod('moretelephone',function(value,element){
 
 })
 
-<<<<<<< Updated upstream
 $.validator.addMethod('checkDNI', function(value, element){
   var exist;
   var parametros = {
@@ -146,12 +145,12 @@ $.validator.addMethod('checkDNI', function(value, element){
   };
   $.ajax({
     data: parametros,
-    url: 'checkDNI',
+    url: '/personas/checkDNI',
     type: 'get',
     dataType : 'json',
     async: false,
     success: function(data){
-      if (data == null)
+      if (data == null || data.id == {{$get->id}})
         exist = false;
       else
         exist = true;
