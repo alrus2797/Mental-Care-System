@@ -64,7 +64,7 @@ class personasController extends Controller
       $post->telefono = request('telefono');
       $post->email = request('email');
       $post->sexo = request('sexo');
-      $post->fechanacimiento = request('sexo');
+      $post->fechanacimiento = request('fechanacimiento');
       $post->save();
       //paciente::create(request(['historiaclinica','apellidopaterno','apellidomaterno',
         //'nombres','dni','direccion']));
@@ -130,6 +130,12 @@ class personasController extends Controller
                   ->get();
       return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
+
+    public function checkDNI(Request $datos)
+    {
+      return persona::where('dni', '=', $datos->input('DNI')) -> first();
+    }
+
     /*
     public function retrievePersonas(Request $datos)
     {

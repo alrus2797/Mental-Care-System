@@ -7,58 +7,55 @@ use Log;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
+use App\Ingreso;
 use App\Paciente;
 use App\Persona;
 use App\pacientesEstados;
 use App\Historial;
 use App\Departamento;
-use App\Componente;
 
-class pacientesController extends Controller
+class IngresoController extends Controller
 {
 
-
+    /*
     public function historial(Request $request)
     {
-        $paciente= paciente::find($request->paciente_id);
+        $ingreso= ingreso::find($request->paciente_id);
         //$id=$paciente->persona->id;
         //$nombre=$paciente->persona->nombres;
         //$apellidos=$paciente->persona->apellidopaterno." ".$paciente->persona->apellidomaterno;
         //return view('pacientes.historial',["id"=>$paciente->id,"nombre"=>$nombre,"apellidos"=>$apellidos]);
 
-        if ($paciente)
+        if ($ingreso)
           return view('pacientes.historial',["paciente_id"=>$request->paciente_id]);
         else
           return "No se ha encontrado paciente";
     }
+    */
 
     public function todos(Request $request)
     {
 
-      //$tabla = paciente::all()->paginate(2);
-      //$tabla = paciente::with('persona')->get();
-      //$tabla = DB::table('pacientes')->paginate(20);
-      //$tabla = paciente::all();
-
-      $tabla = DB::table('pacientes')
+      $tabla = DB::table('ingresos')
+              ->join('pacientes','ingresos.paciente_id','=','pacientes.id')
               ->join('personas','pacientes.persona_id','=','personas.id')
-              -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
-              -> select('pacientes.*', 'personas.*','pacientes.id as pac_id' ,'pacientes_estados.nombre as nombre_estado')
-              ->orderBy('personas.apellidopaterno', 'asc')
+              -> select('ingresos.*', 'personas.*', 'ingresos.id as ing_id')
+              ->orderBy('ingresos.id', 'desc')
               ->paginate(20);
 
 
       if($request->ajax()){
 
 
-        return response()->json(view('pacientes.todosPartial',['tabla'=>$tabla])->render());
+        return response()->json(view('ingresos.todosPartial',['tabla'=>$tabla])->render());
       }
 
 
-      return view('pacientes.todos',compact('tabla'));
+      return view('ingresos.todos',compact('tabla'));
 
     }
 
+    /*
     public function mostrar($id)
     {
       $paciente = paciente::find($id);
@@ -67,40 +64,22 @@ class pacientesController extends Controller
       $departamento = departamento::find($paciente->departamento_id);
       //return $tabla;
       return view('pacientes.mostrar',compact('paciente', 'persona','estado','departamento'));
-
-    }
-
-    public function alergias($id)
-    {
-      $paciente= paciente::find($id);
-      $alergias=$paciente->componentes;
-      return view ('pacientes.alergias',["alergias"=>$alergias]);
-
-    }
+    }*/
 
     public function crearObt()
     {
-
-
-      return view('pacientes.crear');
-
+      return view('ingresos.crear');
     }
 
 
     public function agregar()
     {
 
-      $post = new paciente;
+      $post = new ingreso;
 
-      $post->persona_id = request('id');
-      $post->estado_id = request('estado');
-      $post->departamento_id = request('departamento');
+      $post->paciente_id = request('pac_id');
+      $post->fecha = request('fecha');
 
-      //$historial = new historial;
-
-      //$historial -> save();
-
-      //$post->historials_id = $historial -> id;
 
       $post->save();
 
@@ -121,7 +100,7 @@ class pacientesController extends Controller
       //$ingreso->paciente_id= $per->id;
       //$per->ingresos()->attach($ingreso);
 
-      return redirect('pacientes');
+      return redirect('ingresos');
 
     }
 
@@ -130,7 +109,7 @@ class pacientesController extends Controller
 
       $estados = pacientesEstados::all();
       $departamentos = departamento::all();
-      return response()->json(view('pacientes.crearPersonaPaciente',compact('estados','departamentos'))->render());
+      return response()->json(view('ingresos.crearPersonaPaciente',compact('estados','departamentos'))->render());
 
     }
 
@@ -164,26 +143,22 @@ class pacientesController extends Controller
       $post->save();
 
 
+      $ing = new ingreso;
 
+      $ing->paciente_id = $post->id;
+      $ing->fecha = request('fecha');
+      $ing->save();
 
-
-      return redirect('pacientes');
+      return redirect('ingresos');
 
     }
 
     public function editar($id)
     {
 
-      $get = paciente::find($id);
-      $getPersona = persona::find($get->persona_id);
-      $estados = pacientesEstados::all();
-      $departamentos = departamento::all();
-      $componentes= Componente::all();
-      $alergias= $get->componentes->pluck('id')->all();
+      $get = ingreso::find($id);
 
-
-
-      return view('pacientes.editar',compact('get','getPersona','estados','departamentos','componentes','alergias'));
+      return view('ingresos.editar',compact('get'));
 
     }
 
@@ -191,46 +166,35 @@ class pacientesController extends Controller
     public function guardar()
     {
 
-      $post = persona::find(request('id'));
-      $pac = paciente::find(request('paciente_id'));
+      //$post = persona::find(request('id'));
+      $ing = ingreso::find(request('ingreso_id'));
 
+      $ing -> fecha = request('fecha');
 
-      $post->apellidopaterno = request('apellidopaterno');
-      $post->apellidomaterno = request('apellidomaterno');
-      $post->nombres = request('nombres');
-      $post->dni = request('dni');
-      $post->direccion = request('direccion');
-      $post->telefono = request('telefono');
-      $post->email = request('email');
-      $post->sexo = request('sexo');
-      $post->fechanacimiento = request('fechanacimiento');
-      $pac->estado_id = request('estado');
-      $pac->departamento_id = request('departamento');
-      $post->save();
-      $pac->save();
-      $pac->componentes()->sync(request('componentes'));
-      return redirect('pacientes/'.request('paciente_id'));
+      $ing->save();
+
+      return redirect('ingresos');
 
     }
 
 
     public function eliminarConfirm($id){
-      $get = paciente::find($id);
-      $getPersona = persona::find($get->persona_id);
-      $estado = pacientesEstados::find($get->estado_id);
-      $departamento = departamento::find($get->departamento_id);
-      return view('pacientes.eliminar',compact('get','getPersona','estado','departamento'));
+      $get = ingreso::find($id);
+
+      //$estado = pacientesEstados::find($get->estado_id);
+      //$departamento = departamento::find($get->departamento_id);
+      return view('ingresos.eliminar',compact('get'));
     }
 
     public function eliminar(){
-      $post = paciente::find(request('id'));
+      $post = ingreso::find(request('ingreso_id'));
       $post->delete();
-      return redirect('pacientes');
+      return redirect('ingresos');
     }
 
     public function buscar()
     {
-      return view('pacientes.buscar');
+      return view('ingresos.buscar');
     }
 
     public function retrievePacientes(Request $datos)
@@ -248,7 +212,28 @@ class pacientesController extends Controller
                     ])
                   -> get();
 
-      return response()->json(view('pacientes.busqueda', compact('respuesta'))->render());
+      return response()->json(view('ingresos.busquedaDNI', compact('respuesta'))->render());
+    }
+
+
+    public function retrieveIngresos(Request $datos)
+    {
+      $respuesta = DB::table('ingresos')
+                  ->join('pacientes','ingresos.paciente_id','=','pacientes.id')
+                  -> join('personas', 'personas.id', '=', 'pacientes.persona_id')
+                  -> join('pacientes_estados', 'pacientes.estado_id', '=', 'pacientes_estados.id')
+                  -> select('ingresos.*','pacientes.*', 'pacientes.id as pac_id', 'personas.*', 'pacientes_estados.nombre as nombre_estado')
+                  -> where([
+                    ['ingresos.fecha', 'like', '%'.$datos->input('fecha').'%'],
+                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%'],
+                    ['personas.telefono', 'like', '%'.$datos->input('telefono').'%']
+                    ])
+                  -> get();
+
+      return response()->json(view('ingresos.busqueda', compact('respuesta'))->render());
     }
 
     public function retrievePersonasDNI(Request $datos)
@@ -264,7 +249,7 @@ class pacientesController extends Controller
                     ])
                 -> get();
       //$respuesta = persona::all();
-      return response()->json(view('pacientes.busquedaDNI', compact('respuesta'))->render());
+      return response()->json(view('ingresos.busquedaDNI', compact('respuesta'))->render());
       //return view('personas.busquedaDNI', compact('respuesta');
     }
 
@@ -273,11 +258,11 @@ class pacientesController extends Controller
       //$respuesta = persona::all();
 
       $respuesta = persona::find($datos->input('id'));
-
+      $pac_id = $datos->input('pac_id');
       $estados = pacientesEstados::all();
       $departamentos = departamento::all();
 
-      return response()->json(view('pacientes.formPaciente', compact('respuesta','estados','departamentos'))->render());
+      return response()->json(view('ingresos.formPaciente', compact('respuesta','estados','departamentos','pac_id'))->render());
       //return view('personas.busquedaDNI', compact('respuesta');
 
     }

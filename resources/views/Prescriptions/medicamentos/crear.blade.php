@@ -47,9 +47,9 @@
 			</script>
 			<div class="form-group col-md-4">
 				<script type="text/javascript">
-$('#componentes').multiSelect();
+					$('#componentes').multiSelect();
 				</script>
-
+				<label for="componentes">Componentes</label>
 				<select id='componentes' multiple='multiple' name="componentes[]">
 					@foreach($componentes as $c)
 						  <option value='{{$c->id}}' >{{$c->nombre}}</option>
@@ -57,7 +57,10 @@ $('#componentes').multiSelect();
 				</select>
 
 			</div>
-			<div id="crear_componente"> </div>
+			<div class="form-group col-md-2">
+				<br>
+				<button id="" type="button" class="btn btn-default btn-large"> <a href="{{asset('componentes')}} "><i class="glyphicon glyphicon-plus"></i> Añadir componente </a></button>
+			</div>
 			<br>
 			<br>
 			<br>

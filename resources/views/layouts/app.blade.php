@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Clinica') }}</title>
+    <title>{{ config('app.name', 'Mental Care') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
 
     <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
-    {{--<link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>--}}
+    {{--<link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"></link>--}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
@@ -73,7 +73,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Clinica') }}
+                    {{ config('app.name', 'Mental Care') }}
                 </a>
             </div>
 
@@ -100,6 +100,14 @@
                                 <li class="divider"></li>
                                 <li><a href="{{ url('pacientes/estados/crear')}}">Nuevo Estado de Paciente</a></li>
                                 <li><a href="{{ url('pacientes/estados/todos')}}">Todos los Estados de Pacientes</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('ingresos/crear')}}">Nuevo Ingreso</a></li>
+                                <li><a href="{{ url('ingresos/buscar')}}">Buscar Ingresos</a></li>
+                                <li><a href="{{ url('ingresos')}}">Todos los Ingresos</a></li>
                             </ul>
                         </li>
 

@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title','Componentes')
 
 @section('content')
@@ -90,7 +90,7 @@ function eliminar(id) {
 }
 
 function editar(id){
-  var url = "{{ asset('componentes/') }}";  
+  var url = "{{ asset('componentes/') }}";
   $.get( url + "/" + id + "/edit" , function( data ) {
     alertify.alert('Editar Presentación', data );
   });

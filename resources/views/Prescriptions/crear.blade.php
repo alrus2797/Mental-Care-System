@@ -11,12 +11,27 @@
 			<div class="form-group ">
 				<label for="observacion"> Observaciones</label>
 				<input type="text" class="form-control" id="obs" name="observacion">
-				<input type="hidden" name="medico_id" >
+				<input type="hidden" name="medico_id" value="1">
 			</div>
 			<div class="form-group ">
 				<label > Instrucción</label>
 				<input type="text" class="form-control" id="inst" name="instruccion">
 			</div>
+			<div class="form-group ">
+				<script type="text/javascript">
+					$('#medicamentos').multiSelect();
+				</script>
+				<label > Medicamentos</label>
+				<select id='medicamentos' multiple='multiple' name="medicamentos[]">
+					@foreach($medicamentos as $m)
+							<option value='{{$m->id}}' >{{$m->nombre}}</option>
+					@endforeach
+				</select>
+					<br>
+					<button id="" type="button" class="btn btn-default btn-large"> <a href="{{asset('medicamentos')}} "><i class="glyphicon glyphicon-plus"></i> Añadir medicamentos </a></button>
+
+			</div>
+
 		<button id="truuuuue" type="submit" class="btn btn-default btn-large">Añadir</button>
 	</div>
 

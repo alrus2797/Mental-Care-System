@@ -28,40 +28,59 @@
                 <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" value="{{$tabla->nombres}}" readonly>
           </div>
           <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="sexo">Sexo:</label>
+          <div class="col-sm-3">
+            @if ("M" == $tabla->sexo) <input type="text" class="form-control" id="sexo" placeholder="Seleccione Sexo" name="sexo" value="Masculino" readonly> @endif
+            @if ("F" == $tabla->sexo) <input type="text" class="form-control" id="sexo" placeholder="Seleccione Sexo" name="sexo" value="Femenino" readonly> @endif
+            @if ("O" == $tabla->sexo) <input type="text" class="form-control" id="sexo" placeholder="Seleccione Sexo" name="sexo" value="Otro" readonly> @endif
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
           <div class="col-sm-3">
                 <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" value="{{$tabla->dni}}" readonly>
           </div>
+          <div class="col-sm-2"></div>
+            <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$tabla->fechanacimiento}}" readonly>
+          </div>
         </div>
-
-
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
           <div class="col-sm-3">
-                <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$tabla->direccion}}" readonly>
+            <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" value="{{$tabla->direccion}}" readonly>
           </div>
           <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
+            <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-               <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$tabla->telefono}}" readonly>
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$tabla->telefono}}" readonly>
           </div>
         </div>
 
         <div class="form-group col-sm-12">
-          <label class="col-sm-2 col-form-label" for="email">Email:</label>
+            <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$tabla->email}}" readonly>
+            <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$tabla->email}}" readonly>
           </div>
           <div class="col-sm-2"></div>
-          <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-2"></div>
           <div class="col-sm-3">
-               <label class="form-control" id="registro" name="registro">{{$tabla->created_at}}</label>
+
           </div>
         </div>
+
+
         <div class="form-group col-sm-12">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-3"></div>
+            <label class="col-sm-2 col-form-label" for="registro">Fecha de Registro:</label>
+          <div class="col-sm-3">
+            <label class="form-control" id="registro" name="registro">{{$tabla->created_at}}</label>
+          </div>
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="registro">Última Fecha de Actualización:</label>
           <div class="col-sm-3">

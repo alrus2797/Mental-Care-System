@@ -85,12 +85,7 @@
 
     </div>
     <div class="col-sm-2"> </div>
-
-<div class="col-sm-3">
-  <form action="{{asset('pacientes/alergias')}}/{{$paciente->id}}">
-      <input class="btn btn-primary" type="submit" value="Alergias">
-  </form>
-   </div>
+    <div class="col-sm-2"> </div>
     <div class="col-sm-3">
 
     </div>
