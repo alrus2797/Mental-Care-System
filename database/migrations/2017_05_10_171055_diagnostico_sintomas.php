@@ -19,6 +19,8 @@ class DiagnosticoSintomas extends Migration
             $table->foreign('sintoma_id')->references('id')->on('sintomas');
             $table->integer('diagnostico_id')->unsigned();
             $table->foreign('diagnostico_id')->references('id')->on('diagnosticos');
+            $table->integer('paciente_id')->unsigned();
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
         });
     }
 
@@ -32,6 +34,7 @@ class DiagnosticoSintomas extends Migration
         Schema::table('diagnostico_sintoma', function (Blueprint $table) {
             $table->dropForeign(['sintoma_id']);
             $table->dropForeign(['diagnostico_id']);
+            $table->dropForeign(['paciente_id']);
         });
 
         Schema::dropIfExists('diagnostico_sintoma');

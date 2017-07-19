@@ -37,8 +37,24 @@ class CrearIniciales extends Migration
                 'updated_at' => date('Y-m-d h:i:s')
             )
         );*/
+        DB::table('personas')->insert(
+            array(
+                'nombres'=> 'Alberto',
+                'apellidopaterno'=> 'VIsa',
+                'apellidoMaterno'=> 'FLores',
+                'email' => 'admin@sistema.com',
+                'sexo'  => 'M',
+                'fechanacimiento'  => '1995-08-25',
+                'direccion'  => 'QUETI IIII',
+                'telefono'  => '999999999',
+                'dni' => '10000000',
+                'created_at' => date('Y-m-d h:i:s'),
+                'updated_at' => date('Y-m-d h:i:s')
+            )
+        );
         DB::table('users')->insert(
             array(
+                'persona_id'=> 1,
                 'name' => 'Administrador',
                 'email' => 'admin@sistema.com',
                 'password' => bcrypt('root'),

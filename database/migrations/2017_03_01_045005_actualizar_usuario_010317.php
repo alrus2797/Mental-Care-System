@@ -14,11 +14,12 @@ class ActualizarUsuario010317 extends Migration
     public function up()
     {
         Schema::table('users', function($table) {
-            $table->string('documento');
             $table->integer('departamento_id')->unsigned();
+            $table->integer('persona_id')->unsigned();
         });
         Schema::table('users', function($table) {
             $table->foreign('departamento_id')->references('id')->on('departamentos');
+            $table->foreign('persona_id')->references('id')->on('personas');
         });
     }
 
@@ -30,7 +31,6 @@ class ActualizarUsuario010317 extends Migration
     public function down()
     {
         Schema::table('users', function($table) {
-            $table->dropColumn('documento');
             $table->dropColumn('departamento_id');
         });
     }

@@ -29,4 +29,8 @@ class Paciente extends Model
         return $this->belongsTo('App\Persona');
     }
 
+    public function nombre_completo()
+    {
+        return $this->persona()->nombre_completo();
+    }
 }

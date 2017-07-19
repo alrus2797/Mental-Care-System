@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function persona()
+    {
+        return Persona::findOrFail($this->attributes['persona_id']);
+    }
+
 }

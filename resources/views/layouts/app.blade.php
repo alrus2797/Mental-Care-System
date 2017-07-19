@@ -111,7 +111,6 @@
                                     <li><a href="{{ url('personas')}}">Todas las Personas</a></li>
                                 </ul>
                             </li>
-                            <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
                             <!--<li ><a href="#">Admisión</a></li> -->
                             <li ><a href="#">Citas</a></li>
                             <li ><a href="{{url('reportes/')}}">Manejo de Reportes</a></li>
@@ -160,13 +159,13 @@
                                 </ul>
                             </li>
 
-                        @else
-                            {{--<li class="dropdown">--}}
-                                {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-                                    {{--<i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>--}}
-                                {{--</a>--}}
 
-                                {{--<ul class="dropdown-menu" role="menu">--}}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
                                     {{--<li>--}}
                                         {{--<a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>--}}
                                     {{--</li>--}}
@@ -176,18 +175,20 @@
                                     {{--<li>--}}
                                         {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
                                     {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>--}}
-                                    {{--</li>--}}
+                                    <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
+
+                                    <li>
+                                        <a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>
+                                    </li>
                                     {{--<li>--}}
                                         {{--<a href="{{route('diagnostico.index')}}"><i class="fa fa-medkit"></i> Diagnosticos Realizados</a>--}}
                                     {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
+                                </ul>
+                            </li>
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                <i class="fa fa-user-circle-o"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                                <i class="fa fa-user-circle-o"></i> {{ Auth::user()->persona()->nombre_completo() }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
