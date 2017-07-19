@@ -33,14 +33,14 @@
 									<tr>
 										<td>{{$num++}}</td>
 										<td>
-											{{$user->name}}
+											{{$user->persona()->nombres}}
 											@if($user->especialidad)
 											<div class="especialidad">
 												<span class="label label-primary">{{$user->especialidad->nombre}}</span>
 											</div>
 											@endif
 										</td>
-										<td>{{$user->documento}}</td>
+										<td>{{$user->persona()->dni}}</td>
 										<td>
 											@if($user->departamento)
 												{{$user->departamento->abreviatura}}
