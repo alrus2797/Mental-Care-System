@@ -130,6 +130,12 @@ class personasController extends Controller
                   ->get();
       return response()->json(view('personas.busqueda', compact('respuesta'))->render());
     }
+
+    public function checkDNI(Request $datos)
+    {
+      return persona::where('dni', '=', $datos->input('DNI')) -> first();
+    }
+
     /*
     public function retrievePersonas(Request $datos)
     {

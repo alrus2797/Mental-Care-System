@@ -56,7 +56,7 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$getPersona->fechanacimiento}}">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$getPersona->fechanacimiento}}" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
           </div>
         </div>
 
@@ -68,7 +68,7 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$getPersona->telefono}}">
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" value="{{$getPersona->telefono}}">
           </div>
         </div>
 
@@ -162,6 +162,27 @@ $.validator.addMethod('moretelephone',function(value,element){
 
 })
 
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: '/personas/checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null || data.id == {{$getPersona->id}})
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
@@ -181,7 +202,8 @@ $("#register-form5").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -193,6 +215,12 @@ $("#register-form5").validate({
     },
     direccion: {
       required: true
+    },
+    fechanacimiento: {
+      required: true
+    },
+    sexo: {
+    required: true
     }
   },
   messages: {
@@ -203,7 +231,8 @@ $("#register-form5").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.'
@@ -220,6 +249,12 @@ $("#register-form5").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.'
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });

@@ -47,7 +47,7 @@
       <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
       <div class="col-sm-3">
-        <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$respuesta->fechanacimiento}}">
+        <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$respuesta->fechanacimiento}}" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
       </div>
     </div>
 
@@ -59,7 +59,7 @@
       <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$respuesta->telefono}}">
+        <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" value="{{$respuesta->telefono}}">
       </div>
     </div>
 
@@ -129,17 +129,34 @@ $.validator.setDefaults({
   }
 });
 
-$.validator.addMethod('strongPassword', function(value, element) {
-  return this.optional(element)
-    || value.length >= 6
-    && /\d/.test(value)
-    && /[a-z]/i.test(value);
-}, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
-
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
+
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: '/personas/checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null || data.id == {{$respuesta->id}})
+      {
+        exist = false;
+      }
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 
 $("#register-form3").validate({
   rules: {
@@ -159,7 +176,8 @@ $("#register-form3").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true, 
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -171,6 +189,12 @@ $("#register-form3").validate({
     },
     direccion: {
       required: true
+    },
+    fechanacimiento: {
+      required: true
+    },
+    sexo: {
+    required: true
     }
   },
   messages: {
@@ -181,7 +205,8 @@ $("#register-form3").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.',
@@ -202,6 +227,12 @@ $("#register-form3").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.'
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });

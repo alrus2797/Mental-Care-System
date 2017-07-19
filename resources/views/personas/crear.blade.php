@@ -41,15 +41,14 @@
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
-
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" >
-
+            <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni">
           </div>
+
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
           </div>
         </div>
 
@@ -61,14 +60,14 @@
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-               <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" >
+               <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" >
           </div>
         </div>
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" >
+              <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" >
           </div>
         </div>
 
@@ -79,8 +78,6 @@
       </form>
 
     </div>
-
-
 
 
 <script>
@@ -107,13 +104,6 @@ $.validator.setDefaults({
   }
 });
 
-$.validator.addMethod('strongPassword', function(value, element) {
-  return this.optional(element)
-    || value.length >= 6
-    && /\d/.test(value)
-    && /[a-z]/i.test(value);
-}, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
-
 $.validator.addMethod('moretelephone',function(value,element){
   return this.optional(element)
   || /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(value);
@@ -124,6 +114,29 @@ $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
+
+
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: 'checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null)
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 
 $("#register-form").validate({
   rules: {
@@ -139,7 +152,8 @@ $("#register-form").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -151,7 +165,13 @@ $("#register-form").validate({
     },
     direccion: {
       required: true
-    }
+    },
+    fechanacimiento: {
+      required: true,
+    },
+    sexo: {
+    required: true
+  }
   },
   messages: {
     email: {
@@ -160,8 +180,9 @@ $("#register-form").validate({
     },
     dni: {
       required: 'Este espacio es requerido.',
-      dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      dni: 'Ingrese un DNI <em>valido</em>.',
+      strongDNI: 'Ingrese un DNI <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.'
@@ -178,6 +199,12 @@ $("#register-form").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.',
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });
