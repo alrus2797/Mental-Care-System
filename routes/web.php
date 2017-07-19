@@ -202,6 +202,8 @@ Route::group(['prefix'=>'personas'],function(){
 
   Route::get('buscar', 'PersonasController@buscar');
 
+  Route::post('checkDNI', 'PersonasController@checkDNI');
+  Route::get('checkDNI', 'PersonasController@checkDNI');
 
   Route::get('retrievePersonas', 'PersonasController@retrievePersonas');
 
