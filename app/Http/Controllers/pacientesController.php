@@ -69,6 +69,14 @@ class pacientesController extends Controller
 
     }
 
+    public function alergias($id)
+    {
+      $paciente= paciente::find($id);
+      $alergias=$paciente->componentes;
+      return view ('pacientes.alergias',["alergias"=>$alergias]);
+
+    }
+
     public function crearObt()
     {
 

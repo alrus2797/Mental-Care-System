@@ -33,5 +33,9 @@ class Paciente extends Model
     {
       return $this->hasMany('App\Prescription');
     }
+    public function componentes()
+    {
+      return $this->belongsToMany('App\Componente','alergias');
+    }
 
 }

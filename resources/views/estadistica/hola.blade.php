@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title', 'NEstadistica')
  
    @section('content')      
@@ -31,7 +31,7 @@
 			//////////por cada dato cuantos hay
 			$tabla="paciente";
 			$columna="estado";
-				////////////esto seria como un template
+				////////////esto seria como un app
 			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
 			$id_nombre1="cuadro_freq_estados_pacientes";
 			///////////////graficamos
@@ -52,7 +52,7 @@
 			$tabla="medico";
 			$columna="id_especialidad";
 			$id_nombre2="porcentaje_medicos_x_especialidad";
-				////////////esto seria como un template
+				////////////esto seria como un app
 			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
 			$array_porcentaje=[];
 			$Nmedicos=$grafico->cantidadXtabla($tabla);

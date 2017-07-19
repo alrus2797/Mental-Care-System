@@ -8,6 +8,8 @@
                 <div class="panel-heading"><i class="fa fa-home"></i> Inicio
                 @if (Auth::guest())
                     <span class=" pull-right badge">Debes iniciar sesion, antes de continuar</span>
+                @else
+                    <h2>Bienvenido</h2>
                 @endif
                 </div>
             </div>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Clinica') }}</title>
+    <title>{{ config('app.name', 'Mental Care') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
 
     <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
-    {{--<link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>--}}
+    {{--<link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"></link>--}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
@@ -73,7 +73,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Clinica') }}
+                    {{ config('app.name', 'Mental Care') }}
                 </a>
             </div>
 

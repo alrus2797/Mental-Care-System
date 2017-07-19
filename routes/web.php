@@ -82,6 +82,7 @@ Route::get('pres/buscador',function(){
   return view('Prescriptions.buscador');
 });
 
+
 Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
@@ -124,6 +125,8 @@ Route::group(['prefix'=>'pacientes'],function(){
 
 
   Route::get('{id}','pacientesController@mostrar' );
+
+  Route::get('alergias/{id}','pacientesController@alergias');
 
 });
 

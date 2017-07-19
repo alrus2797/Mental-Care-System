@@ -1,11 +1,11 @@
 
 
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title', 'Inicio')
 
 
-   
-@section('content') 
+
+@section('content')
 <h3>Prescripciones</h3>
 <div id="buscador"> </div>
 <h3>Mis Prescripciones</h3>
@@ -16,9 +16,9 @@
       <tr>
 
         <th>Paciente</th>
-      
+
         <th>Observaciones</th>
-        
+
         <th><span class="glyphicon glyphicon-eye-open"> </span></th>
         <th><span class="glyphicon glyphicon-pencil"> </span></th>
         <th><span class="glyphicon glyphicon-plus"> </span></th>
@@ -26,12 +26,12 @@
       </tr>
     </thead>
     <tbody>
-   
+
       <tr>
 
         <td>Pacientex</td>
         <td>Observaciones x del paciente x</td>
-        
+
         <td><a onclick="ver()" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a>
 
         </td>
@@ -41,7 +41,7 @@
         <td><a  onclick="eliminar()" href="# "><span class="glyphicon glyphicon-trash"></span></a> </td>
 
       </tr>
-   
+
     </tbody>
   </table>
 

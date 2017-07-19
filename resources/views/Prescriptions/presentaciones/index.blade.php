@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title','Presentaciones')
 
 @section('content')
@@ -9,7 +9,7 @@
 <script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
 <form id="form" method="post" action="{{ asset('presentaciones')}}">
-	
+
   <div class="text-center">
   <br><h2>Presentaciones</h2><br><br>
   </div>
