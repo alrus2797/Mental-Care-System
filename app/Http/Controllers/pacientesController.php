@@ -242,7 +242,12 @@ class pacientesController extends Controller
       $respuesta = DB::table('personas')
                   -> leftJoin('pacientes', 'pacientes.persona_id', '=', 'personas.id')
                   -> select('*', 'personas.id as id','pacientes.id as pac_id')
-                  -> where( 'personas.dni', 'like', '%'.$datos->input('DNI').'%')
+                  -> where([
+                    ['personas.nombres', 'like', '%'.$datos->input('nombres').'%'],
+                    ['personas.apellidopaterno', 'like', '%'.$datos->input('apellidoP').'%'],
+                    ['personas.apellidomaterno', 'like', '%'.$datos->input('apellidoM').'%'],
+                    ['personas.dni', 'like', '%'.$datos->input('DNI').'%']
+                    ])
                 -> get();
       //$respuesta = persona::all();
       return response()->json(view('pacientes.busquedaDNI', compact('respuesta'))->render());
