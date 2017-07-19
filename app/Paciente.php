@@ -29,4 +29,9 @@ class Paciente extends Model
         return $this->belongsTo('App\Persona');
     }
 
+    public function prescripciones()
+    {
+      return $this->hasMany('App\Prescription');
+    }
+
 }

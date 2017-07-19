@@ -52,6 +52,8 @@ class PrescriptionController extends Controller
         $pres->paciente_id=$request->paciente_id;
         $pres->medico_id=$request->medico_id;
         $pres->save();
+        $pres->medicina()->attach($request->medicamentos);
+        return redirect('pacientesqq');
     }
 
     /**
