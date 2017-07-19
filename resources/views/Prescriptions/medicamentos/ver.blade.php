@@ -11,7 +11,7 @@
 		</div>
 		
 		<div class="col-md-5">
-			<label>Efectos Secundarios</label>
+			<label>Efectos Secundarios: </label>
 		<label>{{$medicina->medicamento->efecSecundarios}} </label>
 		</div>
 
@@ -23,12 +23,12 @@
 			<label>{{$medicina->cantidad}} {{$medicina->presentacion->unidad}} {{$medicina->presentacion->descripcion}}</label>
 		</div>
 		<div class="col-md-5">
-			<label>Efectos Secundarios</label>
+			<label>Efectos Secundarios: </label>
 			<label>{{$medicina->medicamento->efecSecundarios}} </label>			
 		</div>
 		<div class="col-md-5">
-			<label>Adversos </label>
-			<label>Aqui debería ir adversos</label>
+			<label>Adversos: </label>
+			<label>{{$medicina->medicamento->adversos}}</label>
 		</div>
 	</div>
 </div>
