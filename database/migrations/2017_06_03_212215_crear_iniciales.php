@@ -55,7 +55,7 @@ class CrearIniciales extends Migration
         DB::table('users')->insert(
             array(
                 'persona_id'=> 1,
-                'name' => 'Administrador',
+                //'name' => 'Administrador',
                 'email' => 'admin@sistema.com',
                 'password' => bcrypt('root'),
                 'tipo_usuario' => 'Administrador',
