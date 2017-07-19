@@ -128,6 +128,36 @@ Route::group(['prefix'=>'pacientes'],function(){
 });
 
 
+Route::group(['prefix'=>'ingresos'],function(){
+
+  Route::get('/','IngresoController@todos' );
+  //Route::get('todos','pacientesController@todos');
+
+  Route::get('crear','IngresoController@crearObt' );
+
+  Route::get('crearNuevaPersona','IngresoController@crearNuevaPersona' ); //Testing
+  Route::post('crearPersonaPaciente','IngresoController@crearPersonaPaciente' );
+
+  Route::get('retrievePacientes', 'IngresoController@retrievePacientes');
+
+  Route::get('retrievePersonasDNI', 'IngresoController@retrievePersonasDNI');
+
+  Route::get('llenarPaciente', 'IngresoController@llenarPaciente');
+  Route::post('agregar', 'IngresoController@agregar');
+
+  Route::get('{id}/eliminar','IngresoController@eliminarConfirm');
+  Route::post('eliminar','IngresoController@eliminar');
+
+  Route::get('{id}/editar','IngresoController@editar');
+  Route::post('{id}','IngresoController@guardar');
+
+  Route::get('buscar', 'IngresoController@buscar');
+
+
+  //Route::get('{id}','IngresoController@mostrar' );
+
+});
+
 //------------------------------------------------------------------------------
 Route::get('/reportes', function(){
 	return view('ManageReporting.index');
