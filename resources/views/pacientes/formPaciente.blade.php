@@ -129,14 +129,11 @@ $.validator.setDefaults({
   }
 });
 
-$.validator.addMethod('strongPassword', function(value, element) {
+$.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
-    || value.length >= 6
-    && /\d/.test(value)
-    && /[a-z]/i.test(value);
-}, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
+  || value.length == 8;
+},"ingreso un DNI <em>valido</em>\.")
 
-<<<<<<< Updated upstream
 $.validator.addMethod('checkDNI', function(value, element){
   var exist;
   var parametros = {
@@ -144,13 +141,15 @@ $.validator.addMethod('checkDNI', function(value, element){
   };
   $.ajax({
     data: parametros,
-    url: 'checkDNI',
+    url: '/personas/checkDNI',
     type: 'get',
     dataType : 'json',
     async: false,
     success: function(data){
-      if (data == null)
+      if (data == null || data.id == {{$respuesta->id}})
+      {
         exist = false;
+      }
       else
         exist = true;
     }
@@ -158,10 +157,6 @@ $.validator.addMethod('checkDNI', function(value, element){
   return !exist;
 })
 
-$.validator.addMethod('strongDNI',function(value,element){
-  return this.optional(element)
-  || value.length == 8;
-},"ingreso un DNI <em>valido</em>\.")
 
 $("#register-form3").validate({
   rules: {
@@ -181,7 +176,7 @@ $("#register-form3").validate({
     },
     dni: {
       required: true,
-      strongDNI: true,
+      strongDNI: true, 
       checkDNI: true
     },
     nombres: {
