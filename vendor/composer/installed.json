@@ -17,14 +17,7 @@
         "require": {
             "php": ">=5.3.2"
         },
-<<<<<<< Updated upstream
         "time": "2014-09-09T13:34:57+00:00",
-=======
-        "require-dev": {
-            "phpunit/phpunit": "4.*"
-        },
-        "time": "2015-11-06T14:35:42+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -85,11 +78,7 @@
             "doctrine/cache": "1.*",
             "phpunit/phpunit": "^5.7"
         },
-<<<<<<< Updated upstream
         "time": "2017-02-24T16:22:25+00:00",
-=======
-        "time": "2017-05-14T14:47:48+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -162,11 +151,7 @@
             "predis/predis": "~1.0",
             "satooshi/php-coveralls": "~0.6"
         },
-<<<<<<< Updated upstream
         "time": "2016-10-29T11:16:17+00:00",
-=======
-        "time": "2017-07-07T15:11:58+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -234,11 +219,7 @@
             "doctrine/coding-standard": "~0.1@dev",
             "phpunit/phpunit": "^5.7"
         },
-<<<<<<< Updated upstream
         "time": "2017-01-03T10:49:41+00:00",
-=======
-        "time": "2014-04-08T15:00:19+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -306,11 +287,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.*"
         },
-<<<<<<< Updated upstream
         "time": "2015-11-06T14:35:42+00:00",
-=======
-        "time": "2017-06-09T14:24:12+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -384,11 +361,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.4.6"
         },
-<<<<<<< Updated upstream
         "time": "2017-01-13T14:02:13+00:00",
-=======
-        "time": "2017-07-05T13:02:37+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -463,14 +436,10 @@
         "suggest": {
             "symfony/console": "For helpful console commands such as SQL execution and import of files."
         },
-<<<<<<< Updated upstream
         "time": "2017-02-08T12:53:47+00:00",
         "bin": [
             "bin/doctrine-dbal"
         ],
-=======
-        "time": "2016-10-10T12:19:37+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -532,11 +501,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-05-14T14:47:48+00:00",
-=======
-        "time": "2017-07-05T13:02:37+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -585,11 +550,7 @@
             "phpunit/phpunit": "^4.0 || ^5.0",
             "squizlabs/php_codesniffer": "^1.5"
         },
-<<<<<<< Updated upstream
         "time": "2017-07-07T15:11:58+00:00",
-=======
-        "time": "2017-07-03T13:19:36+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -643,14 +604,7 @@
             "phpunit/phpunit": "3.7.*",
             "squizlabs/php_codesniffer": "1.*"
         },
-<<<<<<< Updated upstream
         "time": "2014-04-08T15:00:19+00:00",
-=======
-        "time": "2017-06-28T20:53:48+00:00",
-        "bin": [
-            "bin/php-parse"
-        ],
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -691,11 +645,7 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-09T14:24:12+00:00",
-=======
-        "time": "2015-04-20T18:58:01+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -751,44 +701,8 @@
             "shasum": ""
         },
         "require": {
-<<<<<<< Updated upstream
             "php": ">=5.5.9",
             "symfony/polyfill-mbstring": "~1.0"
-=======
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "@stable"
-        },
-        "time": "2014-10-24T07:27:01+00:00",
-        "type": "project",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "XdgBaseDir\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "description": "implementation of xdg base directory specification for php"
-    },
-    {
-        "name": "psy/psysh",
-        "version": "v0.8.9",
-        "version_normalized": "0.8.9.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bobthecow/psysh.git",
-            "reference": "58a31cc4404c8f632d8c557bc72056af2d3a83db"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/58a31cc4404c8f632d8c557bc72056af2d3a83db",
-            "reference": "58a31cc4404c8f632d8c557bc72056af2d3a83db",
-            "shasum": ""
->>>>>>> Stashed changes
         },
         "conflict": {
             "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
@@ -801,14 +715,7 @@
             "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
             "ext-symfony_debug": ""
         },
-<<<<<<< Updated upstream
         "time": "2017-07-05T13:02:37+00:00",
-=======
-        "time": "2017-07-06T14:53:52+00:00",
-        "bin": [
-            "bin/psysh"
-        ],
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -866,11 +773,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-<<<<<<< Updated upstream
         "time": "2016-10-10T12:19:37+00:00",
-=======
-        "time": "2016-09-01T10:05:43+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -923,14 +826,10 @@
         "conflict": {
             "symfony/http-kernel": ">=2.3,<2.3.24|~2.4.0|>=2.5,<2.5.9|>=2.6,<2.6.2"
         },
-<<<<<<< Updated upstream
         "require-dev": {
             "symfony/http-kernel": "~2.8|~3.0"
         },
         "time": "2017-07-05T13:02:37+00:00",
-=======
-        "time": "2017-05-01T15:01:29+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -964,60 +863,7 @@
         "homepage": "https://symfony.com"
     },
     {
-<<<<<<< Updated upstream
         "name": "symfony/console",
-=======
-        "name": "tijsverkoyen/css-to-inline-styles",
-        "version": "2.2.0",
-        "version_normalized": "2.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tijsverkoyen/CssToInlineStyles.git",
-            "reference": "ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tijsverkoyen/CssToInlineStyles/zipball/ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b",
-            "reference": "ab03919dfd85a74ae0372f8baf9f3c7d5c03b04b",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.5 || ^7",
-            "symfony/css-selector": "^2.7|~3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.8|5.1.*"
-        },
-        "time": "2016-09-20T12:50:39+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "TijsVerkoyen\\CssToInlineStyles\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Tijs Verkoyen",
-                "email": "css_to_inline_styles@verkoyen.eu",
-                "role": "Developer"
-            }
-        ],
-        "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
-        "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles"
-    },
-    {
-        "name": "symfony/routing",
->>>>>>> Stashed changes
         "version": "v3.3.4",
         "version_normalized": "3.3.4.0",
         "source": {
@@ -1054,11 +900,7 @@
             "symfony/filesystem": "",
             "symfony/process": ""
         },
-<<<<<<< Updated upstream
         "time": "2017-07-03T13:19:36+00:00",
-=======
-        "time": "2017-06-24T09:29:48+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1113,14 +955,10 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0|~5.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-28T20:53:48+00:00",
         "bin": [
             "bin/php-parse"
         ],
-=======
-        "time": "2017-07-03T08:12:02+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1174,11 +1012,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~1.5"
         },
-<<<<<<< Updated upstream
         "time": "2015-04-20T18:58:01+00:00",
-=======
-        "time": "2017-06-24T09:29:48+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1269,14 +1103,10 @@
             "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history.",
             "hoa/console": "A pure PHP readline implementation. You'll want this if your PHP install doesn't already support readline or libedit."
         },
-<<<<<<< Updated upstream
         "time": "2017-07-06T14:53:52+00:00",
         "bin": [
             "bin/psysh"
         ],
-=======
-        "time": "2017-06-09T14:53:08+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1333,11 +1163,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8 || ^5.0"
         },
-<<<<<<< Updated upstream
         "time": "2016-09-01T10:05:43+00:00",
-=======
-        "time": "2017-07-05T13:28:15+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1386,11 +1212,7 @@
         "require": {
             "php": ">=5.5.9"
         },
-<<<<<<< Updated upstream
         "time": "2017-05-01T15:01:29+00:00",
-=======
-        "time": "2017-06-01T21:01:25+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1449,11 +1271,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.8|5.1.*"
         },
-<<<<<<< Updated upstream
         "time": "2016-09-20T12:50:39+00:00",
-=======
-        "time": "2017-05-01T15:54:03+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1528,11 +1346,6 @@
                 "dev-master": "3.3-dev"
             }
         },
-<<<<<<< Updated upstream
-=======
-        "time": "2017-03-13T16:27:32+00:00",
-        "type": "library",
->>>>>>> Stashed changes
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
@@ -1583,11 +1396,7 @@
         "require": {
             "php": ">=5.5.9"
         },
-<<<<<<< Updated upstream
         "time": "2017-07-03T08:12:02+00:00",
-=======
-        "time": "2017-03-26T20:37:53+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1642,11 +1451,7 @@
         "require-dev": {
             "symfony/expression-language": "~2.8|~3.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-24T09:29:48+00:00",
-=======
-        "time": "2017-06-24T16:45:30+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1711,11 +1516,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-<<<<<<< Updated upstream
         "time": "2017-06-09T14:53:08+00:00",
-=======
-        "time": "2017-01-16T07:55:07+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1794,7 +1595,6 @@
             "symfony/translation": "~2.8|~3.0",
             "symfony/var-dumper": "~3.3"
         },
-<<<<<<< Updated upstream
         "suggest": {
             "symfony/browser-kit": "",
             "symfony/class-loader": "",
@@ -1811,10 +1611,6 @@
                 "dev-master": "3.3-dev"
             }
         },
-=======
-        "time": "2017-01-23T04:29:33+00:00",
-        "type": "library",
->>>>>>> Stashed changes
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
@@ -1907,7 +1703,6 @@
             "reference": "9a06dc570a0367850280eefd3f1dc2da45aef517",
             "shasum": ""
         },
-<<<<<<< Updated upstream
         "require": {
             "php": ">=5.3.3"
         },
@@ -1916,9 +1711,6 @@
             "symfony/phpunit-bridge": "~3.2"
         },
         "time": "2017-05-01T15:54:03+00:00",
-=======
-        "time": "2017-06-19T01:22:40+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1976,11 +1768,7 @@
         "suggest": {
             "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
         },
-<<<<<<< Updated upstream
         "time": "2017-03-13T16:27:32+00:00",
-=======
-        "time": "2017-04-28T10:15:08+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2050,11 +1838,7 @@
             "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
             "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
         },
-<<<<<<< Updated upstream
         "time": "2017-03-26T20:37:53+00:00",
-=======
-        "time": "2017-06-30T13:43:07+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2128,11 +1912,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-<<<<<<< Updated upstream
         "time": "2017-06-24T16:45:30+00:00",
-=======
-        "time": "2017-06-01T16:31:26+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2188,11 +1968,7 @@
             "friendsofphp/php-cs-fixer": "~2",
             "phpunit/phpunit": "~4.0 || ~5.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-01-16T07:55:07+00:00",
-=======
-        "time": "2017-05-22T06:35:07+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2245,11 +2021,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0|~5.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-01-23T04:29:33+00:00",
-=======
-        "time": "2015-05-11T14:41:42+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2322,11 +2094,7 @@
             "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
             "sentry/sentry": "Allow sending log messages to a Sentry server"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-19T01:22:40+00:00",
-=======
-        "time": "2017-02-28T12:52:32+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2399,11 +2167,7 @@
             "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage"
         },
-<<<<<<< Updated upstream
         "time": "2017-04-28T10:15:08+00:00",
-=======
-        "time": "2016-11-23T20:04:58+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2544,11 +2308,7 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.2).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
         },
-<<<<<<< Updated upstream
         "time": "2017-06-30T13:43:07+00:00",
-=======
-        "time": "2015-12-27T11:43:31+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2611,11 +2371,7 @@
         "suggest": {
             "illuminate/database": "The Illuminate Database package (~5.1)."
         },
-<<<<<<< Updated upstream
         "time": "2017-06-01T16:31:26+00:00",
-=======
-        "time": "2017-07-14T14:27:02+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2679,11 +2435,7 @@
             "mockery/mockery": "~0.9.4",
             "phpunit/phpunit": "~5.4"
         },
-<<<<<<< Updated upstream
         "time": "2017-05-22T06:35:07+00:00",
-=======
-        "time": "2017-07-15T11:38:20+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2738,11 +2490,7 @@
             "phpunit/php-file-iterator": "1.3.3",
             "satooshi/php-coveralls": "dev-master"
         },
-<<<<<<< Updated upstream
         "time": "2015-05-11T14:41:42+00:00",
-=======
-        "time": "2017-02-27T10:12:30+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2785,11 +2533,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-02-28T12:52:32+00:00",
-=======
-        "time": "2017-06-15T12:58:50+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2855,11 +2599,7 @@
             "phpunit/phpunit": "^4.6",
             "sebastian/version": "^1.0.1"
         },
-<<<<<<< Updated upstream
         "time": "2016-11-23T20:04:58+00:00",
-=======
-        "time": "2016-10-03T07:35:21+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2907,14 +2647,10 @@
         "require": {
             "php": ">=5.5"
         },
-<<<<<<< Updated upstream
         "require-dev": {
             "phpunit/phpunit": "^4.6"
         },
         "time": "2015-12-27T11:43:31+00:00",
-=======
-        "time": "2015-07-28T20:34:47+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2972,11 +2708,7 @@
             "mockery/mockery": "^0.9.4",
             "phpunit/phpunit": "^5.2||^4.8.24"
         },
-<<<<<<< Updated upstream
         "time": "2017-07-14T14:27:02+00:00",
-=======
-        "time": "2016-11-19T07:33:16+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3027,11 +2759,7 @@
             "mockery/mockery": "^0.9.4",
             "phpunit/phpunit": "^4.4"
         },
-<<<<<<< Updated upstream
         "time": "2017-07-15T11:38:20+00:00",
-=======
-        "time": "2017-02-18T15:18:39+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3075,14 +2803,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.2"
         },
-<<<<<<< Updated upstream
         "time": "2017-02-27T10:12:30+00:00",
-=======
-        "suggest": {
-            "ext-uopz": "*"
-        },
-        "time": "2015-10-12T03:26:01+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3135,11 +2856,7 @@
         "suggest": {
             "symfony/console": "For validating YAML files using the lint command"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-15T12:58:50+00:00",
-=======
-        "time": "2016-11-19T08:54:04+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3190,11 +2907,7 @@
         "require": {
             "php": ">=5.6"
         },
-<<<<<<< Updated upstream
         "time": "2016-10-03T07:35:21+00:00",
-=======
-        "time": "2016-11-26T07:53:53+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3239,11 +2952,7 @@
         "require": {
             "php": ">=5.6.0"
         },
-<<<<<<< Updated upstream
         "time": "2015-07-28T20:34:47+00:00",
-=======
-        "time": "2017-05-22T07:24:03+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3290,11 +2999,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.4"
         },
-<<<<<<< Updated upstream
         "time": "2016-11-19T07:33:16+00:00",
-=======
-        "time": "2017-01-29T09:50:25+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3347,14 +3052,10 @@
             "php": ">=5.6",
             "sebastian/recursion-context": "~2.0"
         },
-<<<<<<< Updated upstream
         "require-dev": {
             "phpunit/phpunit": "~5"
         },
         "time": "2017-02-18T15:18:39+00:00",
-=======
-        "time": "2015-06-21T13:50:34+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3401,14 +3102,10 @@
         "require-dev": {
             "phpunit/phpunit": "~4.2"
         },
-<<<<<<< Updated upstream
         "suggest": {
             "ext-uopz": "*"
         },
         "time": "2015-10-12T03:26:01+00:00",
-=======
-        "time": "2015-06-14T21:17:01+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3460,11 +3157,7 @@
             "ext-mbstring": "*",
             "phpunit/phpunit": "~4.4"
         },
-<<<<<<< Updated upstream
         "time": "2016-11-19T08:54:04+00:00",
-=======
-        "time": "2017-06-30T09:13:00+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3531,11 +3224,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.0"
         },
-<<<<<<< Updated upstream
         "time": "2016-11-26T07:53:53+00:00",
-=======
-        "time": "2017-02-26T11:10:40+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3587,11 +3276,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-05-22T07:24:03+00:00",
-=======
-        "time": "2016-10-03T07:40:28+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3647,11 +3332,7 @@
         "require-dev": {
             "phpunit/phpunit": "~4.4"
         },
-<<<<<<< Updated upstream
         "time": "2017-01-29T09:50:25+00:00",
-=======
-        "time": "2017-03-04T06:30:41+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3712,11 +3393,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-<<<<<<< Updated upstream
         "time": "2015-06-21T13:50:34+00:00",
-=======
-        "time": "2017-04-02T07:44:40+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3766,11 +3443,7 @@
             "phpunit/phpunit": "~4.0",
             "squizlabs/php_codesniffer": "~2.0"
         },
-<<<<<<< Updated upstream
         "time": "2015-06-14T21:17:01+00:00",
-=======
-        "time": "2017-03-02T20:05:34+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3831,11 +3504,7 @@
         "suggest": {
             "ext-soap": "*"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-30T09:13:00+00:00",
-=======
-        "time": "2017-04-12T18:52:22+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3887,14 +3556,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-02-26T11:10:40+00:00",
-=======
-        "time": "2017-06-21T08:11:54+00:00",
-        "bin": [
-            "phpunit"
-        ],
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3942,11 +3604,7 @@
         "require": {
             "php": ">=5.3.3"
         },
-<<<<<<< Updated upstream
         "time": "2016-10-03T07:40:28+00:00",
-=======
-        "time": "2014-09-09T13:34:57+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -3998,11 +3656,7 @@
         "require-dev": {
             "phpunit/phpunit": "^5.7 || ^6.0"
         },
-<<<<<<< Updated upstream
         "time": "2017-03-04T06:30:41+00:00",
-=======
-        "time": "2017-02-24T16:22:25+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4061,11 +3715,7 @@
         "suggest": {
             "ext-xdebug": "^2.5.1"
         },
-<<<<<<< Updated upstream
         "time": "2017-04-02T07:44:40+00:00",
-=======
-        "time": "2016-10-29T11:16:17+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4123,11 +3773,7 @@
             "phpspec/phpspec": "^2.5|^3.2",
             "phpunit/phpunit": "^4.8 || ^5.6.5"
         },
-<<<<<<< Updated upstream
         "time": "2017-03-02T20:05:34+00:00",
-=======
-        "time": "2017-01-03T10:49:41+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -4188,11 +3834,7 @@
             "doctrine/collections": "1.*",
             "phpunit/phpunit": "~4.1"
         },
-<<<<<<< Updated upstream
         "time": "2017-04-12T18:52:22+00:00",
-=======
-        "time": "2017-01-13T14:02:13+00:00",
->>>>>>> Stashed changes
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -4263,11 +3905,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "~1.1"
         },
-<<<<<<< Updated upstream
         "time": "2017-06-21T08:11:54+00:00",
-=======
-        "time": "2017-02-08T12:53:47+00:00",
->>>>>>> Stashed changes
         "bin": [
             "phpunit"
         ],
