@@ -35,7 +35,7 @@
               <option value="M">Masculino</option>
               <option value="F">Femenino</option>
               <option value="O">Otro</option>
-            </select>  
+            </select>
           </div>
         </div>
 
@@ -114,6 +114,12 @@ $.validator.addMethod('strongPassword', function(value, element) {
     && /[a-z]/i.test(value);
 }, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
 
+$.validator.addMethod('moretelephone',function(value,element){
+  return this.optional(element)
+  || /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(value);
+
+})
+
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
@@ -126,14 +132,10 @@ $("#register-form").validate({
       email: true
     },
     apellidopaterno: {
-      required: true,
-      nowhitespace: true,
-      lettersonly: true
+      required: true
     },
     apellidomaterno: {
-      required: true,
-      nowhitespace: true,
-      lettersonly: true
+      required: true
     },
     dni: {
       required: true,
@@ -144,7 +146,7 @@ $("#register-form").validate({
     },
     telefono: {
       required: true,
-      digits: true,
+      moretelephone: true
 
     },
     direccion: {
@@ -162,21 +164,17 @@ $("#register-form").validate({
       strongDNI: 'Ingrese un dni <em>valido</em>.'
     },
     apellidopaterno: {
-      required: 'Este espacio es requerido.',
-      nowhitespace: 'No se permiten espacios en blanco.',
-      lettersonly: 'Solo letras.'
+      required: 'Este espacio es requerido.'
     },
     apellidomaterno: {
-      required: 'Este espacio es requerido.',
-      nowhitespace: 'No se permiten espacios en blanco.',
-      lettersonly: 'Solo letras.'
+      required: 'Este espacio es requerido.'
     },
     nombres: {
       required: 'Este espacio es requerido.'
     },
     telefono: {
       required: 'Este espacio es requerido.',
-      digits: 'Ingrese solo numeros.'
+      moretelephone: 'Ingrese un número de telefono valido.'
     },
     direccion: {
       required: 'Este espacio es requerido.'

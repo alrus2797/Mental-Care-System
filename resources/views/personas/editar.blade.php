@@ -48,7 +48,7 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$get->fechanacimiento}}">  
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$get->fechanacimiento}}">
           </div>
         </div>
 
@@ -60,14 +60,14 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$get->telefono}}">
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$get->telefono}}">
           </div>
         </div>
 
         <div class="form-group col-sm-12">
             <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$get->email}}" >
+            <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" value="{{$get->email}}" >
           </div>
           <div class="col-sm-2"></div>
           <div class="col-sm-2"></div>
@@ -132,6 +132,12 @@ $.validator.addMethod('strongPassword', function(value, element) {
     && /[a-z]/i.test(value);
 }, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
 
+$.validator.addMethod('moretelephone',function(value,element){
+  return this.optional(element)
+  || /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$/i.test(value);
+
+})
+
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
@@ -144,14 +150,10 @@ $("#register-form").validate({
       email: true
     },
     apellidopaterno: {
-      required: true,
-      nowhitespace: true,
-      lettersonly: true
+      required: true
     },
     apellidomaterno: {
-      required: true,
-      nowhitespace: true,
-      lettersonly: true
+      required: true
     },
     dni: {
       required: true,
@@ -180,21 +182,17 @@ $("#register-form").validate({
       strongDNI: 'Ingrese un dni <em>valido</em>.'
     },
     apellidopaterno: {
-      required: 'Este espacio es requerido.',
-      nowhitespace: 'No se permiten espacios en blanco.',
-      lettersonly: 'Solo letras.'
+      required: 'Este espacio es requerido.'
     },
     apellidomaterno: {
-      required: 'Este espacio es requerido.',
-      nowhitespace: 'No se permiten espacios en blanco.',
-      lettersonly: 'Solo letras.'
+      required: 'Este espacio es requerido.'
     },
     nombres: {
       required: 'Este espacio es requerido.'
     },
     telefono: {
       required: 'Este espacio es requerido.',
-      digits: 'Ingrese solo numeros.'
+      moretelephone: 'Ingrese un número de telefono valido.'
     },
     direccion: {
       required: 'Este espacio es requerido.'

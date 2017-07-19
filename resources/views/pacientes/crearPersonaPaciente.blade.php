@@ -60,7 +60,7 @@
 
     <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
     <div class="col-sm-3">
-          <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" >
+          <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" >
     </div>
 
 

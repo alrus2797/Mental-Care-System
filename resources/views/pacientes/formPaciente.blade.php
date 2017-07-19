@@ -59,7 +59,7 @@
       <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$respuesta->telefono}}">
+        <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$respuesta->telefono}}">
       </div>
     </div>
 
@@ -67,7 +67,7 @@
    <div class="form-group col-sm-12">
     <label class="col-sm-2 col-form-label" for="email">Email:</label>
     <div class="col-sm-3">
-          <input type="text" class="form-control" id="email" placeholder="Ingrese Correo" name="email" value="{{$respuesta->email}}">
+          <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" value="{{$respuesta->email}}">
     </div>
     <div class="col-sm-2"></div>
     <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
