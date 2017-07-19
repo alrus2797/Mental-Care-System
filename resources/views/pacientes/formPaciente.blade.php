@@ -47,7 +47,7 @@
       <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
       <div class="col-sm-3">
-        <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$respuesta->fechanacimiento}}">
+        <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$respuesta->fechanacimiento}}" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
       </div>
     </div>
 
@@ -59,7 +59,7 @@
       <div class="col-sm-2"></div>
         <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
       <div class="col-sm-3">
-        <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$respuesta->telefono}}">
+        <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" value="{{$respuesta->telefono}}">
       </div>
     </div>
 

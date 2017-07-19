@@ -44,7 +44,7 @@
 
        <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
        <div class="col-sm-3">
-         <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento">
+         <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
        </div>
 
 
@@ -60,7 +60,7 @@
 
     <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
     <div class="col-sm-3">
-          <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" >
+          <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" >
     </div>
 
 
@@ -71,7 +71,7 @@
 
       <label class="col-sm-2 col-form-label" for="email">Email:</label>
       <div class="col-sm-3">
-          <input type="text" class="form-control" id="email" placeholder="Ingrese Email" name="email" >      </div>
+          <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" >      </div>
       <div class="col-sm-2"> </div>
 
       <label class="col-sm-2 col-form-label" for="estado">Estado:</label>

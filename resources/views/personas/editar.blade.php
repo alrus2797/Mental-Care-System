@@ -48,7 +48,7 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$get->fechanacimiento}}">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" value="{{$get->fechanacimiento}}" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
           </div>
         </div>
 

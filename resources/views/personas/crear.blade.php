@@ -48,7 +48,7 @@
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
           <div class="col-sm-3">
-            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento">
+            <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
           </div>
         </div>
 
@@ -60,14 +60,14 @@
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-               <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" >
+               <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" >
           </div>
         </div>
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" >
+              <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" >
           </div>
         </div>
 
@@ -115,7 +115,7 @@ $.validator.addMethod('strongDNI',function(value,element){
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
 
-<<<<<<< Updated upstream
+
 $.validator.addMethod('checkDNI', function(value, element){
   var exist;
   var parametros = {
@@ -137,25 +137,7 @@ $.validator.addMethod('checkDNI', function(value, element){
   return !exist;
 })
 
-=======
-$.validator.addMethod('compareFechas',function(value,element){
 
-  var aniofecha = value.getFullYear();
-  var mesfecha = value.getMonth();
-  var diafecha = value.getDay();
-
-  var hoy = new Date();
-  var aniohoy = hoy.getFullYear();
-  var meshoy = hoy.getMonth();
-  var diahoy = hoy.getDay();
-
-  return aniofecha < aniohoy ;
-
-
-})
-
-
->>>>>>> Stashed changes
 $("#register-form").validate({
   rules: {
     email: {
@@ -186,7 +168,6 @@ $("#register-form").validate({
     },
     fechanacimiento: {
       required: true,
-      compareFechas: true
     },
     sexo: {
     required: true
@@ -221,7 +202,6 @@ $("#register-form").validate({
     },
     fechanacimiento: {
       required: 'Este espacio es requerido.',
-      compareFechas: 'Ingrese una fecha que no exceda la actual.'
     },
     sexo: {
       required : 'Este espacio es requerido.'
