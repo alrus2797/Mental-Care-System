@@ -139,7 +139,19 @@ $.validator.addMethod('checkDNI', function(value, element){
 
 =======
 $.validator.addMethod('compareFechas',function(value,element){
-    return '2012-11-03' == '2012-11-04';
+
+  var aniofecha = value.getFullYear();
+  var mesfecha = value.getMonth();
+  var diafecha = value.getDay();
+
+  var hoy = new Date();
+  var aniohoy = hoy.getFullYear();
+  var meshoy = hoy.getMonth();
+  var diahoy = hoy.getDay();
+
+  return aniofecha < aniohoy ;
+
+
 })
 
 

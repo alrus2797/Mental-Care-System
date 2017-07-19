@@ -143,6 +143,28 @@ $.validator.addMethod('strongPassword', function(value, element) {
     && /[a-z]/i.test(value);
 }, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
 
+<<<<<<< Updated upstream
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: 'checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null)
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
@@ -166,7 +188,9 @@ $("#register-form2").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
+
     },
     nombres: {
       required: true
@@ -194,7 +218,8 @@ $("#register-form2").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.',

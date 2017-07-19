@@ -138,6 +138,28 @@ $.validator.addMethod('moretelephone',function(value,element){
 
 })
 
+<<<<<<< Updated upstream
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: 'checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null)
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
@@ -157,7 +179,8 @@ $("#register-form").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -185,7 +208,8 @@ $("#register-form").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.'
