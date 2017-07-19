@@ -169,7 +169,7 @@ $.validator.addMethod('checkDNI', function(value, element){
   };
   $.ajax({
     data: parametros,
-    url: 'checkDNI',
+    url: '/personas/checkDNI',
     type: 'get',
     dataType : 'json',
     async: false,
