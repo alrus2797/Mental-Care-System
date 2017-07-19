@@ -42,7 +42,7 @@
 
     </div>
 
-<div class="tablaPacientes col-sm-12"><b>No hay resultados...</b></div>
+<div class="tablaPacientes col-sm-12"><b></b></div>
 
 <script>
 	function showPacientes(apellidoP, apellidoM, nombres, DNI, telefono) {

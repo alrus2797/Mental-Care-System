@@ -31,7 +31,9 @@
 							<td>{{$paciente->apellidopaterno}}</td>
 							<td>{{$paciente->apellidomaterno}}</td>
 							<td>{{$paciente->dni}}</td>
-							<td>{{$paciente->sexo}}</td>
+							<td>@if ("M" == $paciente->sexo) Masculino @endif
+							@if ("F" == $paciente->sexo) Femenino @endif
+							@if ("O" == $paciente->sexo) Otro @endif</td>
 							<td>{{$paciente->nombre_estado}}</td>
               				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
               						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
@@ -77,7 +79,6 @@
 </div>
 
 
-
 <script>
 
 $(document).on('click','.pagination a',function(e){
@@ -92,12 +93,12 @@ $(document).on('click','.pagination a',function(e){
   $.ajax({
 
     url:  'pacientes?page=' + page,
-    //url:  route + page,
+
     type: 'GET',
     dataType: 'json',
-
+    //data: {id:nota},
     success: function(data){
-
+      //console.log(data1);
 
       //console.log(data);
       $(".tablaPacientes").html(data);
@@ -112,6 +113,9 @@ $(document).on('click','.pagination a',function(e){
 </script>
 
 
+
+
+<!--
 <script>
 
 $(document).ready(function(){
@@ -159,5 +163,5 @@ alertify.genericDialog ($('#editar')[0]).set('selector', 'input[type="password"]
 
 </script>
 
-
+-->
 @endsection
