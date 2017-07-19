@@ -10,12 +10,12 @@
 			<label>{{$medicina->medicamento->descripcion}} 
 		</div>
 		
-		<div class="col-md-5">
+<!--		<div class="col-md-5">
 			<label>Efectos Secundarios: </label>
 		<label>{{$medicina->medicamento->efecSecundarios}} </label>
 		</div>
-
-	</div>
+-->
+	</div><br>
 
 	<div class="row">
 		<div class="col-md-2">
@@ -25,6 +25,12 @@
 		<div class="col-md-5">
 			<label>Efectos Secundarios: </label>
 			<label>{{$medicina->medicamento->efecSecundarios}} </label>			
+		</div>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2">
+			
 		</div>
 		<div class="col-md-5">
 			<label>Adversos: </label>
