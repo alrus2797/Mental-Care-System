@@ -15,6 +15,9 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 
+/**
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
 {
     use Concerns\HasAttributes,
@@ -941,6 +944,22 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
                         ->with(is_string($with) ? func_get_args() : $with)
                         ->where($this->getKeyName(), $this->getKey())
                         ->first();
+    }
+
+    /**
+     * Reload the current model instance with fresh attributes from the database.
+     *
+     * @return void
+     */
+    public function refresh()
+    {
+        if (! $this->exists) {
+            return;
+        }
+
+        $this->load(array_keys($this->relations));
+
+        $this->setRawAttributes(static::findOrFail($this->getKey())->attributes);
     }
 
     /**

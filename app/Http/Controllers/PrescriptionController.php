@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Prescription;
+use App\Medicamento;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +16,9 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        return view("Prescriptions.welcome");
+        $prescripciones= Prescription::where('medico_id', Auth::user()->id)->get();
+        //return dd($prescripciones);
+        return view("Prescriptions.index",["prescripciones"=>$prescripciones]);
     }
 
     /**
@@ -23,9 +26,17 @@ class PrescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function todos()
+    {
+      $pres=Prescription::all();
+      return view('Prescriptions.todos',["prescripciones"=>$pres]);
+    }
+
     public function create()
     {
-        return view('Prescriptions.otra');
+      $medicamentos=Medicamento::all();
+      return view('Prescriptions.crear',["medicamentos"=>$medicamentos]);
     }
 
     /**
@@ -37,6 +48,14 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
         //
+        $pres=new Prescription;
+        $pres->observacion=$request->observacion;
+        $pres->instrucciones=$request->instruccion;
+        $pres->paciente_id=$request->paciente_id;
+        $pres->medico_id=$request->medico_id;
+        $pres->save();
+        $pres->medicina()->attach($request->medicamentos);
+        return redirect('pacientes');
     }
 
     /**
