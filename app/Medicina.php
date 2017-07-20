@@ -14,4 +14,8 @@ class Medicina extends Model
     {
     	return $this->belongsTo('App\Presentacion');
     }
+    public function prescription()
+    {
+      return $this->belongsToMany('App\Prescription');
+    }
 }

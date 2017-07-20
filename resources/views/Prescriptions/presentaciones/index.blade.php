@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title','Presentaciones')
 
 @section('content')
@@ -8,15 +8,18 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/default-alertify.min.css')}}">
 <script  src="{{ asset('js/alertify.min.js')}}" ></script>
 
-<form id="form">
-	<h3>Presentaciones</h3>
-	{{ csrf_field()}} 
-<div class="row">
+<form id="form" method="post" action="{{ asset('presentaciones')}}">
+
+  <div class="text-center">
+  <br><h2>Presentaciones</h2><br><br>
+  </div>
+	{{ csrf_field()}}
+
   <div class="col-md-3">
   	<div class="input-group">
 		  <span class="input-group-addon" id="basic-addon1">@</span>
 		  <input type="text" class="form-control" placeholder="Descripción" aria-describedby="basic-addon1" name="descripcion" required maxlength=="5">
-	</div>	
+	</div>
   </div>
 
   <div class="col-md-3">
@@ -28,19 +31,22 @@
 
   <div class="col-md-3">
 	<button type="submit" class="btn btn-info">Crear</button>
-  	
   </div>
+</form>
 
-</div>
-
-
-	
-</div>
-
+<form>
+	<div class="col-md-3">
+	    <div class="input-group">
+	    <div class="input-group-addon">
+	      <span class="glyphicon glyphicon-search"></span>
+	    </div>
+	    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese descripcion" onkeyup="showPresentaciones($('#descripcion').val(), $('#unidad').val())">
+	    </div>
+	</div><br><br>
 </form>
 
 <div class="container">
-  <div id="todos"></div>	
+  <div id="todos"></div>
 </div>
 
 <style type="text/css">
@@ -59,7 +65,7 @@ $('#form').submit(function () {
      $("form")[0].reset();
      alertify.success('Creado con Exito');
   });
- 
+
   return false;
 });
 
@@ -81,7 +87,7 @@ function eliminar(id) {
           $("#todos").load("{{ asset('presentaciones/todos') }}" );
           alertify.success('Borrado Con Éxito');
         });
-  
+
     },
     function(){ alertify.error('Cancelado')}
 
@@ -95,6 +101,21 @@ function editar(id){
   });
 }
 
+function showPresentaciones(descrip, uni) {
+    var datos = {
+      "descrip" : descrip,
+      "uni" : uni,
+    };
+    $.ajax({
+      data: datos,
+      url: 'obtenerPresentaciones',
+      type: 'get',
+      dataType : 'json',
+      success: function(data){
+        $("#todos").html(data);
+      }
+    });
+}
 
 </script>
 

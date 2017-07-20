@@ -16,9 +16,7 @@ class CreateIngresosTable extends Migration
         Schema::create('ingresos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->integer('comprobante_id')->unsigned()->nullable()->default(NULL);
-            $table->foreign('comprobante_id')->references('id')->on('comprobantes');
-            $table->integer('paciente_id')->unsigned()->nullable()->default(NULL);
+            $table->integer('paciente_id')->unsigned();
             $table->foreign('paciente_id')->references('id')->on('pacientes');
             $table->timestamps();
         });
