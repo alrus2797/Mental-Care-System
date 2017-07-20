@@ -15,8 +15,8 @@ class Prescription extends Model
     {
       return $this->belongsTo('App\Medico');
     }
-    public function persona()
+    public function paciente()
     {
-      return $this->hasOne('App\Paciente');
+      return $this->belongsTo('App\Paciente');
     }
 }

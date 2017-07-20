@@ -64,8 +64,6 @@ class ControlerUser extends Controller
         $user->persona_id= $request->persona_id;
         $persona=Persona::findOrFail($request->persona_id);
         $user->email = $persona->email;
-        $user->documento= $persona->dni;
-        $user->name=$persona->nombres;
         $user->password = bcrypt($persona->dni);
         if ($request->tipo_usuario == 'Administrador') {
             $user->especialidad_id = null;
@@ -76,7 +74,7 @@ class ControlerUser extends Controller
             }
             if(isset($request->turno_id)){
                 $user->turno_id = $request->turno_id;
-            }            
+            }
         }
         $user->save();
         return redirect()->route('usuarios.index')->with('alert-success','Usuario creado');
@@ -134,16 +132,11 @@ class ControlerUser extends Controller
             ]);
 
         $user = User::findOrFail($id);
-        $user->name = $request->name;
         $persona=$user->persona();
-        $user->name = $persona->name;
         $user->email = $persona->email;
-        $user->documento= $persona->dni;
-        $user->name=$persona->nombres;
         $user->departamento_id = $request->departamento_id;
         $user->persona_id = $persona->id;
         $user->tipo_usuario = $request->tipo_usuario;
-        $user->email = $persona->email;
         $user->password = bcrypt($request->password);
         if ($request->tipo_usuario == 'Administrador') {
             $user->especialidad_id = null;
@@ -154,7 +147,7 @@ class ControlerUser extends Controller
             }
             if(isset($request->turno_id)){
                 $user->turno_id = $request->turno_id;
-            }            
+            }
         }
         $user->save();
         return redirect()->route('usuarios.index')->with('alert-warning','Usuario editado');

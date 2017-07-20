@@ -90,7 +90,7 @@ Route::resource('prescripcion','PrescriptionController',['parameters'=>[
 //Route::get('pacientes/historia',function(){
   //return view('pacientes.historial');
 //});
-Route::post('pacientes/historial','pacientesController@historial');
+Route::get('pacientes/historial/{id}','pacientesController@historial');
 
 Route::get('pres/crear',function(){
   return view('Prescriptions.crear');

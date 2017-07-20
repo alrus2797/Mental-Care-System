@@ -1,7 +1,7 @@
 <form id="edit" action="{{ asset('medicinas') }}/{{$medicina->id}} " method="post">
 <div class="container">
 	<h3>Editar medicamento</h3>
-{{ csrf_field()}} 
+{{ csrf_field()}}
 {{ method_field('PUT') }}
 <div class="row">
 	<div class="form-group col-md-4">
@@ -19,13 +19,13 @@
 		<option value="{{$medicina->presentacion_id}} " > {{$medicina->presentacion->unidad}} {{$medicina->presentacion->descripcion}} </option>
 		@foreach ($presentaciones as $p)
 			<option value="{{$p->unidad}} " >{{$p->unidad}} {{$p->descripcion}} </option>
-			
+
 		@endforeach
 		</select>
 	</div>
-	
+
 	<div class="form-group col-md-2">
-	<br>	
+	<br>
 
 <button id="" type="button" class="btn btn-default btn-large"> <a href="{{asset('presentaciones')}} "><i class="glyphicon glyphicon-plus"></i> Añadir presentación </a></button>
 
@@ -47,18 +47,38 @@
 		<textarea id="adversos" class="form-control" rows="5" name="adversos">{{$medicina->medicamento->adversos}} </textarea>
 	</div>
 </div>
+<div class="row">
+	<div class="form-group col-md-4">
+		<script type="text/javascript">
+			$('#componentes').multiSelect();
+			var agregados= {!!json_encode($agregados)!!};
+			agregados=agregados.map(String);
+			$('#componentes').multiSelect("select",agregados);
+		</script>
+		<label for="componentes">Componentes</label>
+		<select id='componentes' multiple='multiple' name="componentes[]">
+			@foreach($componentes as $c)
+					<option value='{{$c->id}}' >{{$c->nombre}}</option>
+			@endforeach
+		</select>
+
+	</div>
+</div>
+
 
 	<div class="row">
 	<div class="col-md-3 col-md-offset-3">
 
 	<button type="submit" class="btn btn-default btn-large">Guardar Cambios</button>
 	</div>
-		
+
 	</div>
 	</div>
 </form>
 
 <script type="text/javascript">
+
+
 alertify.genericDialog || alertify.dialog('genericDialog',function(){
     return {
         main:function(content){
@@ -76,7 +96,8 @@ alertify.genericDialog || alertify.dialog('genericDialog',function(){
                     basic:true,
                     maximizable:true,
                     resizable:true,
-                    padding:true
+                    padding:true,
+										startMaximized:true
                 }
             };
         },

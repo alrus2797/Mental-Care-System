@@ -47,9 +47,9 @@ class ControlerEspecialidad extends Controller
         //create new data
         $especialidad = new Especialidad;
         $especialidad->nombre = $request->nombre;
-        $especialidad->descripcion = $request->descripcion;        
+        $especialidad->descripcion = $request->descripcion;
         $especialidad->save();
-        return redirect()->route('especialidad.index')->with('alert-success','Especialidad creada');
+        return redirect('especialidad')->with('alert-success','Especialidad creada');
     }
 
     /**

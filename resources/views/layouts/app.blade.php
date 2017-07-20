@@ -193,6 +193,41 @@
                                     {{--</li>--}}
                                 </ul>
                             </li>
+
+                        @elseif(Auth::user()->tipo_usuario == 'Medico')
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('pacientes/crear')}}">Nuevo Paciente</a></li>
+                                <li><a href="{{ url('pacientes/buscar')}}">Buscar Pacientes</a></li>
+                                <li><a href="{{ url('pacientes')}}">Todos los Pacientes</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{{ url('pacientes/estados/crear')}}">Nuevo Estado de Paciente</a></li>
+                                <li><a href="{{ url('pacientes/estados/todos')}}">Todos los Estados de Pacientes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
+                                </li>
+                                <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
+                                <li ><a href="{{url('estadistica')}}">Estadística</a></li>
+
+                                {{--<li>--}}
+                                {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
+                                {{--</li>--}}
+                            </ul>
+                        </li>
+
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

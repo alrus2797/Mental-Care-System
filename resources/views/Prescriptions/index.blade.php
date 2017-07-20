@@ -7,7 +7,7 @@
 
 @section('content')
 <h3>Prescripciones</h3>
-<div id="buscador"> </div>
+<div id="buscador">   </div>
 <h3>Mis Prescripciones</h3>
 
 
@@ -27,10 +27,10 @@
     </thead>
     <tbody>
 
+      @foreach($prescripciones as $p)
       <tr>
-
-        <td>Pacientex</td>
-        <td>Observaciones x del paciente x</td>
+        <td>{{$p->paciente->persona->nombre_completo()}}</td>
+        <td>{{$p->observacion}}</td>
 
         <td><a onclick="ver()" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a>
 
@@ -41,7 +41,7 @@
         <td><a  onclick="eliminar()" href="# "><span class="glyphicon glyphicon-trash"></span></a> </td>
 
       </tr>
-
+      @endforeach
     </tbody>
   </table>
 

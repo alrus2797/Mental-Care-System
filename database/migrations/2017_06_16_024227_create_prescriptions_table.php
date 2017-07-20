@@ -22,7 +22,7 @@ class CreatePrescriptionsTable extends Migration
             $table->integer('paciente_id')->unsigned();
 
             //claves foraneas
-            $table->foreign('medico_id')->references('id')->on('medicos');
+            $table->foreign('medico_id')->references('id')->on('users');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
 
             $table->timestamps();

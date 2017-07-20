@@ -17,7 +17,7 @@
 						<th>DNI</th>
 						<th>Sexo</th>
 						<th>Estado</th>
-            <th>Historia</th>
+            <th>Prescripción</th>
 						<th> Ver</th>
 						<th> Editar </th>
 						<th> Eliminar </th>
@@ -35,7 +35,7 @@
 							@if ("F" == $paciente->sexo) Femenino @endif
 							@if ("O" == $paciente->sexo) Otro @endif</td>
 							<td>{{$paciente->nombre_estado}}</td>
-              				<td><a href="{{asset('pacientes')}}{{'/'.$paciente->pac_id}}" id="historia">
+              				<td class="text-center"><a href="{{asset('pacientes')}}{{'/historial/'.$paciente->pac_id}}" id="historia">
               						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
               				</td>
 							<td>

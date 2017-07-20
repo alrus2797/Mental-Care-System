@@ -18,18 +18,25 @@ class pacientesController extends Controller
 {
 
 
-    public function historial(Request $request)
+    public function historial($id)
     {
-        $paciente= paciente::find($request->paciente_id);
-        //$id=$paciente->persona->id;
-        //$nombre=$paciente->persona->nombres;
-        //$apellidos=$paciente->persona->apellidopaterno." ".$paciente->persona->apellidomaterno;
-        //return view('pacientes.historial',["id"=>$paciente->id,"nombre"=>$nombre,"apellidos"=>$apellidos]);
-
+        $paciente= paciente::find($id);
         if ($paciente)
-          return view('pacientes.historial',["paciente_id"=>$request->paciente_id]);
-        else
-          return "No se ha encontrado paciente";
+        {
+
+          $nombre=$paciente->persona->nombres;
+
+          $apellidos=$paciente->persona->apellidopaterno." ".$paciente->persona->apellidomaterno;
+          $alergias_comp=$paciente->componentes;
+          $alergias=collect([]);
+          foreach ($alergias_comp as $a) {
+              $alergias->push($a->medicamentos);
+          }
+          $alergias=$alergias->collapse()->pluck('id')->unique()->all();
+          return view('pacientes.historial',["paciente_id"=>$id,"nombre"=>$nombre,"apellidos"=>$apellidos,"alergias"=>$alergias]);
+
+        }
+
     }
 
     public function todos(Request $request)

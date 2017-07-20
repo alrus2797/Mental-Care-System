@@ -54,8 +54,11 @@
 
 <script type="text/javascript">
   var paciente="{{$paciente_id}}";
+	var nombre="{{$nombre}} {{$apellidos}}";
+	var alergias={!!json_encode($alergias)!!};
+	alergias=alergias.map(String);
 	function ver() {
-		// body...
+		// body..
 	}
 
 
