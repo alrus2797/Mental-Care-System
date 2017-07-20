@@ -10,6 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+Route::post('/mostrar',function(Illuminate\Http\Request $datos){
+  return "Los datos enviados son: ".$datos->date_inicio." y ".$datos->date_final;
+});
+*/
+//Route::resource('GraficoEstadistico','GraficoEstadisticoController') ;
+
+Route::post('controlador12','GraficoEstadisticoController@store');
+Route::post('controladorc','GraficoEstadisticoController@storec');
+//Route::post('controladorp','GraficoEstadisticoController@storep',);
+
+Route::get('controlador/{id}','GraficoEstadisticoController@index');
 
 Route::get('diego', function () {
     return view('pacientes.buscar');
@@ -63,7 +75,7 @@ Route::get('med',function(){
 
 Route::resource('prescripcion','prescriptionController');
 
-
+/*
 Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('/','pacientesController@todos' );
@@ -84,4 +96,4 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('{id}','pacientesController@mostrar' );
 
-});
+});*/

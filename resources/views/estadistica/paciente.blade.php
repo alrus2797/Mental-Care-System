@@ -18,6 +18,17 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 			<?php 
+			if ($_SERVER['REQUEST_METHOD']==="POST") {
+				if (isset($_POST['date_inicio'])) {
+        			if (in_array($_POST['date_inicio'],$nombres)) {
+	            $date_inicio=$_POST['date_inicio'];
+	            echo "alert($date_inicio);"; 
+	            $date_final=$_POST['date_final'];
+	            echo "alert($date_final);"; 
+			        }
+			    }
+			            //exit;
+			}
 			$tipo='pie';
 			$grafico=new Grafico();
 ///////////////////////////paciente-estado
@@ -84,16 +95,16 @@ echo
 		<div class="container-fluid">
 		<div class="card">
 		<h3 style="text-align: center;"> Estados Por Pacientes</h3>
-		<div class="row">
+		<!--<div class="row">
 			<div class="col-md-4">
 				<label class="text"> Inicio</label>
-			 	<input class="form-control" type="date" name="uno">
+			 	<input class="form-control" type="submit" name="uno">
 			</div>
 			<div  class="col-md-4">
 				<label class="text"> Hasta</label>
-				<input  class="form-control" type="date" name="dos">
+				<input  class="form-control" type="submit" name="dos">
 			</div>
-		</div>
+		</div>-->
 		<div class="row">
 			<div class="col-md-10">
 				<div id="canvas-holder" style="width:80%;">
