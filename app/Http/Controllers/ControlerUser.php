@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Persona;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
@@ -35,11 +36,11 @@ class ControlerUser extends Controller
      */
     public function create()
     {
-        $especialidades = Especialidad::all();
+        $personas = Persona::all();
         $departamentos = Departamento::all();
         $turnos = Turno::all();
         $especialidades = Especialidad::all();
-        return view('usuarios.create',['departamentos' => $departamentos , 'turnos' => $turnos , 'especialidades' => $especialidades]);
+        return view('usuarios.create',['departamentos' => $departamentos , 'turnos' => $turnos , 'especialidades' => $especialidades,'personas' => $personas]);
     }
 
     /**
@@ -52,20 +53,18 @@ class ControlerUser extends Controller
     {
         //dd($request);
         $this->validate($request,[
-            'name' => 'required|max:255',
-            'documento' => 'required|max:255|unique:users',
             'departamento_id' => 'required',
             'tipo_usuario' => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed']);
+            'persona_id' => 'required',
+           ]);
 
         $user = new user;
-        $user->name = $request->name;
-        $user->documento = $request->documento;
         $user->departamento_id = $request->departamento_id;
         $user->tipo_usuario = $request->tipo_usuario;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->persona_id= $request->persona_id;
+        $persona=Persona::findOrFail($request->persona_id);
+        $user->email = $persona->email;
+        $user->password = bcrypt($persona->dni);
         if ($request->tipo_usuario == 'Administrador') {
             $user->especialidad_id = null;
             $user->turno_id = null;
@@ -75,7 +74,7 @@ class ControlerUser extends Controller
             }
             if(isset($request->turno_id)){
                 $user->turno_id = $request->turno_id;
-            }            
+            }
         }
         $user->save();
         return redirect()->route('usuarios.index')->with('alert-success','Usuario creado');
@@ -128,18 +127,17 @@ class ControlerUser extends Controller
     {
 
         $this->validate($request,[
-            'name' => 'required|max:255',
-            'carnet' => 'required|max:255|unique:users,carnet,'.$id,
             'departamento_id' => 'required',
             'tipo_usuario' => 'required',
-            'email' => 'required|email|max:255|unique:users,email,'.$id]);
+            ]);
 
         $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->carnet = $request->carnet;
+        $persona=$user->persona();
+        $user->email = $persona->email;
         $user->departamento_id = $request->departamento_id;
+        $user->persona_id = $persona->id;
         $user->tipo_usuario = $request->tipo_usuario;
-        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
         if ($request->tipo_usuario == 'Administrador') {
             $user->especialidad_id = null;
             $user->turno_id = null;
@@ -149,7 +147,7 @@ class ControlerUser extends Controller
             }
             if(isset($request->turno_id)){
                 $user->turno_id = $request->turno_id;
-            }            
+            }
         }
         $user->save();
         return redirect()->route('usuarios.index')->with('alert-warning','Usuario editado');

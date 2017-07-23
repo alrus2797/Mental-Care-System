@@ -1,6 +1,6 @@
 
 
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title', 'Inicio')
 
 <link rel="stylesheet" href="{{ asset('css/menuReporting.css')}}">

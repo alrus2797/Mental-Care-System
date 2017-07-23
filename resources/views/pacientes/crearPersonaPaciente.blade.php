@@ -11,7 +11,7 @@
       <div class="col-sm-3">
             <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" >
       </div>
-
+      <div class="col-sm-2"> </div>
       <label class="col-sm-2 col-form-label" for="apellidomaterno">Apellido Materno:</label>
       <div class="col-sm-3">
             <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" >
@@ -23,39 +23,84 @@
       <div class="col-sm-3">
             <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" >
       </div>
-      <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
+      <div class="col-sm-2"> </div>
+          <label class="col-sm-2 col-form-label" for="sexo">Sexo:</label>
       <div class="col-sm-3">
-            <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" >
+        <select class="form-control" id="sexo" name="sexo">
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+          <option value="O">Otro</option>
+        </select>
       </div>
     </div>
 
      <div class="form-group col-sm-12">
-      <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
-      <div class="col-sm-3">
-            <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" >
-      </div>
+       <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
 
-     <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
-     <div class="col-sm-3">
-           <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" >
-     </div>
+       <div class="col-sm-3">
+         <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" >
+       </div>
+       <div class="col-sm-2"> </div>
+
+       <label class="col-sm-2 col-form-label" for="fechanacimiento">Fecha De Nacimiento:</label>
+       <div class="col-sm-3">
+         <input type="date" class="form-control" placeholder="Ingrese Fecha de Nacimiento" id="fechanacimiento" name="fechanacimiento" min="1900-01-01" max="<?php echo date('Y-m-d') ?>">
+       </div>
+
+
    </div>
 
    <div class="form-group col-sm-12">
-    <label class="col-sm-2 col-form-label" for="email">Email:</label>
+      <label class="col-sm-2 col-form-label" for="direccion">Dirección:</label>
+
+     <div class="col-sm-3">
+        <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion" >
+     </div>
+     <div class="col-sm-2"> </div>
+
+    <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
     <div class="col-sm-3">
-          <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" >
+          <input type="text" class="form-control" id="telefono" placeholder="Ingrese teléfono" name="telefono" >
     </div>
 
-   <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
-   <div class="col-sm-3">
-          <select class="form-control" id="estado" name="estado">
-            @foreach ($estados as $estado)
-            <option value="{{$estado->id}}">{{$estado->nombre}}</option>
-            @endforeach
-          </select>
-   </div>
+
   </div>
+
+
+    <div class="form-group col-sm-12">
+
+      <label class="col-sm-2 col-form-label" for="email">Email:</label>
+      <div class="col-sm-3">
+          <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" >      </div>
+      <div class="col-sm-2"> </div>
+
+      <label class="col-sm-2 col-form-label" for="estado">Estado:</label>
+     <div class="col-sm-3">
+       <select class="form-control" id="estado" name="estado">
+         @foreach ($estados as $estado)
+         <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+         @endforeach
+       </select>
+     </div>
+
+    </div>
+
+    <div class="form-group col-sm-12">
+
+        <label class="col-sm-2 col-form-label" for="email">Departamento:</label>
+      <div class="col-sm-3">
+        <select class="form-control" id="departamento" name="departamento">
+          @foreach ($departamentos as $departamento)
+          <option value="{{$departamento->id}}">{{$departamento->name}}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="col-sm-2"> </div>
+
+      <div class="col-sm-3">
+
+      </div>
+    </div>
 
 
   <button type="submit" class="btn btn-primary">Guardar</button>
@@ -91,17 +136,31 @@ $.validator.setDefaults({
   }
 });
 
-$.validator.addMethod('strongPassword', function(value, element) {
-  return this.optional(element)
-    || value.length >= 6
-    && /\d/.test(value)
-    && /[a-z]/i.test(value);
-}, 'Your password must be at least 6 characters long and contain at least one number and one char\'.')
-
 $.validator.addMethod('strongDNI',function(value,element){
   return this.optional(element)
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
+
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: '/personas/checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null)
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
 
 $("#register-form2").validate({
   rules: {
@@ -121,7 +180,8 @@ $("#register-form2").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -133,6 +193,12 @@ $("#register-form2").validate({
     },
     direccion: {
       required: true
+    },
+    fechanacimiento: {
+      required: true
+    },
+    sexo: {
+    required: true
     }
   },
   messages: {
@@ -143,7 +209,8 @@ $("#register-form2").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'El DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.',
@@ -164,6 +231,12 @@ $("#register-form2").validate({
     },
     direccion: {
       required: 'Este espacio es requerido.'
+    },
+    fechanacimiento: {
+      required: 'Este espacio es requerido.'
+    },
+    sexo: {
+      required : 'Este espacio es requerido.'
     }
   }
 });

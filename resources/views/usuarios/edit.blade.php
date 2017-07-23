@@ -16,25 +16,11 @@
                             <label for="name" class="col-md-4 control-label">Nombre completo</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" onkeyup="this.value=this.value.replace(/[^A-Za-z ]/g,'');"  placeholder="Ingresa el nombre aqui" value="{{$user->name}}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" onkeyup="this.value=this.value.replace(/[^A-Za-z ]/g,'');"  placeholder="Ingresa el nombre aqui" value="{{$user->persona()->nombre_completo()}}" disabled>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('documento') ? ' has-error' : '' }}">
-                            <label for="documento" class="col-md-4 control-label">DNI</label>
-
-                            <div class="col-md-6">
-                                <input id="documento" type="text" class="form-control" name="documento" placeholder="Ingresa el N° DNI aqui" onkeypress="return isNumber(event)" value="{{$user->documento}}" required>
-
-                                @if ($errors->has('documento'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('documento') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -113,7 +99,7 @@
                             <label for="email" class="col-md-4 control-label">Correo electronico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" placeholder="Ingresa el email aqui" value="{{$user->email}}" required>
+                                <input id="email" type="email" class="form-control" name="email" placeholder="Ingresa el email aqui" value="{{$user->email}}" disabled>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -122,7 +108,27 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password" class="col-md-4 control-label">Contraseña</label>
 
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-md-4 control-label">Confirmar Contraseña</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="col-md-6" align="left">

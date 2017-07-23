@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as BaseModel;
 
-class Especialidad extends Model
+class Especialidad extends BaseModel
 {
     protected $table = 'especialidades';
 

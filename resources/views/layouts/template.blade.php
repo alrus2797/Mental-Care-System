@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+  <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"></link>
 
   <script src="{{asset('js/alertify.min.js')}} " >  </script>
   <link href="{{asset('css/alertify.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -17,7 +17,7 @@
   <!-- Latest compiled and minified JavaScript -->
 
   <script src="{{asset( 'js/bootstrap.min.js')}}"></script>
-  <link href="{{asset('css/template.css')}}" rel="stylesheet" type="text/css"></link>
+  <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"></link>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 

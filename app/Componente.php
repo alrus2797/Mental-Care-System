@@ -11,4 +11,9 @@ class Componente extends Model
     {
       return $this->belongsToMany('App\Medicamento');
     }
+
+    public function alergias()
+    {
+      return $this->belongsToMany('App\Paciente');
+    }
 }

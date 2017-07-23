@@ -58,7 +58,7 @@
       <br><br>
       <div class="row">
 
-      <div class="tablaPersonas col-sm-12"><b>No hay resultados...</b></div>
+      <div class="tablaPersonas col-sm-12"><b></b></div>
 
       </div>
 

@@ -82,6 +82,7 @@ Route::get('pres/buscador',function(){
   return view('Prescriptions.buscador');
 });
 
+
 Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
@@ -89,7 +90,7 @@ Route::resource('prescripcion','PrescriptionController',['parameters'=>[
 //Route::get('pacientes/historia',function(){
   //return view('pacientes.historial');
 //});
-Route::post('pacientes/historial','pacientesController@historial');
+Route::get('pacientes/historial/{id}','pacientesController@historial');
 
 Route::get('pres/crear',function(){
   return view('Prescriptions.crear');
@@ -125,8 +126,42 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('{id}','pacientesController@mostrar' );
 
+  Route::get('alergias/{id}','pacientesController@alergias');
+
 });
 
+
+Route::group(['prefix'=>'ingresos'],function(){
+
+  Route::get('/','IngresoController@todos' );
+  //Route::get('todos','pacientesController@todos');
+
+  Route::get('crear','IngresoController@crearObt' );
+
+  Route::get('crearNuevaPersona','IngresoController@crearNuevaPersona' ); //Testing
+  Route::post('crearPersonaPaciente','IngresoController@crearPersonaPaciente' );
+
+  Route::get('retrievePacientes', 'IngresoController@retrievePacientes');
+
+  Route::get('retrievePersonasDNI', 'IngresoController@retrievePersonasDNI');
+
+  Route::get('retrieveIngresos', 'IngresoController@retrieveIngresos');
+
+  Route::get('llenarPaciente', 'IngresoController@llenarPaciente');
+  Route::post('agregar', 'IngresoController@agregar');
+
+  Route::get('{id}/eliminar','IngresoController@eliminarConfirm');
+  Route::post('eliminar','IngresoController@eliminar');
+
+  Route::get('{id}/editar','IngresoController@editar');
+  Route::post('{id}','IngresoController@guardar');
+
+  Route::get('buscar', 'IngresoController@buscar');
+
+
+  //Route::get('{id}','IngresoController@mostrar' );
+
+});
 
 //------------------------------------------------------------------------------
 Route::get('/reportes', function(){
@@ -202,6 +237,8 @@ Route::group(['prefix'=>'personas'],function(){
 
   Route::get('buscar', 'PersonasController@buscar');
 
+  Route::post('checkDNI', 'PersonasController@checkDNI');
+  Route::get('checkDNI', 'PersonasController@checkDNI');
 
   Route::get('retrievePersonas', 'PersonasController@retrievePersonas');
 

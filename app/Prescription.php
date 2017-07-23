@@ -15,4 +15,8 @@ class Prescription extends Model
     {
       return $this->belongsTo('App\Medico');
     }
+    public function paciente()
+    {
+      return $this->belongsTo('App\Paciente');
+    }
 }

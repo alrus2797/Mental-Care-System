@@ -6,26 +6,53 @@
 
 <h2>Crear Paciente</h2><br><br>
 
+<div class="form-group col-sm-12">
+      <h3> <b> Buscar Persona </b> </h3>
+</div>
+
 <div >
     <form>
       {{csrf_field()}}
 
 
-      <div class="form-group col-sm-12">
+      <!--<div class="form-group col-sm-12">
           <label class="col-sm-1 col-form-label" for="dni">DNI:</label>
           <div class="col-sm-3">
             <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" onkeyup="showPersonas($('#dni').val())">
           </div>
-      </div>
+      </div>-->
+      <div class="form-group col-sm-12">
+          <label class="col-sm-2 col-form-label" for="apellidopaterno">Apellido Paterno:</label>
+          <div class="col-sm-3">
+                <input type="text" class="form-control" id="apellidopaterno" placeholder="Ingrese apellido paterno" name="apellidopaterno" onkeyup="showPersonas($('#dni').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(),$('#nombres').val())">
+          </div>
+          <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="apellidomaterno">Apellido Materno:</label>
+          <div class="col-sm-3">
+                <input type="text" class="form-control" id="apellidomaterno" placeholder="Ingrese apellido materno" name="apellidomaterno" onkeyup="showPersonas($('#dni').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(),$('#nombres').val())">
+          </div>
+        </div>
+
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 col-form-label" for="nombres">Nombres:</label>
+          <div class="col-sm-3">
+                <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombres" name="nombres" onkeyup="showPersonas($('#dni').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(),$('#nombres').val())">
+          </div>
+          <div class="col-sm-2"></div>
+          <label class="col-sm-2 col-form-label" for="dni">DNI:</label>
+          <div class="col-sm-3">
+                <input type="text" class="form-control" id="dni" placeholder="Ingrese DNI" name="dni" onkeyup="showPersonas($('#dni').val(), $('#apellidopaterno').val(), $('#apellidomaterno').val(),$('#nombres').val())">
+          </div>
+        </div>
 
     </form>
 
     <div class="form-group col-sm-12">
-      <div class="tablaPersonasDNI col-sm-12 "><b>No hay resultados</b></div>
+      <div class="tablaPersonasDNI col-sm-12 "></div>
     </div>
 
     <div class="form-group col-sm-12">
-      <div> <b> ¿No existe? Créalo </b> </div>
+      <h3> <b> ¿No existe persona? Crear </b> </h3>
     </div>
     <div class="form-group col-sm-12">
       <div class="personaNueva col-sm-12">
@@ -39,11 +66,12 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 
 <script>
-	function showPersonas(DNI) {
+	function showPersonas(DNI, apellidoP, apellidoM, nombres) {
     var parametros = {
-
-
-    	"DNI" : DNI,
+      "apellidoP" : apellidoP,
+      "apellidoM" : apellidoM,
+      "nombres" : nombres,
+    	"DNI" : DNI
     };
     $.ajax({
     	data: parametros,

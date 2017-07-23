@@ -28,7 +28,11 @@
 							<td>{{$persona->apellidopaterno}}</td>
 							<td>{{$persona->apellidomaterno}}</td>
 							<td>{{$persona->dni}}</td>
-							<td>{{$persona->sexo}}</td>
+							<td>
+										@if ("M" == $persona->sexo) Masculino @endif
+										@if ("F" == $persona->sexo) Femenino @endif
+										@if ("O" == $persona->sexo) Otro @endif
+							</td>
 
 							<td>
 									<a href="{{asset('personas')}}{{'/'.$persona->id}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
@@ -57,8 +61,8 @@ $(document).on('click','.pagination a',function(e){
   var p = $(this).attr('href').split('=');
   var page = p[1];
   var route = p[0];
-  //console.log(page);
-  //console.log(route);
+  console.log(page);
+  console.log(route);
 
   $.ajax({
 

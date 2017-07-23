@@ -18,7 +18,7 @@
   </div>
 
   {{ csrf_field()}}
-
+<!--
   <div class="col-md-1">
     <p>Buscar por: </p>
   </div>
@@ -28,7 +28,7 @@
       <option value="2">Componente</option>
     </select>
   </div>
-
+-->
   <div class="col-md-3">
 
   </div>
@@ -37,6 +37,11 @@
 </form>
 
 <!--<div id="buscador"> </div>-->
+
+   <div class="col-md-3">
+
+  </div>
+
 
 <form>
   <div class="col-md-3">
@@ -147,14 +152,25 @@
   }
 
     function eliminar(id) {
-      $.ajax({
-        data:{ _token: '{{csrf_token()}}', _method: 'delete' } ,
-        url: "{{asset('medicamentos/eliminar/')}} " +"/"+id,
-        type: 'post',
-       success: function(resultado){
-          console.log(resultado);
-            //$("#eliminado").html(resultado);
-        }});
+
+      alertify.confirm('Confirmar', 'Desea eliminar este medicamento?',
+        function(){
+          var urls = "{{asset('medicamentos')}}"+"/"+id;
+          console.log(urls);
+
+            $.ajax({
+              url: urls,
+              type: "post",
+              data:{ _token: '{{csrf_token()}}', _method: 'delete' } ,
+              })
+              .done(function(data){
+                console.log(data);
+                $("#todos").load("{{ asset('medicamentos/todos') }}" );
+                alertify.success('Borrado Con Éxito');
+              });
+        },
+        function(){ alertify.error('Cancelado')}
+      );
     }
 
     function showMedicamentos(nom,comp) {

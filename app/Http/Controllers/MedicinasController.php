@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Medicina;
 use App\Presentacion;
+use App\Componente;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,9 @@ class MedicinasController extends Controller
     public function edit(Medicina $medicina)
     {
         $presentaciones = Presentacion::all();
-       return view('Prescriptions.medicamentos.editar',["medicina"=> $medicina, "presentaciones"=>$presentaciones]);
+        $componentes= Componente::all();
+        $agregados= $medicina->medicamento->componentes->pluck("id")->all();
+       return view('Prescriptions.medicamentos.editar',["medicina"=> $medicina, "presentaciones"=>$presentaciones,"componentes"=>$componentes,"agregados"=>$agregados]);
     }
     public function update(Request $request, Medicina $medicina)
     {
@@ -38,6 +41,8 @@ class MedicinasController extends Controller
         //dd($request);
 //        $medicina = Medicina::find($medicina->id);
   //      $medicina->cantidad = $medicina
+        $medicina->medicamento->componentes()->sync($request->componentes);
+
         DB::table('medicinas')
             ->where('id', $medicina->id)
             ->update(['cantidad' => $request['cantidad']]);

@@ -29,4 +29,17 @@ class Paciente extends Model
         return $this->belongsTo('App\Persona');
     }
 
+    public function nombre_completo()
+    {
+        return $this->persona()->nombre_completo();
+    }
+
+    public function prescripciones()
+    {
+      return $this->hasMany('App\Prescription');
+    }
+    public function componentes()
+    {
+      return $this->belongsToMany('App\Componente','alergias');
+    }
 }

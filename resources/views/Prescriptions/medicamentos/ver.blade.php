@@ -7,15 +7,15 @@
 
 		<div class="col-md-5">
 			<label>Descripción : </label>
-			<label>{{$medicina->medicamento->descripcion}} 
+			<label>{{$medicina->medicamento->descripcion}}
 		</div>
 		
-		<div class="col-md-5">
-			<label>Efectos Secundarios</label>
+<!--		<div class="col-md-5">
+			<label>Efectos Secundarios: </label>
 		<label>{{$medicina->medicamento->efecSecundarios}} </label>
 		</div>
-
-	</div>
+-->
+	</div><br>
 
 	<div class="row">
 		<div class="col-md-2">
@@ -23,13 +23,31 @@
 			<label>{{$medicina->cantidad}} {{$medicina->presentacion->unidad}} {{$medicina->presentacion->descripcion}}</label>
 		</div>
 		<div class="col-md-5">
-			<label>Efectos Secundarios</label>
+			<label>Efectos Secundarios: </label>
 			<label>{{$medicina->medicamento->efecSecundarios}} </label>			
 		</div>
-		<div class="col-md-5">
-			<label>Adversos </label>
-			<label>Aqui debería ir adversos</label>
+	</div><br>
+
+	<div class="row">
+		<div class="col-md-2">
+			
 		</div>
+		<div class="col-md-5">
+			<label>Adversos: </label>
+			<label>{{$medicina->medicamento->adversos}}</label>
+		</div>
+	</div>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<th>Nombre de Componente</th>
+			</thead>
+			<tbody>
+				@foreach($medicina->medicamento->componentes as $c)
+					<tr><td>{{$c->nombre}}</td></tr>
+				@endforeach
+			</tbody>
+		</table>
 	</div>
 </div>
 
@@ -54,7 +72,8 @@ alertify.genericDialog || alertify.dialog('genericDialog',function(){
                     basic:true,
                     maximizable:true,
                     resizable:true,
-                    padding:false
+                    padding:false,
+										startMaximized:true
                 }
             };
         },
