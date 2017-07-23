@@ -48,27 +48,30 @@
 
 </div>
 
-
 <div>
 	<a  onclick="cargar()" target="_blank" method="post">Ver en pdf</a>
 </div>
 
-<script >
 
+<a href="javascript:imprSelec('historial')">Imprimir</a>
 
-$(document).ready(function(){
-    $("button").click(function(){
-        $.post("demo_test_post.asp",
-        {
-          name: "Donald Duck",
-          city: "Duckburg"
-        },
-        function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-    });
-});
-
+    <script >
+      function cargar()
+      {
+        header= document.getElementById('topdfheader').innerHTML;
+        body  = document.getElementById('topdfbody').innerHTML;
+        location.href="exportarRep?tipo=semAten&fecha=&htmlex="+header+body+""+;
+      }
+    </script>
+<script>
+function imprSelec(topdfbody){
+  var ficha=document.getElementById(topdfbody);
+  var ventimp=window.open(' ','topdfbody');
+  ventimp.document.write(ficha.innerHTML);
+  ventimp.document.close();
+  ventimp.print();
+  ventimp.close();
+}
 </script>
 
 

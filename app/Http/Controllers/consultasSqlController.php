@@ -89,7 +89,9 @@ class consultasSqlController extends Controller
                   INNER join personas per_med
                     on per_med.id = medicos.personas_id where extract(YEAR_MONTH from prescriptions.created_at ) = '".$year_moth."' ";
       $results = $this->runQuery($sqlQuery);
-      return view('ManageReporting/repAtendidos',compact('results'));
+      $fecha=$anio."-".$mes;
+      $tipo="sem-Aten";
+      return view('ManageReporting/repAtendidos',compact('results'),['fecha'=>$fecha,'tipo'=>$tipo]);
     }
 
 

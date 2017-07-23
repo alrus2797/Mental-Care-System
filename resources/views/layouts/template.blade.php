@@ -47,6 +47,16 @@ function printDiv(divName)
 
 
 
+    <script >
+      function cargar()
+      {
+        header= document.getElementById('topdfheader').innerHTML;
+        body  = document.getElementById('topdfbody').innerHTML;
+        location.href="exportarRep?htmlex="+header+body;
+      }
+    </script>
+
+
 
 </head>
 
