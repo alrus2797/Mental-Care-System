@@ -146,7 +146,7 @@ echo
 			</div>
 			<br>
 			<br>
-			<div class="col-md-2" >
+			<div class="col-md-4" >
 				<button type="submit" class="btn btn-info btn-fill pull-right">
 				Analizar
             	</button>	

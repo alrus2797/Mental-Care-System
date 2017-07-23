@@ -107,7 +107,9 @@
 				<a href="/estadistica/citas" class="list-group-item active"> Citas </a>
 			</div>
 	</aside>
-	
+
+		<h3 style="text-align:center;">Top de los 5 medicos más citados </h3>
+
 		<form action="/controladorc" method="post" >
 			{{ csrf_field() }}
 			<div class="col-md-4">
@@ -119,7 +121,7 @@
 				<input  class="form-control" name="date_final" id ="date_final" type="date">
 			</div>
 			<div class="col-md-4" >
-					<input value="Analizar" type="submit">
+					<input value="Analizar" type="submit" class="btn btn-info btn-fill pull-right" >
 					
 			</div>
 		</form>

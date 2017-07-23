@@ -69,10 +69,8 @@
 			</div>
 	</aside>
 <div class="content">
-		<div class="container-fluid">
-		<div class="card">
 		<h3 style="text-align: center;">Porcentaje por Medicos de Especialidad</h3>
-	<div class="row">
+
 		<form  action="/controlador12"  method="post">
 		{{ csrf_field() }}
 		<!--<input type="text" name="_token value="{{csrf_token()}}">-->
@@ -90,10 +88,8 @@
             	</button>	
 		</div>
 		</form>
-	</div>
-	<div class="content">
-		<div class="container-fluid">
-		<div class="card">
+
+	
 			<div class="row" >
 			<div class="col-md-8">
 				<div id="canvas-holder" style="width:90%;">
@@ -102,12 +98,10 @@
 			</div>
 
 			</div>
+
 		</div>
-		</div>
-	</div>
-		</div>
-		</div>
-	</div>
+
+		
 
 </body>
 </html>
