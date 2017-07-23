@@ -152,8 +152,6 @@ Route::group(['prefix'=>'pacientes'],function(){
 });*/
   Route::get('alergias/{id}','pacientesController@alergias');
 
-});
-
 
 Route::group(['prefix'=>'ingresos'],function(){
 
