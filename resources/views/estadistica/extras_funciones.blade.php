@@ -8,7 +8,7 @@ function ordenar_mayormenor($array_datos,$array_id)
 {
 	$Ndatos=count($array_datos);
 	$min=0;
-	for($i=0;$i<5;$i++) {
+	for($i=0;$i<$Ndatos;$i++) {
 		$max=$i;
 		for($j=$i+1;$j<$Ndatos;$j++)
 		{
@@ -26,7 +26,11 @@ function ordenar_mayormenor($array_datos,$array_id)
 	}
 	$resultado_datos=[];
 	$resultado_id=[];
-	for($i=0;$i<5;$i++) {
+
+	$cantidad=5;
+	if($Ndatos<5)
+		$cantidad=$Ndatos;
+	for($i=0;$i<$cantidad;$i++) {
 		array_push($resultado_datos, $array_datos[$i]);
 		array_push($resultado_id, $array_id[$i]);
 	}

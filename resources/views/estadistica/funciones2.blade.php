@@ -36,10 +36,17 @@ class Grafico
 	$resultado = mysqli_query($this->conexion,$consulta);
 	// CAPTURAR DATOS DE LA BBDD /////////////////////////////////////////
 	$datos = [];
-	while($fila = mysqli_fetch_row($resultado))
+	while($fila = mysqli_fetch_row($resultado) )
 	 	{ array_push($datos,$fila); }
-		return $datos;
+		return $datos;		
 	}
+
+    public function tablas_virtuales($consulta)
+    {
+   	    $execucion= mysqli_query($this->conexion,$consulta); 
+   	    
+   	   // $fila = mysqli_fetch_row($execucion);
+    }
 
 	public function each_dato($datos,$tabla,$columna)
 	{
@@ -60,6 +67,8 @@ class Grafico
 		return $frecuencias;
 	}
 
+
+	//public func
 	public function mediconombreXid($array_id,$tabla,$columna)
 	{
 		$array_nombre=[];
@@ -74,10 +83,15 @@ class Grafico
 
 	public function cantidadXtabla($tabla)
 	{
+		//$consulta="SELECT COUNT(id_user) FROM ".$tabla;
 		$consulta="SELECT COUNT(id_user) FROM ".$tabla;
 		$ejecutar = mysqli_query($this->conexion,$consulta);
 		$fila = mysqli_fetch_row($ejecutar);
 		return $fila[0];
+	}
+	public function terminar()
+	{
+		mysqli_close($this->conexion);
 	}
 
 	public function bar_lista($datos_array,$id_nombre)
@@ -109,7 +123,6 @@ class Grafico
 						rectangle : {
 							borderWidth : 1,
 							borderColor : "rgb(0,255,0)",
-							
 						}
 					},
 					responsive : true,

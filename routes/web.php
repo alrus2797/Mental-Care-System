@@ -10,6 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+Route::post('/mostrar',function(Illuminate\Http\Request $datos){
+  return "Los datos enviados son: ".$datos->date_inicio." y ".$datos->date_final;
+});
+*/
+//Route::resource('GraficoEstadistico','GraficoEstadisticoController') ;
+
+Route::post('controlador12','GraficoEstadisticoController@store');
+Route::post('controladorc','GraficoEstadisticoController@storec');
+//Route::post('controladorp','GraficoEstadisticoController@storep',);
+
+Route::get('controlador/{id}','GraficoEstadisticoController@index');
 
 use Illuminate\Http\Request;
 
@@ -24,11 +36,21 @@ Route::get('diego', function () {
 });
 //*******************************************
 
-Route::get('/estadistica',function(){
-  return view('estadistica.hola');
+Route::get('/estadistica/paciente',function(){
+  return view('estadistica.paciente');
 });
 
+Route::get('/estadistica/medicos',function(){
+  return view('estadistica.medicos');
+});
 
+Route::get('/estadistica/citas',function(){
+  return view('estadistica.citas');
+});
+
+Route::get('/',function(){
+  return view('welcome');
+});
 
 /*
   Medicamentos
@@ -83,6 +105,7 @@ Route::get('pres/buscador',function(){
 });
 
 
+/*
 Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
@@ -126,6 +149,7 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('{id}','pacientesController@mostrar' );
 
+});*/
   Route::get('alergias/{id}','pacientesController@alergias');
 
 });
