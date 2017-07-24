@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label class="col-md-5 control-label">Especialidad : </label>
                                     <div class="col-md-6" align="left">
-                                        <h4>{{ $diagnostico->user->especialidad->nombre }}</h4>
+                                        <h4>{{ $diagnostico->user->especialidad->n ombre }}</h4>
                                     </div>
                                 </div>
 
