@@ -53,10 +53,8 @@
     @endforeach
     </table>
     @endif
-
-      <ul class="pagination">
-        <li class="active"><a href="#">1</a></li>
-      </ul>
+        
+        
   </div>
      </div>
 

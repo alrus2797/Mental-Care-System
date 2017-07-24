@@ -3,13 +3,14 @@
 @extends('layouts.app')
 @section('title', 'Inicio')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
    @section('content')
 
    <div id="printableArea">
 
- <div class="page-header" id="topdfheader">
+  <div class="page-header" id="topdfheader">
       <h2>Reporte de medicamentos recetados</h2>
     <p>Reportes de medicamentos recetados durante el mes.</p>
   </div>
@@ -55,8 +56,13 @@
 </div>
      </div>
 <a  onclick="cargar()" target="_blank">Ver en pdf</a>
-
-
-
-
-   @endsection
+<script > 
+  function cargar()
+  {
+    title="Reporte de medicamentos recetados";
+    body  = document.getElementById('topdfbody').innerHTML;
+    fecha ="<?php if(isset($_GET['mes']))echo $_GET['mes'];?>";
+    window.open("exportarRep?titulo_doc=Reporte de medicamentos recetados&tipo=mes&fecha="+fecha+"&titulo=mens"+fecha+"&htmlex="+body,'_blank');
+  }
+</script>
+@endsection

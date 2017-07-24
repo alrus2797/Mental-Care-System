@@ -157,55 +157,55 @@ class descargasRepController extends Controller
     return view('ManageReporting/infoTratamiento',compact('results_pres_med'),['ruta'=>$ruta,'inforeporte'=>$inforeporte,'results_citas_pac'=>$results_citas_pac,'results_datos'=>$results_datos]);
   }
 
+    
+    public function htmlfile($title,$body)
+    {
+        $header="";
+        $footer="";
+        
+        
+        $result=$header.$title.$body.$footer;
+        return $result;
+        
+    }
+
   public function exportpdf(Request $request)
-  {
-      if($request->htmlex =="")
+  {             
+      
+      if($request->htmlex =="" || $request->titulo="")
+      
       {
         $results=NULL;
         return redirect('reportes');
       }
-
-      $idpac=$request->id;
+      
       $filename=$request->tipo.$request->fecha;
+      
       $fecha_reporte =date("Y-m-d H:i:s");
       $tipo = $request->tipo;
       $fechacreado=date("Y-m-d H:i:s");
       $inforeporte="";
-//-----------------------------------------------------------------------------------
-//comprobando si el informe ya fue creado
-  $query_buscar="select * from reporte where reporte.nombre = '".$filename."';";
-
-  if($this->runQuery($query_buscar)==NULL)
-  {
-    $sqlQuery_insert = "INSERT INTO `reporte` (`id`, `nombre`, `fecha`, `tipo`, `created_at`, `updated_at`)
-                  VALUES (NULL, '$filename', '$fecha_reporte', '$tipo', '$fechacreado', NULL);";
-    $results = $this->runQuery($sqlQuery_insert);
-
-    $content=$this->contenidohtml($request->htmlex);
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($content);
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-    $pdf = $dompdf->output();
-    file_put_contents('reportesPDF/'.$filename.'.pdf', $pdf);
-
-    $inforeporte= "El reporte acaba de ser generado ";
-
-  }
-  else
-  {
-
-
-    $inforeporte= "El informe ya fue creado";
-  }
-
-    //--------------------------------------------------------------------------------
-
-
-    return view('ManageReporting/exportarRep');
-
-
-
-  }
-
+    //-----------------------------------------------------------------------------------
+    //comprobando si el informe ya fue creado
+      $query_buscar="select * from reporte where reporte.nombre = '".$filename."';";
+      if($this->runQuery($query_buscar)==NULL)
+      {
+        $sqlQuery_insert = "INSERT INTO `reporte` (`id`, `nombre`, `fecha`, `tipo`, `created_at`, `updated_at`)
+                      VALUES (NULL, '$filename', '$fecha_reporte', '$tipo', '$fechacreado', NULL);";
+        $results = $this->runQuery($sqlQuery_insert);
+        $content=$this->htmlfile($request->titulo_doc,$request->htmlex);
+        
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($content);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $pdf = $dompdf->output();
+        file_put_contents('reportesPDF/'.$filename.'.pdf', $pdf);
+        $inforeporte= "El reporte acaba de ser generado ";
+      }
+      else
+        $inforeporte= "El informe ya fue creado";
+    //--------------------------------------------------------------------------------    
+      return view("ManageReporting/exportarRep",['filename'=>$filename]);
+  }  
 }

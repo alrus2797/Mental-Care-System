@@ -48,34 +48,16 @@
 
 </div>
 
-<div>
-	<a  onclick="cargar()" target="_blank" method="post">Ver en pdf</a>
-</div>
-
-
-<a href="javascript:imprSelec('historial')">Imprimir</a>
-
-    <script >
+<a  onclick="cargar()" target="_blank">Ver en pdf</a>
+    <script > 
       function cargar()
       {
-        header= document.getElementById('topdfheader').innerHTML;
+        titulo_doc="Reporte de pacientes atendidos por Medico";
         body  = document.getElementById('topdfbody').innerHTML;
-        location.href="exportarRep?tipo=semAten&fecha=&htmlex="+header+body+""+;
+        fecha ="<?php if(isset($_GET['mes'])) echo $_GET['mes']; else echo"";?>";
+        window.open("exportarRep?titulo_doc="+titulo_doc+"&tipo=medmes&fecha="+fecha+"&titulo=medmes"+fecha+"&htmlex="+body,'_blank');
       }
     </script>
-<script>
-function imprSelec(topdfbody){
-  var ficha=document.getElementById(topdfbody);
-  var ventimp=window.open(' ','topdfbody');
-  ventimp.document.write(ficha.innerHTML);
-  ventimp.document.close();
-  ventimp.print();
-  ventimp.close();
-}
-</script>
-
-
-<button>ver</button>
 
 
 
