@@ -31,7 +31,7 @@ class Paciente extends Model
 
     public function nombre_completo()
     {
-        return $this->persona()->nombre_completo();
+        return $this->persona->nombre_completo();
     }
 
     public function prescripciones()
