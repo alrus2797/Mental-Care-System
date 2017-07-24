@@ -163,13 +163,6 @@
                                     <li ><a href="{{url('estadistica')}}">Estadística</a></li>
                                     <li ><a href="#">Citas</a></li>
                                     <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
-
-                                    <li>
-                                        <a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>
-                                    </li>
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('diagnostico.index')}}"><i class="fa fa-medkit"></i> Diagnosticos Realizados</a>--}}
-                                    {{--</li>--}}
                                 </ul>
                             </li>
 
@@ -200,7 +193,12 @@
                                 </li>
                                 <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
                                 <li ><a href="{{url('estadistica')}}">Estadística</a></li>
-
+                                <li>
+                                    <a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>
+                                </li>
+                                <li>
+                                <a href="{{route('diagnostico.index')}}"><i class="fa fa-medkit"></i> Diagnosticos Realizados</a>
+                                </li>
                                 {{--<li>--}}
                                 {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
                                 {{--</li>--}}
