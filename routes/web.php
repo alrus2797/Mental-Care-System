@@ -121,35 +121,7 @@ Route::get('pres/crear',function(){
 
 //******************************************************************************************
 
-Route::group(['prefix'=>'pacientes'],function(){
-
-  Route::get('/','pacientesController@todos' );
-  //Route::get('todos','pacientesController@todos');
-
-  Route::get('crear','pacientesController@crearObt' );
-
-  Route::get('crearNuevaPersona','pacientesController@crearNuevaPersona' ); //Testing
-  Route::post('crearPersonaPaciente','pacientesController@crearPersonaPaciente' );
-
-  Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
-
-  Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
-
-  Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
-  Route::post('agregar', 'pacientesController@agregar');
-
-  Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
-  Route::post('eliminar','pacientesController@eliminar');
-
-  Route::get('{id}/editar','pacientesController@editar');
-  Route::post('{id}','pacientesController@guardar');
-
-  Route::get('buscar', 'pacientesController@buscar');
-
-
-  Route::get('{id}','pacientesController@mostrar' );
-
-});*/
+*/
   Route::get('alergias/{id}','pacientesController@alergias');
 
 
@@ -317,4 +289,33 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('categoriaSintoma','ControllerCategoriaSintoma');
     Route::get('updatepassview/{usuario}', 'ControlerUser@updatepassview')->name('updatepassview');
     Route::patch('updatepass/{usuario}', 'ControlerUser@updatepass')->name('updatepass');
+});
+Route::group(['prefix'=>'pacientes'],function(){
+
+    Route::get('/','pacientesController@todos' );
+    //Route::get('todos','pacientesController@todos');
+
+    Route::get('crear','pacientesController@crearObt' );
+
+    Route::get('crearNuevaPersona','pacientesController@crearNuevaPersona' ); //Testing
+    Route::post('crearPersonaPaciente','pacientesController@crearPersonaPaciente' );
+
+    Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+    Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
+
+    Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
+    Route::post('agregar', 'pacientesController@agregar');
+
+    Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
+    Route::post('eliminar','pacientesController@eliminar');
+
+    Route::get('{id}/editar','pacientesController@editar');
+    Route::post('{id}','pacientesController@guardar');
+
+    Route::get('buscar', 'pacientesController@buscar');
+
+
+    Route::get('{id}','pacientesController@mostrar' );
+
 });
