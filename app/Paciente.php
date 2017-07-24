@@ -42,4 +42,37 @@ class Paciente extends Model
     {
       return $this->belongsToMany('App\Componente','alergias');
     }
+    public function telefonos()
+{
+    if($this->persona()->telefono){
+        return $this->persona()->telefono;
+    }else{
+        return 'Sin telefono';
+    }
+}
+
+    public function edad()
+    {
+        return date_diff(date_create($this->persona->fechanacimiento), date_create('now'))->y;
+    }
+
+    public function ultima_visita()
+    {
+        $diagnosticos = DB::table('diagnosticos')->where('paciente_id', '=', $this->id)->orderBy('created_at', 'desc')->take(1)->get();
+        return $diagnosticos;
+
+    }
+
+    public function creacion()
+    {
+        $aux_date = explode(" ", $this->persona->fechanacimiento);
+        return $aux_date[0];
+    }
+
+    public function diagnosticos()
+    {
+        return $this->hasMany('App\Diagnostico');
+    }
+
+
 }
