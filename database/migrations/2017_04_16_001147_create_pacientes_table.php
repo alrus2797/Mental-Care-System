@@ -16,7 +16,7 @@ class CreatePacientesTable extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('persona_id')->unsigned();
-            $table->foreign('persona_id')->references('id')->on('personas');
+            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
 
             //Los estados pueden ser si se encuentra internado, recien ingresado, o ya dado de alta
             $table->integer('estado_id')->unsigned();
