@@ -158,6 +158,27 @@ $.validator.addMethod('strongDNI',function(value,element){
   || value.length == 8;
 },"ingreso un DNI <em>valido</em>\.")
 
+$.validator.addMethod('checkDNI', function(value, element){
+  var exist;
+  var parametros = {
+      "DNI" : value
+  };
+  $.ajax({
+    data: parametros,
+    url: '/personas/checkDNI',
+    type: 'get',
+    dataType : 'json',
+    async: false,
+    success: function(data){
+      if (data == null)
+        exist = false;
+      else
+        exist = true;
+    }
+  });
+  return !exist;
+})
+
 $("#register-form2").validate({
   rules: {
     email: {
@@ -176,7 +197,8 @@ $("#register-form2").validate({
     },
     dni: {
       required: true,
-      strongDNI: true
+      strongDNI: true,
+      checkDNI: true
     },
     nombres: {
       required: true
@@ -198,7 +220,8 @@ $("#register-form2").validate({
     dni: {
       required: 'Este espacio es requerido.',
       dni: 'Ingrese un dni <em>valido</em>.',
-      strongDNI: 'Ingrese un dni <em>valido</em>.'
+      strongDNI: 'Ingrese un dni <em>valido</em>.',
+      checkDNI: 'DNI ya existe!'
     },
     apellidopaterno: {
       required: 'Este espacio es requerido.',
