@@ -7,8 +7,42 @@
 <br>
 <br>
 <div class="row">
-	<div class="col-md-4 col-md-offset-8">
+	<div class="col-md-8">
+
+		<table class="table table-condensed">
+		    <thead>
+		      <tr>
+
+		        <th>Paciente</th>
+
+		        <th>Observaciones</th>
+    				<th>Médico </span></th>
+		        <th>Imprimir</th>
+
+
+		      </tr>
+		    </thead>
+		    <tbody>
+		      @foreach($prescripciones as $p)
+		      <tr>
+		        <td>{{$p->paciente->persona->nombre_completo()}}</td>
+		        <td>{{$p->observacion}}</td>
+						<th>{{$p->medico->persona()->nombre_completo()}}</th>
+
+		        <td ><a href="{{url('prescripcion/imprimir')}}/{{$p->id}}"> <span class="glyphicon glyphicon-eye-open">  </span> </a>
+
+		        </td>
+
+		      </tr>
+		      @endforeach
+
+		    </tbody>
+		  </table>
+
+	</div>
+	<div class="col-md-4 ">
 		<div class="row">
+
 		<div class="col-md-8">
 
 		<h4>Recetas </h4>

@@ -16,6 +16,8 @@ class DiagnosticoForeing extends Migration
         Schema::table('diagnosticos', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
+            
+            $table->foreign('prescription_id')->references('id')->on('prescriptions');
         });
     }
 

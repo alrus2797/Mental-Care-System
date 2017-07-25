@@ -1,5 +1,5 @@
 
-<form id="crear" action="{{ asset('prescripcion')  }}" method="post">
+<form id="crear">
 	<div class="">
 			<h3>Añadir receta</h3>
 			{{ csrf_field()}}
@@ -7,16 +7,15 @@
 			<div class="form-group ">
 				<label for="nombre">Paciente</label>
 				<input type="text" class="form-control" id="nombre" name="paciente"   readonly>
-				<input type="hidden" name="paciente_id" value="" id="paciente_id">
+
 			</div>
 			<div class="form-group ">
 				<label for="observacion"> Observaciones</label>
-				<input type="text" class="form-control" id="obs" name="observacion">
-				<input type="hidden" name="medico_id" value="{{Auth::user()->id}}">
+				<input type="text" class="form-control" id="obs" name="observacion" placeholder="{{$prescription->observacion}}" readonly>
 			</div>
 			<div class="form-group ">
 				<label > Instrucción</label>
-				<input type="text" class="form-control" id="inst" name="instruccion">
+				<input type="text" class="form-control" id="inst" name="instruccion" placeholder="{{$prescription->instruccion}}" readonly>
 			</div>
 			<div class="form-group ">
 				<script type="text/javascript">
@@ -29,11 +28,9 @@
 					@endforeach
 				</select>
 					<br>
-					<button id="" type="button" class="btn btn-default btn-large"> <a href="{{asset('medicamentos')}} "><i class="glyphicon glyphicon-plus"></i> Añadir medicamentos </a></button>
 
 			</div>
 
-		<button id="truuuuue" type="submit" class="btn btn-default btn-large">Añadir</button>
 	</div>
 
 
@@ -43,7 +40,6 @@
 <script type="text/javascript">
 
 $("#nombre").attr("placeholder",nombre);
-$("#paciente_id").attr("value",paciente);
 var actual;
 var url="{{asset('pacientes/alergias/')}}/";
 $('#medicamentos').multiSelect({

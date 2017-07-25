@@ -65,7 +65,7 @@
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12" >
       <label class="col-sm-2 col-form-label" for="email">Email:</label>
     <div class="col-sm-3">
       <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$persona->email}}" readonly >
@@ -77,7 +77,7 @@
 
     </div>
   </div>
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12" >
     <label class="col-sm-2 col-form-label" for="estado">Departamento:</label>
     <div class="col-sm-3">
 
@@ -85,15 +85,27 @@
 
     </div>
     <div class="col-sm-2"> </div>
+    <label class="col-sm-2 col-form-label" for="aler">Alergias:
+      <br>
+      <br>
+      <form action="{{asset('pacientes/alergias')}}/{{$paciente->id}}" >
+          <input class="btn btn-primary" type="submit" value="Todas las Alergias">
+      </form>
+    </label>
 
-<div class="col-sm-3">
-  <form action="{{asset('pacientes/alergias')}}/{{$paciente->id}}">
-      <input class="btn btn-primary" type="submit" value="Alergias">
-  </form>
+
+    <div class="col-sm-3" style="overflow-y:auto;max-height:100px;">
+    <table class="table table-responsive" class="form-group" id="aler">
+
+      <tbody>
+        @foreach($alergias as $a)
+        <tr>
+          <td>{{$a->nombre}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
    </div>
-    <div class="col-sm-3">
-
-    </div>
   </div>
 
 

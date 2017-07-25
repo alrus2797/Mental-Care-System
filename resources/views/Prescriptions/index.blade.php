@@ -10,63 +10,56 @@
 <div id="buscador">   </div>
 <h3>Mis Prescripciones</h3>
 
+<div class="container">
+  <div id="todos"></div>
+</div>
 
-<table class="table table-condensed">
-    <thead>
-      <tr>
+<div id="ver">
 
-        <th>Paciente</th>
-
-        <th>Observaciones</th>
-
-        <th><span class="glyphicon glyphicon-eye-open"> </span></th>
-        <th><span class="glyphicon glyphicon-pencil"> </span></th>
-        <th><span class="glyphicon glyphicon-plus"> </span></th>
-        <th><span class="glyphicon glyphicon-trash"> </span></th>
-      </tr>
-    </thead>
-    <tbody>
-
-      @foreach($prescripciones as $p)
-      <tr>
-        <td>{{$p->paciente->persona->nombre_completo()}}</td>
-        <td>{{$p->observacion}}</td>
-
-        <td><a onclick="ver()" href="#"> <span class="glyphicon glyphicon-eye-open">  </span> </a>
-
-        </td>
-        <td><a onclick="editar()" href="#"> <span class="glyphicon glyphicon-pencil"></span></a> </td>
-        <!--Nueva versión-->
-        <td><a onclick="mas()" href="#"><span class="glyphicon glyphicon-plus"></span></a> </td>
-        <td><a  onclick="eliminar()" href="# "><span class="glyphicon glyphicon-trash"></span></a> </td>
-
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-
+</div>
 
 <script type="text/javascript">
    $("#buscador").load("{{asset('pres/buscador')}}");
+  $("#todos" ).load("{{ asset('prescripcion/todos') }}" );
   </script>
 
 
 
 <script type="text/javascript">
-	function ver() {
-		// body...
-	}
+	function ver(id) {
+    $.ajax({
+        url: "{{asset('prescripcion')}}"+"/"+id,
+        type: 'get',
+       success: function(resultado){
+          console.log(resultado);
+            $("#ver").html(resultado);
+        }});
+  }
+
 	function editar() {
 		// body...
 	}
 	function eliminar() {
 		// body...
 	}
-	function ver() {
-		// body...
-	}
+
 	function mas() {
 		// body...
 	}
+  function showPres(nom) {
+    var datos={
+      "nom":nom,
+    };
+    $.ajax({
+      data:datos,
+      url:'getPres',
+      type:'get',
+      dataType:'json',
+      success:function(data){
+        $("#todos").html(data);
+      }
+    });
+
+  }
 </script>
 @endsection
