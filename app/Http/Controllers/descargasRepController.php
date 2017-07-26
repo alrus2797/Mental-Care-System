@@ -22,9 +22,18 @@ class descargasRepController extends Controller
   {
     $body='<header>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
     </header>';
-    $body.='<div>
+    $body.='
+    <body>
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#"><strong>Mental Care System</strong> - Reportes </a>
+                </div>
+              </div>
+            </nav>
+        <br><br><br><br>
+            <div>
           <h2>'.$results_datos[0]->apellidopaterno.' '.$results_datos[0]->apellidomaterno.' , '.$results_datos[0]->nombres.' </h2>
           <h4><strong>Dirección :</strong>'. $results_datos[0]->direccion.'   <strong> DNI: </strong> '.$results_datos[0]->dni .'</h4>
           <h4><strong>Telefono :</strong>'.$results_datos[0]->telefono.'</h4>
@@ -45,9 +54,9 @@ class descargasRepController extends Controller
        foreach ($results_pres_med as $row)
        {
          $body.='<tr>';
-           $body.='<td>'.$row->fechaPres.'</td>';
+           $body.='<td>'.$row->fechapres.'</td>';
            $body.='<td>'.$row->obspres.'</td>';
-           $body.='<td>'.$row->nombre_med.'</td>';
+           $body.='<td>'.$row->nombremed.'</td>';
            $body.='<td>'.$row->cantmed.'</td>';
          $body.='<tr>';
        }
@@ -153,8 +162,10 @@ class descargasRepController extends Controller
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
     $pdf = $dompdf->output();
+    
     file_put_contents('reportesPDF/'.$filename.'.pdf', $pdf);
     return view('ManageReporting/infoTratamiento',compact('results_pres_med'),['ruta'=>$ruta,'inforeporte'=>$inforeporte,'results_citas_pac'=>$results_citas_pac,'results_datos'=>$results_datos]);
+    
   }
 
     
@@ -193,7 +204,26 @@ class descargasRepController extends Controller
         $sqlQuery_insert = "INSERT INTO `reporte` (`id`, `nombre`, `fecha`, `tipo`, `created_at`, `updated_at`)
                       VALUES (NULL, '$filename', '$fecha_reporte', '$tipo', '$fechacreado', NULL);";
         $results = $this->runQuery($sqlQuery_insert);
-        $content=$this->htmlfile($request->titulo_doc,$request->htmlex);
+        $libs=' <head>
+                  <title>Bootstrap Example</title>
+                  <meta charset="utf-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                </head><body>
+                
+                    <nav class="navbar navbar-inverse">
+                      <div class="container-fluid">
+                        <div class="navbar-header">
+                          <a class="navbar-brand" href="#"><strong>Mental Care System</strong> - Reportes </a>
+                        </div>
+                      </div>
+                    </nav>
+                <br><br><br><br>
+                <div class="container">';
+        $request->titulo_doc=$libs."<h2>".$request->titulo_doc."</h2><hr>";
+        $content=$this->htmlfile($request->titulo_doc,$request->htmlex."</div></body>");
         
         $dompdf = new Dompdf();
         $dompdf->loadHtml($content);

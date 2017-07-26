@@ -148,8 +148,6 @@ class consultasSqlController extends Controller
 
           return view('ManageReporting/repFarmacos',compact('results'),['fecha1'=>$fecha1_str,'fecha2'=>$fecha2_str]);
       }
-      //$sqlQuery='';
-      //$results = $this->runQuery($sqlQuery);
     }
 
 
@@ -210,8 +208,6 @@ class consultasSqlController extends Controller
         return view('ManageReporting/repTratamiento',compact('results') );
       }
     }
-
-
     public function queryArchivosRep()
     {
       $sqlQuery = "select * from reporte order by fecha;";

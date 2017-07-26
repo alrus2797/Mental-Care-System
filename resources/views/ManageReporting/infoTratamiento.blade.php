@@ -31,9 +31,9 @@
     </tr>
       @foreach ($results_pres_med as $row)
       <tr>
-        <td>{{$row->fechaPres}}</td>
+        <td>{{$row->fechapres}}</td>
         <td>{{$row->obspres}}</td>
-        <td>{{$row->nombre_med}}</td>
+        <td>{{$row->nombremed}}</td>
         <td>{{$row->cantmed}}</td>
       <tr>
       @endforeach
