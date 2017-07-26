@@ -41,14 +41,14 @@
           <div class="col-sm-2"></div>
           <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-               <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" onkeyup="showPersonas($('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
+               <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" onkeyup="showPersonas($('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
           </div>
         </div>
 
         <div class="form-group col-sm-12">
           <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-              <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" onkeyup="showPersonas($('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
+              <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" onkeyup="showPersonas($('#apellidopaterno').val(), $('#apellidomaterno').val(), $('#nombres').val(), $('#dni').val(), $('#direccion').val(), $('#telefono').val(), $('#email').val())">
           </div>
         </div>
 

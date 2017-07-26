@@ -31,8 +31,7 @@
           <td >{{$row->created_at}}</td>
           <td>
             <a href="{{asset('reportesPDF/'.$row->nombre.'.pdf')}}" target="_blank">PDF</a>
-
-         <tr>
+        </tr>
     @endforeach
 
     </table>

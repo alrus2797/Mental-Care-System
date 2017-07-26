@@ -48,31 +48,16 @@
 
 </div>
 
-
-<div>
-	<a  onclick="cargar()" target="_blank" method="post">Ver en pdf</a>
-</div>
-
-<script >
-
-
-$(document).ready(function(){
-    $("button").click(function(){
-        $.post("demo_test_post.asp",
-        {
-          name: "Donald Duck",
-          city: "Duckburg"
-        },
-        function(data,status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-    });
-});
-
-</script>
-
-
-<button>ver</button>
+<a  onclick="cargar()" target="_blank">Ver en pdf</a>
+    <script > 
+      function cargar()
+      {
+        titulo_doc="Reporte de pacientes atendidos por Medico";
+        body  = document.getElementById('topdfbody').innerHTML;
+        fecha ="<?php if(isset($_GET['mes'])) echo $_GET['mes']; else echo"";?>";
+        window.open("exportarRep?titulo_doc="+titulo_doc+"&tipo=medmes&fecha="+fecha+"&titulo=medmes"+fecha+"&htmlex="+body,'_blank');
+      }
+    </script>
 
 
 

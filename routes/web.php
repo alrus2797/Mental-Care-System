@@ -27,6 +27,7 @@ Route::get('controlador/{id}','GraficoEstadisticoController@index');
 
 use Illuminate\Http\Request;
 
+
 Route::get('test',function(){
   $faker=Faker\Factory::create("es_PE");
   return $faker->realtext;
@@ -74,6 +75,7 @@ Route::resource('componentes','ComponentesController', ['parameters' => [
     'componentes' => 'componente'
 ]]);
 Route::get('obtenerComponentes', 'ComponentesController@obtenerComponentes');
+Route::get('getPres', 'PrescriptionController@getPres');
 
 ///***********************************************************
 
@@ -87,7 +89,7 @@ Route::resource('presentaciones','PresentacionesController', ['parameters' => [
 Route::get('obtenerPresentaciones', 'PresentacionesController@obtenerPresentaciones');
 
 
-//Route::get('prescripcion/todos','PrescriptionController@todos');
+Route::get('prescripcion/todos','PrescriptionController@todos');
 
 
 /*
@@ -108,9 +110,13 @@ Route::get('pres/buscador',function(){
 
 
 
+
+Route::get('prescripcion/imprimir/{id}','PrescriptionController@imprimir');
+
 Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
+
 
 //Route::get('pacientes/historia',function(){
   //return view('pacientes.historial');
@@ -151,16 +157,15 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('{id}','pacientesController@mostrar' );
 
-});
   Route::get('alergias/{id}','pacientesController@alergias');
-
+});
 
 
 
 Route::group(['prefix'=>'ingresos'],function(){
 
   Route::get('/','IngresoController@todos' );
-  //Route::get('todos','pacientesController@todos');
+  Route::get('todos','pacientesController@todos');
 
   Route::get('crear','IngresoController@crearObt' );
 
@@ -185,7 +190,7 @@ Route::group(['prefix'=>'ingresos'],function(){
   Route::get('buscar', 'IngresoController@buscar');
 
 
-  //Route::get('{id}','IngresoController@mostrar' );
+  Route::get('{id}','IngresoController@mostrar' );
 
 });
 
@@ -288,10 +293,10 @@ Route::group(['prefix'=>'pacientes/estados'],function(){
   Route::get('{id}/editar','PacientesEstadosController@editar');
   Route::post('{id}','PacientesEstadosController@guardar');
 
-  //Route::get('buscar', 'pacientesEstadosController@buscar');
+  Route::get('buscar', 'pacientesEstadosController@buscar');
 
 
-  //Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
+  Route::get('retrievePersonas', 'pacientesEstadosController@retrievePersonas');
 
 
   Route::get('{id}','PacientesEstadosController@mostrar' );
@@ -321,4 +326,33 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('categoriaSintoma','ControllerCategoriaSintoma');
     Route::get('updatepassview/{usuario}', 'ControlerUser@updatepassview')->name('updatepassview');
     Route::patch('updatepass/{usuario}', 'ControlerUser@updatepass')->name('updatepass');
+});
+Route::group(['prefix'=>'pacientes'],function(){
+
+    Route::get('/','pacientesController@todos' );
+    //Route::get('todos','pacientesController@todos');
+
+    Route::get('crear','pacientesController@crearObt' );
+
+    Route::get('crearNuevaPersona','pacientesController@crearNuevaPersona' ); //Testing
+    Route::post('crearPersonaPaciente','pacientesController@crearPersonaPaciente' );
+
+    Route::get('retrievePacientes', 'pacientesController@retrievePacientes');
+
+    Route::get('retrievePersonasDNI', 'pacientesController@retrievePersonasDNI');
+
+    Route::get('llenarPaciente', 'pacientesController@llenarPaciente');
+    Route::post('agregar', 'pacientesController@agregar');
+
+    Route::get('{id}/eliminar','pacientesController@eliminarConfirm');
+    Route::post('eliminar','pacientesController@eliminar');
+
+    Route::get('{id}/editar','pacientesController@editar');
+    Route::post('{id}','pacientesController@guardar');
+
+    Route::get('buscar', 'pacientesController@buscar');
+
+
+    Route::get('{id}','pacientesController@mostrar' );
+
 });

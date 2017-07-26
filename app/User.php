@@ -30,5 +30,24 @@ class User extends Authenticatable
     {
         return Persona::findOrFail($this->attributes['persona_id']);
     }
+    public function departamento()
+    {
+        return $this->belongsTo('App\Departamento');
+    }
+
+    public function turno()
+    {
+        return $this->belongsTo('App\Turno');
+    }
+
+    public function especialidad()
+    {
+        return $this->belongsTo('App\Especialidad');
+    }
+
+    public function diagnosticos()
+    {
+        return $this->hasMany('App\Diagnostico');
+    }
 
 }

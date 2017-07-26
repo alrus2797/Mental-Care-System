@@ -91,6 +91,14 @@
                         <li><a href="{{ route('login') }}"><i class="fa fa-vcard-o"></i> Ingresar</a></li>
                     @else
                         @if ( Auth::user()->tipo_usuario == 'Administrador' )
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personas <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ url('personas/crear')}}">Nueva Persona</a></li>
+                                    <li><a href="{{ url('personas/buscar')}}">Buscar Persona</a></li>
+                                    <li><a href="{{ url('personas')}}">Todas las Personas</a></li>
+                                </ul>
+                            </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pacientes <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -102,6 +110,7 @@
                                 <li><a href="{{ url('pacientes/estados/todos')}}">Todos los Estados de Pacientes</a></li>
                             </ul>
                         </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ingresos <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -111,37 +120,6 @@
                             </ul>
                         </li>
 
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Personas <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url('personas/crear')}}">Nueva Persona</a></li>
-                                    <li><a href="{{ url('personas/buscar')}}">Buscar Persona</a></li>
-                                    <li><a href="{{ url('personas')}}">Todas las Personas</a></li>
-                                </ul>
-                            </li>
-                            <!--<li ><a href="#">Admisión</a></li> -->
-                            <li ><a href="#">Citas</a></li>
-                            <li ><a href="{{url('reportes/')}}">Manejo de Reportes</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="fa fa-folder"></i> Servicio medico<span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
-                                    </li>
-                                    <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
-                                    <li ><a href="{{url('estadistica/paciente')}}">Estadística</a></li>
-
-                                    {{--<li>--}}
-                                    {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
-                                    {{--</li>--}}
-                                </ul>
-                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <i class="fa fa-sitemap"></i> Sistema <span class="caret"></span>
@@ -163,6 +141,7 @@
                                     <li>
                                         <a href="{{route('categoriaSintoma.index')}}"><i class="fa fa-list"></i> Categorias Sintoma</a>
                                     </li>
+                                    <li ><a href="{{url('reportes/')}}">Manejo de Reportes</a></li>
 
                                 </ul>
                             </li>
@@ -174,23 +153,16 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
-                                    {{--</li>--}}
-                                    <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
-
                                     <li>
-                                        <a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>
+                                        <a href="{{route('sintoma.index')}}"><i class="fa fa-eye"></i> Sintomas</a>
                                     </li>
-                                    {{--<li>--}}
-                                        {{--<a href="{{route('diagnostico.index')}}"><i class="fa fa-medkit"></i> Diagnosticos Realizados</a>--}}
-                                    {{--</li>--}}
+                                    <li>
+                                        <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
+                                    </li>
+                                    <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
+                                    <li ><a href="{{url('estadistica')}}">Estadística</a></li>
+                                    <li ><a href="#">Citas</a></li>
+                                    <li ><a href="{{url('prescripcion/')}}">Prescripción</a></li>
                                 </ul>
                             </li>
 
@@ -220,8 +192,16 @@
                                     <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
                                 </li>
                                 <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
+
                                 <li ><a href="{{url('estadistica/paciente')}}">Estadística</a></li> 
 
+                                <li>
+                                    <a href="{{route('diagnostico.pendientes')}}"><i class="fa fa-user-md"></i> Diagnosticos Pendientes</a>
+                                </li>
+                                <li>
+                                <a href="{{route('diagnostico.index')}}"><i class="fa fa-medkit"></i> Diagnosticos Realizados</a>
+                                </li>
+                                
                                 {{--<li>--}}
                                 {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
                                 {{--</li>--}}

@@ -17,9 +17,9 @@ class Diagnostico extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('paciente_id')->unsigned();
+            $table->integer('prescription_id')->unsigned();
             $table->date('retorno')->nullable();
             $table->string('recomendacion');
-            $table->string('receta');
             $table->timestamps();
         });
     }

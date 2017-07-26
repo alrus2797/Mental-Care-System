@@ -61,11 +61,11 @@
     </div>
 
     <div class="form-group col-sm-12">
-      <h3> <b> ¿No existe persona? Crear </b> </h3>
+      <h3> <b> ¿No existe Paciente? Crear </b> </h3>
     </div>
     <div class="form-group col-sm-12">
       <div class="personaNueva col-sm-12">
-        <button type="button" id="botonCrear" class="btn btn-default" aria-label="Center Align" onclick="crearNuevaPersona()"> Crear Paciente y Persona Nueva </button>
+        <button type="button" id="botonCrear" class="btn btn-default" aria-label="Center Align" onclick="crearNuevaPersona()"> Crear Paciente e Ingreso </button>
       </div>
     </div>
 </div>

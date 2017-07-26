@@ -1,18 +1,14 @@
 @extends('layouts.app')
 
-    {!! Html::style('css/bootstrap-select.min.css') !!}
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                	<i class="fa fa-plus-circle"></i> Crear Diagnostico
-                </div>
+                <div class="panel-heading"><i class="fa fa-plus-circle"></i> Crear Diagnostico</div>
                 <div class="panel-body">
-					<form class="form-horizontal" role="form" method="POST" action="{{route('diagnostico.store')}}" name="formulario_historial">
-						{{ csrf_field() }}
-
+          					<form class="form-horizontal" role="form" method="POST" action="{{route('diagnostico.store')}}" name="formulario_historial">
+        						{{ csrf_field() }}
 
                         <div class="form-group{{ ($errors->has('paciente_id')) ? $errors->first('paciente_id') : '' }}">
                             <label for="paciente_id" class="col-md-4 control-label">Paciente</label>
@@ -37,7 +33,7 @@
                                 {!! $errors->first('sintomas','<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
-						
+
                         <div class="form-group{{ ($errors->has('enfermedades')) ? $errors->first('enfermedades') : '' }}">
                             <label for="enfermedades" class="col-md-4 control-label">Enfermedades</label>
                             <div class="col-md-6">
@@ -87,7 +83,7 @@
                         </div>
 
                         <input type="text" name="estado" id="estado" class="form-control" value="Terminado" style="display: none;">
-						
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="col-md-6" align="left">
@@ -151,7 +147,3 @@
     });
 </script>
 @endsection
-
-    {!! Html::script('js/jquery.min.js') !!}
-
-    {!! Html::script('js/bootstrap-select.min.js') !!}

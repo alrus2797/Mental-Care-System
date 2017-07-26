@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use DB;
 use App\Prescription;
 use App\Medicamento;
 use Illuminate\Http\Request;
@@ -20,6 +21,11 @@ class PrescriptionController extends Controller
         //return dd($prescripciones);
         return view("Prescriptions.index",["prescripciones"=>$prescripciones]);
     }
+    public function imprimir($id)
+    {
+        $pres=Prescription::find($id);
+        return view("Prescriptions.modelo",["pres"=>$pres]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +35,8 @@ class PrescriptionController extends Controller
 
     public function todos()
     {
-      $pres=Prescription::all();
+      //$pres=Prescription::all();
+        $pres= Prescription::where('medico_id', Auth::user()->id)->get();
       return view('Prescriptions.todos',["prescripciones"=>$pres]);
     }
 
@@ -55,7 +62,7 @@ class PrescriptionController extends Controller
         $pres->medico_id=$request->medico_id;
         $pres->save();
         $pres->medicina()->attach($request->medicamentos);
-        return redirect('pacientes');
+        return redirect('pacientes/historial/'.$pres->paciente_id);
     }
 
     /**
@@ -66,7 +73,9 @@ class PrescriptionController extends Controller
      */
     public function show(Prescription $prescription)
     {
-        //
+      dd($prescription);
+      $pres=collect([]);
+        return view('Prescriptions.ver',["prescription"=>$prescription,"medicamentos"=>$pres]);
     }
 
     /**
@@ -101,5 +110,14 @@ class PrescriptionController extends Controller
     public function destroy(Prescription $prescription)
     {
         //
+    }
+
+    public function getPres(Request $request)
+    {
+      $pres=DB::table('prescriptions')->join('pacientes','prescriptions.paciente_id','=','pacientes.id')
+      ->join('personas','pacientes.persona_id','=','personas.id')
+      ->select('prescriptions.id','prescriptions.medico_id','personas.nombres','prescriptions.observacion')
+      ->where([['nombres','like','%'.$request->input('nom').'%'],['medico_id','=',Auth::user()->id]])->get();
+      return response()->json(view('Prescriptions.todos',compact('pres'))->render());
     }
 }

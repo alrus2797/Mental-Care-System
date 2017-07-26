@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 @section('title', 'Inicio')
 
@@ -56,7 +54,7 @@
 
       <a href="/reportes/repAtendidos" class="list-group-item">
         <h4 class="list-group-item-heading">Reporte de pacientes atendidos (*)</h4>
-          <p class="list-group-item-text">Reportes <strong>mensual</strong>es de pacientes atendidos por clínica. </p>
+          <p class="list-group-item-text">Reportes <strong>mensual</strong>es de pacientes atendidos por medico en la clinica. </p>
       </a>
 
       <a href="/reportes/repMedRecetados" class="list-group-item">

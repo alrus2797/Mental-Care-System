@@ -23,6 +23,7 @@
         </form>
         <hr>
 <div id="topdfbody">
+    <div>
         @if($results == NULL)
             <div><h4>No se encontraron resultados</h4></div>
         @else
@@ -40,22 +41,32 @@
 
           @foreach ($results as $row)
           <tr>
-
             <td>{{$row->nombrePaciente}}</td>
             <td>{{$row->fechacita}}</td>
             <td>{{$row->motivocita}}</td>
             <td>{{$row->estadocita}}</td>
-          <tr>
+           </tr>
           @endforeach
         </table>
-  @endif
+        @endif
+    </div>
+
 
 </div>
 </div >
-
-<div class="col-sm-offset-0">
-	<a  onclick="cargar()" target="_blank">Ver en pdf</a>
 </div>
+
+<a  onclick="cargar()" target="_blank">Ver en pdf</a>
+    <script > 
+      function cargar()
+      {
+        titulo_doc="Reporte semanal de atención";
+        body  = document.getElementById('topdfbody').innerHTML;
+        fecha ="<?php if(isset($_GET['semana'])) echo $_GET['semana']; else echo"";?>";
+        window.open("exportarRep?titulo_doc="+titulo_doc+"&tipo=semat&fecha="+fecha+"&titulo=semat"+fecha+"&htmlex="+body,'_blank');
+      }
+    </script>
+
 
 
 

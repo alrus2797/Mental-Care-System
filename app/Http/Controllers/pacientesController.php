@@ -13,6 +13,7 @@ use App\pacientesEstados;
 use App\Historial;
 use App\Departamento;
 use App\Componente;
+use App\Prescription;
 
 class pacientesController extends Controller
 {
@@ -32,8 +33,10 @@ class pacientesController extends Controller
           foreach ($alergias_comp as $a) {
               $alergias->push($a->medicamentos);
           }
+          $prescripciones=Prescription::where('paciente_id',$id)->get();
+          //return dd($prescripciones);
           $alergias=$alergias->collapse()->pluck('id')->unique()->all();
-          return view('pacientes.historial',["paciente_id"=>$id,"nombre"=>$nombre,"apellidos"=>$apellidos,"alergias"=>$alergias]);
+          return view('pacientes.historial',["paciente_id"=>$id,"nombre"=>$nombre,"apellidos"=>$apellidos,"alergias"=>$alergias,"prescripciones"=>$prescripciones]);
 
         }
 
@@ -72,8 +75,9 @@ class pacientesController extends Controller
       $persona = persona::find($paciente -> persona_id);
       $estado = pacientesEstados::find($paciente->estado_id);
       $departamento = departamento::find($paciente->departamento_id);
+      $alergias=$paciente->componentes;
       //return $tabla;
-      return view('pacientes.mostrar',compact('paciente', 'persona','estado','departamento'));
+      return view('pacientes.mostrar',compact('paciente', 'persona','estado','departamento','alergias'));
 
     }
 

@@ -17,7 +17,7 @@ class CreateIngresosTable extends Migration
             $table->increments('id');
             $table->date('fecha');
             $table->integer('paciente_id')->unsigned();
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->foreign('paciente_id')->references('id')->on('pacientes')->onDelete('cascade');
             $table->timestamps();
         });
     }

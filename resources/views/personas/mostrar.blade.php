@@ -59,14 +59,14 @@
           <div class="col-sm-2"></div>
             <label class="col-sm-2 col-form-label" for="telefono">Telefono:</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese dirección" name="telefono" value="{{$tabla->telefono}}" readonly>
+            <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{$tabla->telefono}}" readonly>
           </div>
         </div>
 
         <div class="form-group col-sm-12">
             <label class="col-sm-2 col-form-label" for="email">Email:</label>
           <div class="col-sm-3">
-            <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$tabla->email}}" readonly>
+            <input type="text" class="form-control" id="email" placeholder="Ingrese email" name="email" value="{{$tabla->email}}" readonly>
           </div>
           <div class="col-sm-2"></div>
           <div class="col-sm-2"></div>

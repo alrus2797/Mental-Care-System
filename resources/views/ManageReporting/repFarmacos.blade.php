@@ -21,7 +21,7 @@
     <button type="submit" class="btn btn-default">Buscar</button>
   </form>
   <hr>
-<div id="body">
+<div id="topdfbody" >
   @if($results == NULL)
       <div><h4>No se encontraron resultados</h4></div>
   @else
@@ -54,5 +54,12 @@
 
 </div>
 <a  onclick="cargar()" target="_blank">Ver en pdf</a>
-
+    <script > 
+      function cargar()
+      {
+        body  = document.getElementById('topdfbody').innerHTML;
+        fecha ="<?php if(isset($_GET['semana'])) echo $_GET['semana']; else echo"";?>";
+        window.open("exportarRep?titulo_doc=Reporte de farmacos preescritos&tipo=sem&fecha="+fecha+"&titulo=sem"+fecha+"&htmlex="+body,'_blank');
+      }
+    </script>
    @endsection

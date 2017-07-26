@@ -89,7 +89,9 @@ class consultasSqlController extends Controller
                   INNER join personas per_med
                     on per_med.id = medicos.personas_id where extract(YEAR_MONTH from prescriptions.created_at ) = '".$year_moth."' ";
       $results = $this->runQuery($sqlQuery);
-      return view('ManageReporting/repAtendidos',compact('results'));
+      $fecha=$anio."-".$mes;
+      $tipo="sem-Aten";
+      return view('ManageReporting/repAtendidos',compact('results'),['fecha'=>$fecha,'tipo'=>$tipo]);
     }
 
 
@@ -146,8 +148,6 @@ class consultasSqlController extends Controller
 
           return view('ManageReporting/repFarmacos',compact('results'),['fecha1'=>$fecha1_str,'fecha2'=>$fecha2_str]);
       }
-      //$sqlQuery='';
-      //$results = $this->runQuery($sqlQuery);
     }
 
 
@@ -208,8 +208,6 @@ class consultasSqlController extends Controller
         return view('ManageReporting/repTratamiento',compact('results') );
       }
     }
-
-
     public function queryArchivosRep()
     {
       $sqlQuery = "select * from reporte order by fecha;";

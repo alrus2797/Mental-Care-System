@@ -65,7 +65,7 @@
     </div>
   </div>
 
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12" >
       <label class="col-sm-2 col-form-label" for="email">Email:</label>
     <div class="col-sm-3">
       <input type="text" class="form-control" id="email" placeholder="Ingrese dirección" name="email" value="{{$persona->email}}" readonly >
@@ -77,7 +77,7 @@
 
     </div>
   </div>
-  <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12" >
     <label class="col-sm-2 col-form-label" for="estado">Departamento:</label>
     <div class="col-sm-3">
 
@@ -85,15 +85,27 @@
 
     </div>
     <div class="col-sm-2"> </div>
+    <label class="col-sm-2 col-form-label" for="aler">Alergias:
+      <br>
+      <br>
+      <form action="{{asset('pacientes/alergias')}}/{{$paciente->id}}" >
+          <input class="btn btn-primary" type="submit" value="Todas las Alergias">
+      </form>
+    </label>
 
-<div class="col-sm-3">
-  <form action="{{asset('pacientes/alergias')}}/{{$paciente->id}}">
-      <input class="btn btn-primary" type="submit" value="Alergias">
-  </form>
+
+    <div class="col-sm-3" style="overflow-y:auto;max-height:100px;">
+    <table class="table table-responsive" class="form-group" id="aler">
+
+      <tbody>
+        @foreach($alergias as $a)
+        <tr>
+          <td>{{$a->nombre}}</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
    </div>
-    <div class="col-sm-3">
-
-    </div>
   </div>
 
 
@@ -124,6 +136,58 @@
     </div>
 </div>
 
-
+<div class="row">
+    <div class="col-md-12 col-md-offset-0">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-file-text"></i> Historial medico
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Medico</th>
+                        <th width="10%">Fecha y Hora</th>
+                        <th width="20%">Sintomas</th>
+                        <th width="15%">Diagnostico</th>
+                        <th>Recomendaciones</th>
+                        <th>Ver</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php $num = 1; ?>
+                    @foreach($paciente->diagnosticos as $diagnostico)
+                        <tr>
+                            <td>{{$num++}}</td>
+                            <td>{{$diagnostico->user->name}}<br/>{{$diagnostico->user->especialidad->nombre}}</td>
+                            <td>{{$diagnostico->fecha_creacion()}}<br/>{{$diagnostico->hora_creacion()}}</td>
+                            <td>
+                                <?php $aux = 0; ?>
+                                @foreach($diagnostico->sintomas as $sintoma_lista)
+                                    {{ $sintoma_lista->nombre }}
+                                    <?php $aux++; ?>
+                                    @if($aux<$diagnostico->sintomas->count()) , @endif
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($diagnostico->enfermedades as $enfermedad_lista)
+                                    - {{ $enfermedad_lista->nombre }}<br/>
+                                @endforeach
+                            </td>
+                            <td>
+                                <p>{{ $diagnostico->recomendacion }}</p>
+                            </td>
+                            <td>
+                                <a href="{{route('diagnostico.show',$diagnostico->id)}}" class="btn btn-success"><i class="fa fa-file-text"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

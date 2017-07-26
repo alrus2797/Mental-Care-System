@@ -15,7 +15,7 @@ class CrearIniciales extends Migration
      */
     public function up()
     {
-      /*  DB::table('departamentos')->insert(
+      DB::table('departamentos')->insert(
             array(
                 'name' => 'AREQUIPA',
                 'abreviatura' => 'AQP',
@@ -38,7 +38,7 @@ class CrearIniciales extends Migration
                 'created_at' => date('Y-m-d h:i:s'),
                 'updated_at' => date('Y-m-d h:i:s')
             )
-        );*/
+        );
         DB::table('personas')->insert(
             array(
                 'nombres'=> 'Alberto',
