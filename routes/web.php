@@ -19,7 +19,9 @@ Route::post('/mostrar',function(Illuminate\Http\Request $datos){
 
 Route::post('controlador12','GraficoEstadisticoController@store');
 Route::post('controladorc','GraficoEstadisticoController@storec');
-//Route::post('controladorp','GraficoEstadisticoController@storep',);
+Route::post('/estadistica/porcentajecitas','GraficoEstadisticoController@porcentaje_citas_estados');
+
+Route::post('/estadistica/Top_5_medicamentos_recetados','GraficoEstadisticoController@medicamentos');
 
 Route::get('controlador/{id}','GraficoEstadisticoController@index');
 
@@ -105,7 +107,7 @@ Route::get('pres/buscador',function(){
 });
 
 
-/*
+
 Route::resource('prescripcion','PrescriptionController',['parameters'=>[
   'prescriptions'=>'prescription'
   ]]);
@@ -149,10 +151,10 @@ Route::group(['prefix'=>'pacientes'],function(){
 
   Route::get('{id}','pacientesController@mostrar' );
 
-});*/
+});
   Route::get('alergias/{id}','pacientesController@alergias');
 
-});
+
 
 
 Route::group(['prefix'=>'ingresos'],function(){

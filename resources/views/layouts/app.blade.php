@@ -135,7 +135,7 @@
                                         <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
                                     </li>
                                     <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
-                                    <li ><a href="{{url('estadistica')}}">Estadística</a></li>
+                                    <li ><a href="{{url('estadistica/paciente')}}">Estadística</a></li>
 
                                     {{--<li>--}}
                                     {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
@@ -220,7 +220,7 @@
                                     <a href="{{route('enfermedad.index')}}"><i class="fa fa-crosshairs"></i> Enfermedades</a>
                                 </li>
                                 <li ><a href="{{url('medicamentos')}}">Medicamentos</a></li>
-                                <li ><a href="{{url('estadistica')}}">Estadística</a></li>
+                                <li ><a href="{{url('estadistica/paciente')}}">Estadística</a></li> 
 
                                 {{--<li>--}}
                                 {{--<a href="{{route('paciente.index')}}"><i class="fa fa-address-book"></i> Pacientes</a>--}}
