@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.app')
 @section('title', 'NEstadistica')
  
    @section('content')      
@@ -32,17 +32,23 @@
 			$tipo='pie';
 			$grafico=new Grafico();
 ///////////////////////////paciente-estado
-			$consulta = "SELECT DISTINCT estado FROM paciente";
+			$consulta_tabla=['internado','de alta','en tratamiento','enfermo terminal'];
+			$consulta = "SELECT DISTINCT estado_id FROM pacientes";
 			$array_filas=$grafico->get_datos($consulta);
-			
 			//////obtengo etiquetas para el pie
 			$estados=[];
+			$contador=0;
+
 			foreach ($array_filas as $fila) {
-				array_push($estados, $fila[0]);
+				
+				//$consulta="SELECT nombre WHERE id =".$fila;
+				array_push($estados, $consulta_tabla[$contador]);
+
+				$contador++;
 			}
 			//////////por cada dato cuantos hay
-			$tabla="paciente";
-			$columna="estado";
+			$tabla="pacientes";
+			$columna="estado_id";
 				////////////esto seria como un template
 			$frecuencia=$grafico->each_dato($array_filas,$tabla,$columna);
 			$id_nombre1="cuadro_freq_estados_pacientes";
@@ -111,11 +117,11 @@ echo
 				<canvas id="cuadro_freq_estados_pacientes" width="500" height="350"></canvas>
 				</div>
 			</div>
-			<div class="col-md-2" >
+			<!--<div class="col-md-2" >
 				<button type="submit" class="btn btn-info btn-fill pull-right">
 				Analizar
             	</button>	
-			</div>
+			</div>-->
 		</div>
 
 		</div>

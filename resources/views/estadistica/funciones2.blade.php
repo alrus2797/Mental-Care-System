@@ -19,7 +19,7 @@ class Grafico
 			$this->puerto="3306";
 			$this->usuario="root";
 			$this->contrasenna="";
-		    $this->bbdd ="ment-care";
+		    $this->bbdd ="ment-caretp1";
 			$this->conexion = mysqli_connect($this->host,$this->usuario,$this->contrasenna);
 			mysqli_select_db($this->conexion,$this->bbdd);
 			mysqli_set_charset($this->conexion,"utf8");
@@ -29,6 +29,7 @@ class Grafico
 			die("Algo esta saliendo mal");
 		}
 	}
+
 
 	public function get_datos($consulta)
 	{
@@ -84,7 +85,7 @@ class Grafico
 	public function cantidadXtabla($tabla)
 	{
 		//$consulta="SELECT COUNT(id_user) FROM ".$tabla;
-		$consulta="SELECT COUNT(id_user) FROM ".$tabla;
+		$consulta="SELECT COUNT(id) FROM ".$tabla;
 		$ejecutar = mysqli_query($this->conexion,$consulta);
 		$fila = mysqli_fetch_row($ejecutar);
 		return $fila[0];
@@ -155,11 +156,15 @@ echo					'"
 
 	echo	
 		'],
-						backgroundColor: [
-							"#F7464A",
-							"#46BFBD",
-							"#FDB45C",
-							"#949FB1",
+						backgroundColor: ['
+						;
+		foreach ($datos_array[0] as $v) {
+			echo '"rgba('.rand(0,227).','
+						 .rand(0,127).','
+						 .rand(0,127).',0.5)",';	
+		}
+
+	echo '
 						],
 					}],
 					labels : [';
@@ -179,6 +184,106 @@ echo					'"
 			window.pie = new Chart(canvas,datos_pie);
 	';
 
+	}
+
+///////////////////////funciones nuevas(ali)
+	function obt($consultasql)
+	    {
+    	$rptasql = mysqli_query($this->conexion,$consultasql);
+    	$datos = [];
+    	$fila = mysqli_fetch_row($rptasql);
+    	$ncolum = count($fila);
+    	if($ncolum == 1)
+    	{
+    		array_push($datos,$fila[0]);
+    		while($fila = mysqli_fetch_row($rptasql))
+    			{ array_push($datos,$fila[0]); }
+    	}
+    	else if($ncolum != 0)
+    	{
+
+    		for($i=0;$i<$ncolum;$i++)
+    		{
+    			//array_push($datos,[]); 
+    			array_push($datos,[$fila[$i]]); 
+    		}
+    		while($fila = mysqli_fetch_row($rptasql))
+    		{ 
+    			for($i=0;$i<$ncolum;$i++)
+    				{ array_push($datos[$i],$fila[$i]); }
+    		}
+    	}
+    	return $datos;
+    }
+
+    function orden($ordensql)
+    {
+    	mysqli_query($this->conexion,$ordensql);
+    }
+
+	function __destruct()
+	{
+		mysqli_close($this->conexion);
+	}
+
+
+	function torta($dominio,$rango,$date_inicio_c,$date_final_c)
+	{
+	echo '
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		';
+
+	echo' $("#date_inicio2").val("'.$date_inicio_c.'"); ';
+   	echo '$("#date_final2").val("'.$date_final_c.'"); ';
+   	echo '
+		//document.write(getRandom());
+		var datos = {
+			type: "pie",
+			data : {
+				datasets :[{
+					data : [
+		';
+	// colocar rango separados por comas
+	foreach($rango as $i) { echo $i.','; }
+	////////////////////////////////////
+
+	echo'			],
+					backgroundColor: [
+		';
+	foreach($rango as $i) 
+	{ 
+		echo '"rgba('.rand(0,127).','
+					 .rand(0,127).','
+					 .rand(0,127).',0.5)",'; 
+	}
+	echo '
+					],
+				}],
+				labels : [
+		';
+	// colocar dominio separado por comas
+	//foreach($dominio as $i) { echo '"'.$i.':"'.','; }
+	$ndom = count($dominio);
+	for($i=0; $i<$ndom; $i++)
+		{ echo '"'.$dominio[$i].'s:'.$rango[$i].'%",'; }
+	/////////////////////////////////////
+
+	echo'		]
+			},
+			options : {
+				responsive : true,
+			}
+		};
+
+		var canvas = document.getElementById("torta").getContext("2d");
+		window.pie = new Chart(canvas, datos);
+	});
+	
+	</script>
+	<canvas id="torta" width="500" height="500"></canvas>
+	';
 	}
 }
 

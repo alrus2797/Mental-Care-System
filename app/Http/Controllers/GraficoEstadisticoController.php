@@ -41,6 +41,19 @@ class GraficoEstadisticoController extends Controller
        return view('estadistica.medicos',compact('date_inicio_c','date_final_c') );
     }
 
+    public function porcentaje_citas_estados(Request $request)
+    {
+        $date_inicio_c2=$request->date_inicio2;
+        $date_final_c2=$request->date_final2;
+       return view('estadistica.citas',compact('date_inicio_c2','date_final_c2') );
+    }
+
+    public function medicamentos(Request $request)
+    {
+        $date_inicio_c2=$request->date_inicio;
+        $date_final_c2=$request->date_final;
+       return view('estadistica.medicos',compact('date_inicio_c2','date_final_c2') );
+    }
 
     public function storec(Request $request)
     {
